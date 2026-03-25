@@ -34,7 +34,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default async function GuiasPage() {
-  const articles = await getPublishedArticles();
+  const articles = await getPublishedArticles().catch(() => []);
 
   return (
     <div className="min-h-screen bg-white">
