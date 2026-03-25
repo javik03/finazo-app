@@ -172,7 +172,6 @@ async function seed() {
       { name: "Banco Cuscatlán", slug: "banco-cuscatlan", providerType: "bank", country: "SV", active: true },
       { name: "Banco Hipotecario", slug: "banco-hipotecario", providerType: "bank", country: "SV", active: true },
       { name: "Promerica", slug: "promerica", providerType: "bank", country: "SV", active: true },
-      { name: "Credimovil", slug: "credimovil", providerType: "fintech", country: "SV", affiliateUrl: "https://credimovil.com?utm_source=finazo", active: true },
     ])
     .onConflictDoNothing()
     .returning();
@@ -187,7 +186,6 @@ async function seed() {
     { slug: "banco-cuscatlan", rateMin: "20.00", rateMax: "28.00", amountMax: "30000.00" },
     { slug: "banco-hipotecario", rateMin: "17.00", rateMax: "22.00", amountMax: "35000.00" },
     { slug: "promerica", rateMin: "21.00", rateMax: "27.00", amountMax: "25000.00" },
-    { slug: "credimovil", rateMin: "24.00", rateMax: "36.00", amountMax: "10000.00" },
   ];
 
   for (const data of loanData) {
@@ -220,7 +218,8 @@ async function seed() {
     .values([
       { name: "SISA", slug: "sisa", country: "SV", active: true },
       { name: "Seguros del Pacífico", slug: "seguros-pacifico", country: "SV", active: true },
-      { name: "Cubierto", slug: "cubierto", country: "SV", affiliateUrl: "https://cubierto.app?utm_source=finazo", active: true },
+      { name: "ASSA Compañía de Seguros", slug: "assa", country: "SV", active: true },
+      { name: "Aseguradora Suiza Salvadoreña (ASESUISA)", slug: "asesuisa", country: "SV", active: true },
     ])
     .onConflictDoNothing();
 

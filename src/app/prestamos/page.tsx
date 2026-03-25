@@ -2,11 +2,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getLoanProducts } from "@/lib/queries/loans";
 import { LoanTable } from "@/components/comparison/LoanTable";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Comparar Préstamos Personales — El Salvador",
   description:
-    "Tasas oficiales de préstamos personales en El Salvador según la SSF. Compara Banco Agrícola, Davivienda, BAC, Banco Cuscatlán, Hipotecario, Promerica y Credimovil.",
+    "Tasas oficiales de préstamos personales en El Salvador según la SSF. Compara Banco Agrícola, Davivienda, BAC, Banco Cuscatlán, Hipotecario y Promerica.",
 };
 
 // Revalidate every 24 hours — matches SSF scraper cadence
@@ -33,35 +35,24 @@ export default async function PrestamosPage({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b border-gray-100 px-6 py-4">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-gray-900">
-            finazo<span className="text-blue-600">.lat</span>
-          </Link>
-          <nav className="hidden gap-6 text-sm text-gray-600 sm:flex">
-            <Link href="/remesas" className="hover:text-gray-900">Remesas</Link>
-            <Link href="/prestamos" className="font-semibold text-gray-900">Préstamos</Link>
-            <Link href="/seguros" className="hover:text-gray-900">Seguros</Link>
-            <Link href="/articulos" className="hover:text-gray-900">Artículos</Link>
-          </nav>
-        </div>
-      </header>
+      <Header activePath="/prestamos" />
 
       <main className="mx-auto max-w-5xl px-6 py-12">
         {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-700">Inicio</Link>
+        <div className="mb-6 text-sm text-slate-500">
+          <Link href="/" className="hover:text-slate-700">
+            Inicio
+          </Link>
           <span className="mx-2">›</span>
           <span>Préstamos</span>
         </div>
 
         <div className="mb-8 flex items-start justify-between gap-4">
           <div>
-            <h1 className="mb-2 text-3xl font-bold text-gray-900">
+            <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-slate-900">
               Comparar préstamos en El Salvador
             </h1>
-            <p className="text-gray-600">
+            <p className="text-slate-600">
               Tasas oficiales publicadas por la Superintendencia del Sistema
               Financiero (SSF). Actualizadas diariamente.
             </p>
@@ -82,7 +73,7 @@ export default async function PrestamosPage({
                 className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
                   isActive
                     ? "border-emerald-600 bg-emerald-600 text-white"
-                    : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
+                    : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
                 }`}
               >
                 {lt.label}
@@ -92,16 +83,16 @@ export default async function PrestamosPage({
         </div>
 
         {/* Comparison table */}
-        <div className="rounded-2xl border border-gray-100 p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 p-6 shadow-sm">
           <LoanTable products={products} />
         </div>
 
         {/* Calculator CTA */}
         <div className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
-          <h2 className="mb-2 font-semibold text-gray-900">
+          <h2 className="mb-2 font-semibold text-slate-900">
             ¿Cuánto pagarás cada mes?
           </h2>
-          <p className="mb-4 text-sm text-gray-600">
+          <p className="mb-4 text-sm text-slate-600">
             Usa nuestra calculadora para estimar tu cuota mensual según el
             monto, plazo y tasa de interés.
           </p>
@@ -111,11 +102,11 @@ export default async function PrestamosPage({
         </div>
 
         {/* What to know */}
-        <div className="mt-8 rounded-2xl bg-gray-50 p-6">
-          <h2 className="mb-3 font-semibold text-gray-900">
+        <div className="mt-8 rounded-2xl bg-slate-50 p-6">
+          <h2 className="mb-3 font-semibold text-slate-900">
             ¿Qué debo saber antes de solicitar un préstamo?
           </h2>
-          <ul className="space-y-2 text-sm text-gray-700">
+          <ul className="space-y-2 text-sm text-slate-700">
             <li>
               <strong>Tasa anual:</strong> Es el costo del préstamo expresado
               como porcentaje anual. Menor tasa = menor costo total.
@@ -136,7 +127,7 @@ export default async function PrestamosPage({
         </div>
 
         {/* Disclaimer */}
-        <p className="mt-6 text-xs text-gray-400">
+        <p className="mt-6 text-xs text-slate-400">
           Las tasas mostradas son los rangos publicados por la SSF y pueden
           variar según tu perfil crediticio, ingresos y plazo solicitado. La
           tasa final la determina cada entidad financiera. Algunos enlaces son
@@ -144,26 +135,7 @@ export default async function PrestamosPage({
         </p>
       </main>
 
-      <footer className="mt-16 border-t border-gray-100 px-6 py-8">
-        <div className="mx-auto max-w-5xl text-center text-sm text-gray-500">
-          <p>
-            Finazo.lat — Comparador financiero para Centroamérica. No somos un
-            banco ni otorgamos créditos.
-          </p>
-          <p className="mt-1">
-            Datos de{" "}
-            <a
-              href="https://www.ssf.gob.sv"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              SSF El Salvador
-            </a>
-            .
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
