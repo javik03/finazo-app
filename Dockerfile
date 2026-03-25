@@ -14,6 +14,13 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
+# Worker image — used by scrapers and writer agents (needs full src + node_modules)
+FROM base AS worker
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
 # Production image
 FROM base AS runner
 WORKDIR /app

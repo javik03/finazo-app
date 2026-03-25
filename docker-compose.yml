@@ -32,7 +32,9 @@ services:
 
   # Remittance scraper — every 6 hours
   scraper-remittance:
-    build: .
+    build:
+      context: .
+      target: worker
     restart: unless-stopped
     environment:
       - DATABASE_URL=${DATABASE_URL}
@@ -43,7 +45,9 @@ services:
 
   # SSF loan rate scraper — daily
   scraper-ssf:
-    build: .
+    build:
+      context: .
+      target: worker
     restart: unless-stopped
     environment:
       - DATABASE_URL=${DATABASE_URL}
@@ -54,7 +58,9 @@ services:
 
   # Article generator — every hour
   writer:
-    build: .
+    build:
+      context: .
+      target: worker
     restart: unless-stopped
     environment:
       - DATABASE_URL=${DATABASE_URL}
