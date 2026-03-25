@@ -7,6 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Finazo — Agent Rules
 
 ## Stack
+language: typescript
 Next.js 14 App Router · TypeScript strict · Drizzle ORM · PostgreSQL
 Branch: master (not main) · Server: Hetzner (planned)
 
