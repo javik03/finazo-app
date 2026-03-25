@@ -56,6 +56,32 @@ services:
       postgres:
         condition: service_healthy
 
+  # SIB Guatemala loan rate scraper — daily
+  scraper-sib-gt:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+    command: sh -c "while true; do npx tsx src/agents/scraper/sib-gt-loan-scraper.ts; sleep 86400; done"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # CNBS Honduras loan rate scraper — daily
+  scraper-cnbs-hn:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+    command: sh -c "while true; do npx tsx src/agents/scraper/cnbs-hn-loan-scraper.ts; sleep 86400; done"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   # Article generator — every hour
   writer:
     build:
