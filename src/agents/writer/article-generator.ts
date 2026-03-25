@@ -15,7 +15,7 @@ import {
   loanProducts,
   loanProviders,
 } from "@/lib/db/schema";
-import { eq, and } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import pino from "pino";
 
 const logger = pino({ name: "article-generator" });

@@ -163,8 +163,8 @@ export default async function CorridorPage({ params }: Props) {
                 : "La diferencia entre la tasa de mercado y la tasa ofrecida puede costar más que la comisión fija."}
             </li>
             <li>
-              <strong>Velocidad:</strong> "Inmediato" significa minutos; "1–3
-              días" es transferencia bancaria tradicional.
+              <strong>Velocidad:</strong> &quot;Inmediato&quot; significa minutos;
+              &quot;1–3 días&quot; es transferencia bancaria tradicional.
             </li>
           </ul>
         </div>

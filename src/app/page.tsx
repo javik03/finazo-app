@@ -512,9 +512,9 @@ export default function HomePage() {
                 </h3>
                 <p className="text-sm leading-relaxed text-slate-600">
                   No. Finazo es gratuito para los usuarios. Cuando haces clic en
-                  "Solicitar" o "Enviar" en un proveedor, podemos recibir una
-                  comisión de afiliado. Esto no afecta las tasas comparadas ni
-                  el ranking de resultados.
+                  &quot;Solicitar&quot; o &quot;Enviar&quot; en un proveedor,
+                  podemos recibir una comisión de afiliado. Esto no afecta las
+                  tasas comparadas ni el ranking de resultados.
                 </p>
               </div>
             </div>
