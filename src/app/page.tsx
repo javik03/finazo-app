@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FaqAccordion } from "@/components/home/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Finazo — Compara remesas, préstamos y seguros en Centroamérica",
@@ -10,237 +11,60 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://finazo.lat" },
 };
 
-// ── Icons ──────────────────────────────────────────────────────────────────
-
-function IconSend({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="22" y1="2" x2="11" y2="13" />
-      <polygon points="22 2 15 22 11 13 2 9 22 2" />
-    </svg>
-  );
-}
-
-function IconBank({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="3" y1="22" x2="21" y2="22" />
-      <line x1="6" y1="18" x2="6" y2="11" />
-      <line x1="10" y1="18" x2="10" y2="11" />
-      <line x1="14" y1="18" x2="14" y2="11" />
-      <line x1="18" y1="18" x2="18" y2="11" />
-      <polygon points="12 2 20 7 4 7 12 2" />
-    </svg>
-  );
-}
-
-function IconShield({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  );
-}
-
-function IconCheck({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
-
-function IconRefresh({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="23 4 23 10 17 10" />
-      <polyline points="1 20 1 14 7 14" />
-      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-    </svg>
-  );
-}
-
-function IconFree({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <line x1="12" y1="8" x2="12" y2="12" />
-      <line x1="12" y1="16" x2="12.01" y2="16" />
-    </svg>
-  );
-}
-
-function IconIndependent({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <polyline points="9 12 11 14 15 10" />
-    </svg>
-  );
-}
-
 // ── Data ───────────────────────────────────────────────────────────────────
 
-const CATEGORIES = [
+const PRODUCTS = [
   {
-    icon: IconSend,
-    iconClass: "text-sky-500",
-    iconBg: "bg-sky-50",
+    icon: "→",
     title: "Remesas",
-    description:
-      "¿Cuánto llega después de comisiones? Compara Wise, Remitly, Western Union, MoneyGram y más.",
+    tag: "En vivo",
+    tagColor: "#dcfce7",
+    tagText: "#166534",
+    desc: "¿Cuánto llega después de comisiones? Compara Wise, Remitly, Western Union y MoneyGram.",
+    chips: ["Wise", "Remitly", "Western Union", "MoneyGram"],
     href: "/remesas",
-    badge: "Más popular",
-    badgeClass: "bg-sky-100 text-sky-700",
-    ctaClass: "text-sky-600",
-    borderHover: "hover:border-sky-200 hover:shadow-sky-100",
-    detail: "Actualizado cada 6 horas",
+    active: true,
   },
   {
-    icon: IconBank,
-    iconClass: "text-emerald-600",
-    iconBg: "bg-emerald-50",
+    icon: "⬜",
     title: "Préstamos",
-    description:
-      "Tasas oficiales de todos los bancos regulados por la SSF. Sin sorpresas ni letras pequeñas.",
+    tag: "Datos SSF",
+    tagColor: "#dbeafe",
+    tagText: "#1d4ed8",
+    desc: "Tasas oficiales de todos los bancos regulados por la SSF de El Salvador.",
+    chips: ["Banco Agrícola", "Davivienda", "BAC", "+5 más"],
     href: "/prestamos",
-    badge: "Datos SSF",
-    badgeClass: "bg-emerald-100 text-emerald-700",
-    ctaClass: "text-emerald-600",
-    borderHover: "hover:border-emerald-200 hover:shadow-emerald-100",
-    detail: "Banco Agrícola, Davivienda, BAC y más",
+    active: true,
   },
   {
-    icon: IconShield,
-    iconClass: "text-violet-500",
-    iconBg: "bg-violet-50",
+    icon: "◇",
     title: "Seguros",
-    description:
-      "Cotiza seguros de auto, vida y salud de las principales aseguradoras de El Salvador.",
+    tag: "Próximamente",
+    tagColor: "#f3f4f6",
+    tagText: "#9ca3af",
+    desc: "Cotiza seguros de auto, vida y salud de las principales aseguradoras.",
+    chips: ["SISA", "Pacífico", "ASSA", "ASESUISA"],
     href: "/seguros",
-    badge: "Próximamente",
-    badgeClass: "bg-slate-100 text-slate-500",
-    ctaClass: "text-slate-400",
-    borderHover: "",
-    detail: "SISA, Pacífico, ASSA, ASESUISA",
+    active: false,
   },
 ];
 
 const TRUST = [
   {
-    icon: IconCheck,
-    iconClass: "text-emerald-600",
-    iconBg: "bg-emerald-100",
-    label: "Datos oficiales",
+    title: "Datos oficiales",
     desc: "Tasas de préstamos directamente de la SSF de El Salvador.",
   },
   {
-    icon: IconRefresh,
-    iconClass: "text-sky-600",
-    iconBg: "bg-sky-100",
-    label: "Actualización automática",
+    title: "Siempre actualizado",
     desc: "Remesas actualizadas cada 6 horas sin intervención manual.",
   },
   {
-    icon: IconFree,
-    iconClass: "text-violet-600",
-    iconBg: "bg-violet-100",
-    label: "100% gratis",
-    desc: "Sin registro, sin suscripción, sin costos ocultos.",
-  },
-  {
-    icon: IconIndependent,
-    iconClass: "text-amber-600",
-    iconBg: "bg-amber-100",
-    label: "Independiente",
+    title: "Independiente",
     desc: "No somos propiedad de ningún banco ni financiera.",
   },
-];
-
-const CORRIDORS = [
   {
-    from: "US",
-    to: "SV",
-    flags: "🇺🇸 → 🇸🇻",
-    label: "EE.UU. → El Salvador",
-    sub: "El corredor más usado",
-  },
-  {
-    from: "US",
-    to: "GT",
-    flags: "🇺🇸 → 🇬🇹",
-    label: "EE.UU. → Guatemala",
-    sub: "Quetzales o USD",
-  },
-  {
-    from: "US",
-    to: "HN",
-    flags: "🇺🇸 → 🇭🇳",
-    label: "EE.UU. → Honduras",
-    sub: "Lempiras o USD",
-  },
-  {
-    from: "ES",
-    to: "SV",
-    flags: "🇪🇸 → 🇸🇻",
-    label: "España → El Salvador",
-    sub: "Euros a USD",
+    title: "100% gratis",
+    desc: "Sin registro, sin suscripción, sin costos ocultos.",
   },
 ];
 
@@ -248,7 +72,7 @@ const HOW_IT_WORKS = [
   {
     step: "1",
     title: "Elige qué comparar",
-    desc: "Selecciona si quieres comparar remesas, préstamos o seguros.",
+    desc: "Selecciona remesas, préstamos o seguros.",
   },
   {
     step: "2",
@@ -262,145 +86,310 @@ const HOW_IT_WORKS = [
   },
 ];
 
+const CORRIDORS = [
+  {
+    code: "US→SV",
+    label: "EE.UU. → El Salvador",
+    desc: "El corredor más usado por la diáspora salvadoreña",
+    slug: "eeuu-el-salvador",
+  },
+  {
+    code: "US→GT",
+    label: "EE.UU. → Guatemala",
+    desc: "Quetzales o dólares, compara el mejor precio",
+    slug: "eeuu-guatemala",
+  },
+  {
+    code: "US→HN",
+    label: "EE.UU. → Honduras",
+    desc: "Lempiras o dólares al mejor costo",
+    slug: "eeuu-honduras",
+  },
+  {
+    code: "ES→SV",
+    label: "España → El Salvador",
+    desc: "Euros a dólares al tipo de cambio real",
+    slug: "espana-el-salvador",
+  },
+];
+
+const METRICS = [
+  { value: "5+", label: "servicios de remesas" },
+  { value: "8", label: "bancos SSF" },
+  { value: "4", label: "corredores activos" },
+  { value: "6h", label: "actualización" },
+];
+
 // ── Page ───────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: "var(--background)" }}>
       <Header activePath="/" />
 
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white px-6 py-20">
-          {/* subtle background pattern */}
+        {/* ── HERO ── */}
+        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
           <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 1px 1px, #0f172a 1px, transparent 0)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-          <div className="relative mx-auto max-w-3xl text-center">
-            <span className="mb-4 inline-block rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700">
-              Comparador financiero · Centroamérica
-            </span>
-            <h1 className="mb-5 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              Tu dinero rinde más{" "}
-              <span className="text-emerald-500">cuando comparas primero</span>
-            </h1>
-            <p className="mx-auto mb-8 max-w-xl text-lg text-slate-600">
-              Compara remesas, préstamos y seguros en El Salvador, Guatemala y
-              Honduras. Datos reales, actualizados automáticamente, gratis.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Link
-                href="/remesas"
-                className="rounded-xl bg-emerald-500 px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-emerald-100 transition-all hover:bg-emerald-600 hover:shadow-lg"
+            className="mx-auto px-6 py-20"
+            style={{ maxWidth: "var(--W)" }}
+          >
+            <div className="mx-auto max-w-2xl text-center">
+              {/* Kicker */}
+              <div className="mb-5 inline-flex items-center gap-2">
+                <span
+                  className="inline-block h-2 w-2 rounded-full"
+                  style={{
+                    background: "var(--green)",
+                    animation: "pulse 2s infinite",
+                  }}
+                />
+                <span
+                  className="text-sm font-medium"
+                  style={{ color: "var(--green)" }}
+                >
+                  Comparador financiero · Centroamérica
+                </span>
+              </div>
+
+              <h1
+                className="mb-5 font-bold leading-tight"
+                style={{
+                  fontFamily: "var(--font-lora), Georgia, serif",
+                  fontSize: "clamp(36px, 5.5vw, 56px)",
+                  color: "#111",
+                }}
               >
-                Comparar remesas →
-              </Link>
-              <Link
-                href="/prestamos"
-                className="rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:border-slate-300 hover:shadow-md"
+                Tu dinero rinde más{" "}
+                <span style={{ color: "var(--green)" }}>
+                  cuando comparas primero
+                </span>
+              </h1>
+
+              <p
+                className="mx-auto mb-8 max-w-lg text-lg"
+                style={{ color: "#555" }}
               >
-                Ver préstamos
+                Compara remesas, préstamos y seguros en El Salvador, Guatemala y
+                Honduras. Datos reales, actualizados automáticamente, gratis.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  href="/remesas"
+                  className="rounded-full px-7 py-3 text-sm font-semibold text-white transition-colors"
+                  style={{ background: "var(--green)" }}
+                >
+                  Comparar remesas →
+                </Link>
+                <Link
+                  href="/prestamos"
+                  className="rounded-full border px-7 py-3 text-sm font-semibold transition-colors"
+                  style={{
+                    borderColor: "var(--green)",
+                    color: "var(--green)",
+                    background: "transparent",
+                  }}
+                >
+                  Ver préstamos
+                </Link>
+              </div>
+
+              {/* Trust checkmarks */}
+              <div className="mt-7 flex flex-wrap justify-center gap-4 text-xs" style={{ color: "#666" }}>
+                {["Sin registro", "100% gratis", "Datos oficiales SSF"].map((t) => (
+                  <span key={t} className="flex items-center gap-1.5">
+                    <span style={{ color: "var(--green)" }}>✓</span>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Live comparison card */}
+            <div
+              className="mx-auto mt-14 rounded-2xl p-6 shadow-md"
+              style={{
+                maxWidth: "520px",
+                background: "#fff",
+                border: "1px solid #d1e8d9",
+              }}
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#999" }}>
+                    Enviando $200 USD
+                  </p>
+                  <p className="text-sm font-semibold" style={{ color: "#111" }}>
+                    EE.UU. → El Salvador
+                  </p>
+                </div>
+                <span
+                  className="rounded-full px-3 py-1 text-xs font-semibold"
+                  style={{ background: "#dcfce7", color: "#166534" }}
+                >
+                  ● En vivo
+                </span>
+              </div>
+
+              <div className="space-y-2">
+                {[
+                  { name: "Wise", fee: "$0.00", rate: "USD → USD", receives: "$200.00", best: true },
+                  { name: "Remitly", fee: "$1.99", rate: "USD → USD", receives: "$198.01", best: false },
+                  { name: "Western Union", fee: "$5.00", rate: "USD → USD", receives: "$195.00", best: false },
+                ].map((row) => (
+                  <div
+                    key={row.name}
+                    className="flex items-center justify-between rounded-xl px-4 py-3"
+                    style={{
+                      background: row.best ? "var(--green-bg)" : "#f9fafb",
+                      border: row.best ? "1px solid #a3c9b0" : "1px solid transparent",
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      {row.best && (
+                        <span
+                          className="rounded-full px-2 py-0.5 text-[10px] font-bold"
+                          style={{ background: "var(--green)", color: "#fff" }}
+                        >
+                          MEJOR
+                        </span>
+                      )}
+                      <span className="text-sm font-semibold" style={{ color: "#111" }}>
+                        {row.name}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-bold" style={{ color: row.best ? "var(--green)" : "#111" }}>
+                        {row.receives}
+                      </p>
+                      <p className="text-xs" style={{ color: "#999" }}>
+                        Comisión: {row.fee}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/remesas/eeuu-el-salvador"
+                className="mt-4 block text-center text-sm font-semibold transition-colors"
+                style={{ color: "var(--green)" }}
+              >
+                Ver comparación completa →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Stats bar */}
-        <section className="border-b border-slate-100 bg-white px-6 py-4">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-6 text-center text-xs text-slate-500 sm:gap-10">
-            <div>
-              <span className="mr-1 font-bold text-slate-800">5+</span>
-              servicios de remesas comparados
-            </div>
-            <div className="hidden h-3 w-px bg-slate-200 sm:block" />
-            <div>
-              <span className="mr-1 font-bold text-slate-800">8</span>
-              bancos regulados por la SSF
-            </div>
-            <div className="hidden h-3 w-px bg-slate-200 sm:block" />
-            <div>
-              <span className="mr-1 font-bold text-slate-800">4</span>
-              corredores de remesas activos
-            </div>
-            <div className="hidden h-3 w-px bg-slate-200 sm:block" />
-            <div>
-              Actualizado{" "}
-              <span className="font-semibold text-emerald-600">hoy</span>
+        {/* ── METRICS ── */}
+        <section style={{ background: "#fff", borderBottom: "1px solid #e8ede9" }}>
+          <div
+            className="mx-auto px-6 py-5"
+            style={{ maxWidth: "var(--W)" }}
+          >
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
+              {METRICS.map((m) => (
+                <div key={m.label}>
+                  <p
+                    className="text-2xl font-bold"
+                    style={{
+                      fontFamily: "var(--font-lora), Georgia, serif",
+                      color: "var(--green)",
+                    }}
+                  >
+                    {m.value}
+                  </p>
+                  <p className="text-xs" style={{ color: "#888" }}>
+                    {m.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Category cards */}
-        <section className="px-6 py-16">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="mb-2 text-center text-2xl font-bold text-slate-900">
-              ¿Qué quieres comparar hoy?
+        {/* ── PRODUCTS ── */}
+        <section className="px-6 py-16" style={{ background: "var(--background)" }}>
+          <div className="mx-auto" style={{ maxWidth: "var(--W)" }}>
+            <h2
+              className="mb-2 text-2xl font-bold"
+              style={{
+                fontFamily: "var(--font-lora), Georgia, serif",
+                color: "#111",
+              }}
+            >
+              ¿Qué quieres comparar?
             </h2>
-            <p className="mb-10 text-center text-sm text-slate-500">
+            <p className="mb-10 text-sm" style={{ color: "#888" }}>
               Datos reales de los proveedores más usados en Centroamérica.
             </p>
-            <div className="grid gap-6 sm:grid-cols-3">
-              {CATEGORIES.map((cat) => (
-                <Link
-                  key={cat.href}
-                  href={cat.href}
-                  className={`group relative rounded-2xl border border-slate-100 bg-white p-7 shadow-sm transition-all hover:shadow-md ${cat.borderHover}`}
-                >
-                  <div className="mb-4 flex items-start justify-between">
-                    <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-xl ${cat.iconBg}`}
-                    >
-                      <cat.icon className={`h-6 w-6 ${cat.iconClass}`} />
-                    </div>
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${cat.badgeClass}`}
-                    >
-                      {cat.badge}
-                    </span>
-                  </div>
-                  <h3 className="mb-2 text-xl font-bold text-slate-900">
-                    {cat.title}
-                  </h3>
-                  <p className="mb-4 text-sm leading-relaxed text-slate-600">
-                    {cat.description}
-                  </p>
-                  <p className="mb-5 text-xs text-slate-400">{cat.detail}</p>
-                  <span
-                    className={`text-sm font-semibold transition-colors ${cat.ctaClass}`}
-                  >
-                    Comparar ahora →
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* How it works */}
-        <section className="border-y border-slate-100 bg-slate-50 px-6 py-14">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="mb-10 text-center text-xl font-bold text-slate-900">
-              ¿Cómo funciona?
-            </h2>
-            <div className="grid gap-8 sm:grid-cols-3">
-              {HOW_IT_WORKS.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-sm font-bold text-white">
-                    {step.step}
-                  </div>
-                  <div>
-                    <h3 className="mb-1 font-semibold text-slate-900">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-500">
-                      {step.desc}
-                    </p>
+            <div className="space-y-4">
+              {PRODUCTS.map((p) => (
+                <div
+                  key={p.href}
+                  className="rounded-2xl p-6"
+                  style={{
+                    background: "#fff",
+                    border: "1px solid #e5e7eb",
+                    opacity: p.active ? 1 : 0.6,
+                  }}
+                >
+                  <div className="flex items-start gap-5">
+                    <div
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-xl"
+                      style={{ background: "var(--green-bg)", color: "var(--green)" }}
+                    >
+                      {p.icon}
+                    </div>
+                    <div className="flex-1">
+                      <div className="mb-1 flex flex-wrap items-center gap-2">
+                        <span
+                          className="text-lg font-bold"
+                          style={{ color: "#111" }}
+                        >
+                          {p.title}
+                        </span>
+                        <span
+                          className="rounded-full px-2.5 py-0.5 text-xs font-semibold"
+                          style={{ background: p.tagColor, color: p.tagText }}
+                        >
+                          {p.tag}
+                        </span>
+                      </div>
+                      <p className="mb-3 text-sm" style={{ color: "#666" }}>
+                        {p.desc}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {p.chips.map((chip) => (
+                          <span
+                            key={chip}
+                            className="rounded-full px-3 py-1 text-xs font-medium"
+                            style={{ background: "#f3f4f6", color: "#555" }}
+                          >
+                            {chip}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    {p.active ? (
+                      <Link
+                        href={p.href}
+                        className="shrink-0 rounded-full px-5 py-2 text-sm font-semibold text-white transition-colors"
+                        style={{ background: "var(--green)" }}
+                      >
+                        Comparar →
+                      </Link>
+                    ) : (
+                      <span
+                        className="shrink-0 rounded-full px-5 py-2 text-sm font-semibold"
+                        style={{ background: "#f3f4f6", color: "#999" }}
+                      >
+                        Próximamente
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}
@@ -408,116 +397,153 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Trust signals */}
-        <section className="px-6 py-14">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="mb-10 text-center text-xl font-bold text-slate-900">
-              ¿Por qué confiar en Finazo?
-            </h2>
+        {/* ── TRUST ── */}
+        <section
+          className="px-6 py-14"
+          style={{ background: "var(--green-bg)", borderTop: "1px solid #d1e8d9", borderBottom: "1px solid #d1e8d9" }}
+        >
+          <div className="mx-auto" style={{ maxWidth: "var(--W)" }}>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {TRUST.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm"
-                >
-                  <div
-                    className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl ${item.iconBg}`}
+                <div key={item.title}>
+                  <p
+                    className="mb-1 font-semibold"
+                    style={{ color: "var(--green)" }}
                   >
-                    <item.icon className={`h-5 w-5 ${item.iconClass}`} />
-                  </div>
-                  <div className="mb-1 font-semibold text-slate-900">
-                    {item.label}
-                  </div>
-                  <div className="text-sm leading-relaxed text-slate-500">
+                    {item.title}
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#555" }}>
                     {item.desc}
-                  </div>
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Featured corridors quick-links */}
-        <section className="border-t border-slate-100 bg-slate-50 px-6 py-14">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-6 flex items-center justify-between">
+        {/* ── HOW IT WORKS ── */}
+        <section className="px-6 py-16" style={{ background: "#fff" }}>
+          <div className="mx-auto" style={{ maxWidth: "var(--W)" }}>
+            <h2
+              className="mb-10 text-2xl font-bold"
+              style={{
+                fontFamily: "var(--font-lora), Georgia, serif",
+                color: "#111",
+              }}
+            >
+              ¿Cómo funciona?
+            </h2>
+            <div className="grid gap-10 sm:grid-cols-3">
+              {HOW_IT_WORKS.map((step, i) => (
+                <div key={i}>
+                  <p
+                    className="mb-3 text-4xl font-bold"
+                    style={{
+                      fontFamily: "var(--font-lora), Georgia, serif",
+                      color: "#eef4f0",
+                    }}
+                  >
+                    {step.step}
+                  </p>
+                  <h3
+                    className="mb-2 font-semibold"
+                    style={{ color: "#111" }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── CORRIDORS ── */}
+        <section
+          className="px-6 py-14"
+          style={{ background: "var(--background)", borderTop: "1px solid #e5e7eb" }}
+        >
+          <div className="mx-auto" style={{ maxWidth: "var(--W)" }}>
+            <div className="mb-8 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-slate-900">
+                <h2
+                  className="text-2xl font-bold"
+                  style={{
+                    fontFamily: "var(--font-lora), Georgia, serif",
+                    color: "#111",
+                  }}
+                >
                   Corredores más buscados
                 </h2>
-                <p className="mt-0.5 text-sm text-slate-500">
+                <p className="mt-1 text-sm" style={{ color: "#888" }}>
                   Compara quién te cobra menos en cada ruta
                 </p>
               </div>
               <Link
                 href="/remesas"
-                className="text-sm font-medium text-emerald-600 hover:text-emerald-700"
+                className="text-sm font-medium transition-colors"
+                style={{ color: "var(--green)" }}
               >
                 Ver todos →
               </Link>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {CORRIDORS.map((c) => (
                 <Link
-                  key={`${c.from}-${c.to}`}
-                  href={`/remesas?desde=${c.from}&hacia=${c.to}`}
-                  className="group rounded-xl border border-slate-100 bg-white px-5 py-4 shadow-sm transition-all hover:border-sky-200 hover:shadow-md"
+                  key={c.slug}
+                  href={`/remesas/${c.slug}`}
+                  className="group rounded-2xl p-5 transition-shadow hover:shadow-md"
+                  style={{
+                    background: "#fff",
+                    border: "1px solid #e5e7eb",
+                    textDecoration: "none",
+                  }}
                 >
-                  <div className="mb-1 text-xl">{c.flags}</div>
-                  <div className="font-semibold text-slate-800 transition-colors group-hover:text-sky-700">
-                    {c.label}
+                  <div className="mb-3 flex items-center justify-between">
+                    <span
+                      className="rounded-full px-2.5 py-1 text-xs font-bold"
+                      style={{ background: "var(--green-bg)", color: "var(--green)" }}
+                    >
+                      {c.code}
+                    </span>
+                    <span
+                      className="text-sm transition-transform group-hover:translate-x-1"
+                      style={{ color: "var(--green)" }}
+                    >
+                      →
+                    </span>
                   </div>
-                  <div className="mt-0.5 text-xs text-slate-400">{c.sub}</div>
+                  <p className="mb-1 font-semibold" style={{ color: "#111" }}>
+                    {c.label}
+                  </p>
+                  <p className="text-xs leading-relaxed" style={{ color: "#888" }}>
+                    {c.desc}
+                  </p>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FAQ / SEO content */}
-        <section className="px-6 py-14">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-8 text-xl font-bold text-slate-900">
+        {/* ── FAQ ── */}
+        <section
+          className="px-6 py-14"
+          style={{ background: "#fff", borderTop: "1px solid #e5e7eb" }}
+        >
+          <div className="mx-auto" style={{ maxWidth: "var(--W)" }}>
+            <h2
+              className="mb-8 text-2xl font-bold"
+              style={{
+                fontFamily: "var(--font-lora), Georgia, serif",
+                color: "#111",
+              }}
+            >
               Preguntas frecuentes
             </h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="mb-1 font-semibold text-slate-900">
-                  ¿Cómo se actualizan los datos de remesas?
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-600">
-                  Nuestros sistemas consultan automáticamente las tarifas
-                  publicadas por Wise, Remitly, Western Union y MoneyGram cada 6
-                  horas. Los datos reflejan el costo real de enviar $200 USD en
-                  el corredor seleccionado.
-                </p>
-              </div>
-              <div>
-                <h3 className="mb-1 font-semibold text-slate-900">
-                  ¿De dónde vienen las tasas de préstamos?
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-600">
-                  Las tasas de préstamos personales, hipotecarios y vehiculares
-                  provienen directamente de la{" "}
-                  <strong>
-                    Superintendencia del Sistema Financiero (SSF) de El Salvador
-                  </strong>
-                  . Son las tasas máximas y mínimas que cada banco puede cobrar
-                  legalmente.
-                </p>
-              </div>
-              <div>
-                <h3 className="mb-1 font-semibold text-slate-900">
-                  ¿Finazo cobra alguna comisión?
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-600">
-                  No. Finazo es gratuito para los usuarios. Cuando haces clic en
-                  &quot;Solicitar&quot; o &quot;Enviar&quot; en un proveedor,
-                  podemos recibir una comisión de afiliado. Esto no afecta las
-                  tasas comparadas ni el ranking de resultados.
-                </p>
-              </div>
-            </div>
+            <FaqAccordion />
           </div>
         </section>
       </main>
