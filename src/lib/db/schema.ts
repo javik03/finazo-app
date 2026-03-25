@@ -128,3 +128,17 @@ export const rateChangeEvents = pgTable("rate_change_events", {
   articleGenerated: boolean("article_generated").default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });
+
+// ---------------------------------------------------------------------------
+// Article comments
+// ---------------------------------------------------------------------------
+
+export const articleComments = pgTable("article_comments", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  articleId: uuid("article_id").references(() => articles.id, { onDelete: "cascade" }),
+  authorName: text("author_name").notNull(),
+  authorEmail: text("author_email"),
+  content: text("content").notNull(),
+  status: text("status").default("pending"), // pending | approved | spam
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});

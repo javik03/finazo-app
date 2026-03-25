@@ -15,6 +15,7 @@ export function Header({ activePath = "" }: { activePath?: string }) {
   const links = [
     { href: "/remesas", label: "Remesas" },
     { href: "/prestamos", label: "Préstamos" },
+    { href: "/tarjetas", label: "Tarjetas" },
     { href: "/seguros", label: "Seguros" },
     { href: "/guias", label: "Guías" },
   ];

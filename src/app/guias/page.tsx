@@ -22,6 +22,7 @@ export const revalidate = 3600;
 const CATEGORY_LABELS: Record<string, string> = {
   remesas: "Remesas",
   prestamos: "Préstamos",
+  tarjetas: "Tarjetas",
   seguros: "Seguros",
   educacion: "Educación financiera",
 };
@@ -29,6 +30,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 const CATEGORY_COLORS: Record<string, string> = {
   remesas: "bg-sky-100 text-sky-700",
   prestamos: "bg-emerald-100 text-emerald-700",
+  tarjetas: "bg-rose-100 text-rose-700",
   seguros: "bg-violet-100 text-violet-700",
   educacion: "bg-amber-100 text-amber-700",
 };

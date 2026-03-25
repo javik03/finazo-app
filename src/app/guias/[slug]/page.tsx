@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { getArticleBySlug, getAllArticleSlugs } from "@/lib/queries/articles";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CommentSection } from "@/components/articles/CommentSection";
 
 export const revalidate = 3600;
 
@@ -197,6 +198,8 @@ export default async function GuiaPage({ params }: Props) {
             })}
           </div>
         </article>
+
+        <CommentSection articleSlug={slug} />
 
         {/* CTA */}
         <div className="mt-12 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">

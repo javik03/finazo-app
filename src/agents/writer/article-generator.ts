@@ -87,7 +87,7 @@ Escribe SOLO el artículo en Markdown, sin comentarios adicionales.`;
 // Generate and save one article
 // ---------------------------------------------------------------------------
 
-async function generateArticle(prompt: string, slug: string, category: string): Promise<void> {
+async function generateArticle(prompt: string, slug: string, category: string, country = "SV"): Promise<void> {
   logger.info({ slug }, "Generating article");
 
   const message = await anthropic.messages.create({
@@ -123,7 +123,7 @@ async function generateArticle(prompt: string, slug: string, category: string): 
       metaDescription,
       content: articleContent,
       category,
-      country: "SV",
+      country,
       wordCount,
       status: "draft",
       generatedBy: "claude",
@@ -188,7 +188,7 @@ export async function runArticleGenerator(): Promise<void> {
             rate.exchangeRate ?? "N/A",
             rate.feeFlat ?? "0"
           );
-          await generateArticle(prompt, slug, "remesas");
+          await generateArticle(prompt, slug, "remesas", rate.toCountry);
         }
       } else if (event.entityType === "loan_product") {
         const [product] = await db
@@ -199,6 +199,7 @@ export async function runArticleGenerator(): Promise<void> {
             rateMax: loanProducts.rateMax,
             providerName: loanProviders.name,
             providerSlug: loanProviders.slug,
+            country: loanProviders.country,
           })
           .from(loanProducts)
           .innerJoin(loanProviders, eq(loanProducts.providerId, loanProviders.id))
@@ -213,7 +214,7 @@ export async function runArticleGenerator(): Promise<void> {
             product.rateMin ?? "N/A",
             product.rateMax ?? "N/A"
           );
-          await generateArticle(prompt, slug, "prestamos");
+          await generateArticle(prompt, slug, "prestamos", product.country);
         }
       }
 
