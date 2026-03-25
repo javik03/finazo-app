@@ -15,37 +15,48 @@ export const metadata: Metadata = {
 
 const PRODUCTS = [
   {
-    icon: "→",
     title: "Remesas",
     tag: "En vivo",
-    tagColor: "#dcfce7",
-    tagText: "#166534",
+    tagVariant: "pop" as const,
     desc: "¿Cuánto llega después de comisiones? Compara Wise, Remitly, Western Union y MoneyGram.",
     chips: ["Wise", "Remitly", "Western Union", "MoneyGram"],
     href: "/remesas",
     active: true,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, color: "var(--green)" }}>
+        <path d="M4 8h13M13 5l4 3-4 3" />
+        <path d="M20 16H7M11 13l-4 3 4 3" />
+      </svg>
+    ),
   },
   {
-    icon: "⬜",
     title: "Préstamos",
     tag: "Datos SSF",
-    tagColor: "#dbeafe",
-    tagText: "#1d4ed8",
-    desc: "Tasas oficiales de todos los bancos regulados por la SSF de El Salvador.",
+    tagVariant: "ssf" as const,
+    desc: "Tasas oficiales de todos los bancos regulados por la SSF. El Salvador, Guatemala y Honduras.",
     chips: ["Banco Agrícola", "Davivienda", "BAC", "+5 más"],
     href: "/prestamos",
     active: true,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, color: "var(--green)" }}>
+        <path d="M3 21h18M5 21V10M19 21V10M9 21v-7h6v7M2 10l10-7 10 7" />
+      </svg>
+    ),
   },
   {
-    icon: "◇",
     title: "Seguros",
     tag: "Próximamente",
-    tagColor: "#f3f4f6",
-    tagText: "#9ca3af",
+    tagVariant: "soon" as const,
     desc: "Cotiza seguros de auto, vida y salud de las principales aseguradoras.",
     chips: ["SISA", "Pacífico", "ASSA", "ASESUISA"],
     href: "/seguros",
     active: false,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, color: "var(--green)" }}>
+        <path d="M12 3L4 7v5c0 5 3.6 9.3 8 10 4.4-.7 8-5 8-10V7L12 3z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
   },
 ];
 
@@ -379,73 +390,132 @@ export default function HomePage() {
               Datos reales de los proveedores más usados en Centroamérica.
             </p>
 
-            <div className="space-y-4">
-              {PRODUCTS.map((p) => (
-                <div
-                  key={p.href}
-                  className="rounded-2xl p-6"
-                  style={{
-                    background: "#fff",
-                    border: "1px solid #e5e7eb",
-                    opacity: p.active ? 1 : 0.6,
-                  }}
-                >
-                  <div className="flex items-start gap-5">
+            {/* prod-list */}
+            <div
+              style={{
+                border: "1px solid #e5e7eb",
+                borderRadius: "12px",
+                overflow: "hidden",
+                background: "#fff",
+              }}
+            >
+              {PRODUCTS.map((p, i) => {
+                const tagStyle =
+                  p.tagVariant === "pop"
+                    ? { background: "#C6ECD9", color: "var(--green)" }
+                    : p.tagVariant === "ssf"
+                    ? { background: "#DDEEFF", color: "#1E5AAD" }
+                    : { background: "#F0F0EE", color: "#888" };
+
+                const row = (
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "52px 1fr auto",
+                      alignItems: "center",
+                      borderBottom: i < PRODUCTS.length - 1 ? "1px solid #e5e7eb" : "none",
+                      opacity: p.active ? 1 : 0.45,
+                      pointerEvents: p.active ? "auto" : "none",
+                      position: "relative",
+                    }}
+                  >
+                    {/* icon column */}
                     <div
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-xl"
-                      style={{ background: "var(--green-bg)", color: "var(--green)" }}
+                      style={{
+                        background: "var(--green-bg)",
+                        borderRight: "1px solid #e5e7eb",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        alignSelf: "stretch",
+                      }}
                     >
                       {p.icon}
                     </div>
-                    <div className="flex-1">
-                      <div className="mb-1 flex flex-wrap items-center gap-2">
+
+                    {/* body column */}
+                    <div style={{ padding: "18px 20px" }}>
+                      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+                        <span style={{ fontWeight: 700, fontSize: "15px", color: "#111" }}>{p.title}</span>
                         <span
-                          className="text-lg font-bold"
-                          style={{ color: "#111" }}
-                        >
-                          {p.title}
-                        </span>
-                        <span
-                          className="rounded-full px-2.5 py-0.5 text-xs font-semibold"
-                          style={{ background: p.tagColor, color: p.tagText }}
+                          style={{
+                            ...tagStyle,
+                            fontSize: "11px",
+                            fontWeight: 600,
+                            padding: "2px 9px",
+                            borderRadius: "999px",
+                          }}
                         >
                           {p.tag}
                         </span>
                       </div>
-                      <p className="mb-3 text-sm" style={{ color: "#666" }}>
-                        {p.desc}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
+                      <p style={{ fontSize: "13px", color: "#666", marginBottom: "8px", lineHeight: 1.5 }}>{p.desc}</p>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                         {p.chips.map((chip) => (
                           <span
                             key={chip}
-                            className="rounded-full px-3 py-1 text-xs font-medium"
-                            style={{ background: "#f3f4f6", color: "#555" }}
+                            style={{
+                              fontSize: "11px",
+                              fontWeight: 500,
+                              padding: "3px 10px",
+                              borderRadius: "999px",
+                              background: "#f3f4f6",
+                              color: "#555",
+                            }}
                           >
                             {chip}
                           </span>
                         ))}
                       </div>
                     </div>
-                    {p.active ? (
-                      <Link
-                        href={p.href}
-                        className="shrink-0 rounded-full px-5 py-2 text-sm font-semibold text-white transition-colors"
-                        style={{ background: "var(--green)" }}
-                      >
-                        Comparar →
-                      </Link>
-                    ) : (
-                      <span
-                        className="shrink-0 rounded-full px-5 py-2 text-sm font-semibold"
-                        style={{ background: "#f3f4f6", color: "#999" }}
-                      >
-                        Próximamente
-                      </span>
-                    )}
+
+                    {/* action column */}
+                    <div style={{ padding: "18px 20px" }}>
+                      {p.active ? (
+                        <Link
+                          href={p.href}
+                          style={{
+                            display: "inline-block",
+                            background: "var(--green)",
+                            color: "#fff",
+                            fontSize: "13px",
+                            fontWeight: 600,
+                            padding: "9px 18px",
+                            borderRadius: "6px",
+                            whiteSpace: "nowrap",
+                            textDecoration: "none",
+                          }}
+                        >
+                          Comparar
+                        </Link>
+                      ) : (
+                        <span
+                          style={{
+                            display: "inline-block",
+                            background: "#f3f4f6",
+                            color: "#999",
+                            fontSize: "13px",
+                            fontWeight: 600,
+                            padding: "9px 18px",
+                            borderRadius: "6px",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          Próximamente
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+
+                return p.active ? (
+                  <div key={p.href} style={{ position: "relative", overflow: "hidden" }}>
+                    {row}
+                  </div>
+                ) : (
+                  <div key={p.href}>{row}</div>
+                );
+              })}
             </div>
           </div>
         </section>
