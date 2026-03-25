@@ -8,6 +8,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - ARTICLE_WEBHOOK_SECRET=${ARTICLE_WEBHOOK_SECRET}
+      - ADMIN_SECRET=${ADMIN_SECRET}
       - NODE_ENV=production
     depends_on:
       postgres:

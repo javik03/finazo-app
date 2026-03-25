@@ -4,6 +4,7 @@ const envSchema = z.object({
   DATABASE_URL: z.string().min(1),
   ANTHROPIC_API_KEY: z.string().startsWith("sk-ant-"),
   ARTICLE_WEBHOOK_SECRET: z.string().min(16).optional(),
+  ADMIN_SECRET: z.string().min(8).optional(),
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
 });
 

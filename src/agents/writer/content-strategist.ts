@@ -284,13 +284,12 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
       category: topic.category,
       country: topic.country,
       wordCount,
-      status: "published",
-      publishedAt: new Date(),
+      status: "draft",
       generatedBy: "claude",
     })
     .onConflictDoNothing(); // never overwrite existing articles
 
-  logger.info({ slug: topic.slug, wordCount, category: topic.category }, "Evergreen article published");
+  logger.info({ slug: topic.slug, wordCount, category: topic.category }, "Evergreen article saved as draft — review at /admin");
 }
 
 // ---------------------------------------------------------------------------
