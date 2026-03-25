@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   title: "Comparar Préstamos Personales — El Salvador",
   description:
     "Tasas oficiales de préstamos personales en El Salvador según la SSF. Compara Banco Agrícola, Davivienda, BAC, Banco Cuscatlán, Hipotecario y Promerica.",
-  alternates: { canonical: "https://finazo.lat/prestamos" },
+  alternates: {
+    canonical: "https://finazo.lat/prestamos",
+    languages: {
+      "es-SV": "https://finazo.lat/prestamos",
+      "x-default": "https://finazo.lat/prestamos",
+    },
+  },
   openGraph: {
     title: "Comparar Préstamos Personales — El Salvador | Finazo",
     description:

@@ -5,7 +5,7 @@ export function Header({ activePath = "" }: { activePath?: string }) {
     { href: "/remesas", label: "Remesas" },
     { href: "/prestamos", label: "Préstamos" },
     { href: "/seguros", label: "Seguros" },
-    { href: "/articulos", label: "Artículos" },
+    { href: "/guias", label: "Guías" },
   ];
 
   return (

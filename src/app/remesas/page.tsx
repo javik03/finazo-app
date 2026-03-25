@@ -9,7 +9,15 @@ export const metadata: Metadata = {
   title: "Comparar Remesas — EE.UU. a El Salvador",
   description:
     "Compara las comisiones y velocidad de Wise, Remitly, Western Union, MoneyGram y WorldRemit para envíos de EE.UU. a El Salvador. Datos actualizados automáticamente.",
-  alternates: { canonical: "https://finazo.lat/remesas" },
+  alternates: {
+    canonical: "https://finazo.lat/remesas",
+    languages: {
+      "es-SV": "https://finazo.lat/remesas",
+      "es-GT": "https://finazo.lat/remesas",
+      "es-HN": "https://finazo.lat/remesas",
+      "x-default": "https://finazo.lat/remesas",
+    },
+  },
   openGraph: {
     title: "Comparar Remesas — EE.UU. a El Salvador | Finazo",
     description:
