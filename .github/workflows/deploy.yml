@@ -31,17 +31,20 @@ jobs:
           ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
             "cd ${{ env.DEPLOY_PATH }} && git pull origin main"
 
-      - name: Build and start containers
+      - name: Build and restart containers
         run: |
           ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
-            "cd ${{ env.DEPLOY_PATH }} && docker compose pull && docker compose up -d --build"
+            "cd ${{ env.DEPLOY_PATH }} && docker compose build app && docker compose up -d --force-recreate app"
 
-      - name: Wait for health check (60 seconds max)
+      - name: Wait for app to start
+        run: sleep 30
+
+      - name: Health check (2 minutes max)
         run: |
           ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} << 'EOF'
           set +e
           COUNTER=0
-          MAX_ATTEMPTS=12
+          MAX_ATTEMPTS=24
           while [ $COUNTER -lt $MAX_ATTEMPTS ]; do
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/api/health 2>/dev/null)
             if [ "$RESPONSE" = "200" ]; then
@@ -52,7 +55,7 @@ jobs:
             echo "Health check attempt $COUNTER/$MAX_ATTEMPTS: HTTP $RESPONSE"
             sleep 5
           done
-          echo "Health check failed after 60 seconds"
+          echo "Health check failed after 2 minutes"
           exit 1
           EOF
 
@@ -60,7 +63,7 @@ jobs:
         if: always()
         run: |
           ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
-            "cd ${{ env.DEPLOY_PATH }} && docker compose logs --tail=20 app" || true
+            "cd ${{ env.DEPLOY_PATH }} && docker compose logs --tail=30 app" || true
 
       - name: Deployment success
         run: |
