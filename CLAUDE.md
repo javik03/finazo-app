@@ -1,3 +1,5 @@
+@AGENTS.md
+
 # Finazo — Claude Code Context
 
 ## What This Product Is
