@@ -8,8 +8,12 @@ import { Footer } from "@/components/layout/Footer";
 export const revalidate = 3600;
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const slugs = await getAllArticleSlugs();
-  return slugs;
+  try {
+    return await getAllArticleSlugs();
+  } catch {
+    // DB not available at build time — pages will be generated on first request
+    return [];
+  }
 }
 
 type Props = { params: Promise<{ slug: string }> };

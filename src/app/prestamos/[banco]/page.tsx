@@ -13,8 +13,13 @@ import { Footer } from "@/components/layout/Footer";
 export const revalidate = 86400;
 
 export async function generateStaticParams(): Promise<{ banco: string }[]> {
-  const slugs = await getAllLoanProviderSlugs();
-  return slugs.map((r) => ({ banco: r.slug }));
+  try {
+    const slugs = await getAllLoanProviderSlugs();
+    return slugs.map((r) => ({ banco: r.slug }));
+  } catch {
+    // DB not available at build time — pages will be generated on first request
+    return [];
+  }
 }
 
 type Props = { params: Promise<{ banco: string }> };
