@@ -10,7 +10,8 @@ import { Footer } from "@/components/layout/Footer";
 export const revalidate = 21600;
 
 export function generateStaticParams(): { corridor: string }[] {
-  return CORRIDORS.map((c) => ({ corridor: c.slug }));
+  // Return empty — pages generated on first request via ISR (postgres not available at build time)
+  return [];
 }
 
 type Props = { params: Promise<{ corridor: string }> };
