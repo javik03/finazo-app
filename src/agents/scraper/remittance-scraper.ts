@@ -25,8 +25,7 @@ const CORRIDORS = [
 
 async function scrapeWise(
   fromCurrency: string,
-  toCurrency: string,
-  amount: number = 200
+  toCurrency: string
 ): Promise<{ exchangeRate: number; feeFlat: number; transferSpeed: string } | null> {
   try {
     const url = `https://wise.com/rates/history+live?source=${fromCurrency}&target=${toCurrency}&length=1&resolution=hourly&unit=day`;

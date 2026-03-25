@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   title: "Comparar Préstamos Personales — El Salvador",
   description:
     "Tasas oficiales de préstamos personales en El Salvador según la SSF. Compara Banco Agrícola, Davivienda, BAC, Banco Cuscatlán, Hipotecario y Promerica.",
-  alternates: { canonical: "https://finazo.lat/prestamos" },
+  alternates: {
+    canonical: "https://finazo.lat/prestamos",
+    languages: {
+      "es-SV": "https://finazo.lat/prestamos",
+      "x-default": "https://finazo.lat/prestamos",
+    },
+  },
   openGraph: {
     title: "Comparar Préstamos Personales — El Salvador | Finazo",
     description:
@@ -29,6 +35,15 @@ const LOAN_TYPES = [
 ];
 
 type SearchParams = { tipo?: string };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
+    { "@type": "ListItem", position: 2, name: "Préstamos", item: "https://finazo.lat/prestamos" },
+  ],
+};
 
 const loanSchema = {
   "@context": "https://schema.org",
@@ -65,6 +80,10 @@ export default async function PrestamosPage({
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(loanSchema) }}

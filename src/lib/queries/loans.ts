@@ -52,3 +52,56 @@ export async function getLoanProducts(
 
   return rows;
 }
+
+export async function getLoanProductsByProvider(
+  providerSlug: string
+): Promise<LoanProduct[]> {
+  const rows = await db
+    .select({
+      provider: loanProviders.name,
+      slug: loanProviders.slug,
+      logoUrl: loanProviders.logoUrl,
+      affiliateUrl: loanProviders.affiliateUrl,
+      providerType: loanProviders.providerType,
+      productName: loanProducts.productName,
+      loanType: loanProducts.loanType,
+      rateMin: loanProducts.rateMin,
+      rateMax: loanProducts.rateMax,
+      amountMin: loanProducts.amountMin,
+      amountMax: loanProducts.amountMax,
+      termMinMonths: loanProducts.termMinMonths,
+      termMaxMonths: loanProducts.termMaxMonths,
+      ssfRateSource: loanProducts.ssfRateSource,
+    })
+    .from(loanProducts)
+    .innerJoin(loanProviders, eq(loanProducts.providerId, loanProviders.id))
+    .where(
+      and(eq(loanProviders.slug, providerSlug), eq(loanProviders.active, true))
+    );
+
+  return rows;
+}
+
+export async function getAllLoanProviderSlugs(): Promise<{ slug: string }[]> {
+  return db
+    .select({ slug: loanProviders.slug })
+    .from(loanProviders)
+    .where(eq(loanProviders.active, true));
+}
+
+export async function getLoanProviderBySlug(slug: string) {
+  const rows = await db
+    .select({
+      name: loanProviders.name,
+      slug: loanProviders.slug,
+      logoUrl: loanProviders.logoUrl,
+      affiliateUrl: loanProviders.affiliateUrl,
+      providerType: loanProviders.providerType,
+      country: loanProviders.country,
+    })
+    .from(loanProviders)
+    .where(and(eq(loanProviders.slug, slug), eq(loanProviders.active, true)))
+    .limit(1);
+
+  return rows[0] ?? null;
+}
