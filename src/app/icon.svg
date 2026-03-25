@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Emerald background -->
+  <rect width="32" height="32" rx="6" fill="#059669"/>
+  <!-- "F" lettermark as geometric paths (no font dependency) -->
+  <!-- Vertical stem -->
+  <rect x="9" y="7" width="3.5" height="18" fill="white"/>
+  <!-- Top horizontal bar -->
+  <rect x="9" y="7" width="13" height="3.5" fill="white"/>
+  <!-- Middle horizontal bar -->
+  <rect x="9" y="14.25" width="10" height="3" fill="white"/>
+</svg>
