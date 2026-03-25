@@ -13,12 +13,78 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://finazo.lat"),
   title: {
     default: "Finazo — Comparador financiero para Centroamérica",
     template: "%s | Finazo",
   },
   description:
-    "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente.",
+    "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente. Gratis, en español.",
+  keywords: [
+    "comparar remesas El Salvador",
+    "préstamos personales El Salvador",
+    "tasas bancarias SSF",
+    "enviar dinero El Salvador",
+    "Wise Remitly Western Union comparar",
+    "comparador financiero centroamerica",
+    "mejores remesas Guatemala Honduras",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "es_SV",
+    url: "https://finazo.lat",
+    siteName: "Finazo",
+    title: "Finazo — Comparador financiero para Centroamérica",
+    description:
+      "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Finazo — Comparador financiero para Centroamérica",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Finazo — Comparador financiero para Centroamérica",
+    description:
+      "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://finazo.lat",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Finazo",
+  url: "https://finazo.lat",
+  description:
+    "Comparador financiero para Centroamérica — remesas, préstamos y seguros.",
+  inLanguage: "es",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://finazo.lat/remesas?desde={from}&hacia={to}",
+    },
+    "query-input": "required name=from",
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +94,15 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

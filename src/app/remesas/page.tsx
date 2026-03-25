@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "Comparar Remesas — EE.UU. a El Salvador",
   description:
     "Compara las comisiones y velocidad de Wise, Remitly, Western Union, MoneyGram y WorldRemit para envíos de EE.UU. a El Salvador. Datos actualizados automáticamente.",
+  alternates: { canonical: "https://finazo.lat/remesas" },
+  openGraph: {
+    title: "Comparar Remesas — EE.UU. a El Salvador | Finazo",
+    description:
+      "¿Quién cobra menos? Compara Wise, Remitly, Western Union y más para envíos de EE.UU. a El Salvador.",
+    url: "https://finazo.lat/remesas",
+  },
 };
 
 // Revalidate every 6 hours — matches scraper cadence
@@ -23,6 +30,29 @@ const CORRIDORS = [
 
 type SearchParams = { desde?: string; hacia?: string };
 
+const remittanceSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "¿Cuál es el servicio de remesas más barato de EE.UU. a El Salvador?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Wise y Remitly suelen ofrecer las comisiones más bajas para envíos de EE.UU. a El Salvador. Compara las tarifas actuales en Finazo para encontrar la opción más económica hoy.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cuánto cuesta enviar $200 de EE.UU. a El Salvador?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "La comisión varía según el proveedor. Con Wise puede ser menos de $2, mientras que Western Union puede cobrar entre $4-$8. Compara en tiempo real en Finazo.",
+      },
+    },
+  ],
+};
+
 export default async function RemesasPage({
   searchParams,
 }: {
@@ -36,6 +66,10 @@ export default async function RemesasPage({
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(remittanceSchema) }}
+      />
       <Header activePath="/remesas" />
 
       <main className="mx-auto max-w-5xl px-6 py-12">

@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "Comparar Préstamos Personales — El Salvador",
   description:
     "Tasas oficiales de préstamos personales en El Salvador según la SSF. Compara Banco Agrícola, Davivienda, BAC, Banco Cuscatlán, Hipotecario y Promerica.",
+  alternates: { canonical: "https://finazo.lat/prestamos" },
+  openGraph: {
+    title: "Comparar Préstamos Personales — El Salvador | Finazo",
+    description:
+      "Tasas oficiales SSF de todos los bancos. Compara préstamos personales, hipotecarios y vehiculares en El Salvador.",
+    url: "https://finazo.lat/prestamos",
+  },
 };
 
 // Revalidate every 24 hours — matches SSF scraper cadence
@@ -23,6 +30,29 @@ const LOAN_TYPES = [
 
 type SearchParams = { tipo?: string };
 
+const loanSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "¿Cuál es el banco con la tasa de préstamo más baja en El Salvador?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Las tasas varían según el tipo de préstamo y tu perfil crediticio. Finazo muestra las tasas mínimas y máximas de todos los bancos regulados por la SSF para que puedas comparar antes de aplicar.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Son oficiales las tasas de préstamos que muestra Finazo?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sí. Las tasas provienen directamente de la Superintendencia del Sistema Financiero (SSF) de El Salvador, que obliga a todos los bancos regulados a publicar sus tasas máximas y mínimas.",
+      },
+    },
+  ],
+};
+
 export default async function PrestamosPage({
   searchParams,
 }: {
@@ -35,6 +65,10 @@ export default async function PrestamosPage({
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(loanSchema) }}
+      />
       <Header activePath="/prestamos" />
 
       <main className="mx-auto max-w-5xl px-6 py-12">
