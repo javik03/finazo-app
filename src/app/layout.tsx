@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     default: "Finazo — Comparador financiero para Centroamérica",
     template: "%s | Finazo",
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   description:
     "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente. Gratis, en español.",
   keywords: [

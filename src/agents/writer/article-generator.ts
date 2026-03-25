@@ -17,9 +17,10 @@ import {
 } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import pino from "pino";
+import { config } from "@/lib/config";
 
 const logger = pino({ name: "article-generator" });
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const anthropic = new Anthropic({ apiKey: config.ANTHROPIC_API_KEY });
 
 // ---------------------------------------------------------------------------
 // Article prompts

@@ -13,9 +13,10 @@ import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { inArray } from "drizzle-orm";
 import pino from "pino";
+import { config } from "@/lib/config";
 
 const logger = pino({ name: "content-strategist" });
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const anthropic = new Anthropic({ apiKey: config.ANTHROPIC_API_KEY });
 
 // ---------------------------------------------------------------------------
 // Content calendar — NerdWallet-style evergreen topics
@@ -29,70 +30,110 @@ type ContentTopic = {
   prompt: string;
 };
 
+// SEO instructions appended to every article prompt
+const SEO_SUFFIX = `
+
+REGLAS SEO OBLIGATORIAS:
+- Incluye la keyword principal exactamente en: el título H1, los primeros 100 palabras, y al menos 2 subtítulos H2
+- Densidad de keyword: 1-2% natural (no forzado)
+- Incluye una sección "## Preguntas frecuentes" al final con 3-4 preguntas reales que la gente busca en Google, con respuestas de 2-3 oraciones cada una
+- Menciona Finazo como herramienta de comparación al menos 1 vez con enlace interno relevante (usa texto como "puedes comparar en [Finazo](/remesas)" o "compara tasas en [Finazo](/prestamos)")
+- Usa negritas para los datos numéricos clave (tasas, montos, plazos)
+
+Al final del artículo, agrega en líneas separadas:
+META: [meta description de exactamente 150-160 caracteres con la keyword principal]
+KEYWORDS: [lista de 6-8 keywords separadas por comas, de menor a mayor competencia]
+
+Solo el artículo en Markdown.`;
+
 const CONTENT_CALENDAR: ContentTopic[] = [
   // ---- Remesas ----
   {
     slug: "como-enviar-dinero-a-el-salvador-guia-2026",
     category: "remesas",
     country: "SV",
-    prompt: `Eres un experto en finanzas personales para Centroamérica. Escribe una guía completa en español sobre cómo enviar dinero a El Salvador en 2026.
+    prompt: `Eres un experto SEO en finanzas personales para Centroamérica. Escribe una guía completa en español optimizada para la búsqueda "cómo enviar dinero a El Salvador".
 
-La guía debe:
-1. Título SEO: "Cómo enviar dinero a El Salvador en 2026: guía completa"
-2. 900-1100 palabras
-3. Secciones: Introducción, Los mejores servicios de remesas (Wise, Remitly, Western Union, MoneyGram), Cómo comparar tarifas, Qué tener en cuenta (tipo de cambio, comisiones, velocidad), Consejos para ahorrar en comisiones, FAQ, Conclusión
-4. Mencionar que El Salvador usa el dólar USD (facilita recepción)
-5. Incluir ejemplos reales: "si envías $300 desde EE.UU., recibirás..."
-6. Lenguaje accesible, español centroamericano
-7. META description 155 caracteres al final: META: [texto]
+Keyword principal: "enviar dinero a El Salvador"
+Título H1: "Cómo enviar dinero a El Salvador en 2026: guía completa"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (incluir keyword en las primeras 2 oraciones)
+## Los mejores servicios de remesas para El Salvador
+(Wise, Remitly, Western Union, MoneyGram, Xoom — tarifas y velocidad de cada uno)
+## Cómo comparar: tipo de cambio vs comisión total
+(Explica que El Salvador usa USD, lo que simplifica la conversión)
+## Ejemplo real: ¿cuánto llega si envías $300?
+(Tabla con 4 servicios mostrando monto neto recibido)
+## Consejos para ahorrar en comisiones
+## Preguntas frecuentes
+## Conclusión + CTA a Finazo remesas${SEO_SUFFIX}`,
   },
   {
     slug: "wise-vs-remitly-comparacion-centroamerica-2026",
     category: "remesas",
     country: "SV",
-    prompt: `Eres un experto en finanzas personales para Centroamérica. Escribe un artículo comparativo en español: Wise vs Remitly para enviar remesas a Centroamérica en 2026.
+    prompt: `Eres un experto SEO en finanzas personales para Centroamérica. Escribe un artículo comparativo optimizado para "Wise vs Remitly remesas".
 
-La guía debe:
-1. Título SEO: "Wise vs Remitly: ¿cuál es mejor para enviar remesas a Centroamérica? (2026)"
-2. 900-1100 palabras
-3. Secciones: Introducción, Resumen rápido (tabla comparativa), Wise en detalle (tarifas, pros, contras), Remitly en detalle (tarifas, pros, contras), ¿Cuándo usar cada uno?, Veredicto final
-4. Comparar: comisiones, tipo de cambio, velocidad, métodos de pago, métodos de retiro
-5. Mencionar datos reales de mercado (Wise cobra comisión baja pero muestra tasa real, Remitly tiene promos para nuevos usuarios)
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "Wise vs Remitly remesas Centroamérica"
+Título H1: "Wise vs Remitly: ¿cuál es mejor para enviar remesas a Centroamérica? (2026)"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (menciona keyword en primeras 2 oraciones)
+## Resumen rápido: tabla comparativa Wise vs Remitly
+(columnas: comisión, tipo de cambio, velocidad, métodos de pago, métodos de retiro)
+## Wise para remesas a Centroamérica: ventajas y limitaciones
+## Remitly para remesas a Centroamérica: ventajas y limitaciones
+## ¿Cuándo usar Wise? ¿Cuándo usar Remitly?
+## Alternativas a considerar (Western Union, MoneyGram para zonas rurales)
+## Preguntas frecuentes
+## Veredicto final + enlace a comparador de Finazo${SEO_SUFFIX}`,
   },
   {
     slug: "mejores-remesadoras-guatemala-2026",
     category: "remesas",
     country: "GT",
-    prompt: `Eres un experto en finanzas personales para Guatemala. Escribe una guía en español sobre las mejores opciones para recibir remesas en Guatemala en 2026.
+    prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe una guía optimizada para "mejores remesadoras Guatemala".
 
-La guía debe:
-1. Título SEO: "Las mejores remesadoras para Guatemala en 2026: comparativa completa"
-2. 900-1100 palabras
-3. Secciones: Introducción, Top 5 servicios (Remitly, Wise, Western Union, MoneyGram, Xoom), Bancos guatemaltecos que reciben remesas (Banrural, Industrial, G&T Continental), Cómo recibir dinero en quetzales vs dólares, Comisiones y tipos de cambio actuales, Consejos prácticos
-4. Contexto: Guatemala recibe ~$20B/año en remesas, principalmente desde EE.UU.
-5. META description 155 caracteres al final: META: [texto]
+Keyword principal: "mejores remesadoras Guatemala 2026"
+Título H1: "Las mejores remesadoras para Guatemala en 2026: comparativa completa"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; mencionar que Guatemala recibe ~$20B/año en remesas)
+## Top 5 servicios para enviar dinero a Guatemala
+(Remitly, Wise, Western Union, MoneyGram, Xoom — con tarifas específicas)
+## Bancos guatemaltecos que reciben remesas
+(Banrural, Banco Industrial, G&T Continental — cómo retirar)
+## Quetzales vs dólares: ¿en qué moneda conviene recibir?
+## Tabla de comparación: comisiones y tipos de cambio
+## Consejos prácticos para familias que reciben remesas
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
   {
     slug: "remesas-honduras-como-recibir-dinero-2026",
     category: "remesas",
     country: "HN",
-    prompt: `Eres un experto en finanzas personales para Honduras. Escribe una guía en español sobre remesas hacia Honduras en 2026.
+    prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe una guía optimizada para "cómo recibir remesas Honduras".
 
-La guía debe:
-1. Título SEO: "Cómo recibir remesas en Honduras en 2026: guía para familias"
-2. 900-1100 palabras
-3. Secciones: Introducción, Principales servicios (Remitly, Western Union, Ria Money, MoneyGram, Wise), Bancos hondureños receptores (Atlántida, Ficohsa, Davivienda, BAC), Retiro en lempiras vs dólares, Límites y tiempos de transferencia, Consejos para maximizar lo recibido
-4. Contexto: Honduras recibe remesas equivalentes a ~25% del PIB, principalmente desde EE.UU.
-5. META description 155 caracteres al final: META: [texto]
+Keyword principal: "recibir remesas Honduras 2026"
+Título H1: "Cómo recibir remesas en Honduras en 2026: guía para familias"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Honduras = ~25% del PIB son remesas)
+## Principales servicios para recibir remesas en Honduras
+(Remitly, Western Union, Ria Money, MoneyGram, Wise — disponibilidad y tarifas)
+## Bancos hondureños que reciben remesas
+(Atlántida, Ficohsa, Davivienda, BAC — requisitos y límites)
+## Lempiras vs dólares: cómo maximizar lo que recibes
+## Tiempos de transferencia y límites por servicio
+## Consejos para familias receptoras
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
 
   // ---- Préstamos ----
@@ -100,96 +141,136 @@ Solo el artículo en Markdown.`,
     slug: "como-comparar-prestamos-personales-el-salvador-2026",
     category: "prestamos",
     country: "SV",
-    prompt: `Eres un experto en finanzas personales salvadoreñas. Escribe una guía completa en español sobre cómo comparar préstamos personales en El Salvador en 2026.
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "comparar préstamos personales El Salvador".
 
-La guía debe:
-1. Título SEO: "Cómo comparar préstamos personales en El Salvador 2026: guía oficial SSF"
-2. 900-1100 palabras
-3. Secciones: Introducción, Qué es la tasa de interés efectiva anual, Cómo funciona la SSF (publica tasas oficiales), Qué bancos tienen los préstamos más baratos, Tabla de tasas por tipo de préstamo, Requisitos típicos, Errores al solicitar un préstamo, FAQ
-4. Mencionar: Banco Agrícola, Davivienda, BAC, Promerica, HSBC, Citi El Salvador
-5. Incluir cálculo de ejemplo: préstamo $5,000 a 36 meses al 18% vs 22% → diferencia en cuotas
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "préstamos personales El Salvador 2026"
+Título H1: "Cómo comparar préstamos personales en El Salvador 2026: guía con tasas SSF"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Qué es la tasa de interés efectiva anual (TEA) y por qué importa
+## Cómo la SSF regula y publica las tasas en El Salvador
+## Los bancos con mejores tasas en El Salvador
+(Banco Agrícola, Davivienda, BAC, Promerica, Citi — tabla comparativa con rangos de tasas)
+## Ejemplo de cálculo: $5,000 a 36 meses al 18% vs 22%
+(mostrar diferencia en cuota mensual y costo total)
+## Requisitos típicos para un préstamo personal en El Salvador
+## Errores comunes al solicitar un préstamo
+## Preguntas frecuentes
+## Conclusión + CTA al comparador de préstamos de Finazo (/prestamos)${SEO_SUFFIX}`,
   },
   {
     slug: "prestamo-personal-vs-hipotecario-cual-conviene-2026",
     category: "prestamos",
     country: "SV",
-    prompt: `Eres un experto en finanzas personales de Centroamérica. Escribe un artículo comparativo en español: préstamo personal vs préstamo hipotecario, ¿cuál te conviene?
+    prompt: `Eres un experto SEO en finanzas de Centroamérica. Escribe un artículo comparativo optimizado para "préstamo personal vs hipotecario".
 
-La guía debe:
-1. Título SEO: "Préstamo personal vs hipotecario: ¿cuál te conviene en 2026?"
-2. 900-1100 palabras
-3. Secciones: Introducción, Diferencias clave (tabla comparativa), Cuándo elegir préstamo personal, Cuándo elegir hipotecario, Tasas típicas en Centroamérica, Ejemplo numérico detallado, Conclusión
-4. Enfoque práctico: compra de auto, remodelación de casa, emergencias médicas
-5. Mencionar tasas reales: personal 15-30% anual, hipotecario 6-12% anual en Centroamérica
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "préstamo personal vs hipotecario Centroamérica"
+Título H1: "Préstamo personal vs hipotecario: ¿cuál te conviene en 2026?"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla comparativa: préstamo personal vs hipotecario
+(columnas: tasa típica, plazo, monto máximo, garantía, tiempo de aprobación)
+## Cuándo elegir un préstamo personal
+(emergencias médicas, remodelaciones menores, consolidar deudas)
+## Cuándo elegir un préstamo hipotecario
+(compra de casa, remodelación mayor, importes altos)
+## Tasas reales en Centroamérica 2026
+(personal: 15-30% anual; hipotecario: 6-12% anual)
+## Ejemplo numérico: $20,000 — cuánto pagas con cada tipo
+## Preguntas frecuentes
+## Conclusión + CTA Finazo préstamos${SEO_SUFFIX}`,
   },
   {
     slug: "mejores-bancos-prestamos-guatemala-sib-2026",
     category: "prestamos",
     country: "GT",
-    prompt: `Eres un experto en finanzas personales guatemaltecas. Escribe una guía en español sobre los mejores bancos para préstamos personales en Guatemala en 2026.
+    prompt: `Eres un experto SEO en finanzas personales guatemaltecas. Escribe una guía optimizada para "mejores bancos préstamos Guatemala".
 
-La guía debe:
-1. Título SEO: "Los mejores bancos para préstamos en Guatemala 2026 (tasas SIB oficiales)"
-2. 900-1100 palabras
-3. Secciones: Introducción, Cómo la SIB regula las tasas, Top bancos (Industrial, Banrural, G&T Continental, BAC, Agromercantil), Tabla de tasas por banco, Requisitos para aplicar, Cómo mejorar tu historial crediticio en Guatemala, Conclusión
-4. Mencionar que la SIB publica tasas máximas y mínimas trimestralmente
-5. Ejemplo: préstamo Q50,000 (~$6,400) a 24 meses
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "mejores bancos préstamos Guatemala 2026"
+Título H1: "Los mejores bancos para préstamos en Guatemala 2026 (tasas SIB oficiales)"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cómo la SIB regula y publica las tasas de préstamos en Guatemala
+## Top 5 bancos guatemaltecos para préstamos personales
+(Industrial, Banrural, G&T Continental, BAC, Agromercantil — tabla con tasas min/max)
+## Ejemplo práctico: préstamo de Q50,000 (~$6,400) a 24 meses
+## Requisitos para aplicar a un préstamo en Guatemala
+## Cómo mejorar tu historial crediticio en Guatemala
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
   {
     slug: "prestamos-pyme-centroamerica-guia-2026",
     category: "prestamos",
     country: "SV",
-    prompt: `Eres un experto en finanzas empresariales para Centroamérica. Escribe una guía en español sobre préstamos para PYME en Centroamérica en 2026.
+    prompt: `Eres un experto SEO en finanzas empresariales para Centroamérica. Escribe una guía optimizada para "préstamos PYME Centroamérica".
 
-La guía debe:
-1. Título SEO: "Préstamos para PYME en Centroamérica 2026: guía completa para emprendedores"
-2. 900-1100 palabras
-3. Secciones: Introducción, Tipos de préstamos PYME disponibles, Bancos vs cooperativas vs fintechs, Tasas típicas y plazos, Garantías requeridas, Fondos gubernamentales (FONDEPRO El Salvador, PRONACOM Guatemala), Proceso paso a paso, Errores comunes
-4. Enfoque práctico: negocio que necesita $10,000-$50,000 de capital de trabajo
-5. META description 155 caracteres al final: META: [texto]
+Keyword principal: "préstamos PYME Centroamérica 2026"
+Título H1: "Préstamos para PYME en Centroamérica 2026: guía completa para emprendedores"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tipos de préstamos PYME disponibles en Centroamérica
+(capital de trabajo, equipamiento, expansión)
+## Bancos vs cooperativas vs fintechs: ¿cuál conviene?
+(tabla comparativa: tasa, plazo, garantías, velocidad de aprobación)
+## Fondos gubernamentales para PYMES
+(FONDEPRO El Salvador, PRONACOM Guatemala — montos y requisitos)
+## Ejemplo práctico: negocio que necesita $20,000 de capital de trabajo
+## Proceso paso a paso para solicitar un préstamo PYME
+## Errores comunes que hacen rechazar solicitudes
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
   {
     slug: "buro-credito-el-salvador-como-funciona-2026",
     category: "educacion",
     country: "SV",
-    prompt: `Eres un experto en finanzas personales salvadoreñas. Escribe una guía en español sobre cómo funciona el Buró de Crédito en El Salvador.
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "buró de crédito El Salvador".
 
-La guía debe:
-1. Título SEO: "Buró de Crédito en El Salvador 2026: qué es, cómo funciona y cómo mejorar tu historial"
-2. 900-1100 palabras
-3. Secciones: Introducción, Qué es el Buró de Crédito (DICOM/Equifax en SV), Cómo afecta tu acceso a préstamos, Cómo consultar tu historial de crédito gratis, Qué factores mejoran tu score, Qué errores dañan tu crédito, Cómo recuperar un historial negativo, FAQ
-4. Mencionar: SSF supervisa el sistema crediticio en El Salvador
-5. Consejos prácticos y accionables
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "buró de crédito El Salvador 2026"
+Título H1: "Buró de Crédito en El Salvador 2026: qué es, cómo funciona y cómo mejorar tu historial"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el Buró de Crédito en El Salvador? (DICOM/Equifax)
+## Cómo afecta tu historial al acceso a préstamos
+## Cómo consultar tu historial de crédito gratis en El Salvador
+## Los 5 factores que mejoran tu puntaje crediticio
+## Los 5 errores que dañan tu crédito
+## Cómo recuperar un historial negativo: plan paso a paso
+## Preguntas frecuentes
+## Conclusión + CTA a comparador de préstamos de Finazo (/prestamos)${SEO_SUFFIX}`,
   },
   {
     slug: "tasa-de-interes-efectiva-anual-que-es-centroamerica",
     category: "educacion",
     country: "SV",
-    prompt: `Eres un experto en finanzas personales de Centroamérica. Escribe una guía educativa en español sobre la tasa de interés efectiva anual (TEA).
+    prompt: `Eres un experto SEO en finanzas personales de Centroamérica. Escribe una guía educativa optimizada para "tasa de interés efectiva anual".
 
-La guía debe:
-1. Título SEO: "¿Qué es la tasa de interés efectiva anual (TEA)? Guía para Centroamérica"
-2. 800-1000 palabras
-3. Secciones: Introducción, Tasa nominal vs tasa efectiva anual, Cómo calcular la TEA, Por qué importa al comparar préstamos, Ejemplos concretos con diferentes bancos, Cómo usar Finazo para comparar, Conclusión
-4. Incluir fórmula simple: TEA = (1 + tasa nominal/n)^n - 1
-5. Ejemplo: banco A ofrece 18% nominal mensual vs banco B 19% anual — ¿cuál es más barato?
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "tasa de interés efectiva anual Centroamérica"
+Título H1: "¿Qué es la tasa de interés efectiva anual (TEA)? Guía para Centroamérica"
+Extensión: 900-1100 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tasa nominal vs tasa efectiva anual: la diferencia que te cuesta dinero
+## Cómo calcular la TEA paso a paso
+(fórmula: TEA = (1 + tasa nominal/n)^n - 1, con ejemplo numérico)
+## Por qué los bancos usan tasas nominales (y cómo te afecta)
+## Ejemplo práctico: Banco A al 18% nominal mensual vs Banco B al 19% anual
+(¿cuál es más barato realmente?)
+## Cómo usar Finazo para comparar la TEA entre bancos
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
   },
 
   // ---- Tarjetas de crédito ----
@@ -197,33 +278,49 @@ Solo el artículo en Markdown.`,
     slug: "tarjetas-credito-el-salvador-guia-2026",
     category: "tarjetas",
     country: "SV",
-    prompt: `Eres un experto en finanzas personales salvadoreñas. Escribe una guía completa en español sobre tarjetas de crédito en El Salvador en 2026.
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "tarjetas de crédito El Salvador".
 
-La guía debe:
-1. Título SEO: "Tarjetas de crédito en El Salvador 2026: guía completa para elegir la mejor"
-2. 900-1100 palabras
-3. Secciones: Introducción, Cómo funcionan las tarjetas de crédito, Principales tarjetas disponibles (Visa/MC de Banco Agrícola, Davivienda, BAC, Promerica), Tasas de interés típicas (20-35% anual en SV), Beneficios y cashback, Cómo evitar caer en deuda, Cuándo conviene usar tarjeta vs efectivo, FAQ
-4. Advertencia sobre tasas de interés altas en tarjetas vs préstamos personales
-5. Ejemplos concretos de costos si no pagas a tiempo
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "tarjetas de crédito El Salvador 2026"
+Título H1: "Tarjetas de crédito en El Salvador 2026: guía completa para elegir la mejor"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cómo funcionan las tarjetas de crédito en El Salvador
+## Principales tarjetas disponibles en El Salvador 2026
+(Visa/MC de Banco Agrícola, Davivienda, BAC, Promerica — tabla con: tasa anual, cuota de manejo, beneficios)
+## Tasas de interés en tarjetas: lo que no te dicen (20-35% anual en SV)
+## Beneficios reales: cashback, millas, descuentos
+## Cómo evitar caer en deuda con tu tarjeta
+## Tarjeta vs efectivo vs transferencia: cuándo usar qué
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
   },
   {
     slug: "como-usar-tarjeta-credito-sin-endeudarse-centroamerica",
     category: "tarjetas",
     country: "SV",
-    prompt: `Eres un experto en educación financiera para Centroamérica. Escribe una guía práctica en español sobre cómo usar tarjetas de crédito inteligentemente sin endeudarse.
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía práctica optimizada para "cómo usar tarjeta de crédito sin endeudarse".
 
-La guía debe:
-1. Título SEO: "Cómo usar tu tarjeta de crédito sin endeudarte: 10 reglas de oro para Centroamérica"
-2. 800-1000 palabras
-3. Formato: lista de 10 reglas con explicación de cada una
-4. Reglas a incluir: pagar el saldo completo cada mes, usar solo el 30% del límite, activar alertas de gasto, evitar sacar efectivo con la tarjeta, comparar tasas antes de aplicar, entender el período de gracia, etc.
-5. Lenguaje accesible, ejemplos de la vida cotidiana centroamericana
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "usar tarjeta de crédito sin endeudarse Centroamérica"
+Título H1: "Cómo usar tu tarjeta de crédito sin endeudarte: 10 reglas de oro para Centroamérica"
+Extensión: 900-1100 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; dato: 40% de usuarios de tarjeta pagan solo el mínimo)
+## Las 10 reglas de oro (cada regla con título H3 + 2-3 párrafos de explicación):
+### 1. Paga el saldo completo cada mes
+### 2. Usa máximo el 30% de tu límite de crédito
+### 3. Activa alertas de gasto en tu banco
+### 4. Nunca saques efectivo con la tarjeta
+### 5. Compara tasas antes de aplicar
+### 6. Entiende el período de gracia
+### 7. Revisa tu estado de cuenta cada semana
+### 8. Ten solo las tarjetas que realmente usas
+### 9. Nunca pagues solo el mínimo
+### 10. Usa la tarjeta como herramienta, no como ingreso extra
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
   },
 
   // ---- Seguros ----
@@ -231,17 +328,26 @@ Solo el artículo en Markdown.`,
     slug: "seguro-de-vida-el-salvador-guia-2026",
     category: "seguros",
     country: "SV",
-    prompt: `Eres un experto en seguros para Centroamérica. Escribe una guía en español sobre el seguro de vida en El Salvador en 2026.
+    prompt: `Eres un experto SEO en seguros para Centroamérica. Escribe una guía optimizada para "seguro de vida El Salvador".
 
-La guía debe:
-1. Título SEO: "Seguro de vida en El Salvador 2026: qué es, cuánto cuesta y cómo elegir"
-2. 900-1100 palabras
-3. Secciones: Introducción, Por qué tener seguro de vida, Tipos de seguro de vida (temporal, permanente, dotal), Cuánto cuesta en El Salvador, Principales aseguradoras (SISA, ASSA, Seguros Universales, Scotia Seguros), Cómo calcular cuánta cobertura necesitas, Pasos para contratar, FAQ
-4. Mencionar SSF supervisa aseguradoras en El Salvador
-5. Ejemplo de precio: seguro de $50,000 de cobertura para hombre 35 años, no fumador
-6. META description 155 caracteres al final: META: [texto]
+Keyword principal: "seguro de vida El Salvador 2026"
+Título H1: "Seguro de vida en El Salvador 2026: qué es, cuánto cuesta y cómo elegir"
+Extensión: 1000-1200 palabras
 
-Solo el artículo en Markdown.`,
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué contratar un seguro de vida en El Salvador?
+## Tipos de seguro de vida disponibles
+(temporal, permanente, dotal — diferencias y cuándo elegir cada uno)
+## Cuánto cuesta un seguro de vida en El Salvador
+(tabla: $50,000 de cobertura para hombre/mujer de 25, 35, 45 años)
+## Las principales aseguradoras de El Salvador
+(SISA, ASSA, Seguros Universales, Scotia Seguros — pros y contras)
+## Cómo calcular cuánta cobertura necesitas
+(regla: 10-12x tu ingreso anual + deudas)
+## Pasos para contratar un seguro de vida
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
   },
 ];
 
@@ -254,7 +360,7 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
 
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
-    max_tokens: 2048,
+    max_tokens: 4096,
     messages: [{ role: "user", content: topic.prompt }],
   });
 
@@ -266,9 +372,21 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
 
   const fullText = content.text;
 
+  // Extract META description
   const metaMatch = fullText.match(/META:\s*(.+)$/m);
   const metaDescription = metaMatch ? metaMatch[1].trim() : null;
-  const articleContent = fullText.replace(/^META:.*$/m, "").trim();
+
+  // Extract KEYWORDS array: KEYWORDS: [kw1, kw2, kw3]
+  const keywordsMatch = fullText.match(/KEYWORDS:\s*\[([^\]]+)\]/);
+  const keywords = keywordsMatch
+    ? keywordsMatch[1].split(",").map((k) => k.trim()).filter(Boolean)
+    : null;
+
+  // Strip metadata tags from article body
+  const articleContent = fullText
+    .replace(/^META:.*$/m, "")
+    .replace(/^KEYWORDS:.*$/m, "")
+    .trim();
 
   const titleMatch = articleContent.match(/^#\s+(.+)$/m);
   const title = titleMatch ? titleMatch[1].trim() : topic.slug.replace(/-/g, " ");
@@ -283,13 +401,14 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
       content: articleContent,
       category: topic.category,
       country: topic.country,
+      keywords: keywords ?? undefined,
       wordCount,
       status: "draft",
       generatedBy: "claude",
     })
     .onConflictDoNothing(); // never overwrite existing articles
 
-  logger.info({ slug: topic.slug, wordCount, category: topic.category }, "Evergreen article saved as draft — review at /admin");
+  logger.info({ slug: topic.slug, wordCount, category: topic.category, keywordsCount: keywords?.length ?? 0 }, "Evergreen article saved as draft — review at /admin");
 }
 
 // ---------------------------------------------------------------------------

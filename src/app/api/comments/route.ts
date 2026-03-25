@@ -47,8 +47,20 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   return NextResponse.json({ comments });
 }
 
+const ALLOWED_ORIGINS = [
+  "https://finazo.lat",
+  "https://www.finazo.lat",
+  "http://localhost:3000",
+];
+
 // POST /api/comments — create comment (goes to pending moderation)
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  // CSRF: reject requests not originating from our own domain
+  const origin = req.headers.get("origin") ?? "";
+  if (!ALLOWED_ORIGINS.includes(origin)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   let body: unknown;
   try {
     body = await req.json();
@@ -58,10 +70,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   const parsed = CreateCommentSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Datos inválidos", details: parsed.error.flatten().fieldErrors },
-      { status: 422 }
-    );
+    // Return generic error — don't expose field-level validation details
+    return NextResponse.json({ error: "Datos inválidos" }, { status: 422 });
   }
 
   const { articleSlug, authorName, authorEmail, content } = parsed.data;
