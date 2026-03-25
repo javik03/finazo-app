@@ -1,0 +1,68 @@
+name: Deploy to Hetzner
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+env:
+  DEPLOY_PATH: /opt/finazo
+  HETZNER_HOST: 5.78.42.188
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HETZNER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.HETZNER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Pull latest code
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
+            "cd ${{ env.DEPLOY_PATH }} && git pull origin master"
+
+      - name: Build and start containers
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
+            "cd ${{ env.DEPLOY_PATH }} && docker compose pull && docker compose up -d --build"
+
+      - name: Wait for health check (60 seconds max)
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} << 'EOF'
+          set +e
+          COUNTER=0
+          MAX_ATTEMPTS=12
+          while [ $COUNTER -lt $MAX_ATTEMPTS ]; do
+            RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/health 2>/dev/null)
+            if [ "$RESPONSE" = "200" ]; then
+              echo "Health check passed: HTTP $RESPONSE"
+              exit 0
+            fi
+            COUNTER=$((COUNTER + 1))
+            echo "Health check attempt $COUNTER/$MAX_ATTEMPTS: HTTP $RESPONSE"
+            sleep 5
+          done
+          echo "Health check failed after 60 seconds"
+          exit 1
+          EOF
+
+      - name: Check recent logs
+        if: always()
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
+            "cd ${{ env.DEPLOY_PATH }} && docker compose logs --tail=20 app" || true
+
+      - name: Deployment success
+        run: |
+          echo "Finazo deployed successfully to ${{ env.HETZNER_HOST }}"
+          echo "Available at: https://finazo.lat"
