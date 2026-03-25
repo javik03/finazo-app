@@ -38,6 +38,15 @@ const CORRIDORS = [
 
 type SearchParams = { desde?: string; hacia?: string };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
+    { "@type": "ListItem", position: 2, name: "Remesas", item: "https://finazo.lat/remesas" },
+  ],
+};
+
 const remittanceSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -74,6 +83,10 @@ export default async function RemesasPage({
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(remittanceSchema) }}

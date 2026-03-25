@@ -36,6 +36,15 @@ const LOAN_TYPES = [
 
 type SearchParams = { tipo?: string };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
+    { "@type": "ListItem", position: 2, name: "Préstamos", item: "https://finazo.lat/prestamos" },
+  ],
+};
+
 const loanSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -71,6 +80,10 @@ export default async function PrestamosPage({
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(loanSchema) }}

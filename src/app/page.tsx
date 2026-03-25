@@ -120,11 +120,64 @@ const METRICS = [
   { value: "6h", label: "actualización" },
 ];
 
+// ── Structured Data ────────────────────────────────────────────────────────
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Finazo",
+  url: "https://finazo.lat",
+  logo: "https://finazo.lat/opengraph-image",
+  description:
+    "Comparador financiero independiente para Centroamérica — remesas, préstamos y seguros.",
+  areaServed: ["SV", "GT", "HN"],
+  knowsAbout: ["remesas", "préstamos personales", "seguros", "finanzas personales"],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "¿Cómo se actualizan los datos de remesas?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nuestros sistemas consultan automáticamente las tarifas de Wise, Remitly, Western Union y MoneyGram cada 6 horas. Los datos reflejan el costo real de enviar $200 USD en el corredor seleccionado.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿De dónde vienen las tasas de préstamos?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Provienen directamente de la Superintendencia del Sistema Financiero (SSF) de El Salvador. Son las tasas máximas y mínimas que cada banco puede cobrar legalmente.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Finazo cobra alguna comisión a usuarios?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. Finazo es completamente gratuito. Cuando haces clic en un proveedor podemos recibir una comisión de afiliado — esto nunca afecta las tasas ni el orden de resultados.",
+      },
+    },
+  ],
+};
+
 // ── Page ───────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--background)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header activePath="/" />
 
       <main>

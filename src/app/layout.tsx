@@ -39,21 +39,12 @@ export const metadata: Metadata = {
     title: "Finazo — Comparador financiero para Centroamérica",
     description:
       "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Finazo — Comparador financiero para Centroamérica",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Finazo — Comparador financiero para Centroamérica",
     description:
       "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras.",
-    images: ["/og-image.png"],
   },
   alternates: {
     canonical: "https://finazo.lat",
