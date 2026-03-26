@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getArticleBySlug, getAllArticleSlugs } from "@/lib/queries/articles";
 import { Header } from "@/components/layout/Header";
@@ -44,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       type: "article",
       publishedTime: article.publishedAt?.toISOString(),
+      images: article.featuredImageUrl ? [{ url: article.featuredImageUrl, width: 1200, height: 630 }] : undefined,
     },
   };
 }
@@ -131,6 +133,19 @@ export default async function GuiaPage({ params }: Props) {
 
             {article.metaDescription && (
               <p className="text-lg text-slate-600 leading-relaxed">{article.metaDescription}</p>
+            )}
+
+            {article.featuredImageUrl && (
+              <div className="mt-6 overflow-hidden rounded-2xl">
+                <Image
+                  src={article.featuredImageUrl}
+                  alt={article.title}
+                  width={1200}
+                  height={630}
+                  className="w-full object-cover"
+                  priority
+                />
+              </div>
             )}
 
             <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-400">
