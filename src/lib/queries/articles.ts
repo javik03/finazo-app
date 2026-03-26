@@ -67,6 +67,30 @@ export async function getArticleBySlugAdmin(slug: string) {
   return rows[0] ?? null;
 }
 
+// Force-update article content (regenerate action)
+export async function updateArticleContent(
+  slug: string,
+  data: {
+    title: string;
+    content: string;
+    metaDescription: string | null;
+    keywords: string[] | null;
+    wordCount: number;
+  },
+): Promise<void> {
+  await db
+    .update(articles)
+    .set({
+      title: data.title,
+      content: data.content,
+      metaDescription: data.metaDescription,
+      keywords: data.keywords ?? undefined,
+      wordCount: data.wordCount,
+      updatedAt: new Date(),
+    })
+    .where(eq(articles.slug, slug));
+}
+
 // Update article status (admin action)
 export async function updateArticleStatus(
   id: string,

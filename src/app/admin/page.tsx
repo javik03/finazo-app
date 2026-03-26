@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { config } from "@/lib/config";
 import { getAllArticlesAdmin } from "@/lib/queries/articles";
-import { loginAdmin, logoutAdmin, publishArticle, unpublishArticle } from "./actions";
+import { loginAdmin, logoutAdmin, publishArticle, unpublishArticle, regenerateArticle } from "./actions";
 
 export const metadata: Metadata = { title: "Admin — Finazo", robots: "noindex" };
 
@@ -139,8 +139,17 @@ export default async function AdminPage({
                     Leer
                   </Link>
 
+                  <form action={regenerateArticle.bind(null, article.slug)}>
+                    <button
+                      type="submit"
+                      className="text-xs border border-slate-200 rounded-lg px-3 py-1.5 hover:bg-slate-50 text-slate-600"
+                    >
+                      Regenerar
+                    </button>
+                  </form>
+
                   {article.status === "draft" && (
-                    <form action={publishArticle.bind(null, article.id)}>
+                    <form action={publishArticle.bind(null, article.id, article.slug)}>
                       <button
                         type="submit"
                         className="text-xs bg-emerald-600 text-white rounded-lg px-3 py-1.5 hover:bg-emerald-700"
@@ -151,7 +160,7 @@ export default async function AdminPage({
                   )}
 
                   {article.status === "published" && (
-                    <form action={unpublishArticle.bind(null, article.id)}>
+                    <form action={unpublishArticle.bind(null, article.id, article.slug)}>
                       <button
                         type="submit"
                         className="text-xs border border-slate-200 rounded-lg px-3 py-1.5 hover:bg-slate-50 text-slate-600"

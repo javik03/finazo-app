@@ -5,6 +5,7 @@ import { getArticleBySlug, getAllArticleSlugs } from "@/lib/queries/articles";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CommentSection } from "@/components/articles/CommentSection";
+import { ArticleMarkdown } from "@/components/articles/ArticleMarkdown";
 
 export const revalidate = 3600;
 
@@ -89,10 +90,9 @@ export default async function GuiaPage({ params }: Props) {
     },
   };
 
-  // Split markdown content into paragraphs for basic rendering
-  const paragraphs = article.content
-    .split(/\n\n+/)
-    .filter((p) => p.trim().length > 0);
+  const categoryLabel = article.category
+    ? article.category.charAt(0).toUpperCase() + article.category.slice(1).replace(/-/g, " ")
+    : null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -117,86 +117,45 @@ export default async function GuiaPage({ params }: Props) {
         </div>
 
         <article>
-          <header className="mb-8">
-            <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-900">
+          <header className="mb-8 border-b border-slate-100 pb-8">
+            {/* Category badge */}
+            {categoryLabel && (
+              <span className="mb-4 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700">
+                {categoryLabel}
+              </span>
+            )}
+
+            <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
               {article.title}
             </h1>
+
             {article.metaDescription && (
-              <p className="text-lg text-slate-600">{article.metaDescription}</p>
+              <p className="text-lg text-slate-600 leading-relaxed">{article.metaDescription}</p>
             )}
-            {article.publishedAt && (
-              <p className="mt-3 text-sm text-slate-400">
-                Publicado el{" "}
-                {new Date(article.publishedAt).toLocaleDateString("es-SV", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-                {article.wordCount && (
-                  <> · {Math.ceil(article.wordCount / 200)} min de lectura</>
-                )}
-              </p>
-            )}
+
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-400">
+              {article.publishedAt && (
+                <span>
+                  Actualizado:{" "}
+                  {new Date(article.publishedAt).toLocaleDateString("es-SV", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+              )}
+              {article.wordCount && (
+                <>
+                  <span>·</span>
+                  <span>{Math.ceil(article.wordCount / 200)} min de lectura</span>
+                </>
+              )}
+              <span>·</span>
+              <span className="text-emerald-600 font-medium">Finazo</span>
+            </div>
           </header>
 
-          <div className="prose prose-slate max-w-none">
-            {paragraphs.map((paragraph, i) => {
-              // Heading 2
-              if (paragraph.startsWith("## ")) {
-                return (
-                  <h2
-                    key={i}
-                    className="mt-8 mb-3 text-xl font-bold text-slate-900"
-                  >
-                    {paragraph.replace(/^## /, "")}
-                  </h2>
-                );
-              }
-              // Heading 3
-              if (paragraph.startsWith("### ")) {
-                return (
-                  <h3
-                    key={i}
-                    className="mt-6 mb-2 text-lg font-semibold text-slate-900"
-                  >
-                    {paragraph.replace(/^### /, "")}
-                  </h3>
-                );
-              }
-              // Heading 1
-              if (paragraph.startsWith("# ")) {
-                return (
-                  <h2
-                    key={i}
-                    className="mt-8 mb-3 text-xl font-bold text-slate-900"
-                  >
-                    {paragraph.replace(/^# /, "")}
-                  </h2>
-                );
-              }
-              // Unordered list
-              if (paragraph.startsWith("- ") || paragraph.startsWith("* ")) {
-                const items = paragraph
-                  .split("\n")
-                  .filter((l) => l.startsWith("- ") || l.startsWith("* "));
-                return (
-                  <ul key={i} className="my-3 list-disc pl-6 space-y-1">
-                    {items.map((item, j) => (
-                      <li key={j} className="text-slate-700">
-                        {item.replace(/^[-*] /, "")}
-                      </li>
-                    ))}
-                  </ul>
-                );
-              }
-              // Default paragraph
-              return (
-                <p key={i} className="my-3 text-slate-700 leading-relaxed">
-                  {paragraph}
-                </p>
-              );
-            })}
-          </div>
+          <ArticleMarkdown content={article.content} />
         </article>
 
         <CommentSection articleSlug={slug} />
