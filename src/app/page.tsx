@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FaqAccordion } from "@/components/home/FaqAccordion";
+import { ArticlesScroll } from "@/components/home/ArticlesScroll";
+import { getPublishedArticles } from "@/lib/queries/articles";
 
 export const metadata: Metadata = {
   title: "Finazo — Compara remesas, préstamos y seguros en Centroamérica",
@@ -200,7 +202,9 @@ const faqSchema = {
 
 // ── Page ───────────────────────────────────────────────────────────────────
 
-export default function HomePage() {
+export default async function HomePage() {
+  const recentArticles = await getPublishedArticles();
+  const featuredArticles = recentArticles.slice(0, 6);
   return (
     <div className="min-h-screen" style={{ background: "var(--background)" }}>
       <script
@@ -689,6 +693,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* ── ARTICLES ── */}
+        <ArticlesScroll articles={featuredArticles} />
 
         {/* ── FAQ ── */}
         <section
