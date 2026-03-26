@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { config } from "@/lib/config";
 import { updateArticleStatus } from "@/lib/queries/articles";
+import { regenerateEvergreenArticle } from "@/agents/writer/content-strategist";
 
 /** Timing-safe comparison to prevent brute-force via response-time analysis */
 function timingSafeCompare(a: string, b: string): boolean {
@@ -57,16 +58,27 @@ async function requireAdmin(): Promise<void> {
   }
 }
 
-export async function publishArticle(id: string): Promise<void> {
+export async function publishArticle(id: string, slug: string): Promise<void> {
   await requireAdmin();
   await updateArticleStatus(id, "published");
-  revalidatePath("/guias");
+  revalidatePath("/guias", "layout");
+  revalidatePath(`/guias/${slug}`);
   redirect("/admin");
 }
 
-export async function unpublishArticle(id: string): Promise<void> {
+export async function unpublishArticle(id: string, slug: string): Promise<void> {
   await requireAdmin();
   await updateArticleStatus(id, "draft");
-  revalidatePath("/guias");
+  revalidatePath("/guias", "layout");
+  revalidatePath(`/guias/${slug}`);
+  redirect("/admin");
+}
+
+export async function regenerateArticle(slug: string): Promise<void> {
+  await requireAdmin();
+  await regenerateEvergreenArticle(slug);
+  revalidatePath("/guias", "layout");
+  revalidatePath(`/guias/${slug}`);
+  revalidatePath(`/admin/preview/${slug}`);
   redirect("/admin");
 }

@@ -12,6 +12,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { inArray } from "drizzle-orm";
+import { updateArticleContent } from "@/lib/queries/articles";
 import pino from "pino";
 import { config } from "@/lib/config";
 
@@ -39,6 +40,21 @@ REGLAS SEO OBLIGATORIAS:
 - Incluye una sección "## Preguntas frecuentes" al final con 3-4 preguntas reales que la gente busca en Google, con respuestas de 2-3 oraciones cada una
 - Menciona Finazo como herramienta de comparación al menos 1 vez con enlace interno relevante (usa texto como "puedes comparar en [Finazo](/remesas)" o "compara tasas en [Finazo](/prestamos)")
 - Usa negritas para los datos numéricos clave (tasas, montos, plazos)
+
+FORMATO OBLIGATORIO — CALLOUT BOX:
+Inmediatamente después de la introducción (antes del primer H2), incluye un bloque de citas en Markdown con los 3-4 puntos más importantes del artículo:
+> **Lo esencial:** punto clave 1 — brevísimo.
+> punto clave 2 — brevísimo.
+> punto clave 3 — brevísimo.
+> punto clave 4 (si aplica) — brevísimo.
+Este bloque aparecerá destacado visualmente en verde para el lector.
+
+FORMATO OBLIGATORIO — TABLAS:
+Todas las tablas DEBEN tener encabezados de columna en la primera fila con separadores (| --- |). Ejemplo correcto:
+| Servicio | Comisión | Tiempo |
+| --- | --- | --- |
+| Western Union | 4.99% | Inmediato |
+Nunca escribas una tabla sin encabezados.
 
 Al final del artículo, agrega en líneas separadas:
 META: [meta description de exactamente 150-160 caracteres con la keyword principal]
@@ -558,6 +574,54 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
     .onConflictDoNothing(); // never overwrite existing articles
 
   logger.info({ slug: topic.slug, wordCount, category: topic.category, keywordsCount: keywords?.length ?? 0 }, "Evergreen article published");
+}
+
+// ---------------------------------------------------------------------------
+// Regenerate an existing article (admin action — force-overwrites content)
+// ---------------------------------------------------------------------------
+
+export async function regenerateEvergreenArticle(slug: string): Promise<void> {
+  const topic = CONTENT_CALENDAR.find((t) => t.slug === slug);
+  if (!topic) {
+    logger.warn({ slug }, "Slug not found in CONTENT_CALENDAR — cannot regenerate");
+    throw new Error(`Slug "${slug}" not found in content calendar`);
+  }
+
+  logger.info({ slug }, "Regenerating evergreen article");
+
+  const message = await anthropic.messages.create({
+    model: "claude-sonnet-4-6",
+    max_tokens: 4096,
+    messages: [{ role: "user", content: topic.prompt }],
+  });
+
+  const content = message.content[0];
+  if (content.type !== "text") {
+    throw new Error("Unexpected response type from Claude");
+  }
+
+  const fullText = content.text;
+
+  const metaMatch = fullText.match(/META:\s*(.+)$/m);
+  const metaDescription = metaMatch ? metaMatch[1].trim() : null;
+
+  const keywordsMatch = fullText.match(/KEYWORDS:\s*\[([^\]]+)\]/);
+  const keywords = keywordsMatch
+    ? keywordsMatch[1].split(",").map((k) => k.trim()).filter(Boolean)
+    : null;
+
+  const articleContent = fullText
+    .replace(/^META:.*$/m, "")
+    .replace(/^KEYWORDS:.*$/m, "")
+    .trim();
+
+  const titleMatch = articleContent.match(/^#\s+(.+)$/m);
+  const title = titleMatch ? titleMatch[1].trim() : topic.slug.replace(/-/g, " ");
+  const wordCount = articleContent.split(/\s+/).length;
+
+  await updateArticleContent(slug, { title, content: articleContent, metaDescription, keywords, wordCount });
+
+  logger.info({ slug, wordCount }, "Evergreen article regenerated");
 }
 
 // ---------------------------------------------------------------------------

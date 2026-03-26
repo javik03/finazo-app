@@ -4,7 +4,7 @@ import Link from "next/link";
 import { config } from "@/lib/config";
 import { getArticleBySlugAdmin } from "@/lib/queries/articles";
 import { publishArticle, unpublishArticle } from "../../actions";
-import { ArticleMarkdown } from "./article-markdown";
+import { ArticleMarkdown } from "@/components/articles/ArticleMarkdown";
 
 export const revalidate = 0;
 
@@ -37,7 +37,7 @@ export default async function AdminPreviewPage({ params }: Props) {
           </span>
           <div className="flex-1" />
           {article.status === "draft" && (
-            <form action={publishArticle.bind(null, article.id)}>
+            <form action={publishArticle.bind(null, article.id, article.slug)}>
               <button
                 type="submit"
                 className="bg-emerald-600 text-white rounded-lg px-4 py-1.5 text-sm font-medium hover:bg-emerald-700"
@@ -55,7 +55,7 @@ export default async function AdminPreviewPage({ params }: Props) {
               >
                 Ver en el sitio →
               </Link>
-              <form action={unpublishArticle.bind(null, article.id)}>
+              <form action={unpublishArticle.bind(null, article.id, article.slug)}>
                 <button
                   type="submit"
                   className="border rounded-lg px-4 py-1.5 text-sm hover:bg-slate-50"
