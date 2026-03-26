@@ -3,6 +3,7 @@ import { z } from "zod";
 import { db } from "@/lib/db";
 import { articles, articleComments } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
+import { rateLimit } from "@/lib/rate-limit";
 
 const CreateCommentSchema = z.object({
   articleSlug: z.string().min(1).max(200),
@@ -59,6 +60,26 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const origin = req.headers.get("origin") ?? "";
   if (!ALLOWED_ORIGINS.includes(origin)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  // Rate limit: 5 comments per IP per 60 seconds
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown";
+  const rl = await rateLimit(ip);
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: "Demasiadas solicitudes. Intenta de nuevo en un minuto." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(rl.reset - Math.floor(Date.now() / 1000)),
+          "X-RateLimit-Limit": String(rl.limit),
+          "X-RateLimit-Remaining": "0",
+        },
+      }
+    );
   }
 
   let body: unknown;

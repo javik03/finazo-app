@@ -349,6 +349,154 @@ Estructura requerida:
 ## Preguntas frecuentes
 ## Conclusión${SEO_SUFFIX}`,
   },
+  {
+    slug: "seguro-medico-el-salvador-guia-2026",
+    category: "seguros",
+    country: "SV",
+    prompt: `Eres un experto SEO en seguros de salud para Centroamérica. Escribe una guía optimizada para "seguro médico El Salvador".
+
+Keyword principal: "seguro médico El Salvador 2026"
+Título H1: "Seguro médico en El Salvador 2026: cómo elegir el mejor para tu familia"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; mencionar que ISSS cubre solo empleados formales)
+## ISSS vs seguro médico privado: diferencias clave
+(acceso, cobertura, tiempos de espera, hospitales disponibles)
+## Principales aseguradoras de salud en El Salvador
+(SISA, ASSA, Mapfre, Pan-American Life — tabla: prima mensual, copago, red hospitalaria)
+## ¿Qué cubre y qué no cubre un seguro médico privado?
+(lista clara: sí cubre / no cubre)
+## Cuánto cuesta un seguro médico en El Salvador
+(rangos para persona individual, pareja, familia de 4)
+## Cómo elegir entre HMO y PPO (si aplica localmente)
+## Pasos para contratar y qué revisar en la póliza
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-de-auto-el-salvador-guia-2026",
+    category: "seguros",
+    country: "SV",
+    prompt: `Eres un experto SEO en seguros de vehículos para El Salvador. Escribe una guía optimizada para "seguro de auto El Salvador".
+
+Keyword principal: "seguro de auto El Salvador 2026"
+Título H1: "Seguro de auto en El Salvador 2026: obligatorio vs todo riesgo — guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Seguro obligatorio (SOAT) vs seguro voluntario: qué es obligatorio por ley
+## Tipos de cobertura para vehículos en El Salvador
+(responsabilidad civil, robo, daños propios, todo riesgo — diferencias y costos)
+## Tabla comparativa de aseguradoras en El Salvador
+(SISA, ASSA, La Centroamericana, Qualitas — prima mensual para auto de $15,000)
+## Factores que afectan el precio de tu seguro de auto
+(año del vehículo, zona de residencia, historial de siniestros)
+## ¿Qué hacer en caso de accidente? Paso a paso
+## Cómo ahorrar en tu seguro sin reducir cobertura
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguros-de-hogar-el-salvador-2026",
+    category: "seguros",
+    country: "SV",
+    prompt: `Eres un experto SEO en seguros de bienes para El Salvador. Escribe una guía optimizada para "seguro de hogar El Salvador".
+
+Keyword principal: "seguro de hogar El Salvador 2026"
+Título H1: "Seguro de hogar en El Salvador 2026: protege tu casa contra terremotos, robo e inundaciones"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; mencionar riesgo sísmico en El Salvador)
+## ¿Qué cubre un seguro de hogar en El Salvador?
+(incendio, terremoto, robo, daños por agua — tabla: qué incluye cada tipo de póliza)
+## Cobertura estructural vs contenido del hogar: diferencia importante
+## Cuánto cuesta un seguro de hogar en El Salvador
+(rangos para casa de $40,000 / $80,000 / $150,000)
+## Las mejores aseguradoras de hogar en El Salvador
+(SISA, ASSA, La Centroamericana — comparativa breve)
+## Lo que no cubre la mayoría de pólizas (sorpresas comunes)
+## Cómo hacer un inventario del hogar para asegurarte correctamente
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- Remesas — Nicaragua y México ----
+  {
+    slug: "remesas-nicaragua-como-enviar-recibir-2026",
+    category: "remesas",
+    country: "NI",
+    prompt: `Eres un experto SEO en finanzas personales para Nicaragua. Escribe una guía optimizada para "remesas Nicaragua".
+
+Keyword principal: "remesas Nicaragua 2026"
+Título H1: "Cómo enviar y recibir remesas en Nicaragua 2026: guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; dato: Nicaragua recibe ~$4B/año en remesas, ~20% del PIB)
+## Principales servicios para enviar dinero a Nicaragua
+(Remitly, Western Union, Ria, MoneyGram, Xoom — tarifas y velocidad)
+## Cómo recibir remesas en Nicaragua: opciones bancarias y en efectivo
+(Banpro, BAC, Western Union agencias — requisitos de identificación)
+## Córdobas vs dólares: en qué moneda conviene recibir
+## Tiempos de transferencia y límites por servicio
+## Consejos para familias receptoras de remesas en Nicaragua
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Ahorro e inversión ----
+  {
+    slug: "como-ahorrar-dinero-en-el-salvador-2026",
+    category: "educacion",
+    country: "SV",
+    prompt: `Eres un experto SEO en finanzas personales para El Salvador. Escribe una guía práctica optimizada para "cómo ahorrar dinero en El Salvador".
+
+Keyword principal: "cómo ahorrar dinero en El Salvador 2026"
+Título H1: "Cómo ahorrar dinero en El Salvador 2026: plan paso a paso con ejemplos reales"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; dato: 70% de salvadoreños no tiene ahorros formales)
+## Por qué es difícil ahorrar en El Salvador y cómo superar esos obstáculos
+## El método del 50/30/20 adaptado a ingresos salvadoreños
+(ejemplo con salario mínimo $365, salario medio $600, salario $1,000)
+## Las mejores cuentas de ahorro en El Salvador
+(Banco Agrícola, Davivienda, BAC, cooperativas — tasas y condiciones)
+## Fondo de emergencia: cuánto necesitas y dónde guardarlo
+(3-6 meses de gastos; cálculo para familia típica salvadoreña)
+## Errores que destruyen tus ahorros (y cómo evitarlos)
+## Aplicaciones y herramientas para controlar gastos desde El Salvador
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "inversiones-para-principiantes-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía optimizada para "inversiones para principiantes Centroamérica".
+
+Keyword principal: "inversiones para principiantes Centroamérica 2026"
+Título H1: "Cómo invertir desde Centroamérica siendo principiante: guía 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Antes de invertir: el fondo de emergencia es primero
+## Las 5 opciones de inversión más accesibles desde Centroamérica
+(1. Cuentas de ahorro a plazo fijo — seguro, baja rentabilidad
+2. Certificados de depósito bancarios (CDPs) — tasas actuales en SV/GT/HN
+3. Fondos de inversión locales — opciones disponibles
+4. Bolsa de valores (BVES en El Salvador) — cómo acceder
+5. Acciones internacionales vía apps (Interactive Brokers, etc.))
+## Riesgo vs rentabilidad: cómo pensar en esto desde nuestra región
+## Tabla comparativa: rendimiento esperado vs riesgo para cada opción
+## Errores clásicos del inversor principiante en LATAM
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
 ];
 
 // ---------------------------------------------------------------------------
