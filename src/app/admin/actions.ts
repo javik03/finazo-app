@@ -76,7 +76,12 @@ export async function unpublishArticle(id: string, slug: string): Promise<void> 
 
 export async function regenerateArticle(slug: string): Promise<void> {
   await requireAdmin();
-  await regenerateEvergreenArticle(slug);
+  try {
+    await regenerateEvergreenArticle(slug);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "Error desconocido";
+    redirect(`/admin?error=${encodeURIComponent(msg)}`);
+  }
   revalidatePath("/guias", "layout");
   revalidatePath(`/guias/${slug}`);
   revalidatePath(`/admin/preview/${slug}`);
