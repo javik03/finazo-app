@@ -63,19 +63,41 @@ const PRODUCTS = [
 const TRUST = [
   {
     title: "Datos oficiales",
-    desc: "Tasas de préstamos directamente de la SSF de El Salvador.",
+    desc: "Tasas de préstamos directamente de la SSF de El Salvador, SIB de Guatemala y CNBS de Honduras.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+        <path d="M12 3L4 7v5c0 5 3.6 9.3 8 10 4.4-.7 8-5 8-10V7L12 3z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
   },
   {
     title: "Siempre actualizado",
-    desc: "Remesas actualizadas cada 6 horas sin intervención manual.",
+    desc: "Remesas actualizadas cada 6 horas automáticamente. Tasas bancarias al día con las publicaciones oficiales.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+      </svg>
+    ),
   },
   {
     title: "Independiente",
-    desc: "No somos propiedad de ningún banco ni financiera.",
+    desc: "No somos propiedad de ningún banco ni financiera. Nuestras comparaciones no se venden.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
   },
   {
     title: "100% gratis",
-    desc: "Sin registro, sin suscripción, sin costos ocultos.",
+    desc: "Sin registro, sin suscripción, sin costos ocultos. Comparas gratis, siempre.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </svg>
+    ),
   },
 ];
 
@@ -239,24 +261,20 @@ export default function HomePage() {
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="flex flex-col items-center gap-3">
                 <Link
                   href="/remesas"
-                  className="rounded-full px-7 py-3 text-sm font-semibold text-white transition-colors"
+                  className="rounded-full px-8 py-3.5 text-sm font-semibold text-white transition-colors"
                   style={{ background: "var(--green)" }}
                 >
                   Comparar remesas →
                 </Link>
                 <Link
                   href="/prestamos"
-                  className="rounded-full border px-7 py-3 text-sm font-semibold transition-colors"
-                  style={{
-                    borderColor: "var(--green)",
-                    color: "var(--green)",
-                    background: "transparent",
-                  }}
+                  className="text-sm font-medium transition-colors"
+                  style={{ color: "var(--green)" }}
                 >
-                  Ver préstamos
+                  Ver tasas de préstamos →
                 </Link>
               </div>
 
@@ -526,16 +544,37 @@ export default function HomePage() {
           style={{ background: "var(--green-bg)", borderTop: "1px solid #d1e8d9", borderBottom: "1px solid #d1e8d9" }}
         >
           <div className="mx-auto" style={{ maxWidth: "var(--W)" }}>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <h2
+              className="mb-8 text-center font-bold"
+              style={{
+                fontFamily: "var(--font-lora), Georgia, serif",
+                fontSize: "var(--text-2xl)",
+                color: "#111",
+              }}
+            >
+              ¿Por qué confiar en Finazo?
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {TRUST.map((item) => (
-                <div key={item.title}>
-                  <p
-                    className="mb-1 font-semibold"
-                    style={{ color: "var(--green)" }}
+                <div
+                  key={item.title}
+                  className="rounded-2xl p-5"
+                  style={{
+                    background: "#fff",
+                    border: "1px solid #d1e8d9",
+                    boxShadow: "var(--shadow-sm)",
+                  }}
+                >
+                  <div
+                    className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl"
+                    style={{ background: "var(--green-bg)", color: "var(--green)" }}
                   >
+                    {item.icon}
+                  </div>
+                  <p className="mb-1 font-semibold" style={{ color: "#111" }}>
                     {item.title}
                   </p>
-                  <p className="text-sm leading-relaxed" style={{ color: "#555" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
                     {item.desc}
                   </p>
                 </div>

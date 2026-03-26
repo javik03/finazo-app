@@ -40,7 +40,7 @@ export function Footer() {
               {[
                 { href: "/remesas", label: "Remesas" },
                 { href: "/prestamos", label: "Préstamos" },
-                { href: "/seguros", label: "Seguros" },
+                { href: "/tarjetas", label: "Tarjetas" },
                 { href: "/guias", label: "Guías" },
               ].map((link) => (
                 <li key={link.href}>
