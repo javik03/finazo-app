@@ -4,6 +4,7 @@ import Link from "next/link";
 import { config } from "@/lib/config";
 import { getArticleBySlugAdmin } from "@/lib/queries/articles";
 import { publishArticle, unpublishArticle } from "../../actions";
+import { ArticleMarkdown } from "./article-markdown";
 
 export const revalidate = 0;
 
@@ -18,10 +19,6 @@ export default async function AdminPreviewPage({ params }: Props) {
   const { slug } = await params;
   const article = await getArticleBySlugAdmin(slug);
   if (!article) notFound();
-
-  const paragraphs = article.content
-    .split(/\n\n+/)
-    .filter((p) => p.trim().length > 0);
 
   return (
     <div className="min-h-screen bg-white">
@@ -97,50 +94,7 @@ export default async function AdminPreviewPage({ params }: Props) {
             </div>
           </header>
 
-          <div className="prose prose-slate max-w-none">
-            {paragraphs.map((paragraph, i) => {
-              if (paragraph.startsWith("## ")) {
-                return (
-                  <h2 key={i} className="mt-8 mb-3 text-xl font-bold text-slate-900">
-                    {paragraph.replace(/^## /, "")}
-                  </h2>
-                );
-              }
-              if (paragraph.startsWith("### ")) {
-                return (
-                  <h3 key={i} className="mt-6 mb-2 text-lg font-semibold text-slate-900">
-                    {paragraph.replace(/^### /, "")}
-                  </h3>
-                );
-              }
-              if (paragraph.startsWith("# ")) {
-                return (
-                  <h2 key={i} className="mt-8 mb-3 text-xl font-bold text-slate-900">
-                    {paragraph.replace(/^# /, "")}
-                  </h2>
-                );
-              }
-              if (paragraph.startsWith("- ") || paragraph.startsWith("* ")) {
-                const items = paragraph
-                  .split("\n")
-                  .filter((l) => l.startsWith("- ") || l.startsWith("* "));
-                return (
-                  <ul key={i} className="my-3 list-disc pl-6 space-y-1">
-                    {items.map((item, j) => (
-                      <li key={j} className="text-slate-700">
-                        {item.replace(/^[-*] /, "")}
-                      </li>
-                    ))}
-                  </ul>
-                );
-              }
-              return (
-                <p key={i} className="my-3 text-slate-700 leading-relaxed">
-                  {paragraph}
-                </p>
-              );
-            })}
-          </div>
+          <ArticleMarkdown content={article.content} />
         </article>
       </main>
     </div>
