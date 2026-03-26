@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { config } from "@/lib/config";
 import { getAllArticlesAdmin } from "@/lib/queries/articles";
 import { loginAdmin, logoutAdmin, publishArticle, unpublishArticle, regenerateArticle } from "./actions";
+import { RegenerateButton } from "@/components/admin/RegenerateButton";
 
 export const metadata: Metadata = { title: "Admin — Finazo", robots: "noindex" };
 
@@ -94,6 +95,12 @@ export default async function AdminPage({
           </form>
         </div>
 
+        {error && (
+          <div className="mb-6 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+            Error al regenerar: {decodeURIComponent(error)}
+          </div>
+        )}
+
         {articles.length === 0 ? (
           <div className="bg-white rounded-xl border p-12 text-center">
             <p className="text-slate-500">No hay artículos todavía. El content-strategist genera 3 artículos por día.</p>
@@ -140,12 +147,7 @@ export default async function AdminPage({
                   </Link>
 
                   <form action={regenerateArticle.bind(null, article.slug)}>
-                    <button
-                      type="submit"
-                      className="text-xs border border-slate-200 rounded-lg px-3 py-1.5 hover:bg-slate-50 text-slate-600"
-                    >
-                      Regenerar
-                    </button>
+                    <RegenerateButton />
                   </form>
 
                   {article.status === "draft" && (
