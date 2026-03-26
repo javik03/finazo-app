@@ -76,6 +76,7 @@ export async function updateArticleContent(
     metaDescription: string | null;
     keywords: string[] | null;
     wordCount: number;
+    featuredImageUrl?: string | null;
   },
 ): Promise<void> {
   await db
@@ -86,6 +87,7 @@ export async function updateArticleContent(
       metaDescription: data.metaDescription,
       keywords: data.keywords ?? undefined,
       wordCount: data.wordCount,
+      ...(data.featuredImageUrl !== undefined && { featuredImageUrl: data.featuredImageUrl }),
       updatedAt: new Date(),
     })
     .where(eq(articles.slug, slug));

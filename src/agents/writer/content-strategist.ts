@@ -13,6 +13,7 @@ import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { inArray } from "drizzle-orm";
 import { updateArticleContent } from "@/lib/queries/articles";
+import { fetchFeaturedImage } from "@/lib/pexels";
 import pino from "pino";
 import { config } from "@/lib/config";
 
@@ -28,6 +29,7 @@ type ContentTopic = {
   slug: string;
   category: "remesas" | "prestamos" | "seguros" | "educacion" | "tarjetas";
   country: string;
+  imageQuery: string;
   prompt: string;
 };
 
@@ -68,6 +70,7 @@ const CONTENT_CALENDAR: ContentTopic[] = [
     slug: "como-enviar-dinero-a-el-salvador-guia-2026",
     category: "remesas",
     country: "SV",
+    imageQuery: "money transfer family latin america",
     prompt: `Eres un experto SEO en finanzas personales para Centroamérica. Escribe una guía completa en español optimizada para la búsqueda "cómo enviar dinero a El Salvador".
 
 Keyword principal: "enviar dinero a El Salvador"
@@ -90,6 +93,7 @@ Estructura requerida:
     slug: "wise-vs-remitly-comparacion-centroamerica-2026",
     category: "remesas",
     country: "SV",
+    imageQuery: "mobile banking app smartphone payment",
     prompt: `Eres un experto SEO en finanzas personales para Centroamérica. Escribe un artículo comparativo optimizado para "Wise vs Remitly remesas".
 
 Keyword principal: "Wise vs Remitly remesas Centroamérica"
@@ -111,6 +115,7 @@ Estructura requerida:
     slug: "mejores-remesadoras-guatemala-2026",
     category: "remesas",
     country: "GT",
+    imageQuery: "guatemala city family remittance",
     prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe una guía optimizada para "mejores remesadoras Guatemala".
 
 Keyword principal: "mejores remesadoras Guatemala 2026"
@@ -133,6 +138,7 @@ Estructura requerida:
     slug: "remesas-honduras-como-recibir-dinero-2026",
     category: "remesas",
     country: "HN",
+    imageQuery: "honduras family receiving money",
     prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe una guía optimizada para "cómo recibir remesas Honduras".
 
 Keyword principal: "recibir remesas Honduras 2026"
@@ -157,6 +163,7 @@ Estructura requerida:
     slug: "como-comparar-prestamos-personales-el-salvador-2026",
     category: "prestamos",
     country: "SV",
+    imageQuery: "bank loan document signing finance",
     prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "comparar préstamos personales El Salvador".
 
 Keyword principal: "préstamos personales El Salvador 2026"
@@ -180,6 +187,7 @@ Estructura requerida:
     slug: "prestamo-personal-vs-hipotecario-cual-conviene-2026",
     category: "prestamos",
     country: "SV",
+    imageQuery: "house mortgage loan keys real estate",
     prompt: `Eres un experto SEO en finanzas de Centroamérica. Escribe un artículo comparativo optimizado para "préstamo personal vs hipotecario".
 
 Keyword principal: "préstamo personal vs hipotecario Centroamérica"
@@ -204,6 +212,7 @@ Estructura requerida:
     slug: "mejores-bancos-prestamos-guatemala-sib-2026",
     category: "prestamos",
     country: "GT",
+    imageQuery: "bank guatemala finance personal loan",
     prompt: `Eres un experto SEO en finanzas personales guatemaltecas. Escribe una guía optimizada para "mejores bancos préstamos Guatemala".
 
 Keyword principal: "mejores bancos préstamos Guatemala 2026"
@@ -225,6 +234,7 @@ Estructura requerida:
     slug: "prestamos-pyme-centroamerica-guia-2026",
     category: "prestamos",
     country: "SV",
+    imageQuery: "small business entrepreneur latin america",
     prompt: `Eres un experto SEO en finanzas empresariales para Centroamérica. Escribe una guía optimizada para "préstamos PYME Centroamérica".
 
 Keyword principal: "préstamos PYME Centroamérica 2026"
@@ -249,6 +259,7 @@ Estructura requerida:
     slug: "buro-credito-el-salvador-como-funciona-2026",
     category: "educacion",
     country: "SV",
+    imageQuery: "credit score report finance document",
     prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "buró de crédito El Salvador".
 
 Keyword principal: "buró de crédito El Salvador 2026"
@@ -270,6 +281,7 @@ Estructura requerida:
     slug: "tasa-de-interes-efectiva-anual-que-es-centroamerica",
     category: "educacion",
     country: "SV",
+    imageQuery: "interest rate percentage finance calculator",
     prompt: `Eres un experto SEO en finanzas personales de Centroamérica. Escribe una guía educativa optimizada para "tasa de interés efectiva anual".
 
 Keyword principal: "tasa de interés efectiva anual Centroamérica"
@@ -294,6 +306,7 @@ Estructura requerida:
     slug: "tarjetas-credito-el-salvador-guia-2026",
     category: "tarjetas",
     country: "SV",
+    imageQuery: "credit card payment wallet finance",
     prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "tarjetas de crédito El Salvador".
 
 Keyword principal: "tarjetas de crédito El Salvador 2026"
@@ -316,6 +329,7 @@ Estructura requerida:
     slug: "como-usar-tarjeta-credito-sin-endeudarse-centroamerica",
     category: "tarjetas",
     country: "SV",
+    imageQuery: "credit card debt free financial planning",
     prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía práctica optimizada para "cómo usar tarjeta de crédito sin endeudarse".
 
 Keyword principal: "usar tarjeta de crédito sin endeudarse Centroamérica"
@@ -344,6 +358,7 @@ Estructura requerida:
     slug: "seguro-de-vida-el-salvador-guia-2026",
     category: "seguros",
     country: "SV",
+    imageQuery: "life insurance family protection umbrella",
     prompt: `Eres un experto SEO en seguros para Centroamérica. Escribe una guía optimizada para "seguro de vida El Salvador".
 
 Keyword principal: "seguro de vida El Salvador 2026"
@@ -369,6 +384,7 @@ Estructura requerida:
     slug: "seguro-medico-el-salvador-guia-2026",
     category: "seguros",
     country: "SV",
+    imageQuery: "health insurance medical doctor hospital",
     prompt: `Eres un experto SEO en seguros de salud para Centroamérica. Escribe una guía optimizada para "seguro médico El Salvador".
 
 Keyword principal: "seguro médico El Salvador 2026"
@@ -394,6 +410,7 @@ Estructura requerida:
     slug: "seguro-de-auto-el-salvador-guia-2026",
     category: "seguros",
     country: "SV",
+    imageQuery: "car insurance vehicle road safety",
     prompt: `Eres un experto SEO en seguros de vehículos para El Salvador. Escribe una guía optimizada para "seguro de auto El Salvador".
 
 Keyword principal: "seguro de auto El Salvador 2026"
@@ -418,6 +435,7 @@ Estructura requerida:
     slug: "seguros-de-hogar-el-salvador-2026",
     category: "seguros",
     country: "SV",
+    imageQuery: "home insurance house protection safety",
     prompt: `Eres un experto SEO en seguros de bienes para El Salvador. Escribe una guía optimizada para "seguro de hogar El Salvador".
 
 Keyword principal: "seguro de hogar El Salvador 2026"
@@ -444,6 +462,7 @@ Estructura requerida:
     slug: "remesas-nicaragua-como-enviar-recibir-2026",
     category: "remesas",
     country: "NI",
+    imageQuery: "nicaragua family money transfer remittance",
     prompt: `Eres un experto SEO en finanzas personales para Nicaragua. Escribe una guía optimizada para "remesas Nicaragua".
 
 Keyword principal: "remesas Nicaragua 2026"
@@ -468,6 +487,7 @@ Estructura requerida:
     slug: "como-ahorrar-dinero-en-el-salvador-2026",
     category: "educacion",
     country: "SV",
+    imageQuery: "savings piggy bank money jar coins",
     prompt: `Eres un experto SEO en finanzas personales para El Salvador. Escribe una guía práctica optimizada para "cómo ahorrar dinero en El Salvador".
 
 Keyword principal: "cómo ahorrar dinero en El Salvador 2026"
@@ -492,6 +512,7 @@ Estructura requerida:
     slug: "inversiones-para-principiantes-centroamerica-2026",
     category: "educacion",
     country: "SV",
+    imageQuery: "investment growth stock market chart finance",
     prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía optimizada para "inversiones para principiantes Centroamérica".
 
 Keyword principal: "inversiones para principiantes Centroamérica 2026"
@@ -556,6 +577,8 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
   const title = titleMatch ? titleMatch[1].trim() : topic.slug.replace(/-/g, " ");
   const wordCount = articleContent.split(/\s+/).length;
 
+  const featuredImageUrl = await fetchFeaturedImage(topic.imageQuery);
+
   await db
     .insert(articles)
     .values({
@@ -567,13 +590,14 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
       country: topic.country,
       keywords: keywords ?? undefined,
       wordCount,
+      featuredImageUrl,
       status: "published",
       publishedAt: new Date(),
       generatedBy: "claude",
     })
     .onConflictDoNothing(); // never overwrite existing articles
 
-  logger.info({ slug: topic.slug, wordCount, category: topic.category, keywordsCount: keywords?.length ?? 0 }, "Evergreen article published");
+  logger.info({ slug: topic.slug, wordCount, category: topic.category, keywordsCount: keywords?.length ?? 0, hasImage: !!featuredImageUrl }, "Evergreen article published");
 }
 
 // ---------------------------------------------------------------------------
@@ -619,9 +643,11 @@ export async function regenerateEvergreenArticle(slug: string): Promise<void> {
   const title = titleMatch ? titleMatch[1].trim() : topic.slug.replace(/-/g, " ");
   const wordCount = articleContent.split(/\s+/).length;
 
-  await updateArticleContent(slug, { title, content: articleContent, metaDescription, keywords, wordCount });
+  const featuredImageUrl = await fetchFeaturedImage(topic.imageQuery);
 
-  logger.info({ slug, wordCount }, "Evergreen article regenerated");
+  await updateArticleContent(slug, { title, content: articleContent, metaDescription, keywords, wordCount, featuredImageUrl });
+
+  logger.info({ slug, wordCount, hasImage: !!featuredImageUrl }, "Evergreen article regenerated");
 }
 
 // ---------------------------------------------------------------------------

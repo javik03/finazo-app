@@ -108,6 +108,7 @@ export const articles = pgTable("articles", {
   country: text("country").default("SV"),
   keywords: text("keywords").array(),
   status: text("status").default("draft"), // draft | published | archived
+  featuredImageUrl: text("featured_image_url"),
   wordCount: integer("word_count"),
   generatedBy: text("generated_by").default("claude"), // claude | human
   publishedAt: timestamp("published_at", { withTimezone: true }),
