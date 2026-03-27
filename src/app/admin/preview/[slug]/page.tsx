@@ -3,6 +3,8 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { config } from "@/lib/config";
 import { getArticleBySlugAdmin } from "@/lib/queries/articles";
+
+export const dynamic = "force-dynamic";
 import { publishArticle, unpublishArticle } from "../../actions";
 import { ArticleMarkdown } from "@/components/articles/ArticleMarkdown";
 

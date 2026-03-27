@@ -6,6 +6,8 @@ import { FaqAccordion } from "@/components/home/FaqAccordion";
 import { ArticlesScroll } from "@/components/home/ArticlesScroll";
 import { getPublishedArticles } from "@/lib/queries/articles";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Finazo — Compara remesas, préstamos y seguros en Centroamérica",
   description:

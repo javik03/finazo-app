@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { config } from "@/lib/config";
 import { getAllArticlesAdmin } from "@/lib/queries/articles";
+
+export const dynamic = "force-dynamic";
 import { loginAdmin, logoutAdmin, publishArticle, unpublishArticle, regenerateArticle } from "./actions";
 import { RegenerateButton } from "@/components/admin/RegenerateButton";
 

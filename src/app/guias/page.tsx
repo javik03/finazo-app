@@ -4,6 +4,8 @@ import { getPublishedArticles } from "@/lib/queries/articles";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Guías financieras para Centroamérica — Finazo",
   description:
