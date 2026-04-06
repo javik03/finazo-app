@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { getArticleBySlug } from "@/lib/queries/articles";
 
 export const runtime = "edge";
 export const alt = "Finazo — Guía financiera";
@@ -16,6 +15,7 @@ export default async function ArticleOGImage({ params }: Props) {
   let description = "Finazo — Compara remesas, préstamos y seguros";
 
   try {
+    const { getArticleBySlug } = await import("@/lib/queries/articles");
     const article = await getArticleBySlug(slug);
     if (article) {
       title = article.title;

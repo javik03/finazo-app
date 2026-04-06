@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
-import { migrationClient } from '@/lib/db';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET(): Promise<NextResponse> {
   try {
+    const { migrationClient } = await import('@/lib/db');
     // Check database connectivity with a simple query
     const result = await migrationClient`SELECT 1 as ok`;
 

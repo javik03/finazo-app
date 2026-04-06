@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest): NextResponse {
+export function middleware(_request: NextRequest): NextResponse {
   const response = NextResponse.next();
 
   // Prevent MIME-type sniffing

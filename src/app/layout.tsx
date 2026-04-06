@@ -85,6 +85,28 @@ const websiteSchema = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Finazo",
+  legalName: "MAQ UNO DOS TRES S.A. de C.V.",
+  url: "https://finazo.lat",
+  logo: "https://finazo.lat/icon.svg",
+  foundingLocation: {
+    "@type": "Country",
+    name: "El Salvador",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "legal@finazo.lat",
+    contactType: "customer support",
+    availableLanguage: "Spanish",
+  },
+  sameAs: [],
+  description:
+    "Comparador financiero independiente para Centroamérica. Comparamos remesas, préstamos y seguros en El Salvador, Guatemala, Honduras y México.",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -96,9 +118,22 @@ export default function RootLayout({
       className={`${lora.variable} ${dmSans.variable} h-full antialiased`}
     >
       <head>
+        {/* Impact.com site verification */}
+        <meta name="impact-site-verification" content="76fde1c7-852b-427f-b3fd-1fef795e1cf4" />
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>

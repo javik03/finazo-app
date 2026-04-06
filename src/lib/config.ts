@@ -11,12 +11,26 @@ const envSchema = z.object({
   SECURE_COOKIES: z.enum(["true", "false"]).default("false"),
 });
 
+// During `next build` real env vars are absent — skip validation so the
+// static renderer can import this module without crashing.  All pages that
+// actually USE config values are force-dynamic and never rendered at build time.
+const isBuildTime = process.env.NEXT_PHASE === "phase-production-build";
+
 const parsed = envSchema.safeParse(process.env);
 
-if (!parsed.success) {
+if (!parsed.success && !isBuildTime) {
   // Do not log field details — avoids exposing expected secret names in logs
   console.error("Invalid environment variables — check .env against .env.example");
   process.exit(1);
 }
 
-export const config = parsed.data;
+// At build time return a stub so the module is importable without crashing.
+// Real routes that read config are force-dynamic and never run at build time.
+export const config = parsed.success
+  ? parsed.data
+  : ({
+      DATABASE_URL: "",
+      ANTHROPIC_API_KEY: "",
+      NODE_ENV: "production",
+      SECURE_COOKIES: "false",
+    } as z.infer<typeof envSchema>);
