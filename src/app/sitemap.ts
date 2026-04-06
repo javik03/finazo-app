@@ -1,18 +1,29 @@
 import type { MetadataRoute } from "next";
 import { CORRIDORS } from "@/lib/constants/corridors";
-import { getAllLoanProviderSlugs } from "@/lib/queries/loans";
-import { getAllArticleSlugs } from "@/lib/queries/articles";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://finazo.lat";
   const now = new Date();
 
-  const [loanSlugs, articleSlugs] = await Promise.all([
-    getAllLoanProviderSlugs().catch(() => [] as { slug: string }[]),
-    getAllArticleSlugs().catch(() => [] as { slug: string }[]),
-  ]);
+  // Lazy-import DB query modules so the DB connection is never established
+  // at build time (DATABASE_URL is not available in the build environment).
+  let loanSlugs: { slug: string }[] = [];
+  let articleSlugs: { slug: string }[] = [];
+  try {
+    const [{ getAllLoanProviderSlugs }, { getAllArticleSlugs }] = await Promise.all([
+      import("@/lib/queries/loans"),
+      import("@/lib/queries/articles"),
+    ]);
+    [loanSlugs, articleSlugs] = await Promise.all([
+      getAllLoanProviderSlugs().catch(() => [] as { slug: string }[]),
+      getAllArticleSlugs().catch(() => [] as { slug: string }[]),
+    ]);
+  } catch {
+    // DB not available at build time — return static URLs only
+  }
 
   const staticUrls: MetadataRoute.Sitemap = [
     {

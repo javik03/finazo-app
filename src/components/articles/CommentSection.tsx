@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 type Comment = {
   id: string;
@@ -17,21 +17,12 @@ export function CommentSection({ articleSlug }: { articleSlug: string }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const fetchComments = useCallback(async () => {
-    try {
-      const res = await fetch(`/api/comments?articleSlug=${encodeURIComponent(articleSlug)}`);
-      if (res.ok) {
-        const data = await res.json() as { comments: Comment[] };
-        setComments(data.comments);
-      }
-    } catch {
-      // silently ignore — comments are non-critical
-    }
-  }, [articleSlug]);
-
   useEffect(() => {
-    fetchComments();
-  }, [fetchComments]);
+    fetch(`/api/comments?articleSlug=${encodeURIComponent(articleSlug)}`)
+      .then((res) => (res.ok ? (res.json() as Promise<{ comments: Comment[] }>) : null))
+      .then((data) => { if (data) setComments(data.comments); })
+      .catch(() => { /* silently ignore — comments are non-critical */ });
+  }, [articleSlug]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
