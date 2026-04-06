@@ -119,7 +119,7 @@ export default function RootLayout({
     >
       <head>
         {/* Impact.com site verification */}
-        <meta name="impact-site-verification" value="76fde1c7-852b-427f-b3fd-1fef795e1cf4" />
+        <meta name="impact-site-verification" content="76fde1c7-852b-427f-b3fd-1fef795e1cf4" />
         {/* Google Analytics 4 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0" />
         <script
