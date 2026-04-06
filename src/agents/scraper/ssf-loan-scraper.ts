@@ -119,31 +119,50 @@ export async function runSSFScraper(): Promise<void> {
       .limit(1);
 
     const prev = existing[0];
+    const prevMin = prev ? parseFloat(prev.rateMin ?? "0") : 0;
+    const changed = prev && Math.abs(rate.rateMin - prevMin) > 0.01;
 
-    const [inserted] = await db
-      .insert(loanProducts)
-      .values({
-        providerId: provider.id,
-        productName: `Préstamo ${rate.loanType} - ${rate.bankName}`,
-        loanType: rate.loanType,
-        rateMin: rate.rateMin.toString(),
-        rateMax: rate.rateMax.toString(),
-        ssfRateSource: true,
-      })
-      .returning();
-
+    let inserted;
     if (prev) {
-      const prevMin = parseFloat(prev.rateMin ?? "0");
-      const changed = Math.abs(rate.rateMin - prevMin) > 0.01;
-      if (changed) {
-        await db.insert(rateChangeEvents).values({
-          entityType: "loan_product",
-          entityId: inserted.id,
-          oldValue: { rateMin: prevMin },
-          newValue: { rateMin: rate.rateMin },
-        });
-        logger.info({ bank: rate.bankName, old: prevMin, new: rate.rateMin }, "Rate change logged");
-      }
+      // Update existing product
+      const [updated] = await db
+        .update(loanProducts)
+        .set({
+          productName: `Préstamo ${rate.loanType} - ${rate.bankName}`,
+          loanType: rate.loanType,
+          rateMin: rate.rateMin.toString(),
+          rateMax: rate.rateMax.toString(),
+          ssfRateSource: true,
+          scrapedAt: new Date(),
+        })
+        .where(eq(loanProducts.id, prev.id))
+        .returning();
+      inserted = updated;
+    } else {
+      // Insert new product
+      const [newProduct] = await db
+        .insert(loanProducts)
+        .values({
+          providerId: provider.id,
+          productName: `Préstamo ${rate.loanType} - ${rate.bankName}`,
+          loanType: rate.loanType,
+          rateMin: rate.rateMin.toString(),
+          rateMax: rate.rateMax.toString(),
+          ssfRateSource: true,
+          scrapedAt: new Date(),
+        })
+        .returning();
+      inserted = newProduct;
+    }
+
+    if (changed && prev && inserted) {
+      await db.insert(rateChangeEvents).values({
+        entityType: "loan_product",
+        entityId: inserted.id,
+        oldValue: { rateMin: prevMin },
+        newValue: { rateMin: rate.rateMin },
+      });
+      logger.info({ bank: rate.bankName, old: prevMin, new: rate.rateMin }, "Rate change logged");
     }
   }
 
