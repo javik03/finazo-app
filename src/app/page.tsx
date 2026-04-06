@@ -9,9 +9,9 @@ import { getPublishedArticles } from "@/lib/queries/articles";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Finazo — Compara remesas, préstamos y seguros en Centroamérica",
+  title: "Finazo — Compara remesas, préstamos y seguros en Centroamérica y México",
   description:
-    "Encuentra las mejores tasas de remesas, préstamos personales y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente, gratis.",
+    "Encuentra las mejores tasas de remesas, préstamos personales y seguros en El Salvador, Guatemala, Honduras y México. Datos actualizados diariamente, gratis.",
   alternates: { canonical: "https://finazo.lat" },
 };
 
@@ -143,6 +143,12 @@ const CORRIDORS = [
     slug: "eeuu-honduras",
   },
   {
+    code: "US→MX",
+    label: "EE.UU. → México",
+    desc: "El corredor más grande del mundo. Más de 20 millones de mexicanos en EE.UU.",
+    slug: "eeuu-mexico",
+  },
+  {
     code: "ES→SV",
     label: "España → El Salvador",
     desc: "Euros a dólares al tipo de cambio real",
@@ -153,7 +159,7 @@ const CORRIDORS = [
 const METRICS = [
   { value: "5+", label: "servicios de remesas" },
   { value: "8", label: "bancos SSF" },
-  { value: "4", label: "corredores activos" },
+  { value: "5", label: "corredores activos" },
   { value: "6h", label: "actualización" },
 ];
 
@@ -167,7 +173,7 @@ const orgSchema = {
   logo: "https://finazo.lat/opengraph-image",
   description:
     "Comparador financiero independiente para Centroamérica — remesas, préstamos y seguros.",
-  areaServed: ["SV", "GT", "HN"],
+  areaServed: ["SV", "GT", "HN", "MX"],
   knowsAbout: ["remesas", "préstamos personales", "seguros", "finanzas personales"],
 };
 
@@ -262,8 +268,8 @@ export default async function HomePage() {
                 className="mx-auto mb-8 max-w-lg text-lg"
                 style={{ color: "#555" }}
               >
-                Compara remesas, préstamos y seguros en El Salvador, Guatemala y
-                Honduras. Datos reales, actualizados automáticamente, gratis.
+                Compara remesas, préstamos y seguros en El Salvador, Guatemala,
+                Honduras y México. Datos reales, actualizados automáticamente, gratis.
               </p>
 
               {/* CTAs */}

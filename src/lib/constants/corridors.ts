@@ -41,6 +41,16 @@ export const CORRIDORS: Corridor[] = [
     toFlag: "🇭🇳",
   },
   {
+    slug: "eeuu-mexico",
+    from: "US",
+    to: "MX",
+    label: "EE.UU. → México",
+    fromLabel: "Estados Unidos",
+    toLabel: "México",
+    fromFlag: "🇺🇸",
+    toFlag: "🇲🇽",
+  },
+  {
     slug: "espana-el-salvador",
     from: "ES",
     to: "SV",

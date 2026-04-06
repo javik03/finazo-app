@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const FAQS = [
+const DEFAULT_FAQS = [
   {
     q: "¿Cómo se actualizan los datos de remesas?",
     a: "Nuestros sistemas consultan automáticamente las tarifas de Wise, Remitly, Western Union y MoneyGram cada 6 horas. Los datos reflejan el costo real de enviar $200 USD en el corredor seleccionado.",
@@ -17,12 +17,20 @@ const FAQS = [
   },
 ];
 
-export function FaqAccordion() {
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export function FaqAccordion({ items }: { items?: FaqItem[] }) {
+  const faqs = items
+    ? items.map((item) => ({ q: item.question, a: item.answer }))
+    : DEFAULT_FAQS;
   const [open, setOpen] = useState<number | null>(null);
 
   return (
     <div>
-      {FAQS.map((faq, i) => (
+      {faqs.map((faq, i) => (
         <div
           key={i}
           style={{ borderTop: "1px solid #e5e7eb" }}

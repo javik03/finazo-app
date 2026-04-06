@@ -7,7 +7,7 @@ export function Footer() {
         className="mx-auto px-6 py-14"
         style={{ maxWidth: "var(--W)" }}
       >
-        <div className="grid gap-10 sm:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
             <Link
@@ -40,7 +40,7 @@ export function Footer() {
               {[
                 { href: "/remesas", label: "Remesas" },
                 { href: "/prestamos", label: "Préstamos" },
-                { href: "/tarjetas", label: "Tarjetas" },
+                { href: "/seguros", label: "Seguros" },
                 { href: "/guias", label: "Guías" },
               ].map((link) => (
                 <li key={link.href}>
@@ -56,19 +56,20 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Países */}
           <div>
             <h4
               className="mb-4 text-xs font-semibold uppercase tracking-wider"
               style={{ color: "#666" }}
             >
-              Legal
+              Países
             </h4>
             <ul className="space-y-2.5">
               {[
-                { href: "/privacidad", label: "Privacidad" },
-                { href: "/terminos", label: "Términos" },
-                { href: "/metodologia", label: "Metodología" },
+                { href: "/el-salvador", label: "El Salvador" },
+                { href: "/guatemala", label: "Guatemala" },
+                { href: "/honduras", label: "Honduras" },
+                { href: "/mexico", label: "México" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

@@ -27,7 +27,7 @@ const anthropic = new Anthropic({ apiKey: config.ANTHROPIC_API_KEY });
 
 type ContentTopic = {
   slug: string;
-  category: "remesas" | "prestamos" | "seguros" | "educacion" | "tarjetas";
+  category: "remesas" | "prestamos" | "seguros" | "educacion" | "tarjetas" | "ahorro";
   country: string;
   imageQuery: string;
   prompt: string;
@@ -628,7 +628,7 @@ Estructura requerida:
   {
     slug: "remesas-mexico-como-enviar-recibir-2026",
     category: "remesas",
-    country: "SV",
+    country: "MX",
     imageQuery: "mexico city family money transfer",
     prompt: `Eres un experto SEO en finanzas personales para México y la diáspora mexicana. Escribe una guía optimizada para "enviar remesas a México".
 
@@ -2049,6 +2049,1717 @@ Estructura requerida:
 ## Preguntas frecuentes
 ## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
+
+  // ---- Guatemala — Remesas ----
+  {
+    slug: "enviar-dinero-desde-eeuu-guatemala-guia-2026",
+    category: "remesas",
+    country: "GT",
+    imageQuery: "guatemala remittance family transfer",
+    prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe una guía optimizada para "enviar dinero a Guatemala desde EE.UU.".
+
+Keyword principal: "enviar dinero a Guatemala 2026"
+Título H1: "Cómo enviar dinero a Guatemala desde EE.UU. en 2026: guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Guatemala recibe ~$20B/año en remesas)
+## Mejores servicios para enviar dinero a Guatemala
+(Remitly, Wise, Western Union, MoneyGram, Xoom — tarifas y velocidad)
+## Bancos guatemaltecos que reciben remesas
+(Banrural, Banco Industrial, G&T Continental — requisitos)
+## Quetzales vs dólares: ¿en qué moneda conviene recibir?
+## Tabla comparativa: comisiones y tipos de cambio
+## Consejos para familias receptoras
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "remitly-vs-wise-guatemala-comparacion-2026",
+    category: "remesas",
+    country: "GT",
+    imageQuery: "mobile banking app transfer comparison",
+    prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe un artículo comparativo optimizado para "Remitly vs Wise Guatemala".
+
+Keyword principal: "Remitly vs Wise Guatemala 2026"
+Título H1: "Remitly vs Wise para enviar dinero a Guatemala: ¿cuál es mejor en 2026?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla comparativa rápida: Remitly vs Wise
+(comisión, tipo de cambio, velocidad, métodos de pago, métodos de retiro)
+## Remitly para remesas a Guatemala: ventajas y limitaciones
+## Wise para remesas a Guatemala: ventajas y limitaciones
+## Caso de uso: ¿cuándo usar Remitly y cuándo Wise?
+## Alternativas: Western Union, MoneyGram para zonas rurales
+## Preguntas frecuentes
+## Conclusión + enlace a comparador Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "western-union-vs-ria-guatemala-2026",
+    category: "remesas",
+    country: "GT",
+    imageQuery: "cash pickup remittance service",
+    prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe un artículo comparativo optimizado para "Western Union vs Ria Guatemala".
+
+Keyword principal: "Western Union vs Ria Guatemala 2026"
+Título H1: "Western Union vs Ria para remesas a Guatemala: comparativa 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla comparativa: Western Union vs Ria
+(comisiones, velocidad, cobertura, disponibilidad)
+## Western Union en Guatemala: cómo funciona y costos
+## Ria Money Transfer en Guatemala: ventajas para la diáspora
+## Zonas rurales de Guatemala: disponibilidad de ambos servicios
+## Cuándo usar cada servicio
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "cuanto-cuesta-enviar-300-guatemala-2026",
+    category: "remesas",
+    country: "GT",
+    imageQuery: "money calculation financial transfer",
+    prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe un artículo educativo optimizado para "cuánto cuesta enviar dinero a Guatemala".
+
+Keyword principal: "cuánto cuesta enviar dinero a Guatemala 2026"
+Título H1: "¿Cuánto cuesta enviar $300 a Guatemala en 2026? Comparativa de servicios"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Desglose de costos: comisión + tipo de cambio
+## Tabla: costo real de enviar $300 a Guatemala
+(Wise, Remitly, Western Union, MoneyGram — monto que recibe el beneficiario)
+## Cómo varían los costos según el método de retiro
+## Cómo varían según el banco receptor
+## Consejos para minimizar costos
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "mejores-remesadoras-guatemala-ranking-2026",
+    category: "remesas",
+    country: "GT",
+    imageQuery: "remittance services ranking comparison",
+    prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe una guía optimizada para "mejores remesadoras Guatemala".
+
+Keyword principal: "mejores remesadoras Guatemala 2026"
+Título H1: "Las mejores remesadoras a Guatemala en 2026: ranking completo"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Top 5 remesadoras a Guatemala en 2026
+## Cuadro comparativo completo de todas
+(comisión, tiempo, métodos disponibles, cobertura)
+## Remesadora más rápida
+## Remesadora más barata
+## Remesadora más confiable
+## Remesadoras para zonas rurales
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Guatemala — Préstamos ----
+  {
+    slug: "prestamos-banco-industrial-guatemala-2026",
+    category: "prestamos",
+    country: "GT",
+    imageQuery: "bank loan approval personal finance",
+    prompt: `Eres un experto SEO en finanzas personales guatemaltecas. Escribe una guía optimizada para "préstamos Banco Industrial Guatemala".
+
+Keyword principal: "préstamos Banco Industrial Guatemala 2026"
+Título H1: "Préstamos Banco Industrial Guatemala 2026: tasas, requisitos y cómo aplicar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Quién es Banco Industrial? Liderazgo en Guatemala
+## Tipos de préstamos disponibles
+## Tasas de interés actuales (datos SIB)
+## Montos, plazos y requisitos
+## Tabla comparativa: Banco Industrial vs otros bancos
+## Ejemplo práctico: préstamo de Q50,000
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión + CTA a comparador Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tasa-interes-guatemala-sib-como-calcular-2026",
+    category: "prestamos",
+    country: "GT",
+    imageQuery: "interest rate calculation finance",
+    prompt: `Eres un experto SEO en educación financiera de Guatemala. Escribe una guía educativa optimizada para "tasa de interés Guatemala".
+
+Keyword principal: "tasa de interés Guatemala SIB 2026"
+Título H1: "¿Cómo calcular la tasa de interés en Guatemala? Guía SIB 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la tasa de interés? Conceptos básicos
+## Tasa nominal vs tasa efectiva anual (TEA)
+## Cómo la SIB regula las tasas en Guatemala
+## Fórmula para calcular TEA (con ejemplo numérico)
+## Tabla: tasas mínimas y máximas por banco
+## Herramientas online para calcular tasas
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-sin-historial-crediticio-guatemala-2026",
+    category: "prestamos",
+    country: "GT",
+    imageQuery: "loan approval credit history",
+    prompt: `Eres un experto SEO en finanzas personales de Guatemala. Escribe una guía optimizada para "préstamos sin historial crediticio Guatemala".
+
+Keyword principal: "préstamos sin historial crediticio Guatemala 2026"
+Título H1: "Préstamos sin historial crediticio en Guatemala 2026: opciones reales"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Existen préstamos sin historial crediticio en Guatemala?
+## Bancos que aprueban sin buró
+## Cooperativas de crédito como alternativa
+## Microfinancieras para personas sin historial
+## Tabla: requisitos y tasas de cada opción
+## Cómo mejorar tu historial crediticio
+## Errores a evitar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tarjetas-credito-guatemala-bancos-2026",
+    category: "tarjetas",
+    country: "GT",
+    imageQuery: "credit card wallet payment",
+    prompt: `Eres un experto SEO en finanzas personales de Guatemala. Escribe una guía optimizada para "tarjetas de crédito Guatemala".
+
+Keyword principal: "tarjetas de crédito Guatemala bancos 2026"
+Título H1: "Las mejores tarjetas de crédito en Guatemala 2026: comparativa de bancos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Principales bancos y sus tarjetas de crédito
+(Industrial, Banrural, G&T, BAC — tabla: tasa, cuota, beneficios)
+## Tasas de interés: qué esperar en Guatemala
+## Beneficios y programas de puntos
+## Cómo evitar caer en deuda
+## Comparativa: tarjeta de crédito vs débito
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "consolidar-deudas-guatemala-2026",
+    category: "prestamos",
+    country: "GT",
+    imageQuery: "debt consolidation financial planning",
+    prompt: `Eres un experto SEO en finanzas personales de Guatemala. Escribe una guía optimizada para "consolidar deudas Guatemala".
+
+Keyword principal: "consolidar deudas Guatemala 2026"
+Título H1: "Cómo consolidar deudas en Guatemala 2026: guía paso a paso"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la consolidación de deudas y cuándo te conviene?
+## Bancos guatemaltecos que ofrecen consolidación
+(requisitos, tasas, plazos)
+## Tabla: costo de consolidar vs pagar deudas por separado
+## Ejemplo práctico: consolidar 3 tarjetas de crédito
+## Errores a evitar en consolidación
+## Plan de acción después de consolidar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "creditos-educativos-guatemala-2026",
+    category: "prestamos",
+    country: "GT",
+    imageQuery: "education loan student university",
+    prompt: `Eres un experto SEO en educación financiera de Guatemala. Escribe una guía optimizada para "créditos educativos Guatemala".
+
+Keyword principal: "créditos educativos Guatemala 2026"
+Título H1: "Créditos educativos en Guatemala 2026: financiar tu carrera profesional"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tipos de créditos educativos disponibles
+## Bancos y instituciones que ofrecen créditos
+(requisitos, montos, plazos)
+## Fondos gubernamentales y becas
+## Tabla: opciones de financiamiento para estudios
+## Tasas de interés y costos totales
+## Impacto en tu futuro financiero
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "quetzales-vs-dolares-prestamo-guatemala-2026",
+    category: "prestamos",
+    country: "GT",
+    imageQuery: "currency exchange rate finance",
+    prompt: `Eres un experto SEO en finanzas personales de Guatemala. Escribe una guía educativa optimizada para "quetzales vs dólares préstamo".
+
+Keyword principal: "quetzales vs dólares préstamo Guatemala 2026"
+Título H1: "¿Préstamo en quetzales o dólares en Guatemala? Guía 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Ventajas de un préstamo en quetzales
+## Ventajas de un préstamo en dólares
+## Tabla comparativa: costo total en Q vs USD
+## Riesgo de tipo de cambio
+## Cómo elegir según tu situación
+## Ejemplo numérico: Q50,000 vs USD 6,400
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "pymes-financiamiento-guatemala-2026",
+    category: "prestamos",
+    country: "GT",
+    imageQuery: "small business financing entrepreneur",
+    prompt: `Eres un experto SEO en finanzas empresariales de Guatemala. Escribe una guía optimizada para "financiamiento PYME Guatemala".
+
+Keyword principal: "financiamiento PYME Guatemala 2026"
+Título H1: "Financiamiento para PYME en Guatemala 2026: opciones de crédito para empresas"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tipos de financiamiento para PYME
+(bancos, cooperativas, microfinancieras, fondos gubernamentales)
+## Bancos principales para PYME en Guatemala
+(Industrial, Banrural, G&T — requisitos y montos)
+## Fondos de capital de trabajo vs equipamiento
+## Tabla: comparativa de opciones de crédito
+## Garantías y avales requeridos
+## Pasos para solicitar
+## Errores que rechazan solicitudes
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Guatemala — Seguros ----
+  {
+    slug: "seguro-auto-guatemala-guia-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "car insurance vehicle protection",
+    prompt: `Eres un experto SEO en seguros de vehículos para Guatemala. Escribe una guía optimizada para "seguro auto Guatemala".
+
+Keyword principal: "seguro auto Guatemala 2026"
+Título H1: "Seguro de auto en Guatemala 2026: obligatorio, responsabilidad civil y todo riesgo"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Seguro obligatorio en Guatemala: qué dice la ley
+## Tipos de cobertura disponibles
+(responsabilidad civil, robo, daños propios, todo riesgo)
+## Aseguradoras principales en Guatemala
+(tabla: prima anual, cobertura)
+## ¿Cuánto cuesta un seguro de auto en Guatemala?
+## Factores que afectan el precio
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-medico-guatemala-aseguradoras-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "health insurance medical care",
+    prompt: `Eres un experto SEO en seguros de salud para Guatemala. Escribe una guía optimizada para "seguro médico Guatemala".
+
+Keyword principal: "seguro médico Guatemala aseguradoras 2026"
+Título H1: "Seguro médico en Guatemala 2026: aseguradoras y cómo elegir la mejor"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## IGSS vs seguro médico privado
+## Principales aseguradoras en Guatemala
+(tabla: prima mensual, cobertura, hospitales)
+## Tipos de cobertura: HMO vs PPO
+## Cómo elegir según tu familia
+## Costos y ejemplos reales
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-vida-guatemala-costos-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "life insurance family protection",
+    prompt: `Eres un experto SEO en seguros de vida para Guatemala. Escribe una guía optimizada para "seguro de vida Guatemala".
+
+Keyword principal: "seguro de vida Guatemala costos 2026"
+Título H1: "Seguro de vida en Guatemala 2026: tipos, costos y cómo contratar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué contratar un seguro de vida en Guatemala?
+## Tipos de seguros de vida disponibles
+## Aseguradoras principales
+## Tabla: costos por edad y cobertura
+## Cómo calcular cuánta cobertura necesitas
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "responsabilidad-civil-guatemala-obligatorio-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "liability insurance protection legal",
+    prompt: `Eres un experto SEO en seguros de responsabilidad civil para Guatemala. Escribe una guía optimizada para "responsabilidad civil Guatemala".
+
+Keyword principal: "responsabilidad civil Guatemala obligatorio 2026"
+Título H1: "Seguro de responsabilidad civil en Guatemala 2026: obligatorio y cómo funciona"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la responsabilidad civil?
+## ¿Es obligatorio en Guatemala?
+## Cómo funciona en caso de accidente
+## Tabla: prima típica y cobertura
+## Para vehículos, negocios, propiedades
+## Cómo contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-hogar-guatemala-terremotos-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "home insurance house protection earthquake",
+    prompt: `Eres un experto SEO en seguros de bienes para Guatemala. Escribe una guía optimizada para "seguro de hogar Guatemala".
+
+Keyword principal: "seguro de hogar Guatemala terremotos 2026"
+Título H1: "Seguro de hogar en Guatemala 2026: protección contra terremotos y otros riesgos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Guatemala es zona sísmica)
+## ¿Qué cubre un seguro de hogar en Guatemala?
+## Cobertura contra terremotos y otros riesgos
+## Aseguradoras principales en Guatemala
+## Tabla: tipos de pólizas y coberturas
+## Cómo calcular el valor de tu hogar
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "aseguradoras-guatemala-ranking-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "insurance companies ranking comparison",
+    prompt: `Eres un experto SEO en seguros para Guatemala. Escribe una guía optimizada para "aseguradoras Guatemala".
+
+Keyword principal: "mejores aseguradoras Guatemala 2026"
+Título H1: "Las mejores aseguradoras en Guatemala 2026: ranking y comparativa completa"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Top 5-7 aseguradoras en Guatemala
+## Tabla comparativa: productos, cobertura, precio
+## Mejor para auto
+## Mejor para vida
+## Mejor para hogar
+## Mejor servicio al cliente
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "cobertura-accidentes-transito-guatemala-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "accident insurance vehicle coverage",
+    prompt: `Eres un experto SEO en seguros de vehículos para Guatemala. Escribe una guía optimizada para "cobertura accidentes tránsito Guatemala".
+
+Keyword principal: "cobertura accidentes tránsito Guatemala 2026"
+Título H1: "Cobertura de accidentes de tránsito en Guatemala 2026: qué cubre y cómo funciona"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tipos de accidentes cubiertos
+## Qué NO cubre un seguro de auto
+## Proceso paso a paso en caso de accidente
+## Documentación necesaria
+## Cómo reclamar
+## Tabla: cobertura por tipo de póliza
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- Guatemala — Educación/Ahorro ----
+  {
+    slug: "como-ahorrar-dinero-guatemala-2026",
+    category: "ahorro",
+    country: "GT",
+    imageQuery: "savings money jar piggy bank",
+    prompt: `Eres un experto SEO en educación financiera para Guatemala. Escribe una guía práctica optimizada para "cómo ahorrar dinero Guatemala".
+
+Keyword principal: "cómo ahorrar dinero Guatemala 2026"
+Título H1: "Cómo ahorrar dinero en Guatemala 2026: plan paso a paso para tu familia"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Método del 50/30/20 adaptado a Guatemala
+(ejemplo con salarios típicos)
+## Mejores bancos para ahorrar en Guatemala
+## Cuentas de ahorro a plazo fijo
+## Fondos de emergencia: cuánto necesitas
+## Errores que destruyen ahorros
+## Aplicaciones para controlar gastos desde Guatemala
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "fondos-mutuos-guatemala-inversion-2026",
+    category: "ahorro",
+    country: "GT",
+    imageQuery: "investment fund portfolio mutual funds",
+    prompt: `Eres un experto SEO en inversiones para Guatemala. Escribe una guía optimizada para "fondos mutuos Guatemala".
+
+Keyword principal: "fondos mutuos Guatemala inversión 2026"
+Título H1: "Fondos mutuos en Guatemala 2026: cómo invertir tu dinero de forma segura"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué son los fondos mutuos?
+## Fondos disponibles en Guatemala
+## Rentabilidad esperada
+## Riesgo vs retorno
+## Tabla: fondos disponibles por banco
+## Cómo invertir: pasos y requisitos
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "cuentas-plazo-guatemala-bancos-2026",
+    category: "ahorro",
+    country: "GT",
+    imageQuery: "savings account certificate deposit",
+    prompt: `Eres un experto SEO en finanzas personales para Guatemala. Escribe una guía optimizada para "cuentas a plazo Guatemala".
+
+Keyword principal: "cuentas a plazo Guatemala bancos 2026"
+Título H1: "Cuentas a plazo fijo en Guatemala 2026: dónde obtener la mejor tasa"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es una cuenta a plazo fijo?
+## Bancos guatemaltecos y sus tasas actuales
+(tabla: banco, tasa, plazo mínimo)
+## Ventajas y desventajas
+## Cómo calcular tu ganancia
+## Comparativa: plazo fijo vs ahorro regular
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "educacion-financiera-guatemala-basico-2026",
+    category: "educacion",
+    country: "GT",
+    imageQuery: "financial education learning money",
+    prompt: `Eres un experto SEO en educación financiera para Guatemala. Escribe una guía básica optimizada para "educación financiera Guatemala".
+
+Keyword principal: "educación financiera Guatemala básico 2026"
+Título H1: "Educación financiera para principiantes en Guatemala 2026: guía básica"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## 10 conceptos financieros clave que todo guatemalteco debe conocer
+## Presupuesto personal: cómo hacerlo
+## Ingresos vs gastos: equilibrio básico
+## Deuda "buena" vs deuda "mala"
+## Emergencias financieras: cómo prepararse
+## Recursos y apps para educación financiera
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "buro-credito-guatemala-como-funciona-2026",
+    category: "educacion",
+    country: "GT",
+    imageQuery: "credit bureau credit history report",
+    prompt: `Eres un experto SEO en educación financiera para Guatemala. Escribe una guía optimizada para "buró de crédito Guatemala".
+
+Keyword principal: "buró de crédito Guatemala cómo funciona 2026"
+Título H1: "Buró de crédito en Guatemala 2026: cómo funciona y cómo mejora tu score"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el buró de crédito en Guatemala?
+## Cómo consultar tu historial gratis
+## Factores que afectan tu score crediticio
+## ¿Cuánto impacta en préstamos y tarjetas?
+## Cómo mejorar tu historial
+## Errores comunes en el buró
+## Cómo disputar información incorrecta
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Honduras — Remesas ----
+  {
+    slug: "enviar-dinero-eeuu-honduras-guia-2026",
+    category: "remesas",
+    country: "HN",
+    imageQuery: "honduras remittance family transfer",
+    prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe una guía optimizada para "enviar dinero a Honduras desde EE.UU.".
+
+Keyword principal: "enviar dinero a Honduras 2026"
+Título H1: "Cómo enviar dinero a Honduras desde EE.UU. en 2026: guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Honduras recibe ~$4.5B/año)
+## Mejores servicios para enviar dinero a Honduras
+(Remitly, Wise, Western Union, MoneyGram, Ria)
+## Bancos hondureños que reciben remesas
+(Atlántida, Ficohsa, Davivienda, BAC)
+## Lempiras vs dólares: ¿qué conviene más?
+## Tabla comparativa: tarifas y tipo de cambio
+## Consejos para familias
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "remitly-vs-western-union-honduras-2026",
+    category: "remesas",
+    country: "HN",
+    imageQuery: "mobile app vs traditional transfer",
+    prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe un artículo comparativo optimizado para "Remitly vs Western Union Honduras".
+
+Keyword principal: "Remitly vs Western Union Honduras 2026"
+Título H1: "Remitly vs Western Union para enviar dinero a Honduras: comparativa 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla comparativa rápida
+(velocidad, comisión, tipo de cambio, métodos)
+## Remitly para Honduras: ventajas y limitaciones
+## Western Union en Honduras: disponibilidad y costos
+## Cuándo usar cada servicio
+## Alternativas: Ria, MoneyGram
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "lempiras-vs-dolares-remesa-honduras-2026",
+    category: "remesas",
+    country: "HN",
+    imageQuery: "currency exchange honduras lempira",
+    prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe una guía educativa optimizada para "lempiras vs dólares remesa".
+
+Keyword principal: "lempiras vs dólares remesa Honduras 2026"
+Título H1: "¿Recibir remesas en lempiras o dólares en Honduras? Guía 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Ventajas de recibir en dólares
+## Ventajas de recibir en lempiras
+## Cómo afecta el tipo de cambio actual
+## Tabla: ejemplo real enviando $300
+## Cómo cambiar dólares a lempiras
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "banco-atlantida-recibir-remesas-honduras-2026",
+    category: "remesas",
+    country: "HN",
+    imageQuery: "bank transfer service honduras",
+    prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe una guía optimizada para "Banco Atlántida remesas Honduras".
+
+Keyword principal: "Banco Atlántida recibir remesas Honduras 2026"
+Título H1: "Cómo recibir remesas en Banco Atlántida Honduras 2026: requisitos y proceso"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué Banco Atlántida para recibir remesas?
+## Servicios de remesa disponibles
+## Requisitos y documentación
+## Costos y comisiones
+## Tiempos de transferencia
+## Pasos para configurar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "ficohsa-recibir-dinero-honduras-2026",
+    category: "remesas",
+    country: "HN",
+    imageQuery: "bank service customer receive money",
+    prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe una guía optimizada para "Ficohsa recibir dinero Honduras".
+
+Keyword principal: "Ficohsa recibir dinero Honduras 2026"
+Título H1: "Recibir dinero en Ficohsa Honduras 2026: servicios, requisitos y cómo hacerlo"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Servicios de remesa de Ficohsa
+## Ventajas de usar Ficohsa
+## Requisitos para recibir dinero
+## Comisiones y tipos de cambio
+## Sucursales y cajeros disponibles
+## Pasos para abrir una cuenta
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "mejores-remesadoras-honduras-ranking-2026",
+    category: "remesas",
+    country: "HN",
+    imageQuery: "remittance providers ranking review",
+    prompt: `Eres un experto SEO en finanzas personales para Honduras. Escribe una guía optimizada para "mejores remesadoras Honduras".
+
+Keyword principal: "mejores remesadoras Honduras ranking 2026"
+Título H1: "Las mejores remesadoras a Honduras en 2026: ranking y comparativa"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Top 6 remesadoras a Honduras
+## Cuadro comparativo completo
+(comisión, velocidad, métodos, cobertura)
+## Más barata
+## Más rápida
+## Mejor servicio al cliente
+## Para zonas rurales
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Honduras — Préstamos ----
+  {
+    slug: "prestamos-banco-atlantida-honduras-2026",
+    category: "prestamos",
+    country: "HN",
+    imageQuery: "bank loan personal finance",
+    prompt: `Eres un experto SEO en finanzas personales hondureñas. Escribe una guía optimizada para "préstamos Banco Atlántida Honduras".
+
+Keyword principal: "préstamos Banco Atlántida Honduras 2026"
+Título H1: "Préstamos en Banco Atlántida Honduras 2026: tasas, requisitos y cómo solicitar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Liderazgo de Banco Atlántida en Honduras
+## Tipos de préstamos disponibles
+## Tasas actuales (datos CNBS)
+## Montos y plazos
+## Tabla comparativa: Atlántida vs otros bancos
+## Ejemplo: préstamo de L150,000
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tasas-interes-honduras-cnbs-2026",
+    category: "prestamos",
+    country: "HN",
+    imageQuery: "interest rate financial regulation",
+    prompt: `Eres un experto SEO en educación financiera de Honduras. Escribe una guía educativa optimizada para "tasas de interés Honduras".
+
+Keyword principal: "tasas de interés Honduras CNBS 2026"
+Título H1: "¿Cuáles son las tasas de interés en Honduras 2026? Guía CNBS"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cómo la CNBS regula las tasas en Honduras
+## Tasas actuales por banco
+(tabla: banco, tasa mín, tasa máx)
+## Tasa nominal vs efectiva anual
+## Cómo calcular el costo real
+## Mejor lugar para solicitar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "pymes-credito-honduras-cooperativas-2026",
+    category: "prestamos",
+    country: "HN",
+    imageQuery: "business financing small enterprise",
+    prompt: `Eres un experto SEO en finanzas empresariales de Honduras. Escribe una guía optimizada para "crédito PYME Honduras cooperativas".
+
+Keyword principal: "crédito PYME Honduras cooperativas 2026"
+Título H1: "Crédito para PYME en Honduras 2026: bancos, cooperativas y alternativas"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Opciones para financiar tu PYME
+(bancos vs cooperativas vs microfinancieras)
+## Bancos principales: requisitos y montos
+## Cooperativas de ahorro y crédito
+## Fondos gubernamentales
+## Tabla: comparativa de opciones
+## Garantías requeridas
+## Pasos para solicitar
+## Errores que rechazan solicitudes
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tarjetas-credito-honduras-2026",
+    category: "tarjetas",
+    country: "HN",
+    imageQuery: "credit card wallet payment",
+    prompt: `Eres un experto SEO en finanzas personales de Honduras. Escribe una guía optimizada para "tarjetas de crédito Honduras".
+
+Keyword principal: "tarjetas de crédito Honduras bancos 2026"
+Título H1: "Las mejores tarjetas de crédito en Honduras 2026: comparativa de bancos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Bancos principales y sus tarjetas
+(Atlántida, Ficohsa, Davivienda, BAC)
+## Tabla: tasa, cuota anual, beneficios
+## Tasas de interés en Honduras
+## Beneficios y programas de puntos
+## Cómo evitar deudas
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "consolidacion-deudas-honduras-2026",
+    category: "prestamos",
+    country: "HN",
+    imageQuery: "debt consolidation financial relief",
+    prompt: `Eres un experto SEO en finanzas personales de Honduras. Escribe una guía optimizada para "consolidación de deudas Honduras".
+
+Keyword principal: "consolidación de deudas Honduras 2026"
+Título H1: "Cómo consolidar deudas en Honduras 2026: guía paso a paso"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Cuándo consolidad deudas conviene?
+## Bancos que ofrecen consolidación
+(requisitos, tasas, plazos)
+## Tabla: costo antes y después
+## Ejemplo: consolidar 3 tarjetas
+## Errores a evitar
+## Plan después de consolidar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-educativos-honduras-2026",
+    category: "prestamos",
+    country: "HN",
+    imageQuery: "education loan student university",
+    prompt: `Eres un experto SEO en educación financiera de Honduras. Escribe una guía optimizada para "préstamos educativos Honduras".
+
+Keyword principal: "préstamos educativos Honduras 2026"
+Título H1: "Préstamos educativos en Honduras 2026: financiar tu carrera profesional"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tipos de préstamos para estudios
+## Bancos y fondos disponibles
+## Tasas y condiciones
+## Tabla: opciones de financiamiento
+## Fondos gubernamentales y becas
+## Impacto en tu futuro
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "credito-vivienda-honduras-2026",
+    category: "prestamos",
+    country: "HN",
+    imageQuery: "mortgage home loan real estate",
+    prompt: `Eres un experto SEO en finanzas personales de Honduras. Escribe una guía optimizada para "crédito para vivienda Honduras".
+
+Keyword principal: "crédito para vivienda Honduras 2026"
+Título H1: "Crédito para vivienda en Honduras 2026: cómo comprar o remodelar tu casa"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Opciones para financiar tu vivienda
+## Bancos principales y sus programas
+## Requisitos y documentación
+## Tasas de interés actuales
+## Tabla: montos y plazos disponibles
+## Cómo calcular tu capacidad de pago
+## Pasos para solicitar
+## Errores a evitar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamistas-abusivos-honduras-alerta-2026",
+    category: "educacion",
+    country: "HN",
+    imageQuery: "predatory lending scam alert",
+    prompt: `Eres un experto SEO en protección del consumidor de Honduras. Escribe una guía educativa optimizada para "prestamistas abusivos Honduras".
+
+Keyword principal: "prestamistas abusivos Honduras alerta 2026"
+Título H1: "Alerta: prestamistas abusivos en Honduras 2026 — cómo identificarlos y evitarlos"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Señales de alerta de prestamistas abusivos
+## Tasas por encima de lo legal
+## Tácticas de cobro ilegal
+## Diferencia: prestamista vs empresa formal
+## Qué hacer si caíste en una trampa
+## Recursos de protección al consumidor
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-mejorar-historial-crediticio-honduras-2026",
+    category: "educacion",
+    country: "HN",
+    imageQuery: "credit improvement credit score",
+    prompt: `Eres un experto SEO en educación financiera de Honduras. Escribe una guía optimizada para "mejorar historial crediticio Honduras".
+
+Keyword principal: "cómo mejorar historial crediticio Honduras 2026"
+Título H1: "Cómo mejorar tu historial crediticio en Honduras 2026: paso a paso"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Por qué importa tu historial crediticio
+## Factores que afectan tu score
+## Los 10 pasos para mejorar tu crédito
+## Tiempo: cuánto tarda en mejorar
+## Errores que dañan tu crédito
+## Cómo monitorear tu progreso
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Honduras — Seguros ----
+  {
+    slug: "seguro-auto-honduras-obligatorio-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "car insurance mandatory vehicle",
+    prompt: `Eres un experto SEO en seguros de vehículos para Honduras. Escribe una guía optimizada para "seguro auto Honduras obligatorio".
+
+Keyword principal: "seguro auto Honduras obligatorio 2026"
+Título H1: "Seguro de auto en Honduras 2026: obligatorio, responsabilidad civil y todo riesgo"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Seguro obligatorio: qué exige la ley
+## Tipos de cobertura disponibles
+## Aseguradoras en Honduras
+(tabla: prima, cobertura, servicio)
+## ¿Cuánto cuesta en Honduras?
+## Factores que afectan el precio
+## Cómo contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-medico-honduras-privado-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "health insurance medical care",
+    prompt: `Eres un experto SEO en seguros de salud para Honduras. Escribe una guía optimizada para "seguro médico Honduras privado".
+
+Keyword principal: "seguro médico Honduras privado 2026"
+Título H1: "Seguro médico privado en Honduras 2026: aseguradoras y cómo elegir"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## IHSS vs seguro médico privado
+## Principales aseguradoras
+(tabla: prima, red hospitalaria, cobertura)
+## Tipos de planes disponibles
+## Costos y ejemplos reales
+## Cómo elegir según tu familia
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-vida-honduras-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "life insurance family protection",
+    prompt: `Eres un experto SEO en seguros de vida para Honduras. Escribe una guía optimizada para "seguro de vida Honduras".
+
+Keyword principal: "seguro de vida Honduras 2026"
+Título H1: "Seguro de vida en Honduras 2026: tipos, costos y cómo contratar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Importancia del seguro de vida en Honduras
+## Tipos de seguros disponibles
+## Aseguradoras principales
+## Tabla: costo por edad y cobertura
+## Cómo calcular cobertura necesaria
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-hogar-honduras-riesgos-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "home insurance property protection",
+    prompt: `Eres un experto SEO en seguros de bienes para Honduras. Escribe una guía optimizada para "seguro de hogar Honduras".
+
+Keyword principal: "seguro de hogar Honduras riesgos 2026"
+Título H1: "Seguro de hogar en Honduras 2026: protección contra robo, incendio y otros riesgos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Qué cubre un seguro de hogar
+## Riesgos particulares en Honduras
+(huracanes, inundaciones)
+## Aseguradoras principales
+## Tabla: tipos de pólizas y cobertura
+## Cómo valuar tu propiedad
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "aseguradoras-honduras-ranking-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "insurance company comparison ranking",
+    prompt: `Eres un experto SEO en seguros para Honduras. Escribe una guía optimizada para "aseguradoras Honduras ranking".
+
+Keyword principal: "mejores aseguradoras Honduras 2026"
+Título H1: "Las mejores aseguradoras en Honduras 2026: ranking y comparativa"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Top 5-6 aseguradoras en Honduras
+## Tabla comparativa: productos, cobertura, precio
+## Mejor para auto
+## Mejor para vida
+## Mejor para hogar
+## Mejor servicio al cliente
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "siniestro-accidente-auto-honduras-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "accident claim car insurance",
+    prompt: `Eres un experto SEO en seguros de vehículos para Honduras. Escribe una guía optimizada para "siniestro accidente auto Honduras".
+
+Keyword principal: "cómo reportar siniestro accidente auto Honduras 2026"
+Título H1: "¿Cómo reportar un accidente? Guía paso a paso para Honduras 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Pasos inmediatos después de un accidente
+## Documentación que necesitas
+## Cómo contactar a tu aseguradora
+## Proceso de reclamación
+## Tiempos de respuesta
+## Qué hacer si niegan la reclamación
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- Honduras — Educación/Ahorro ----
+  {
+    slug: "ahorrar-dinero-honduras-plan-2026",
+    category: "ahorro",
+    country: "HN",
+    imageQuery: "savings plan financial goal",
+    prompt: `Eres un experto SEO en educación financiera para Honduras. Escribe una guía práctica optimizada para "cómo ahorrar dinero Honduras".
+
+Keyword principal: "cómo ahorrar dinero en Honduras 2026"
+Título H1: "Cómo ahorrar dinero en Honduras 2026: plan práctico para tu familia"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Método del 50/30/20 para Honduras
+(ejemplos con salarios locales)
+## Mejores bancos para ahorrar
+## Cuentas de ahorro a plazo
+## Fondo de emergencia: cuánto necesitas
+## Errores que sabotean ahorros
+## Apps de finanzas personales en Honduras
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "inversiones-honduras-cuentas-plazo-2026",
+    category: "ahorro",
+    country: "HN",
+    imageQuery: "investment account banking",
+    prompt: `Eres un experto SEO en educación financiera para Honduras. Escribe una guía optimizada para "inversiones Honduras cuentas plazo".
+
+Keyword principal: "inversiones Honduras cuentas plazo 2026"
+Título H1: "Cómo invertir tu dinero en Honduras 2026: cuentas a plazo, fondos y bolsa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Opciones de inversión en Honduras
+## Cuentas a plazo: tasas actuales
+## Fondos de inversión disponibles
+## Bolsa de Valores de Honduras
+## Tabla comparativa: rentabilidad vs riesgo
+## Cómo comenzar a invertir
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "educacion-financiera-honduras-basico-2026",
+    category: "educacion",
+    country: "HN",
+    imageQuery: "financial literacy education learning",
+    prompt: `Eres un experto SEO en educación financiera para Honduras. Escribe una guía educativa optimizada para "educación financiera Honduras básico".
+
+Keyword principal: "educación financiera Honduras básico 2026"
+Título H1: "Educación financiera para principiantes en Honduras 2026: conceptos clave"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## 10 conceptos fundamentales de finanzas
+## Presupuesto: cómo hacer uno
+## Ingresos vs gastos
+## Deuda buena vs deuda mala
+## Emergencias: cómo prepararse
+## Recursos y herramientas
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "buro-credito-honduras-como-funciona-2026",
+    category: "educacion",
+    country: "HN",
+    imageQuery: "credit report credit score",
+    prompt: `Eres un experto SEO en educación financiera para Honduras. Escribe una guía optimizada para "buró de crédito Honduras".
+
+Keyword principal: "buró de crédito Honduras cómo funciona 2026"
+Título H1: "Buró de crédito en Honduras 2026: cómo funciona y cómo mejorar tu score"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el buró de crédito hondureño?
+## Cómo consultar tu historial
+## Factores que afectan tu score
+## Impacto en préstamos y tarjetas
+## Cómo mejorar tu historial
+## Errores comunes en el buró
+## Cómo disputar información
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- México — Remesas ----
+  {
+    slug: "eeuu-mexico-remesas-mejores-servicios-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "mexico remittance transfer money",
+    prompt: `Eres un experto SEO en finanzas personales para México. Escribe una guía optimizada para "remesas EE.UU. México mejores servicios".
+
+Keyword principal: "remesas EE.UU. México mejores servicios 2026"
+Título H1: "Cómo enviar remesas a México 2026: los mejores servicios comparados"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; México recibe ~$60B/año)
+## Top servicios para remesas a México
+(Remitly, Wise, Xoom, Western Union, Ria)
+## Métodos de retiro en México
+(SPEI, OXXO Pay, Coppel, sucursales)
+## Tabla completa: comisiones, tipo de cambio USD/MXN
+## Cuánto llega realmente si envías $500
+## Consejos para familias mexicanas
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "wise-vs-remitly-mexico-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "app comparison money transfer",
+    prompt: `Eres un experto SEO en finanzas personales para México. Escribe un artículo comparativo optimizado para "Wise vs Remitly México".
+
+Keyword principal: "Wise vs Remitly México 2026"
+Título H1: "Wise vs Remitly para enviar dinero a México: comparativa 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla comparativa rápida: ambos servicios
+(comisión, tipo de cambio USD/MXN, velocidad, métodos)
+## Wise para remesas a México: ventajas
+## Remitly para remesas a México: ventajas
+## Casos de uso: cuándo usar cada uno
+## Alternativas: Xoom, Western Union
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "xoom-paypal-remesas-mexico-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "paypal xoom service transfer",
+    prompt: `Eres un experto SEO en finanzas personales para México. Escribe una guía optimizada para "Xoom PayPal remesas México".
+
+Keyword principal: "Xoom PayPal remesas México 2026"
+Título H1: "Xoom (PayPal) para enviar remesas a México en 2026: cómo funciona"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es Xoom?
+## Ventajas de Xoom en México
+## Comisiones y tipos de cambio
+## Métodos de retiro disponibles
+## Pasos para enviar dinero
+## Comparativa con competidores
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "oxxo-pay-spei-recibir-remesas-mexico-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "mexico oxxo convenience store payment",
+    prompt: `Eres un experto SEO en finanzas personales para México. Escribe una guía optimizada para "OXXO Pay SPEI remesas México".
+
+Keyword principal: "OXXO Pay SPEI recibir remesas México 2026"
+Título H1: "Recibir remesas en OXXO Pay y SPEI en México 2026: guía rápida"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es OXXO Pay?
+## ¿Qué es SPEI?
+## Ventajas de cada método
+## Cómo recibir dinero en OXXO
+## Cómo recibir dinero por SPEI
+## Costos y comisiones
+## Seguridad y confiabilidad
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tipo-cambio-usd-mxn-remesas-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "currency exchange rate comparison",
+    prompt: `Eres un experto SEO en finanzas personales para México. Escribe una guía educativa optimizada para "tipo de cambio USD MXN remesas".
+
+Keyword principal: "tipo de cambio USD MXN remesas México 2026"
+Título H1: "¿Cómo afecta el tipo de cambio USD/MXN a tus remesas? Guía 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el tipo de cambio?
+## Tipo interbancario vs tipo de remesa
+## Cómo el diferencial cambiario te afecta
+## Ejemplo real: enviando $500 a México
+## Cómo monitorear el tipo de cambio
+## Cuándo es mejor esperar o enviar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "coppel-dinero-mexico-recibir-remesas-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "retail payment money transfer service",
+    prompt: `Eres un experto SEO en finanzas personales para México. Escribe una guía optimizada para "Coppel Dinero remesas México".
+
+Keyword principal: "Coppel Dinero recibir remesas México 2026"
+Título H1: "Recibir dinero por Coppel Dinero en México 2026: cómo funciona y costos"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es Coppel Dinero?
+## Ventajas como método de retiro de remesas
+## Comisiones y costos
+## Sucursales disponibles
+## Pasos para recibir dinero
+## Tiempos de transferencia
+## Comparativa con otros métodos
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "limite-legal-declaracion-remesas-mexico-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "legal compliance tax documentation",
+    prompt: `Eres un experto SEO en educación financiera para México. Escribe una guía educativa optimizada para "límite legal remesas México".
+
+Keyword principal: "límite legal declaración remesas México 2026"
+Título H1: "¿Cuál es el límite legal de remesas a México? Declaración y requisitos 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Hay límite legal de remesas en México?
+## Regulaciones SAT y BANXICO
+## Obligaciones de declaración
+## Montos que requieren reportes
+## Consecuencias de no declarar
+## Cómo declara un residente en EE.UU.
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "mejores-remesadoras-mexico-ranking-2026",
+    category: "remesas",
+    country: "MX",
+    imageQuery: "remittance services ranking comparison",
+    prompt: `Eres un experto SEO en finanzas personales para México. Escribe una guía optimizada para "mejores remesadoras México ranking".
+
+Keyword principal: "mejores remesadoras a México ranking 2026"
+Título H1: "Las mejores remesadoras a México en 2026: ranking y comparativa completa"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Top 8-10 remesadoras a México
+## Tabla comparativa: comisión, velocidad, métodos
+## Más rápida
+## Más barata
+## Mejor para zonas rurales
+## Mejor servicio al cliente
+## Cobertura a nivel nacional
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- México — Préstamos ----
+  {
+    slug: "prestamos-personales-mexico-bancos-2026",
+    category: "prestamos",
+    country: "MX",
+    imageQuery: "personal loan bank finance",
+    prompt: `Eres un experto SEO en finanzas personales mexicanas. Escribe una guía optimizada para "préstamos personales México bancos".
+
+Keyword principal: "préstamos personales México bancos 2026"
+Título H1: "Préstamos personales en México 2026: bancos, tasas y cómo solicitar"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Principales bancos en México para préstamos
+(BBVA, Banamex, Banorte, HSBC, Santander)
+## Tasas de interés actuales
+(tabla: banco, tasa mín, tasa máx)
+## Montos, plazos y requisitos
+## Comparativa completa de opciones
+## Ejemplo práctico: $10,000 pesos a 24 meses
+## Pasos para solicitar
+## Errores a evitar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tasas-interes-mexico-banxico-2026",
+    category: "prestamos",
+    country: "MX",
+    imageQuery: "interest rate financial regulation",
+    prompt: `Eres un experto SEO en educación financiera de México. Escribe una guía educativa optimizada para "tasas de interés México Banxico".
+
+Keyword principal: "tasas de interés México Banxico 2026"
+Título H1: "¿Cuáles son las tasas de interés en México 2026? Guía Banxico"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tasa de Banxico y su impacto
+## Tasas por banco en México
+(tabla con datos actuales)
+## Tasa nominal vs efectiva
+## Cómo calcular el costo real
+## Dónde conseguir las mejores tasas
+## Factores que afectan tu tasa personal
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "infonavit-credito-vivienda-mexico-2026",
+    category: "prestamos",
+    country: "MX",
+    imageQuery: "mortgage home real estate mexico",
+    prompt: `Eres un experto SEO en finanzas personales mexicanas. Escribe una guía optimizada para "Infonavit crédito vivienda México".
+
+Keyword principal: "Infonavit crédito vivienda México 2026"
+Título H1: "Crédito Infonavit para vivienda en México 2026: cómo funciona y cómo acceder"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el Infonavit?
+## Requisitos para acceder
+## Montos disponibles 2026
+## Proceso de solicitud
+## Plazos y tasas
+## Alternativas a Infonavit
+(Fomped, créditos bancarios)
+## Tabla comparativa
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tarjetas-credito-mexico-bancos-2026",
+    category: "tarjetas",
+    country: "MX",
+    imageQuery: "credit card wallet payment",
+    prompt: `Eres un experto SEO en finanzas personales mexicanas. Escribe una guía optimizada para "tarjetas de crédito México bancos".
+
+Keyword principal: "tarjetas de crédito México bancos 2026"
+Título H1: "Las mejores tarjetas de crédito en México 2026: comparativa de bancos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Principales bancos y tarjetas
+(BBVA, Banamex, Banorte, HSBC, Santander)
+## Tabla: tasa, cuota anual, beneficios
+## Tasas en México (20-35% anual)
+## Programas de puntos y cashback
+## Cómo evitar endeudarse
+## Pasos para solicitar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "buro-credito-score-mexico-2026",
+    category: "educacion",
+    country: "MX",
+    imageQuery: "credit score report bureau",
+    prompt: `Eres un experto SEO en educación financiera de México. Escribe una guía educativa optimizada para "buró de crédito score México".
+
+Keyword principal: "buró de crédito score México 2026"
+Título H1: "Buró de crédito en México 2026: cómo funciona tu score y cómo mejorarlo"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Burós de crédito en México (Equifax, Experian, TransUnion)
+## ¿Cómo consultar tu score gratis?
+## Factores que mejoran tu score
+## Factores que dañan tu score
+## Tiempo para recuperación
+## Errores comunes en el buró
+## Cómo disputar información incorrecta
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "bbva-banamex-prestamos-mexico-comparacion-2026",
+    category: "prestamos",
+    country: "MX",
+    imageQuery: "bank comparison logo",
+    prompt: `Eres un experto SEO en finanzas personales mexicanas. Escribe un artículo comparativo optimizado para "BBVA Banamex préstamos México".
+
+Keyword principal: "BBVA Banamex préstamos México comparación 2026"
+Título H1: "BBVA vs Banamex para préstamos en México: ¿cuál es mejor en 2026?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla comparativa: BBVA vs Banamex
+(tasas, montos, plazos, requisitos)
+## BBVA: ventajas para préstamos
+## Banamex: ventajas para préstamos
+## Velocidad de aprobación
+## Experiencia del usuario
+## Cómo elegir entre ambos
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "creditos-pymes-mexico-nafin-2026",
+    category: "prestamos",
+    country: "MX",
+    imageQuery: "business financing small enterprise",
+    prompt: `Eres un experto SEO en finanzas empresariales mexicanas. Escribe una guía optimizada para "créditos PYME México Nafin".
+
+Keyword principal: "créditos PYME México Nafin 2026"
+Título H1: "Créditos para PYME en México 2026: Nafin, bancos y alternativas"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es Nafin?
+## Programas de crédito de Nafin para PYME
+## Bancos principales para PYME
+(BBVA, Banamex, Banorte — requisitos y montos)
+## Fondos de garantía y apoyo
+## Tabla: opciones de financiamiento
+## Garantías requeridas
+## Pasos para solicitar
+## Errores que rechazan solicitudes
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "consolidacion-deudas-mexico-2026",
+    category: "prestamos",
+    country: "MX",
+    imageQuery: "debt consolidation financial relief",
+    prompt: `Eres un experto SEO en finanzas personales mexicanas. Escribe una guía optimizada para "consolidación de deudas México".
+
+Keyword principal: "consolidación de deudas México 2026"
+Título H1: "Cómo consolidar deudas en México 2026: guía paso a paso"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Cuándo consolidar deudas conviene?
+## Bancos que ofrecen consolidación
+(tasas, plazos, requisitos)
+## Tabla: costo antes vs después
+## Ejemplo: consolidar 3 tarjetas de crédito
+## Errores a evitar en consolidación
+## Plan de acción después
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- México — Seguros ----
+  {
+    slug: "seguro-auto-mexico-obligatorio-2026",
+    category: "seguros",
+    country: "MX",
+    imageQuery: "car insurance vehicle mexico",
+    prompt: `Eres un experto SEO en seguros de vehículos para México. Escribe una guía optimizada para "seguro auto México obligatorio".
+
+Keyword principal: "seguro auto México obligatorio 2026"
+Título H1: "Seguro de auto en México 2026: obligatorio, responsabilidad civil y todo riesgo"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Seguro obligatorio en México: qué exige la ley
+## Tipos de cobertura disponibles
+## Principales aseguradoras en México
+(tabla: prima, cobertura, atención al cliente)
+## ¿Cuánto cuesta en México?
+## Factores que afectan el precio
+## Cómo ahorrar en tu seguro
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-medico-mexico-privado-2026",
+    category: "seguros",
+    country: "MX",
+    imageQuery: "health insurance medical care",
+    prompt: `Eres un experto SEO en seguros de salud para México. Escribe una guía optimizada para "seguro médico México privado".
+
+Keyword principal: "seguro médico México privado 2026"
+Título H1: "Seguro médico privado en México 2026: aseguradoras y cómo elegir"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## IMSS vs seguro médico privado
+## Principales aseguradoras en México
+(tabla: prima, cobertura, red hospitalaria)
+## Tipos de planes: HMO vs PPO
+## Costos para persona, pareja, familia
+## Cómo elegir según necesidades
+## Prepagas disponibles
+## Pasos para contratar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-vida-mexico-costos-2026",
+    category: "seguros",
+    country: "MX",
+    imageQuery: "life insurance protection family",
+    prompt: `Eres un experto SEO en seguros de vida para México. Escribe una guía optimizada para "seguro de vida México costos".
+
+Keyword principal: "seguro de vida México costos 2026"
+Título H1: "Seguro de vida en México 2026: tipos, costos y cómo contratar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Importancia del seguro de vida en México
+## Tipos: temporal, permanente, dotal
+## Principales aseguradoras
+## Tabla: costo por edad y cobertura
+## Cómo calcular cobertura necesaria
+## Pasos para solicitar
+## Errores a evitar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "aseguradoras-mexico-ranking-2026",
+    category: "seguros",
+    country: "MX",
+    imageQuery: "insurance company comparison rating",
+    prompt: `Eres un experto SEO en seguros para México. Escribe una guía optimizada para "aseguradoras México ranking".
+
+Keyword principal: "mejores aseguradoras México 2026"
+Título H1: "Las mejores aseguradoras en México 2026: ranking y comparativa"
+Extensión: 1200-1400 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Top 8-10 aseguradoras en México
+## Tabla comparativa: productos, cobertura, precio
+## Mejor para auto
+## Mejor para vida
+## Mejor para hogar
+## Mejor servicio al cliente
+## Satisfacción de usuarios
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "responsabilidad-civil-auto-mexico-2026",
+    category: "seguros",
+    country: "MX",
+    imageQuery: "liability insurance vehicle coverage",
+    prompt: `Eres un experto SEO en seguros de vehículos para México. Escribe una guía optimizada para "responsabilidad civil auto México".
+
+Keyword principal: "responsabilidad civil auto México 2026"
+Título H1: "Seguro de responsabilidad civil para auto en México 2026: obligatorio y costos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la responsabilidad civil?
+## ¿Es obligatorio en México?
+## Cómo funciona en caso de accidente
+## Cobertura mínima legal
+## Tabla: prima típica por póliza
+## Cómo contratar
+## Qué ocurre sin responsabilidad civil
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "cobertura-accidente-total-mexico-2026",
+    category: "seguros",
+    country: "MX",
+    imageQuery: "accident coverage auto insurance",
+    prompt: `Eres un experto SEO en seguros de vehículos para México. Escribe una guía optimizada para "cobertura accidente total México".
+
+Keyword principal: "cobertura accidente total México seguro auto 2026"
+Título H1: "¿Qué cubre el seguro de accidente total en México? Guía 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es cobertura de accidente total?
+## Qué SÍ cubre
+## Qué NO cubre
+## Tabla: cobertura por tipo de póliza
+## Proceso en caso de accidente
+## Documentación necesaria
+## Cómo reclamar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- México — Educación/Ahorro ----
+  {
+    slug: "como-ahorrar-dinero-mexico-2026",
+    category: "ahorro",
+    country: "MX",
+    imageQuery: "savings piggy bank money",
+    prompt: `Eres un experto SEO en educación financiera para México. Escribe una guía práctica optimizada para "cómo ahorrar dinero México".
+
+Keyword principal: "cómo ahorrar dinero en México 2026"
+Título H1: "Cómo ahorrar dinero en México 2026: plan práctico para familias"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Método del 50/30/20 para México
+(ejemplos con salarios mexicanos)
+## Mejores bancos para ahorrar en México
+## Cuentas de ahorro a plazo fijo
+## Fondos de emergencia: cuánto necesitas
+## Errores que sabotean ahorros
+## Apps y herramientas de finanzas personales
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "cuentas-inversion-mexico-bolsa-valores-2026",
+    category: "ahorro",
+    country: "MX",
+    imageQuery: "investment account stock market",
+    prompt: `Eres un experto SEO en educación financiera para México. Escribe una guía optimizada para "cuentas de inversión bolsa de valores México".
+
+Keyword principal: "cuentas inversión México bolsa de valores 2026"
+Título H1: "Cómo invertir en la bolsa de valores de México 2026: guía para principiantes"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la BMV (Bolsa Mexicana de Valores)?
+## Opciones para invertir
+(acciones, fondos indexados, ETFs)
+## Bancos y casas de bolsa en México
+## Cómo abrir una cuenta de inversión
+## Rendimiento esperado vs riesgo
+## Tabla comparativa de opciones
+## Errores del inversor principiante
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -2209,6 +3920,7 @@ function buildDynamicPrompt(
     seguros: "seguros y protección financiera",
     educacion: "educación financiera y ahorro personal",
     tarjetas: "tarjetas de crédito y débito",
+    ahorro: "ahorro y finanzas personales",
   };
 
   const countryName = countryNames[country] ?? country;
