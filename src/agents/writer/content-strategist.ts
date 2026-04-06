@@ -1344,7 +1344,892 @@ Estructura requerida:
 ## Preguntas frecuentes
 ## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
+
+  // ---- Remesas — batch 3 ----
+  {
+    slug: "worldremit-centroamerica-guia-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "worldremit mobile money transfer global",
+    prompt: `Eres un experto SEO en remesas para Centroamérica. Escribe una guía optimizada para "WorldRemit Centroamérica".
+
+Keyword principal: "WorldRemit remesas Centroamérica 2026"
+Título H1: "WorldRemit para enviar remesas a Centroamérica 2026: guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es WorldRemit y cómo funciona?
+## Cobertura de WorldRemit en Centroamérica
+(disponibilidad en El Salvador, Guatemala, Honduras, Nicaragua)
+## Tabla: WorldRemit vs Remitly vs Wise para $300 a El Salvador
+## Métodos de entrega: depósito bancario, cash pickup, billetera móvil
+## Ventajas y desventajas de WorldRemit para la región
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "ria-money-transfer-centroamerica-2026",
+    category: "remesas",
+    country: "GT",
+    imageQuery: "ria money transfer cash pickup latin america",
+    prompt: `Eres un experto SEO en remesas para Centroamérica. Escribe una guía optimizada para "Ria Money Transfer Centroamérica".
+
+Keyword principal: "Ria Money Transfer Centroamérica 2026"
+Título H1: "Ria Money Transfer para enviar dinero a Centroamérica 2026: ¿vale la pena?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Ria = subsidiaria de EuroNet, tercera remesadora del mundo)
+## Cómo funciona Ria Money Transfer
+## Cobertura de Ria en Centroamérica y puntos de retiro
+## Tabla comparativa: Ria vs Western Union vs MoneyGram para $300 a Guatemala
+## Comisiones y tipos de cambio de Ria: ¿transparentes?
+## Cuándo Ria es la mejor opción (zonas rurales sin acceso a apps)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "cuanto-cobra-western-union-enviar-dinero-el-salvador-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "western union fees commission transfer costs",
+    prompt: `Eres un experto SEO en remesas para El Salvador. Escribe una guía optimizada para "cuánto cobra Western Union El Salvador".
+
+Keyword principal: "cuánto cobra Western Union enviar dinero El Salvador 2026"
+Título H1: "¿Cuánto cobra Western Union para enviar dinero a El Salvador en 2026?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Estructura de comisiones de Western Union: comisión fija + margen de cambio
+## Tabla de comisiones actuales: $100, $200, $300, $500, $1,000 enviados a El Salvador
+## El tipo de cambio de Western Union vs el mercado real
+## Comparativa: Western Union vs Remitly vs Wise para $300
+## Métodos de pago: ¿cuál es más caro en WU?
+## Cómo ahorrar en comisiones al usar Western Union
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tigo-money-el-salvador-guia-completa-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "tigo money mobile wallet el salvador digital",
+    prompt: `Eres un experto SEO en billeteras digitales para El Salvador. Escribe una guía optimizada para "Tigo Money El Salvador".
+
+Keyword principal: "Tigo Money El Salvador 2026"
+Título H1: "Tigo Money en El Salvador 2026: guía completa para enviar, recibir y pagar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es Tigo Money y quién lo puede usar?
+## Cómo registrarse en Tigo Money en El Salvador
+## Funciones disponibles: envíos, pagos, recarga, retiro de remesas
+## Cómo recibir remesas del extranjero en Tigo Money
+## Comisiones y límites de Tigo Money en El Salvador
+## Tigo Money vs Chivo Wallet: ¿cuál conviene más?
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "enviar-remesas-costa-rica-centroamerica-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "costa rica money transfer colones family",
+    prompt: `Eres un experto SEO en remesas para Costa Rica y Centroamérica. Escribe una guía optimizada para "enviar dinero a Costa Rica".
+
+Keyword principal: "enviar dinero a Costa Rica desde Centroamérica 2026"
+Título H1: "Cómo enviar dinero a Costa Rica desde Centroamérica en 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Mejores servicios para enviar dinero a Costa Rica
+(Wise, Remitly, Western Union, Ria — disponibilidad y colones costarricenses)
+## El tipo de cambio USD/CRC: cómo no perder dinero
+## Métodos de retiro en Costa Rica: banco, SINPE Móvil, efectivo
+## Comparativa de comisiones para $200 a Costa Rica
+## Cuánto tiempo tarda cada servicio
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Préstamos — batch 3 ----
+  {
+    slug: "prestamos-rapidos-aprobacion-inmediata-el-salvador-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "fast loan approval instant credit money",
+    prompt: `Eres un experto SEO en finanzas personales de El Salvador. Escribe una guía optimizada para "préstamos rápidos El Salvador".
+
+Keyword principal: "préstamos rápidos aprobación inmediata El Salvador 2026"
+Título H1: "Préstamos rápidos con aprobación inmediata en El Salvador 2026: opciones reales"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; aclarar qué significa "aprobación inmediata" en la práctica)
+## Opciones de préstamos rápidos en El Salvador
+(1. Préstamos en línea de fintechs — procesamiento mismo día
+2. Cooperativas de crédito — menor burocracia
+3. Casas de empeño — dinero inmediato con garantía
+4. Adelanto de salario — si tu empresa lo ofrece)
+## Tabla comparativa: monto, tasa, plazo, velocidad de aprobación
+## Señales de alerta: préstamos rápidos que son trampas
+## Qué documentos aceleran tu solicitud
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-agricolas-el-salvador-sector-rural-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "agricultural loan farming rural latin america",
+    prompt: `Eres un experto SEO en finanzas rurales de El Salvador. Escribe una guía optimizada para "préstamos agrícolas El Salvador".
+
+Keyword principal: "préstamos agrícolas El Salvador 2026"
+Título H1: "Préstamos agrícolas en El Salvador 2026: opciones para el sector rural"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Instituciones que financian al sector agrícola en El Salvador
+(BFA — Banco de Fomento Agropecuario; BANDESAL; cooperativas rurales; Banco Agrícola — programa agro)
+## Tipos de crédito agrícola disponibles
+(capital de trabajo, equipamiento, infraestructura, siembra)
+## Tabla: entidad, tasa, plazo, monto máximo, garantías
+## Requisitos para un préstamo agrícola en El Salvador
+## Programas de gobierno y subsidios para agricultores
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-vivienda-el-salvador-comprar-casa-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "home loan mortgage house purchase family",
+    prompt: `Eres un experto SEO en créditos de vivienda para El Salvador. Escribe una guía optimizada para "préstamos de vivienda El Salvador".
+
+Keyword principal: "préstamos de vivienda El Salvador 2026"
+Título H1: "Préstamos de vivienda en El Salvador 2026: cómo comprar tu primera casa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Quién puede comprar casa con crédito en El Salvador?
+## Instituciones que otorgan crédito de vivienda
+(Banco Hipotecario, Banco Agrícola, Davivienda, BAC, FONAVIPO — tabla con tasas y plazos hasta 30 años)
+## El proceso paso a paso para comprar casa con crédito
+(1. Precalificación, 2. Búsqueda de inmueble, 3. Avalúo, 4. Trámite legal, 5. Escrituración)
+## FONAVIPO: el subsidio de vivienda para empleados formales
+## Cuánto necesitas de prima y cuánto te prestan
+(ejemplo: casa de $60,000 — prima mínima, cuota mensual a 20 y 25 años)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "deuda-buena-vs-deuda-mala-centroamerica-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "good debt bad debt financial concept money",
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe un artículo optimizado para "deuda buena vs deuda mala".
+
+Keyword principal: "deuda buena vs deuda mala Centroamérica 2026"
+Título H1: "Deuda buena vs deuda mala: cómo distinguirlas en Centroamérica"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es una deuda buena? (genera riqueza o ingresos a largo plazo)
+(hipoteca para casa en zona de valorización, préstamo educativo, crédito para negocio)
+## ¿Qué es una deuda mala? (financia consumo o bienes que pierden valor)
+(tarjeta de crédito al mínimo, préstamo para vacaciones, crédito para electrónica)
+## Tabla: ejemplos de deuda buena vs mala con tasa y propósito
+## Cómo convertir deuda mala en deuda buena
+## El nivel de endeudamiento saludable: regla del 36%
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-nicaragua-bancos-mejores-opciones-2026",
+    category: "prestamos",
+    country: "NI",
+    imageQuery: "nicaragua bank loan finance personal credit",
+    prompt: `Eres un experto SEO en finanzas personales de Nicaragua. Escribe una guía optimizada para "préstamos personales Nicaragua".
+
+Keyword principal: "préstamos personales Nicaragua 2026"
+Título H1: "Los mejores préstamos personales en Nicaragua 2026: guía con tasas actuales"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## El sistema financiero de Nicaragua: quién regula los préstamos (SIBOIF)
+## Los principales bancos para préstamos personales en Nicaragua
+(BAC, Banpro, Lafise, Ficohsa, Avanz — tabla: tasa, plazo, monto máximo)
+## Microfinancieras y cooperativas en Nicaragua: alternativa al banco
+## Requisitos típicos para un préstamo personal en Nicaragua
+## Ejemplo: C$50,000 a 24 meses — cuánto pagas de cuota e interés total
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Seguros — batch 3 ----
+  {
+    slug: "seguro-medico-guatemala-comparacion-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "health insurance medical guatemala family doctor",
+    prompt: `Eres un experto SEO en seguros de salud para Guatemala. Escribe una guía optimizada para "seguro médico Guatemala".
+
+Keyword principal: "seguro médico Guatemala 2026"
+Título H1: "Seguro médico en Guatemala 2026: comparativa de las mejores opciones"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué contratar seguro médico en Guatemala? (IGSS vs seguro privado)
+## Tipos de seguro médico disponibles en Guatemala
+(seguro de hospitalización, gastos médicos mayores, seguro integral)
+## Las principales aseguradoras de salud en Guatemala
+(Seguros Universales, Seguros El Roble, Mapfre, G&T Continental — tabla con coberturas y primas mensuales)
+## ¿Cuánto cuesta un seguro médico en Guatemala?
+(rangos para persona sola, pareja, familia con hijos)
+## Qué revisar antes de contratar: red de hospitales, deducible, coaseguro
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-de-auto-honduras-comparacion-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "car insurance honduras vehicle coverage",
+    prompt: `Eres un experto SEO en seguros vehiculares para Honduras. Escribe una guía optimizada para "seguro de auto Honduras".
+
+Keyword principal: "seguro de auto Honduras 2026"
+Título H1: "Seguro de auto en Honduras 2026: comparativa de aseguradoras y coberturas"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Seguro de auto obligatorio en Honduras: el seguro de responsabilidad civil
+## Tipos de cobertura de auto disponibles en Honduras
+## Las mejores aseguradoras de auto en Honduras
+(Seguros Atlántida, FICOHSA Seguros, Mapfre Honduras, Crefisa — tabla comparativa)
+## ¿Cuánto cuesta asegurar tu vehículo en Honduras?
+(ejemplo con vehículo de L 200,000 — primas para RC, pérdida parcial, cobertura amplia)
+## Cómo reclamar tu seguro de auto en Honduras
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguros-de-viaje-centroamerica-2026",
+    category: "seguros",
+    country: "SV",
+    imageQuery: "travel insurance vacation trip protection passport",
+    prompt: `Eres un experto SEO en seguros de viaje para centroamericanos. Escribe una guía optimizada para "seguros de viaje Centroamérica".
+
+Keyword principal: "seguro de viaje Centroamérica 2026"
+Título H1: "Seguro de viaje para centroamericanos 2026: todo lo que necesitas saber"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; requirimiento de seguro para visa Schengen y EE.UU.)
+## ¿Cuándo es obligatorio el seguro de viaje?
+(visa Schengen: obligatorio; visa EE.UU.: recomendado; cruceros: depende)
+## Qué cubre un seguro de viaje
+(gastos médicos en el extranjero, cancelación de vuelo, pérdida de equipaje, repatriación)
+## Las mejores opciones de seguro de viaje para centroamericanos
+(Assist Card, Iati, WorldNomads, seguros de tarjeta de crédito — tabla comparativa)
+## Cómo comprar seguro de viaje desde El Salvador o Guatemala
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "microseguros-centroamerica-para-todos-2026",
+    category: "seguros",
+    country: "SV",
+    imageQuery: "microinsurance low income protection family latin america",
+    prompt: `Eres un experto SEO en inclusión financiera para Centroamérica. Escribe una guía optimizada para "microseguros Centroamérica".
+
+Keyword principal: "microseguros Centroamérica 2026"
+Título H1: "Microseguros en Centroamérica 2026: protección financiera accesible para todos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué son los microseguros y para quién son?
+## Tipos de microseguros disponibles en Centroamérica
+(vida, salud, accidentes, agrícola — primas desde $1-5/mes)
+## Principales proveedores de microseguros en la región
+(Tigo Money seguros, cooperativas, ONG con programas de seguros, bancos con seguro desgravamen)
+## Cómo funcionan los microseguros en la práctica
+## Tabla comparativa: cobertura vs prima mensual para productos típicos
+## Limitaciones y lo que NO cubren los microseguros
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Tarjetas — batch 3 ----
+  {
+    slug: "como-cancelar-tarjeta-de-credito-el-salvador-2026",
+    category: "tarjetas",
+    country: "SV",
+    imageQuery: "cancel credit card scissors cut financial decision",
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "cancelar tarjeta de crédito El Salvador".
+
+Keyword principal: "cancelar tarjeta de crédito El Salvador 2026"
+Título H1: "Cómo cancelar una tarjeta de crédito en El Salvador 2026 sin dañar tu historial"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Cuándo conviene cancelar una tarjeta y cuándo no?
+(impacto en historial crediticio: cerrar tarjeta antigua puede bajar tu score)
+## Pasos para cancelar tu tarjeta de crédito en El Salvador
+(1. Pagar saldo al 100%, 2. Solicitar estado de cuenta cero, 3. Llamar al banco, 4. Confirmar cancelación por escrito)
+## Cómo hacerlo con cada banco principal
+(Banco Agrícola, Davivienda, BAC — canales disponibles)
+## Alternativas a cancelar: reducir el límite o inactivar
+## Cómo proteger tu historial crediticio al cancelar
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tarjetas-credito-miles-viajeros-centroamerica-2026",
+    category: "tarjetas",
+    country: "SV",
+    imageQuery: "travel credit card miles rewards airplane",
+    prompt: `Eres un experto SEO en tarjetas de crédito para viajeros de Centroamérica. Escribe una guía optimizada para "tarjetas de millas Centroamérica".
+
+Keyword principal: "tarjetas de crédito con millas Centroamérica 2026"
+Título H1: "Las mejores tarjetas de crédito con millas para viajeros centroamericanos en 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Cómo funcionan las millas y puntos en tarjetas de crédito?
+## Tarjetas con millas disponibles en El Salvador y Guatemala
+(Visa/Mastercard premium de Banco Agrícola, BAC Credomatic — tabla: puntos por dólar, valor del punto, anualidad)
+## Programas de millas de aerolíneas: Avianca LifeMiles, Copa ConnectMiles
+## ¿Vale la pena una tarjeta de millas si vuelas 1-2 veces al año?
+## Cómo maximizar las millas sin gastar de más
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "primera-tarjeta-de-credito-el-salvador-jovenes-2026",
+    category: "tarjetas",
+    country: "SV",
+    imageQuery: "first credit card young adult beginner financial",
+    prompt: `Eres un experto SEO en finanzas para jóvenes en El Salvador. Escribe una guía optimizada para "primera tarjeta de crédito El Salvador".
+
+Keyword principal: "primera tarjeta de crédito El Salvador jóvenes 2026"
+Título H1: "Tu primera tarjeta de crédito en El Salvador 2026: guía para jóvenes"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿A partir de qué edad puedes tener tarjeta de crédito en El Salvador?
+## Tarjetas para personas sin historial crediticio
+(tarjetas aseguradas, tarjetas universitarias, extensiones de tarjeta familiar)
+## Tabla: mejores primeras tarjetas en El Salvador para 2026
+(banco, límite mínimo, requisitos de ingresos, anualidad, tasa)
+## Reglas de oro para usar tu primera tarjeta sin endeudarte
+## Errores que cometen los jóvenes con su primera tarjeta
+## Cómo tu primera tarjeta construye tu historial crediticio
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- Educación financiera — batch 3 ----
+  {
+    slug: "planificacion-financiera-familiar-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "family financial planning budget goals together",
+    prompt: `Eres un experto SEO en finanzas familiares para Centroamérica. Escribe una guía optimizada para "planificación financiera familiar".
+
+Keyword principal: "planificación financiera familiar Centroamérica 2026"
+Título H1: "Planificación financiera familiar en Centroamérica 2026: guía paso a paso"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Por qué el 70% de las familias centroamericanas no planifica sus finanzas
+## Los 5 pilares de la planificación financiera familiar
+(1. Presupuesto mensual claro, 2. Fondo de emergencia, 3. Protección con seguros, 4. Eliminación de deudas malas, 5. Ahorro e inversión)
+## Cómo hablar de dinero con tu pareja sin pelear
+## Herramientas y apps para planificar en familia desde el celular
+## Plan de acción mensual para familias con ingresos entre $500-$1,500
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "intereses-compuestos-como-funcionan-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "compound interest growth money snowball investment",
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía optimizada para "interés compuesto Centroamérica".
+
+Keyword principal: "interés compuesto Centroamérica 2026"
+Título H1: "Interés compuesto en Centroamérica 2026: el secreto del crecimiento del dinero"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; cita de Einstein sobre el interés compuesto)
+## ¿Qué es el interés compuesto y cómo funciona?
+## Interés compuesto a tu favor: el ahorro que se multiplica solo
+(tabla: $100/mes invertido al 6% anual — valor a 10, 20 y 30 años)
+## Interés compuesto en tu contra: las deudas que crecen solas
+(ejemplo: deuda de tarjeta de $2,000 al 36% anual pagando solo el mínimo)
+## Regla del 72: cuánto tarda tu dinero en duplicarse
+## Dónde obtener interés compuesto desde El Salvador
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "educacion-financiera-para-jovenes-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "financial literacy youth education money young people",
+    prompt: `Eres un experto SEO en educación financiera para jóvenes de Centroamérica. Escribe una guía optimizada para "educación financiera jóvenes Centroamérica".
+
+Keyword principal: "educación financiera para jóvenes Centroamérica 2026"
+Título H1: "Educación financiera para jóvenes en Centroamérica 2026: lo que nadie te enseñó en la escuela"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; solo el 24% de jóvenes en LATAM tiene educación financiera básica)
+## Los 7 conceptos financieros que todo joven debe dominar
+(presupuesto, ahorro, interés, deuda, inversión, seguro, impuestos)
+## Tu primer trabajo: cómo manejar tu primer salario
+(regla 50/30/20 adaptada a ingresos iniciales de $400-$600)
+## Cómo empezar a ahorrar con $20/mes
+## La trampa de los créditos de consumo para jóvenes
+## Recursos gratuitos de educación financiera en español
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-calcular-cuota-prestamo-el-salvador-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "loan payment calculator finance math money",
+    prompt: `Eres un experto SEO en finanzas personales de El Salvador. Escribe una guía optimizada para "calcular cuota de préstamo El Salvador".
+
+Keyword principal: "cómo calcular cuota de préstamo El Salvador 2026"
+Título H1: "Cómo calcular la cuota de un préstamo en El Salvador 2026: fórmula y ejemplos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## La fórmula de la cuota de amortización fija (sistema francés)
+## Ejemplo paso a paso: $5,000 a 36 meses al 20% anual
+## Tabla de cuotas: distintos montos y plazos a tasas típicas en El Salvador
+(filas: $2,000/$5,000/$10,000/$20,000; columnas: 12/24/36/48 meses al 18% y 24%)
+## La diferencia entre tasa nominal y TEA: cuál usar al calcular
+## Costo total del préstamo: cuánto pagas de intereses en total
+## Herramientas online para calcular tu cuota en El Salvador
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "salario-minimo-el-salvador-alcance-presupuesto-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "minimum wage salary budget planning el salvador worker",
+    prompt: `Eres un experto SEO en finanzas personales para El Salvador. Escribe una guía optimizada para "cómo vivir con el salario mínimo El Salvador".
+
+Keyword principal: "salario mínimo El Salvador 2026 cómo alcanzar"
+Título H1: "Cómo hacer rendir el salario mínimo en El Salvador 2026: guía de presupuesto real"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; salario mínimo SV 2026 = $365.00/mes comercio)
+## Desglose del salario mínimo: neto después de descuentos
+(ISSS 3%, AFP 7.25%, ISR = neto aproximado de $320)
+## Presupuesto realista para vivir con $320 netos en El Salvador
+(tabla con categorías: alquiler o cuota, alimentación, transporte, servicios, imprevistos, ahorro)
+## Estrategias para ahorrar aunque sea $20/mes con salario mínimo
+## Ingresos extra: opciones reales para complementar tu salario en El Salvador
+## Cómo mejorar tu situación económica paso a paso
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "impuesto-sobre-la-renta-el-salvador-personas-naturales-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "income tax return filing documents finance",
+    prompt: `Eres un experto SEO en impuestos para personas naturales en El Salvador. Escribe una guía optimizada para "impuesto sobre la renta El Salvador personas naturales".
+
+Keyword principal: "impuesto sobre la renta personas naturales El Salvador 2026"
+Título H1: "Impuesto sobre la Renta en El Salvador 2026: guía para personas naturales"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Quiénes están obligados a presentar declaración de ISR en El Salvador?
+## Tabla de tasas del ISR para personas naturales 2026
+(escalas: hasta $4,064 — exento; $4,064-$9,142 — 10%; $9,142-$22,857 — 20%; más de $22,857 — 30%)
+## Deducciones permitidas para personas naturales
+(gastos médicos, educación, donaciones — límites legales)
+## Cómo presentar tu declaración de ISR ante el DGII
+## Errores comunes en la declaración del ISR
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "diferencia-entre-ahorro-e-inversion-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "saving vs investing money comparison piggy bank",
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía optimizada para "diferencia entre ahorro e inversión".
+
+Keyword principal: "diferencia entre ahorro e inversión Centroamérica 2026"
+Título H1: "Ahorro vs inversión en Centroamérica 2026: cuándo hacer cada uno"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el ahorro? (guardar dinero de forma segura y líquida)
+## ¿Qué es la inversión? (hacer trabajar el dinero con mayor rendimiento y riesgo)
+## Tabla comparativa: ahorro vs inversión
+(riesgo, liquidez, rendimiento esperado, horizonte temporal, propósito ideal)
+## Cuándo ahorrar primero (antes de invertir hay que tener fondo de emergencia)
+## Cuándo empezar a invertir (una vez cubiertos los básicos)
+## Opciones de ahorro e inversión disponibles en Centroamérica
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- Guatemala — profundización ----
+  {
+    slug: "cuentas-bancarias-guatemala-comparacion-2026",
+    category: "educacion",
+    country: "GT",
+    imageQuery: "bank account guatemala saving checking money",
+    prompt: `Eres un experto SEO en productos bancarios de Guatemala. Escribe una guía optimizada para "cuentas bancarias Guatemala".
+
+Keyword principal: "mejores cuentas bancarias Guatemala 2026"
+Título H1: "Las mejores cuentas bancarias en Guatemala 2026: comparativa completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tipos de cuentas bancarias disponibles en Guatemala
+(monetaria/corriente, de ahorro, a plazo fijo, en dólares)
+## Comparativa de los principales bancos en Guatemala
+(Industrial, Banrural, G&T Continental, Agromercantil, BAC — tabla: comisiones, saldo mínimo, tasa de ahorro, banca digital)
+## Cómo abrir una cuenta bancaria en Guatemala: requisitos y documentos
+## Banca en quetzales vs dólares: cuándo conviene cada una
+## Cuentas bancarias en Guatemala para receptores de remesas
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-abrir-negocio-en-el-salvador-financiamiento-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "small business startup entrepreneur el salvador",
+    prompt: `Eres un experto SEO en emprendimiento y financiamiento empresarial de El Salvador. Escribe una guía optimizada para "cómo abrir un negocio en El Salvador".
+
+Keyword principal: "cómo financiar un negocio en El Salvador 2026"
+Título H1: "Cómo financiar tu negocio en El Salvador 2026: opciones reales para emprendedores"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Opciones de financiamiento para emprendedores en El Salvador
+(1. Capital propio — ahorros personales
+2. Préstamos bancarios PYME — Banco Agrícola, Davivienda, BAC
+3. BANDESAL — banco de desarrollo para PYME
+4. Fondos de capital de riesgo y ángeles inversionistas
+5. Crowdfunding — plataformas disponibles en LATAM
+6. Programas de gobierno — CONAMYPE, incubadoras)
+## Tabla comparativa: fuente de financiamiento, monto, tasa, requisitos
+## Pasos para registrar tu empresa y acceder a crédito formal
+## Errores de financiamiento que quiebran negocios nuevos
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "fondos-mutuos-centroamerica-guia-principiantes-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "mutual fund investment portfolio diversification",
+    prompt: `Eres un experto SEO en inversiones para Centroamérica. Escribe una guía optimizada para "fondos mutuos Centroamérica".
+
+Keyword principal: "fondos mutuos Centroamérica 2026"
+Título H1: "Fondos mutuos en Centroamérica 2026: guía para principiantes"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es un fondo mutuo o fondo de inversión?
+## Tipos de fondos mutuos disponibles en Centroamérica
+(renta fija, renta variable, mixtos, fondos de mercado de dinero)
+## ¿Dónde se pueden comprar fondos mutuos en El Salvador y Guatemala?
+(operadoras autorizadas por BCR/Banguat — tabla con fondos disponibles y rendimientos históricos)
+## Ventajas de los fondos mutuos vs acciones individuales
+## Comisiones y costos de administración: qué vigilar
+## Cómo invertir en fondos mutuos desde $500
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "oro-como-inversion-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "gold investment bars precious metal store value",
+    prompt: `Eres un experto SEO en inversiones alternativas para Centroamérica. Escribe una guía optimizada para "invertir en oro Centroamérica".
+
+Keyword principal: "invertir en oro Centroamérica 2026"
+Título H1: "Cómo invertir en oro desde Centroamérica 2026: opciones y riesgos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué el oro como inversión? Comportamiento histórico
+## Formas de invertir en oro desde Centroamérica
+(1. Joyería física — poca liquidez, alto sobreprecio
+2. Monedas y lingotes — dónde comprarlos en El Salvador y Guatemala
+3. ETFs de oro — a través de brokers internacionales
+4. Acciones de mineras — riesgo alto)
+## Tabla: formas de invertir en oro — liquidez, costos, mínimo inversión
+## Riesgos de invertir en oro: volatilidad y almacenamiento
+## Oro vs dólares vs CDPs: ¿qué protege mejor tus ahorros?
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "pagos-electronicos-el-salvador-opciones-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "electronic payment digital wallet qr code mobile",
+    prompt: `Eres un experto SEO en pagos digitales para El Salvador. Escribe una guía optimizada para "pagos electrónicos El Salvador".
+
+Keyword principal: "pagos electrónicos El Salvador 2026"
+Título H1: "Pagos electrónicos en El Salvador 2026: todas las opciones disponibles"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## El ecosistema de pagos digitales en El Salvador
+## Billeteras digitales disponibles
+(Chivo Wallet, Tigo Money, Nequi, Apple Pay/Google Pay — disponibilidad y funciones)
+## Transferencias bancarias: ACH y SINPE en El Salvador
+## Pagos con código QR: cómo funcionan para negocios y consumidores
+## Pagos internacionales desde El Salvador
+## Seguridad en pagos electrónicos: qué hacer si te hackean
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "credito-de-consumo-vs-prestamo-personal-diferencias-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "consumer credit personal loan comparison finance",
+    prompt: `Eres un experto SEO en productos financieros para El Salvador. Escribe una guía optimizada para "crédito de consumo vs préstamo personal".
+
+Keyword principal: "crédito de consumo vs préstamo personal El Salvador 2026"
+Título H1: "Crédito de consumo vs préstamo personal en El Salvador 2026: ¿cuál elegir?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el crédito de consumo? (incluye tarjetas de crédito y financiamiento en tiendas)
+## ¿Qué es un préstamo personal? (cuota fija, plazo definido, tasa fija o variable)
+## Tabla comparativa: crédito de consumo vs préstamo personal
+(tasa típica, plazo, flexibilidad, propósito ideal, riesgo de sobreendeudamiento)
+## Cuándo usar el crédito de consumo correctamente
+## Cuándo es mejor un préstamo personal
+## Ejemplo numérico: $3,000 con cada producto — costo total comparado
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
 ];
+
+// ---------------------------------------------------------------------------
+// Dynamic topic discovery — inspired by competitor sites (NerdWallet, Bankrate)
+// Runs when the static CONTENT_CALENDAR has fewer than 10 unpublished entries.
+// ---------------------------------------------------------------------------
+
+const COMPETITOR_SOURCES = [
+  { url: "https://www.nerdwallet.com/blog/finance/", name: "NerdWallet" },
+  { url: "https://www.bankrate.com/personal-finance/", name: "Bankrate" },
+  { url: "https://www.thebalancemoney.com/", name: "TheBalance" },
+];
+
+async function fetchCompetitorTitles(source: { url: string; name: string }): Promise<string[]> {
+  try {
+    const res = await fetch(source.url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+        Accept: "text/html",
+      },
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!res.ok) {
+      logger.warn({ source: source.name, status: res.status }, "Competitor page returned non-200");
+      return [];
+    }
+    const html = await res.text();
+    const titles: string[] = [];
+    const pattern = /<h[23][^>]*>([^<]{20,120})<\/h[23]>/gi;
+    let match: RegExpExecArray | null;
+    while ((match = pattern.exec(html)) !== null) {
+      const text = match[1]
+        .replace(/&amp;/g, "&")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&#\d+;/g, "")
+        .trim();
+      if (text.length >= 20) titles.push(text);
+    }
+    const unique = [...new Set(titles)].slice(0, 30);
+    logger.info({ source: source.name, count: unique.length }, "Fetched competitor titles");
+    return unique;
+  } catch (err) {
+    logger.warn({ source: source.name, err }, "Failed to fetch competitor page — skipping");
+    return [];
+  }
+}
+
+async function discoverTopicsFromCompetitors(): Promise<ContentTopic[]> {
+  logger.info("Discovering new topics from competitor sites");
+
+  const allTitlesArrays = await Promise.all(COMPETITOR_SOURCES.map(fetchCompetitorTitles));
+  const allTitles = allTitlesArrays.flat();
+
+  const titlesBlock =
+    allTitles.length > 0
+      ? allTitles.slice(0, 40).join("\n- ")
+      : "No competitor titles fetched — generate 15 evergreen personal finance topics for Central America from scratch";
+
+  const discoveryPrompt = `Eres un estratega de contenido SEO para Finazo (finazo.lat), el NerdWallet de Centroamérica.
+
+A continuación hay títulos de artículos de finanzas personales en inglés de sitios como NerdWallet y Bankrate:
+- ${titlesBlock}
+
+Genera 15 ideas de artículos adaptados a Centroamérica (El Salvador, Guatemala, Honduras, Nicaragua) que:
+1. Sean versiones localizadas de estos temas o temas similares aún no cubiertos
+2. Tengan alta demanda de búsqueda en español
+3. Sean evergreen (vigentes en 2026 y años siguientes)
+4. Cubran las categorías: remesas, préstamos, seguros, educación financiera, tarjetas de crédito
+
+Devuelve SOLO un array JSON válido con exactamente este formato (sin texto adicional, sin markdown):
+[
+  {
+    "slug": "slug-kebab-case-terminando-en-2026",
+    "category": "remesas|prestamos|seguros|educacion|tarjetas",
+    "country": "SV|GT|HN|NI|MX",
+    "imageQuery": "2-4 words in English for Pexels image search",
+    "titleHint": "Título del artículo en español"
+  }
+]
+
+Reglas: slug solo minúsculas y guiones, siempre termina en -2026, máximo 70 caracteres.`;
+
+  const message = await anthropic.messages.create({
+    model: "claude-sonnet-4-6",
+    max_tokens: 2048,
+    messages: [{ role: "user", content: discoveryPrompt }],
+  });
+
+  const responseText =
+    message.content[0].type === "text" ? message.content[0].text : "";
+
+  const jsonMatch = responseText.match(/\[[\s\S]+\]/);
+  if (!jsonMatch) {
+    logger.error(
+      { preview: responseText.slice(0, 200) },
+      "Claude did not return valid JSON for topic discovery"
+    );
+    return [];
+  }
+
+  let rawTopics: unknown[];
+  try {
+    rawTopics = JSON.parse(jsonMatch[0]) as unknown[];
+  } catch {
+    logger.error("Failed to parse topic discovery JSON from Claude");
+    return [];
+  }
+
+  const existingCalendarSlugs = new Set(CONTENT_CALENDAR.map((t) => t.slug));
+  const validCategories = new Set(["remesas", "prestamos", "seguros", "educacion", "tarjetas"]);
+
+  const newTopics: ContentTopic[] = [];
+  for (const raw of rawTopics) {
+    if (typeof raw !== "object" || raw === null) continue;
+    const r = raw as Record<string, unknown>;
+    const slug = typeof r.slug === "string" ? r.slug : null;
+    const category = typeof r.category === "string" ? r.category : null;
+    const country = typeof r.country === "string" ? r.country : null;
+    const imageQuery =
+      typeof r.imageQuery === "string" ? r.imageQuery : "finance money latin america";
+    const titleHint =
+      typeof r.titleHint === "string" ? r.titleHint : slug ?? "Artículo financiero";
+
+    if (!slug || !category || !country) continue;
+    if (!validCategories.has(category)) continue;
+    if (existingCalendarSlugs.has(slug)) continue;
+
+    newTopics.push({
+      slug,
+      category: category as ContentTopic["category"],
+      country,
+      imageQuery,
+      prompt: buildDynamicPrompt(slug, titleHint, category as ContentTopic["category"], country),
+    });
+  }
+
+  logger.info({ discovered: newTopics.length }, "Dynamic topics ready for generation");
+  return newTopics;
+}
+
+function buildDynamicPrompt(
+  _slug: string,
+  titleHint: string,
+  category: ContentTopic["category"],
+  country: string
+): string {
+  const countryNames: Record<string, string> = {
+    SV: "El Salvador",
+    GT: "Guatemala",
+    HN: "Honduras",
+    NI: "Nicaragua",
+    MX: "México",
+  };
+  const categoryContext: Record<ContentTopic["category"], string> = {
+    remesas: "remesas y transferencias internacionales",
+    prestamos: "préstamos y créditos personales",
+    seguros: "seguros y protección financiera",
+    educacion: "educación financiera y ahorro personal",
+    tarjetas: "tarjetas de crédito y débito",
+  };
+
+  const countryName = countryNames[country] ?? country;
+  const keyword = titleHint.trim();
+
+  return `Eres un experto SEO en ${categoryContext[category]} para ${countryName}. Escribe un artículo completo optimizado para la búsqueda "${keyword}".
+
+Keyword principal: "${keyword}"
+Título H1: "${titleHint}"
+Extensión: 1000-1200 palabras
+País objetivo: ${countryName}
+
+Estructura requerida:
+## Introducción (incluye la keyword principal en las primeras 2 oraciones)
+## [Sección 1 relevante al tema]
+## [Sección 2 relevante al tema — incluye tabla comparativa si aplica]
+## [Sección 3 relevante al tema]
+## [Sección 4 relevante al tema]
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`;
+}
 
 // ---------------------------------------------------------------------------
 // Generate and save one evergreen article (published immediately)
@@ -1467,25 +2352,51 @@ export async function regenerateEvergreenArticle(slug: string): Promise<void> {
 export async function runContentStrategist(): Promise<void> {
   logger.info("Content strategist starting");
 
-  // Find which slugs already exist
-  const allSlugs = CONTENT_CALENDAR.map((t) => t.slug);
-  const existing = await db
+  // Check which static calendar slugs are already published
+  const allCalendarSlugs = CONTENT_CALENDAR.map((t) => t.slug);
+  const existingFromCalendar = await db
     .select({ slug: articles.slug })
     .from(articles)
-    .where(inArray(articles.slug, allSlugs));
+    .where(inArray(articles.slug, allCalendarSlugs));
 
-  const existingSlugs = new Set(existing.map((r) => r.slug));
-  const missing = CONTENT_CALENDAR.filter((t) => !existingSlugs.has(t.slug));
+  const existingCalendarSlugs = new Set(existingFromCalendar.map((r) => r.slug));
+  const missingFromCalendar = CONTENT_CALENDAR.filter((t) => !existingCalendarSlugs.has(t.slug));
 
-  if (missing.length === 0) {
-    logger.info("All evergreen articles already published — nothing to do");
+  let topicPool: ContentTopic[] = [...missingFromCalendar];
+
+  // When static calendar is nearly exhausted, discover new topics from competitors
+  if (missingFromCalendar.length < 10) {
+    logger.info(
+      { remaining: missingFromCalendar.length },
+      "Static calendar nearly exhausted — running competitor topic discovery"
+    );
+    try {
+      const discovered = await discoverTopicsFromCompetitors();
+      // Filter out any slug already published (from any source, not just the calendar)
+      const allPublished = await db.select({ slug: articles.slug }).from(articles);
+      const allPublishedSlugs = new Set(allPublished.map((r) => r.slug));
+      const freshTopics = discovered.filter((t) => !allPublishedSlugs.has(t.slug));
+      topicPool = [...topicPool, ...freshTopics];
+      logger.info(
+        { discovered: freshTopics.length, poolSize: topicPool.length },
+        "Topic pool after dynamic discovery"
+      );
+    } catch (err) {
+      logger.error({ err }, "Competitor discovery failed — continuing with static calendar only");
+    }
+  }
+
+  if (topicPool.length === 0) {
+    logger.info(
+      "All calendar articles published and no new discoveries — nothing to generate today"
+    );
     return;
   }
 
-  logger.info({ total: missing.length }, "Missing evergreen articles found");
+  logger.info({ total: topicPool.length }, "Topics available for generation");
 
   // Generate up to 3 per run to respect API rate limits
-  const batch = missing.slice(0, 3);
+  const batch = topicPool.slice(0, 3);
 
   for (const topic of batch) {
     try {
