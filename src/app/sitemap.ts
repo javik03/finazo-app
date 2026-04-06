@@ -50,19 +50,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 0.7,
     },
-    // Legacy query-param URLs for backwards compatibility
-    {
-      url: `${base}/remesas?desde=US&hacia=SV`,
-      lastModified: now,
-      changeFrequency: "hourly",
-      priority: 0.5,
-    },
-    {
-      url: `${base}/prestamos?tipo=personal`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.5,
-    },
   ];
 
   const corridorUrls: MetadataRoute.Sitemap = CORRIDORS.map((c) => ({
