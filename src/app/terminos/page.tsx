@@ -34,11 +34,11 @@ export default function TerminosPage() {
           <h2 className="text-xl font-semibold text-slate-900">1. Aceptación de los términos</h2>
           <p>
             Al acceder y usar el sitio web <strong>finazo.lat</strong> (el
-            "Sitio"), aceptas quedar vinculado por estos Términos de Uso. Si no
+            &ldquo;Sitio&rdquo;), aceptas quedar vinculado por estos Términos de Uso. Si no
             estás de acuerdo con alguno de estos términos, te pedimos que no
             uses el Sitio. El Sitio es operado por{" "}
             <strong>{COMPANY}</strong>, sociedad constituida bajo las leyes de
-            la República de El Salvador ("Finazo", "nosotros" o "nuestro").
+            la República de El Salvador (&ldquo;Finazo&rdquo;, &ldquo;nosotros&rdquo; o &ldquo;nuestro&rdquo;).
           </p>
         </section>
 
@@ -92,8 +92,8 @@ export default function TerminosPage() {
           </p>
           <p>
             Sin embargo, no garantizamos que la información sea completa,
-            precisa o actualizada en todo momento. El Sitio se ofrece "tal
-            como está" sin garantías de ningún tipo.
+            precisa o actualizada en todo momento. El Sitio se ofrece &ldquo;tal
+            como está&rdquo; sin garantías de ningún tipo.
           </p>
         </section>
 
