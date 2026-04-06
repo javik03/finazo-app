@@ -96,6 +96,13 @@ export default function RootLayout({
       className={`${lora.variable} ${dmSans.variable} h-full antialiased`}
     >
       <head>
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
