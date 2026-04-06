@@ -85,6 +85,28 @@ const websiteSchema = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Finazo",
+  legalName: "MAQ UNO DOS TRES S.A. de C.V.",
+  url: "https://finazo.lat",
+  logo: "https://finazo.lat/icon.svg",
+  foundingLocation: {
+    "@type": "Country",
+    name: "El Salvador",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "legal@finazo.lat",
+    contactType: "customer support",
+    availableLanguage: "Spanish",
+  },
+  sameAs: [],
+  description:
+    "Comparador financiero independiente para Centroamérica. Comparamos remesas, préstamos y seguros en El Salvador, Guatemala, Honduras y México.",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -106,6 +128,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
