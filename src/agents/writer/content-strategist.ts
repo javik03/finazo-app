@@ -534,6 +534,816 @@ Estructura requerida:
 ## Preguntas frecuentes
 ## Conclusión${SEO_SUFFIX}`,
   },
+
+  // ---- Remesas — batch 2 ----
+  {
+    slug: "enviar-dinero-desde-estados-unidos-centroamerica-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "usa to latin america money transfer family",
+    prompt: `Eres un experto SEO en finanzas personales para la diáspora centroamericana en EE.UU. Escribe una guía optimizada para "enviar dinero desde Estados Unidos a Centroamérica".
+
+Keyword principal: "enviar dinero desde Estados Unidos a Centroamérica 2026"
+Título H1: "Cómo enviar dinero desde Estados Unidos a Centroamérica en 2026: guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; mencionar que 20+ millones de centroamericanos viven en EE.UU.)
+## Las mejores apps para enviar dinero de EE.UU. a Centroamérica
+(Remitly, Wise, Xoom, Western Union, Ria — tabla: comisión, tipo de cambio, velocidad)
+## Métodos de pago disponibles desde EE.UU.
+(cuenta bancaria, tarjeta de débito/crédito, efectivo en agencia)
+## Métodos de retiro en Centroamérica
+(depósito bancario, retiro en agencia, billetera móvil, Tigo Money)
+## Cómo afectan los límites de transferencia y regulaciones AML
+## Ejemplo real: $500 enviados desde Miami — ¿cuánto llega a San Salvador?
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "remitly-vs-western-union-centroamerica-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "money transfer comparison apps smartphone",
+    prompt: `Eres un experto SEO en finanzas personales para Centroamérica. Escribe un artículo comparativo optimizado para "Remitly vs Western Union".
+
+Keyword principal: "Remitly vs Western Union remesas Centroamérica 2026"
+Título H1: "Remitly vs Western Union: ¿cuál es mejor para remesas a Centroamérica en 2026?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla resumen: Remitly vs Western Union
+(columnas: comisión típica $300, tipo de cambio, velocidad, métodos pago, cobertura Centroamérica)
+## Remitly: ventajas y limitaciones para Centroamérica
+## Western Union: ventajas y limitaciones para Centroamérica
+## ¿Cuándo usar cada uno? Casos de uso prácticos
+## Alternativas que vale la pena considerar (Wise, Ria, MoneyGram)
+## Preguntas frecuentes
+## Veredicto final + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "xoom-paypal-remesas-centroamerica-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "paypal digital payment mobile wallet",
+    prompt: `Eres un experto SEO en finanzas digitales para Centroamérica. Escribe una guía optimizada para "Xoom PayPal remesas Centroamérica".
+
+Keyword principal: "Xoom PayPal remesas Centroamérica 2026"
+Título H1: "Xoom (PayPal) para enviar remesas a Centroamérica: ¿vale la pena en 2026?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Qué es Xoom y cómo se relaciona con PayPal
+## Cómo funciona Xoom para envíos a El Salvador, Guatemala y Honduras
+## Tabla: Xoom vs Remitly vs Wise — comisiones y tipo de cambio para $300
+## Métodos de entrega disponibles en cada país
+## Límites de envío y requisitos de verificación
+## Ventajas de usar Xoom si ya tienes cuenta PayPal
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "mejores-apps-enviar-dinero-latam-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "best money transfer apps review mobile",
+    prompt: `Eres un experto SEO en finanzas personales para Latinoamérica. Escribe una guía comparativa optimizada para "mejores apps para enviar dinero a LATAM".
+
+Keyword principal: "mejores apps para enviar dinero a Latinoamérica 2026"
+Título H1: "Las 7 mejores apps para enviar dinero a Latinoamérica en 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cómo evaluamos cada app (criterios: comisión, tipo de cambio, velocidad, seguridad, cobertura)
+## Las 7 mejores apps clasificadas
+(1. Wise — mejor tipo de cambio; 2. Remitly — velocidad; 3. Xoom — integración PayPal; 4. Western Union — cobertura rural; 5. Ria — comisiones bajas; 6. MoneyGram — efectivo; 7. WorldRemit — flexibilidad)
+## Tabla comparativa final con puntuación por criterio
+## Cómo elegir la app correcta según tu caso
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "remesas-mexico-como-enviar-recibir-2026",
+    category: "remesas",
+    country: "SV",
+    imageQuery: "mexico city family money transfer",
+    prompt: `Eres un experto SEO en finanzas personales para México y la diáspora mexicana. Escribe una guía optimizada para "enviar remesas a México".
+
+Keyword principal: "enviar remesas a México 2026"
+Título H1: "Cómo enviar remesas a México en 2026: guía completa con comparativa de servicios"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; México recibe ~$60B/año en remesas)
+## Mejores servicios para enviar dinero a México
+(Remitly, Wise, Xoom, Western Union, Ria — tabla con comisión y tipo de cambio USD/MXN)
+## Cómo recibir remesas en México: opciones bancarias y en efectivo
+(SPEI, OXXO Pay, Coppel, sucursales bancarias — ventajas de cada una)
+## El tipo de cambio USD/MXN: cómo afecta cuánto recibe tu familia
+## Límites legales y declaración de remesas en México
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Préstamos — batch 2 ----
+  {
+    slug: "prestamos-sin-buro-el-salvador-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "loan approval without credit history",
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "préstamos sin buró El Salvador".
+
+Keyword principal: "préstamos sin buró de crédito El Salvador 2026"
+Título H1: "Préstamos sin buró de crédito en El Salvador 2026: opciones reales"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; aclarar que en SV se usa "Central de Riesgo" de la SSF)
+## ¿Realmente existen préstamos sin buró en El Salvador?
+(explicar que todos los bancos formales consultan la Central de Riesgo SSF)
+## Opciones para personas con historial crediticio negativo
+(cooperativas, cajas de crédito, microfinancieras, préstamos con garantía)
+## Tabla: entidades que aprueban con historial imperfecto (tasas, montos, requisitos)
+## Cómo mejorar tu perfil crediticio para acceder a mejores tasas
+## Señales de alerta: prestamistas abusivos que explotan la necesidad
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "consolidacion-deudas-el-salvador-guia-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "debt consolidation financial freedom relief",
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "consolidación de deudas El Salvador".
+
+Keyword principal: "consolidación de deudas El Salvador 2026"
+Título H1: "Cómo consolidar deudas en El Salvador 2026: guía paso a paso"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la consolidación de deudas y cuándo conviene?
+## Cómo funciona un préstamo de consolidación en El Salvador
+## Tabla comparativa: bancos que ofrecen préstamos de consolidación (Banco Agrícola, Davivienda, BAC, Promerica)
+## Ejemplo real: 3 deudas convertidas en 1 cuota menor
+(tarjeta 24% + préstamo personal 22% + crédito comercio 36% → consolidado al 18%)
+## Requisitos para aplicar y qué documentos necesitas
+## Errores que debes evitar al consolidar deudas
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-educativos-el-salvador-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "student education loan university latin america",
+    prompt: `Eres un experto SEO en finanzas personales para El Salvador. Escribe una guía optimizada para "préstamos educativos El Salvador".
+
+Keyword principal: "préstamos educativos El Salvador 2026"
+Título H1: "Préstamos educativos en El Salvador 2026: universidades, bancos y programas de gobierno"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Opciones de financiamiento educativo en El Salvador
+(1. Programa de Créditos Educativos (ESEN/UFG/UCA) — condiciones
+2. Préstamos bancarios para educación — Banco Agrícola, Davivienda
+3. Financiamiento directo por universidades — cuotas y plazos
+4. Becas y subsidios del gobierno — MINED, FANTEL)
+## Tabla comparativa: tasa, plazo, monto máximo, periodo de gracia
+## Cómo calcular si un préstamo educativo vale la inversión
+## Documentos requeridos para aplicar
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "refinanciamiento-hipotecario-el-salvador-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "home refinance mortgage house keys",
+    prompt: `Eres un experto SEO en finanzas inmobiliarias de El Salvador. Escribe una guía optimizada para "refinanciamiento hipotecario El Salvador".
+
+Keyword principal: "refinanciamiento hipotecario El Salvador 2026"
+Título H1: "Refinanciamiento hipotecario en El Salvador 2026: cuándo conviene y cómo hacerlo"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es el refinanciamiento hipotecario?
+## Cuándo tiene sentido refinanciar tu hipoteca en El Salvador
+(bajar tasa, reducir cuota, cambiar plazo, sacar liquidez)
+## Cómo funciona el proceso de refinanciamiento en la práctica
+## Bancos que ofrecen refinanciamiento hipotecario en El Salvador
+(Banco Agrícola, Davivienda, BAC, Banco Hipotecario — tasas y condiciones)
+## Costos del refinanciamiento: comisiones, avalúo, escrituración
+## Ejemplo numérico: ¿cuánto ahorras refinanciando?
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "microfinanzas-cooperativas-el-salvador-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "cooperative microfinance community savings latin america",
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "cooperativas de crédito El Salvador".
+
+Keyword principal: "cooperativas de crédito El Salvador 2026"
+Título H1: "Cooperativas de crédito en El Salvador 2026: la alternativa a los bancos"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué son las cooperativas de ahorro y crédito?
+## Las principales cooperativas en El Salvador
+(ACACESS, ASEI, ACAES, Cooperativa Atlacatl — servicios y requisitos de membresía)
+## Cooperativas vs bancos: tabla comparativa
+(tasas de préstamo, tasas de ahorro, requisitos, regulación, atención)
+## Cómo unirte a una cooperativa en El Salvador
+## Cuándo es mejor una cooperativa que un banco
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-honduras-mejores-bancos-cnbs-2026",
+    category: "prestamos",
+    country: "HN",
+    imageQuery: "honduras bank loan personal finance",
+    prompt: `Eres un experto SEO en finanzas personales hondureñas. Escribe una guía optimizada para "mejores bancos préstamos Honduras".
+
+Keyword principal: "mejores bancos para préstamos personales Honduras 2026"
+Título H1: "Los mejores bancos para préstamos personales en Honduras 2026 (tasas CNBS)"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cómo la CNBS regula y publica tasas de interés en Honduras
+## Top 5 bancos hondureños para préstamos personales
+(Atlántida, Ficohsa, Davivienda, BAC, Occidente — tabla con tasas y plazos)
+## Requisitos para solicitar un préstamo personal en Honduras
+## Cómo calcular la cuota mensual en lempiras
+(ejemplo: L 50,000 a 24 meses al 24% anual)
+## Cómo mejorar tus posibilidades de aprobación
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Seguros — batch 2 ----
+  {
+    slug: "seguro-de-vida-guatemala-guia-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "life insurance family protection guatemala",
+    prompt: `Eres un experto SEO en seguros de vida para Guatemala. Escribe una guía optimizada para "seguro de vida Guatemala".
+
+Keyword principal: "seguro de vida Guatemala 2026"
+Título H1: "Seguro de vida en Guatemala 2026: guía completa para elegir el mejor"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué contratar un seguro de vida en Guatemala?
+## Tipos de seguro de vida disponibles en Guatemala
+(temporal, permanente/vida entera, universal)
+## Las principales aseguradoras en Guatemala
+(Seguros Universales, Seguros Occidente, Seguros El Roble, Mapfre — tabla comparativa)
+## ¿Cuánto cuesta un seguro de vida en Guatemala?
+(ejemplos con primas para Q250,000 y Q500,000 de cobertura)
+## Qué cubre y qué no cubre el seguro de vida típico
+## Cómo elegir la suma asegurada correcta
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-de-auto-guatemala-2026",
+    category: "seguros",
+    country: "GT",
+    imageQuery: "car insurance guatemala vehicle protection",
+    prompt: `Eres un experto SEO en seguros de vehículos para Guatemala. Escribe una guía optimizada para "seguro de auto Guatemala".
+
+Keyword principal: "seguro de auto Guatemala 2026"
+Título H1: "Seguro de auto en Guatemala 2026: comparativa de las mejores aseguradoras"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Es obligatorio el seguro de auto en Guatemala?
+(seguro de responsabilidad civil — SOAT — vs seguro completo)
+## Tipos de cobertura para vehículos en Guatemala
+(responsabilidad civil, pérdida total, robo, daños a terceros, cobertura amplia)
+## Las mejores aseguradoras de autos en Guatemala
+(Seguros Universales, Seguros El Roble, G&T Continental Seguros, Mapfre — tabla con coberturas y precios)
+## Factores que afectan el precio de tu seguro de auto
+## Cómo reclamar tu seguro paso a paso
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-de-vida-honduras-guia-2026",
+    category: "seguros",
+    country: "HN",
+    imageQuery: "life insurance family honduras protection",
+    prompt: `Eres un experto SEO en seguros para Honduras. Escribe una guía optimizada para "seguro de vida Honduras".
+
+Keyword principal: "seguro de vida Honduras 2026"
+Título H1: "Seguro de vida en Honduras 2026: todo lo que necesitas saber"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Por qué el seguro de vida es importante para familias hondureñas
+## Tipos de seguro de vida disponibles en Honduras
+## Las principales aseguradoras en Honduras
+(Seguros Atlántida, FICOHSA Seguros, Mapfre Honduras, Crefisa — tabla comparativa de primas)
+## ¿Cuánto cuesta asegurar tu vida en Honduras?
+(rangos de primas para L 500,000 — L 1,000,000 de cobertura)
+## Proceso para contratar un seguro de vida en Honduras
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguros-para-negocios-pyme-el-salvador-2026",
+    category: "seguros",
+    country: "SV",
+    imageQuery: "small business insurance protection entrepreneur",
+    prompt: `Eres un experto SEO en seguros empresariales para El Salvador. Escribe una guía optimizada para "seguros para negocios El Salvador".
+
+Keyword principal: "seguros para negocios PYME El Salvador 2026"
+Título H1: "Seguros para negocios y PYME en El Salvador 2026: protege tu empresa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué las PYME necesitan seguro en El Salvador?
+## Tipos de seguros empresariales disponibles
+(incendio y robo, responsabilidad civil, fidelidad, equipos, vida colectivo para empleados)
+## Las principales aseguradoras que ofrecen planes PYME
+(ASSA Seguros, SISA, Mapfre, Scotia Seguros — coberturas y rango de primas)
+## Cómo calcular la cobertura correcta para tu negocio
+## Qué documentos necesitas para asegurar tu empresa
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-reclamar-seguro-de-auto-el-salvador-2026",
+    category: "seguros",
+    country: "SV",
+    imageQuery: "car accident insurance claim process",
+    prompt: `Eres un experto SEO en seguros de vehículos para El Salvador. Escribe una guía optimizada para "cómo reclamar seguro de auto El Salvador".
+
+Keyword principal: "reclamar seguro de auto El Salvador 2026"
+Título H1: "Cómo reclamar tu seguro de auto en El Salvador 2026: guía paso a paso"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Qué hacer inmediatamente después de un accidente de tránsito
+(los primeros 30 minutos — pasos críticos)
+## Cómo reportar el siniestro a tu aseguradora
+(canales: app, call center, agencia — tiempos de respuesta)
+## Documentos que necesitas para presentar tu reclamo
+(lista completa: informe policial, fotos, DUI, licencia, póliza)
+## El proceso de ajuste de pérdidas: ¿qué hace el ajustador?
+## Tiempos de resolución y qué hacer si te demoran
+## Cómo evitar que te rechacen el reclamo
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Tarjetas de crédito — batch 2 ----
+  {
+    slug: "tarjetas-credito-sin-anualidad-el-salvador-2026",
+    category: "tarjetas",
+    country: "SV",
+    imageQuery: "credit card no annual fee savings",
+    prompt: `Eres un experto SEO en tarjetas de crédito para El Salvador. Escribe una guía optimizada para "tarjetas de crédito sin anualidad El Salvador".
+
+Keyword principal: "tarjetas de crédito sin anualidad El Salvador 2026"
+Título H1: "Las mejores tarjetas de crédito sin anualidad en El Salvador 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Por qué importa si la tarjeta tiene o no anualidad?
+(ejemplo: anualidad $50 + intereses vs tarjeta sin anualidad — costo real comparado)
+## Tarjetas sin anualidad disponibles en El Salvador
+(Banco Agrícola, Davivienda, BAC, Promerica — tabla: anualidad, tasa de interés, límite mínimo, beneficios)
+## Tarjetas con anualidad pero que vale la pena por sus beneficios
+## Cómo solicitar una tarjeta de crédito en El Salvador
+## Requisitos típicos de ingresos y documentos
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "mejores-tarjetas-credito-guatemala-2026",
+    category: "tarjetas",
+    country: "GT",
+    imageQuery: "credit card guatemala bank rewards",
+    prompt: `Eres un experto SEO en tarjetas de crédito para Guatemala. Escribe una guía comparativa optimizada para "mejores tarjetas de crédito Guatemala".
+
+Keyword principal: "mejores tarjetas de crédito Guatemala 2026"
+Título H1: "Las mejores tarjetas de crédito en Guatemala 2026: comparativa completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cómo elegir la mejor tarjeta de crédito en Guatemala
+(criterios: tasa de interés, anualidad, beneficios, red de aceptación)
+## Top 6 tarjetas de crédito en Guatemala
+(Industrial, Banrural, G&T Continental, BAC, Visa/Mastercard de Agromercantil — tabla comparativa)
+## Tarjetas con millas y puntos: ¿vale la pena en Guatemala?
+## Tarjetas para construir historial crediticio desde cero
+## Cómo usar tu tarjeta de crédito inteligentemente
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-mejorar-score-crediticio-el-salvador-2026",
+    category: "tarjetas",
+    country: "SV",
+    imageQuery: "credit score improvement financial health",
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "cómo mejorar score crediticio El Salvador".
+
+Keyword principal: "mejorar historial crediticio El Salvador 2026"
+Título H1: "Cómo mejorar tu historial crediticio en El Salvador 2026: guía práctica"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; aclarar diferencia entre "score" y "Central de Riesgo SSF")
+## ¿Cómo funciona la Central de Riesgo de la SSF en El Salvador?
+## Los factores que afectan tu perfil crediticio
+(puntualidad de pagos, nivel de endeudamiento, antigüedad de créditos, variedad de productos)
+## Plan de acción en 6 pasos para mejorar tu historial
+(1. Paga las cuotas vencidas, 2. Reduce uso de tarjeta, 3. No cierres cuentas antiguas, etc.)
+## Cuánto tiempo tarda en mejorar tu historial
+## Cómo consultar tu historial de forma gratuita en El Salvador
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tarjetas-prepago-centroamerica-2026",
+    category: "tarjetas",
+    country: "SV",
+    imageQuery: "prepaid debit card digital wallet payment",
+    prompt: `Eres un experto SEO en finanzas digitales para Centroamérica. Escribe una guía optimizada para "tarjetas prepago Centroamérica".
+
+Keyword principal: "tarjetas prepago Centroamérica 2026"
+Título H1: "Tarjetas prepago en Centroamérica 2026: las mejores opciones para compras online"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es una tarjeta prepago y para qué sirve?
+## Las mejores tarjetas prepago en Centroamérica
+(Nequi, Tigo Money Visa, tarjetas prepago bancarias, Wise — tabla: cuota, límite, dónde se acepta)
+## Cómo usar una tarjeta prepago para compras en Amazon, Netflix, etc.
+## Ventajas vs limitaciones frente a una tarjeta de crédito
+## Seguridad: cómo protegerte del fraude con tarjetas prepago
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Educación financiera — batch 2 ----
+  {
+    slug: "como-hacer-presupuesto-personal-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "personal budget planning spreadsheet finance",
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía optimizada para "cómo hacer un presupuesto personal".
+
+Keyword principal: "cómo hacer un presupuesto personal Centroamérica 2026"
+Título H1: "Cómo hacer un presupuesto personal en Centroamérica 2026: guía con plantilla"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Por qué el 80% de las familias centroamericanas no tiene presupuesto (y las consecuencias)
+## Los 4 pasos para crear tu presupuesto personal
+(1. Calcular ingresos netos reales, 2. Listar todos los gastos, 3. Clasificar en fijos/variables, 4. Asignar metas de ahorro)
+## Plantilla de presupuesto mensual adaptada a salarios centroamericanos
+(tabla con categorías: vivienda, alimentación, transporte, servicios, deudas, ahorro)
+## El método 50/30/20: cómo aplicarlo en El Salvador con salario mínimo
+## Apps gratuitas para llevar tu presupuesto desde el celular
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "fondo-de-emergencia-centroamerica-guia-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "emergency fund savings safety net financial",
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía optimizada para "fondo de emergencia".
+
+Keyword principal: "fondo de emergencia Centroamérica 2026"
+Título H1: "Cómo crear tu fondo de emergencia en Centroamérica 2026: cuánto necesitas y dónde guardarlo"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es un fondo de emergencia y por qué es lo primero que debes construir?
+## ¿Cuánto dinero debes tener? (3 vs 6 meses de gastos)
+(ejemplos concretos: familia con gastos $800/mes → fondo de $2,400–$4,800)
+## Dónde guardar tu fondo de emergencia en El Salvador
+(cuenta de ahorros de alta disponibilidad, cuentas de plazo corto — tasas actuales)
+## Cómo construirlo desde cero con presupuesto ajustado
+## Cuándo usar el fondo de emergencia (y cuándo NO)
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-salir-de-deudas-el-salvador-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "debt freedom financial relief stress",
+    prompt: `Eres un experto SEO en educación financiera para El Salvador. Escribe una guía optimizada para "cómo salir de deudas El Salvador".
+
+Keyword principal: "cómo salir de deudas El Salvador 2026"
+Título H1: "Cómo salir de deudas en El Salvador 2026: 5 estrategias que funcionan"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Diagnóstico: ¿cuánto debes realmente? (cómo hacer el inventario de tus deudas)
+## Las 5 estrategias para salir de deudas
+(1. Método bola de nieve — pagar menor primero para motivación
+2. Método avalancha — pagar mayor tasa primero para ahorrar intereses
+3. Consolidación de deudas — un solo préstamo a menor tasa
+4. Negociación directa con acreedores — opciones de reestructuración
+5. Asesoría de la Defensoría del Consumidor SSF)
+## Tabla comparativa: método bola de nieve vs avalancha para 3 deudas típicas
+## Errores que te mantienen endeudado
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "bitcoin-criptomonedas-el-salvador-guia-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "bitcoin cryptocurrency el salvador digital money",
+    prompt: `Eres un experto SEO en finanzas digitales para El Salvador. Escribe una guía optimizada para "bitcoin El Salvador".
+
+Keyword principal: "bitcoin en El Salvador 2026"
+Título H1: "Bitcoin en El Salvador 2026: qué saber como ciudadano o inversionista"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; El Salvador fue el primer país en adoptar bitcoin como moneda de curso legal en 2021)
+## Estado actual del bitcoin en El Salvador: ley, Chivo Wallet y adopción real
+## ¿Cómo puedes usar bitcoin en El Salvador hoy?
+(Chivo Wallet, Strike, exchanges locales — funcionamiento práctico)
+## Bitcoin como inversión: oportunidades y riesgos reales
+(volatilidad histórica, ejemplos de ganancias y pérdidas)
+## Impuestos y obligaciones legales al invertir en bitcoin en El Salvador
+## Alternativas: otras criptomonedas que puedes comprar desde El Salvador
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "afp-pension-el-salvador-como-funciona-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "pension retirement savings el salvador worker",
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe una guía optimizada para "AFP pensiones El Salvador".
+
+Keyword principal: "AFP pensiones El Salvador 2026"
+Título H1: "AFP y pensiones en El Salvador 2026: cómo funciona el sistema y cómo maximizar tu jubilación"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué son las AFP en El Salvador y cómo funciona el sistema?
+(AFP Crecer vs AFP Confía — diferencias, comisiones, rentabilidad histórica)
+## ¿Cuánto se descuenta de tu salario para el sistema previsional?
+(tabla: empleado 7.25%, empleador 8.75% — sobre qué salario aplica)
+## Reforma previsional 2017: cuentas individuales + garantía del Estado
+## Cómo consultar tu saldo AFP en línea
+## Estrategias para complementar tu pensión (ahorro voluntario, inversiones)
+## ¿Qué pasa si trabajas de manera informal y no cotizas?
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "inflacion-centroamerica-como-proteger-ahorros-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "inflation money value decrease savings protection",
+    prompt: `Eres un experto SEO en educación financiera para Centroamérica. Escribe una guía optimizada para "cómo proteger ahorros de la inflación Centroamérica".
+
+Keyword principal: "cómo proteger ahorros de la inflación Centroamérica 2026"
+Título H1: "Cómo proteger tus ahorros de la inflación en Centroamérica 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la inflación y cómo erosiona tu dinero?
+(ejemplo: $10,000 guardados en 2021 valen en poder adquisitivo X hoy en El Salvador)
+## Tasas de inflación actuales en El Salvador, Guatemala y Honduras (datos 2025-2026)
+## 6 estrategias para proteger tus ahorros de la inflación
+(1. Cuentas a plazo fijo — buscar tasa > inflación
+2. CDPs (certificados de depósito) — plazos y tasas
+3. Dólares — ventaja de El Salvador
+4. Bienes raíces — comportamiento histórico en LATAM
+5. Acciones — acceso desde Centroamérica
+6. Oro y commodities — cómo acceder)
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- Cuentas bancarias y banca digital ----
+  {
+    slug: "mejores-cuentas-de-ahorro-el-salvador-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "savings account bank interest rate money",
+    prompt: `Eres un experto SEO en productos bancarios de El Salvador. Escribe una guía optimizada para "mejores cuentas de ahorro El Salvador".
+
+Keyword principal: "mejores cuentas de ahorro El Salvador 2026"
+Título H1: "Las mejores cuentas de ahorro en El Salvador 2026: comparativa de tasas y beneficios"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tipos de cuentas de ahorro disponibles en El Salvador
+(ahorro a la vista, plazo fijo, cuentas de ahorro programado)
+## Comparativa de tasas de ahorro en El Salvador
+(Banco Agrícola, Davivienda, BAC, Promerica, Banco Hipotecario — tabla: tasa anual, monto mínimo, comisiones)
+## Cuentas de ahorro en cooperativas: ¿dan mejor rendimiento?
+## Cómo abrir una cuenta de ahorro en El Salvador: requisitos
+## Estrategia: cómo hacer crecer tus ahorros con interés compuesto
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "banca-digital-el-salvador-apps-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "digital banking mobile app smartphone el salvador",
+    prompt: `Eres un experto SEO en tecnología financiera para El Salvador. Escribe una guía optimizada para "banca digital El Salvador".
+
+Keyword principal: "banca digital El Salvador 2026"
+Título H1: "Banca digital en El Salvador 2026: las mejores apps bancarias y billeteras móviles"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## La evolución de la banca digital en El Salvador
+## Apps bancarias disponibles en El Salvador
+(Banco Agrícola App, Davivienda App, BAC en Línea, Promerica App — funciones y calificación usuarios)
+## Billeteras móviles y fintechs
+(Tigo Money, Chivo Wallet, Nequi — qué puedes hacer con cada una)
+## Ventajas y riesgos de la banca digital en El Salvador
+## Seguridad: cómo protegerte del fraude bancario online
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+
+  // ---- Comparativas institucionales ----
+  {
+    slug: "banco-agricola-vs-davivienda-el-salvador-2026",
+    category: "prestamos",
+    country: "SV",
+    imageQuery: "bank comparison el salvador financial institutions",
+    prompt: `Eres un experto SEO en productos bancarios de El Salvador. Escribe un artículo comparativo optimizado para "Banco Agrícola vs Davivienda El Salvador".
+
+Keyword principal: "Banco Agrícola vs Davivienda El Salvador 2026"
+Título H1: "Banco Agrícola vs Davivienda en El Salvador 2026: ¿cuál es mejor para ti?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Tabla resumen: Banco Agrícola vs Davivienda
+(columnas: préstamos personales (tasa), tarjetas de crédito (tasa), cuentas de ahorro, banca digital, atención al cliente, sucursales)
+## Banco Agrícola: fortalezas y limitaciones
+## Davivienda El Salvador: fortalezas y limitaciones
+## ¿Para qué producto es mejor cada banco?
+(préstamos: Agrícola; cuentas de ahorro: Davivienda; etc.)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "cooperativas-vs-bancos-el-salvador-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "cooperative vs bank comparison latin america",
+    prompt: `Eres un experto SEO en finanzas personales salvadoreñas. Escribe un artículo comparativo optimizado para "cooperativas vs bancos El Salvador".
+
+Keyword principal: "cooperativas vs bancos El Salvador 2026"
+Título H1: "Cooperativas vs bancos en El Salvador 2026: ¿dónde conviene más tu dinero?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Cómo funcionan las cooperativas de ahorro y crédito en El Salvador?
+## Tabla comparativa: cooperativas vs bancos
+(columnas: tasas de préstamo, tasas de ahorro, requisitos membresía, regulación, garantía depósitos, cobertura geográfica)
+## Cuándo es mejor una cooperativa
+(bajos ingresos, zonas rurales, historial crediticio imperfecto)
+## Cuándo es mejor un banco
+(montos grandes, banca digital, tarjetas internacionales)
+## Las principales cooperativas y bancos en El Salvador
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "fintech-vs-bancos-tradicionales-centroamerica-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "fintech startup vs traditional bank technology",
+    prompt: `Eres un experto SEO en tecnología financiera para Centroamérica. Escribe un artículo comparativo optimizado para "fintech vs bancos tradicionales Centroamérica".
+
+Keyword principal: "fintech vs bancos tradicionales Centroamérica 2026"
+Título H1: "Fintech vs bancos tradicionales en Centroamérica 2026: ¿cuál elegir?"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué son las fintech y cómo están cambiando las finanzas en Centroamérica?
+## Tabla comparativa: fintech vs bancos tradicionales
+(columnas: tasas de interés, velocidad de aprobación, acceso desde celular, regulación, garantía de depósitos, servicio al cliente)
+## Principales fintech operando en Centroamérica
+(Tigo Money, Nequi, Kueski, Konfio — servicios disponibles por país)
+## Casos en que la fintech gana al banco
+## Casos en que el banco tradicional gana a la fintech
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+
+  // ---- Guías de inversión ----
+  {
+    slug: "certificados-deposito-el-salvador-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "certificate deposit investment bank savings",
+    prompt: `Eres un experto SEO en productos de inversión para El Salvador. Escribe una guía optimizada para "certificados de depósito El Salvador".
+
+Keyword principal: "certificados de depósito El Salvador 2026"
+Título H1: "Certificados de depósito en El Salvador 2026: tasas, plazos y dónde invertir"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es un certificado de depósito (CDP) y cómo funciona?
+## Tasas de CDP en El Salvador hoy
+(Banco Agrícola, Davivienda, BAC, Scotiabank — tabla: tasa anual por plazo: 30, 90, 180, 365 días)
+## Ventajas y desventajas de invertir en CDP
+## ¿CDP vs cuenta de ahorros a plazo fijo? ¿Cuál rinde más?
+## Cómo invertir en CDP: proceso paso a paso
+## Fiscalidad: ¿se paga impuesto por los intereses ganados en El Salvador?
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "bolsa-valores-el-salvador-como-invertir-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "stock exchange el salvador bves investment trading",
+    prompt: `Eres un experto SEO en inversiones para El Salvador. Escribe una guía optimizada para "invertir en la Bolsa de Valores de El Salvador".
+
+Keyword principal: "Bolsa de Valores El Salvador 2026"
+Título H1: "Cómo invertir en la Bolsa de Valores de El Salvador (BVES) 2026: guía para principiantes"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es la Bolsa de Valores de El Salvador (BVES)?
+## Tipos de instrumentos que se negocian en la BVES
+(acciones, bonos corporativos, letras del tesoro, LETES)
+## Cómo invertir en la BVES: paso a paso
+(1. Elegir una casa de bolsa autorizada, 2. Abrir cuenta de valores, 3. Realizar primera operación)
+## Casas de bolsa autorizadas en El Salvador
+(tabla: nombre, comisiones, mínimo de inversión)
+## Inversión mínima: ¿con cuánto puedo empezar?
+## Riesgos de invertir en bolsa vs renta fija
+## Preguntas frecuentes
+## Conclusión${SEO_SUFFIX}`,
+  },
+  {
+    slug: "bienes-raices-inversion-el-salvador-2026",
+    category: "educacion",
+    country: "SV",
+    imageQuery: "real estate investment property el salvador",
+    prompt: `Eres un experto SEO en inversiones inmobiliarias para El Salvador. Escribe una guía optimizada para "invertir en bienes raíces El Salvador".
+
+Keyword principal: "invertir en bienes raíces El Salvador 2026"
+Título H1: "Inversión en bienes raíces en El Salvador 2026: guía completa para empezar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Por qué los bienes raíces son populares como inversión en El Salvador
+## Tipos de inversión inmobiliaria accesibles en El Salvador
+(1. Compra de casa para alquilar — rentabilidad típica 5-8% anual
+2. Lotificaciones en zonas de crecimiento
+3. Comercios y locales en renta
+4. Fideicomisos inmobiliarios — mínimo más bajo)
+## Zonas con mayor potencial de valorización en El Salvador
+## Cómo financiar una inversión inmobiliaria (hipotecas, crédito constructor)
+## Costos ocultos al comprar propiedad en El Salvador (escrituración, impuestos)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
 ];
 
 // ---------------------------------------------------------------------------
