@@ -3760,6 +3760,127 @@ Estructura requerida:
 ## Preguntas frecuentes
 ## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
+
+  // ---- República Dominicana ----
+  {
+    slug: "como-enviar-dinero-a-republica-dominicana-guia-2026",
+    category: "remesas",
+    country: "DO",
+    imageQuery: "money transfer dominican republic family",
+    prompt: `Eres un experto SEO en finanzas personales para el Caribe. Escribe una guía completa en español optimizada para la búsqueda "cómo enviar dinero a República Dominicana".
+
+Keyword principal: "enviar dinero a República Dominicana"
+Título H1: "Cómo enviar dinero a República Dominicana en 2026: guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Los mejores servicios para enviar dinero a RD en 2026
+(tabla: Wise, Remitly, Western Union, MoneyGram — columnas: comisión, tipo de cambio DOP, velocidad, mínimo)
+## Wise vs Remitly: ¿cuál conviene para enviar a RD?
+## Western Union y MoneyGram: cuándo tiene sentido usarlos
+## ¿Cuántos pesos dominicanos recibirá el beneficiario?
+(ejemplo numérico con $200 USD en cada servicio)
+## Cómo recibir dinero en República Dominicana
+(banco, efectivo en agencia, billetera móvil)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "wise-republica-dominicana-como-funciona-2026",
+    category: "remesas",
+    country: "DO",
+    imageQuery: "wise app transfer dominican republic",
+    prompt: `Eres un experto SEO en finanzas personales. Escribe una reseña completa en español de Wise para envíos a República Dominicana.
+
+Keyword principal: "Wise República Dominicana"
+Título H1: "Wise para enviar dinero a República Dominicana: ¿vale la pena en 2026?"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Cómo funciona Wise para envíos a RD?
+## Tipo de cambio USD/DOP en Wise vs tipo oficial
+## Comisiones reales de Wise para RD (2026)
+## ¿Cuánto tarda Wise en llegar a un banco dominicano?
+## Wise vs Remitly para envíos a República Dominicana
+(tabla comparativa)
+## Paso a paso: cómo enviar $200 USD a RD con Wise
+## Ventajas y desventajas de Wise para RD
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "remitly-republica-dominicana-resena-2026",
+    category: "remesas",
+    country: "DO",
+    imageQuery: "remitly app mobile transfer caribbean",
+    prompt: `Eres un experto SEO en finanzas personales. Escribe una reseña completa en español de Remitly para envíos a República Dominicana.
+
+Keyword principal: "Remitly República Dominicana"
+Título H1: "Remitly para enviar dinero a República Dominicana: reseña completa 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cómo funciona Remitly para RD
+## Tarifa Economy vs Express de Remitly a RD
+## Tipo de cambio DOP en Remitly
+## ¿Cuánto tiempo tarda Remitly a República Dominicana?
+## Formas de entrega: banco, efectivo, billetera
+## Remitly vs Western Union para envíos a RD
+(tabla comparativa)
+## Oferta de primer envío gratis
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tipo-de-cambio-dolar-peso-dominicano-2026",
+    category: "educacion",
+    country: "DO",
+    imageQuery: "dominican peso dollar exchange rate",
+    prompt: `Eres un experto SEO en finanzas personales para el Caribe. Escribe una guía educativa en español sobre el tipo de cambio USD/DOP.
+
+Keyword principal: "tipo de cambio dólar peso dominicano"
+Título H1: "Tipo de cambio dólar a peso dominicano 2026: cómo afecta tus remesas"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Cómo se determina el tipo de cambio USD/DOP?
+(papel del Banco Central de República Dominicana — BCRD)
+## Histórico del tipo de cambio DOP 2020-2026
+## Diferencia entre tipo oficial y tipo en remesadoras
+## ¿Qué servicio te da el mejor tipo de cambio?
+(Wise vs Remitly vs Western Union — tabla)
+## Cómo protegerte de un tipo de cambio desfavorable
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "western-union-republica-dominicana-comisiones-2026",
+    category: "remesas",
+    country: "DO",
+    imageQuery: "western union agent location dominican republic",
+    prompt: `Eres un experto SEO en finanzas personales. Escribe una guía en español sobre Western Union para envíos a República Dominicana.
+
+Keyword principal: "Western Union República Dominicana"
+Título H1: "Western Union para enviar dinero a República Dominicana: tarifas y alternativas 2026"
+Extensión: 900-1100 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Cuánto cobra Western Union para envíos a RD (tabla de comisiones)
+## Tipo de cambio de Western Union para DOP
+## Cómo recibir dinero de Western Union en RD
+(agencias, cuenta bancaria, pago móvil)
+## ¿Cuánto demora Western Union a República Dominicana?
+## Western Union vs Wise vs Remitly para RD
+(tabla comparativa)
+## Alternativas más baratas que Western Union para enviar a RD
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
 ];
 
 // ---------------------------------------------------------------------------

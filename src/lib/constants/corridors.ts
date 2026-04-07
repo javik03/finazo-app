@@ -90,6 +90,16 @@ export const CORRIDORS: Corridor[] = [
     fromFlag: "🇬🇧",
     toFlag: "🇸🇻",
   },
+  {
+    slug: "eeuu-republica-dominicana",
+    from: "US",
+    to: "DO",
+    label: "EE.UU. → República Dominicana",
+    fromLabel: "Estados Unidos",
+    toLabel: "República Dominicana",
+    fromFlag: "🇺🇸",
+    toFlag: "🇩🇴",
+  },
 ];
 
 export function getCorridorBySlug(slug: string): Corridor | undefined {

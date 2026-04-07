@@ -33,6 +33,8 @@ const CORRIDORS = [
   { from: "US", to: "SV", label: "EE.UU. → El Salvador" },
   { from: "US", to: "GT", label: "EE.UU. → Guatemala" },
   { from: "US", to: "HN", label: "EE.UU. → Honduras" },
+  { from: "US", to: "MX", label: "EE.UU. → México" },
+  { from: "US", to: "DO", label: "EE.UU. → Rep. Dominicana" },
   { from: "ES", to: "SV", label: "España → El Salvador" },
 ];
 

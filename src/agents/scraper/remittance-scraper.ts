@@ -17,6 +17,7 @@ const CORRIDORS = [
   { fromCountry: "US", toCountry: "GT", fromCurrency: "USD", toCurrency: "GTQ" },
   { fromCountry: "US", toCountry: "HN", fromCurrency: "USD", toCurrency: "HNL" },
   { fromCountry: "US", toCountry: "MX", fromCurrency: "USD", toCurrency: "MXN" },
+  { fromCountry: "US", toCountry: "DO", fromCurrency: "USD", toCurrency: "DOP" },
   { fromCountry: "ES", toCountry: "SV", fromCurrency: "EUR", toCurrency: "USD" },
 ];
 
@@ -60,6 +61,7 @@ const REMITLY_FALLBACK_RATES: Record<string, { exchangeRate: number; feeFlat: nu
   "USD-GTQ": { exchangeRate: 7.72, feeFlat: 2.99 },  // US→GT
   "USD-HNL": { exchangeRate: 24.85, feeFlat: 2.99 }, // US→HN
   "USD-MXN": { exchangeRate: 19.85, feeFlat: 2.99 }, // US→MX
+  "USD-DOP": { exchangeRate: 60.50, feeFlat: 2.99 }, // US→DO
   "EUR-USD": { exchangeRate: 1.08, feeFlat: 1.49 },  // ES→SV
 };
 
@@ -83,6 +85,7 @@ const WU_RATES: Record<string, { exchangeRate: number; feeFlat: number }> = {
   "USD-GTQ": { exchangeRate: 7.68, feeFlat: 5.00 },
   "USD-HNL": { exchangeRate: 24.70, feeFlat: 5.00 },
   "USD-MXN": { exchangeRate: 19.60, feeFlat: 4.00 },
+  "USD-DOP": { exchangeRate: 60.10, feeFlat: 5.00 },
   "EUR-USD": { exchangeRate: 1.065, feeFlat: 4.00 },
 };
 
@@ -104,6 +107,7 @@ const MG_RATES: Record<string, { exchangeRate: number; feeFlat: number }> = {
   "USD-GTQ": { exchangeRate: 7.70, feeFlat: 4.99 },
   "USD-HNL": { exchangeRate: 24.78, feeFlat: 4.99 },
   "USD-MXN": { exchangeRate: 19.72, feeFlat: 3.99 },
+  "USD-DOP": { exchangeRate: 60.30, feeFlat: 4.99 },
   "EUR-USD": { exchangeRate: 1.07, feeFlat: 3.99 },
 };
 
