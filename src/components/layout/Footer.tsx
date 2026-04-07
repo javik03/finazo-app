@@ -70,6 +70,7 @@ export function Footer() {
                 { href: "/guatemala", label: "Guatemala" },
                 { href: "/honduras", label: "Honduras" },
                 { href: "/mexico", label: "México" },
+                { href: "/republica-dominicana", label: "Rep. Dominicana" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

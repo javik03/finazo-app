@@ -26,30 +26,31 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   description:
-    "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente. Gratis, en español.",
+    "Compara remesas, préstamos y seguros en El Salvador, Guatemala, Honduras, México y República Dominicana. Datos actualizados diariamente. Gratis, en español.",
   keywords: [
     "comparar remesas El Salvador",
+    "enviar dinero República Dominicana",
     "préstamos personales El Salvador",
     "tasas bancarias SSF",
     "enviar dinero El Salvador",
     "Wise Remitly Western Union comparar",
     "comparador financiero centroamerica",
-    "mejores remesas Guatemala Honduras",
+    "mejores remesas Guatemala Honduras Mexico",
   ],
   openGraph: {
     type: "website",
     locale: "es_SV",
     url: "https://finazo.lat",
     siteName: "Finazo",
-    title: "Finazo — Comparador financiero para Centroamérica",
+    title: "Finazo — Comparador financiero para Centroamérica y el Caribe",
     description:
-      "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras. Datos actualizados diariamente.",
+      "Compara remesas, préstamos y seguros en El Salvador, Guatemala, Honduras, México y República Dominicana. Datos actualizados diariamente.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Finazo — Comparador financiero para Centroamérica",
+    title: "Finazo — Comparador financiero para Centroamérica y el Caribe",
     description:
-      "Compara remesas, préstamos y seguros en El Salvador, Guatemala y Honduras.",
+      "Compara remesas, préstamos y seguros en El Salvador, Guatemala, Honduras, México y República Dominicana.",
   },
   alternates: {
     canonical: "https://finazo.lat",

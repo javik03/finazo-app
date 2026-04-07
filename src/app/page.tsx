@@ -149,6 +149,12 @@ const CORRIDORS = [
     slug: "eeuu-mexico",
   },
   {
+    code: "US→DO",
+    label: "EE.UU. → Rep. Dominicana",
+    desc: "El corredor más grande del Caribe. Más de 1 millón de dominicanos en EE.UU.",
+    slug: "eeuu-republica-dominicana",
+  },
+  {
     code: "ES→SV",
     label: "España → El Salvador",
     desc: "Euros a dólares al tipo de cambio real",
@@ -159,7 +165,7 @@ const CORRIDORS = [
 const METRICS = [
   { value: "5+", label: "servicios de remesas" },
   { value: "8", label: "bancos SSF" },
-  { value: "5", label: "corredores activos" },
+  { value: "6", label: "corredores activos" },
   { value: "6h", label: "actualización" },
 ];
 
@@ -173,7 +179,7 @@ const orgSchema = {
   logo: "https://finazo.lat/opengraph-image",
   description:
     "Comparador financiero independiente para Centroamérica — remesas, préstamos y seguros.",
-  areaServed: ["SV", "GT", "HN", "MX"],
+  areaServed: ["SV", "GT", "HN", "MX", "DO"],
   knowsAbout: ["remesas", "préstamos personales", "seguros", "finanzas personales"],
 };
 
@@ -269,7 +275,7 @@ export default async function HomePage() {
                 style={{ color: "#555" }}
               >
                 Compara remesas, préstamos y seguros en El Salvador, Guatemala,
-                Honduras y México. Datos reales, actualizados automáticamente, gratis.
+                Honduras, México y República Dominicana. Datos reales, actualizados automáticamente, gratis.
               </p>
 
               {/* CTAs */}
