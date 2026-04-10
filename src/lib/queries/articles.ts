@@ -16,6 +16,7 @@ export async function getPublishedArticles(category?: string) {
       publishedAt: articles.publishedAt,
       wordCount: articles.wordCount,
       featuredImageUrl: articles.featuredImageUrl,
+      authorName: articles.authorName,
     })
     .from(articles)
     .where(conditions)

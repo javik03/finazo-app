@@ -55,6 +55,9 @@ export default async function GuiaPage({ params }: Props) {
   const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
+  const authorDisplayName = article.authorName ?? "Equipo Finazo";
+  const isNamedAuthor = Boolean(article.authorName);
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -62,6 +65,17 @@ export default async function GuiaPage({ params }: Props) {
     description: article.metaDescription,
     datePublished: article.publishedAt?.toISOString(),
     dateModified: article.updatedAt?.toISOString(),
+    author: isNamedAuthor
+      ? {
+          "@type": "Person",
+          name: article.authorName,
+          url: "https://finazo.lat/autor/javier-keough",
+        }
+      : {
+          "@type": "Organization",
+          name: "Finazo",
+          url: "https://finazo.lat",
+        },
     publisher: {
       "@type": "Organization",
       name: "Finazo",
@@ -166,7 +180,16 @@ export default async function GuiaPage({ params }: Props) {
                 </>
               )}
               <span>·</span>
-              <span className="text-emerald-600 font-medium">Finazo</span>
+              {isNamedAuthor ? (
+                <Link
+                  href="/autor/javier-keough"
+                  className="font-medium text-emerald-600 hover:underline"
+                >
+                  {authorDisplayName}
+                </Link>
+              ) : (
+                <span className="font-medium text-emerald-600">{authorDisplayName}</span>
+              )}
             </div>
           </header>
 

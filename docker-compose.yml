@@ -100,5 +100,31 @@ services:
       postgres:
         condition: service_healthy
 
+  # Monthly report generator — runs on 1st of each month at 02:00 UTC
+  # Uses a simple loop: sleeps until next 1st-of-month, then generates report
+  writer-monthly-report:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    command: >
+      sh -c "
+        while true; do
+          NOW=\$(date +%d);
+          if [ \"\$NOW\" = '01' ]; then
+            npx tsx src/agents/writer/monthly-report-generator.ts;
+            sleep 86400;
+          else
+            sleep 3600;
+          fi
+        done
+      "
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   postgres_data:

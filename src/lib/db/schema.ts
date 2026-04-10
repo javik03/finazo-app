@@ -111,6 +111,7 @@ export const articles = pgTable("articles", {
   featuredImageUrl: text("featured_image_url"),
   wordCount: integer("word_count"),
   generatedBy: text("generated_by").default("claude"), // claude | human
+  authorName: text("author_name"), // null = "Equipo Finazo" fallback
   publishedAt: timestamp("published_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
