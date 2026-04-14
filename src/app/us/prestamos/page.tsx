@@ -149,95 +149,145 @@ export default async function UsPrestamosPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
       />
       <Header />
-      <main className="min-h-screen bg-slate-50">
-
-        {/* Breadcrumb */}
-        <div className="bg-white border-b border-slate-200">
-          <div className="mx-auto max-w-5xl px-6 py-3 text-sm text-slate-500">
-            <Link href="/" className="hover:text-emerald-600">Inicio</Link>
-            {" / "}
-            <Link href="/us" className="hover:text-emerald-600">EE.UU.</Link>
-            {" / "}
-            <span className="text-slate-800 font-medium">Préstamos personales</span>
-          </div>
-        </div>
+      <main className="min-h-screen" style={{ background: "#fff" }}>
 
         {/* Hero */}
-        <section className="bg-white">
-          <div className="mx-auto max-w-5xl px-6 py-12">
-            <span className="inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-200 mb-4">
-              Mercado EE.UU. · Actualizado semanalmente
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+          <div
+            className="mx-auto px-6 py-10"
+            style={{ maxWidth: "var(--W)" }}
+          >
+            <div className="mb-4 text-sm" style={{ color: "#666" }}>
+              <Link href="/" style={{ color: "var(--green)" }}>
+                Inicio
+              </Link>
+              <span className="mx-2">›</span>
+              <Link href="/us" style={{ color: "var(--green)" }}>
+                EE.UU.
+              </Link>
+              <span className="mx-2">›</span>
+              <span>Préstamos personales</span>
+            </div>
+            <h1 className="text-3xl font-extrabold tracking-tight mb-3" style={{ color: "#111" }}>
               Préstamos personales para hispanos en Estados Unidos
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl intro-text">
+            <p className="text-lg max-w-2xl intro-text" style={{ color: "#555" }}>
               Compara APRs, montos y requisitos de los principales prestamistas.
               Incluye opciones con <strong>ITIN sin necesidad de SSN</strong> y
               sin historial crediticio previo en EE.UU.
             </p>
+          </div>
+        </section>
 
-            {/* Key callout */}
-            <div className="mt-6 rounded-xl bg-amber-50 border border-amber-200 p-4 max-w-2xl key-callout">
-              <p className="text-sm text-amber-900">
-                <strong>Lo esencial:</strong> El APR incluye todos los cargos —
-                es el número real para comparar. Upgrade y Self Financial aceptan
-                ITIN. LightStream tiene el APR más bajo pero requiere crédito
-                establecido (660+).
-              </p>
-            </div>
+        {/* Key callout */}
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <div
+            className="rounded-2xl p-6 max-w-2xl key-callout"
+            style={{ background: "var(--green-bg)", border: "1px solid #d1e8d9" }}
+          >
+            <p className="text-sm" style={{ color: "#555" }}>
+              <strong style={{ color: "#111" }}>Lo esencial:</strong> El APR incluye todos los cargos —
+              es el número real para comparar. Upgrade y Self Financial aceptan
+              ITIN. LightStream tiene el APR más bajo pero requiere crédito
+              establecido (660+).
+            </p>
           </div>
         </section>
 
         {/* Comparison table */}
-        <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "#111" }}>
             Comparativa de prestamistas — 2025
           </h2>
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div
+            className="rounded-2xl overflow-hidden"
+            style={{ border: "1px solid #d1e8d9" }}
+          >
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-200 bg-slate-50">
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Prestamista</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">APR</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Monto</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Plazo</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Score mín.</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">ITIN</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Depósito</th>
+                <tr style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Prestamista
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    APR
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Monto
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Plazo
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Score mín.
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    ITIN
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Depósito
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {sorted.map((lender, i) => (
                   <tr
                     key={i}
-                    className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
+                    className="border-b hover:bg-slate-50 transition-colors"
+                    style={{
+                      borderColor: "#e5e7eb",
+                      background: i % 2 === 0 ? "#fff" : "#fafafa",
+                    }}
                   >
-                    <td className="px-4 py-3 font-medium text-slate-900">
+                    <td className="px-4 py-3 font-medium" style={{ color: "#111" }}>
                       {lender.provider}
                     </td>
-                    <td className="px-4 py-3 text-slate-700">
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
                       {formatApr(lender.aprMin)}–{formatApr(lender.aprMax)}
                     </td>
-                    <td className="px-4 py-3 text-slate-700">
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
                       {formatAmount(lender.amountMin)}–{formatAmount(lender.amountMax)}
                     </td>
-                    <td className="px-4 py-3 text-slate-700">
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
                       {lender.termMinMonths}–{lender.termMaxMonths} meses
                     </td>
-                    <td className="px-4 py-3 text-slate-700">
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
                       {lender.minCreditScore ?? "Sin mínimo"}
                     </td>
                     <td className="px-4 py-3">
                       {lender.acceptsItin ? (
-                        <span className="inline-block rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700">
-                          Sí
+                        <span
+                          className="rounded-full px-2.5 py-0.5 text-xs font-semibold"
+                          style={{ background: "#dcfce7", color: "#166534" }}
+                        >
+                          ✓ Sí
                         </span>
                       ) : (
-                        <span className="text-slate-400 text-xs">No</span>
+                        <span style={{ color: "#999", fontSize: "0.75rem" }}>No</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-slate-700">
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
                       {lender.fundingDays === 0
                         ? "N/A"
                         : lender.fundingDays === 1
@@ -251,35 +301,41 @@ export default async function UsPrestamosPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-xs text-slate-500">
+          <p className="mt-3 text-xs" style={{ color: "#888" }}>
             APRs publicados por cada prestamista. La tasa final depende de tu historial crediticio.
             Actualizado semanalmente por Finazo.
           </p>
         </section>
 
         {/* Guide content */}
-        <section className="mx-auto max-w-5xl px-6 py-8">
+        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
 
-              <div className="bg-white rounded-xl border border-slate-200 p-6">
-                <h2 className="text-lg font-semibold text-slate-900 mb-3">
+              <div
+                className="rounded-2xl p-6"
+                style={{ background: "#fff", border: "1px solid #d1e8d9" }}
+              >
+                <h2 className="text-lg font-semibold mb-3" style={{ color: "#111" }}>
                   ¿Qué necesitas para solicitar un préstamo personal?
                 </h2>
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">✓</span><span><strong>Identificación:</strong> SSN o ITIN (según el prestamista)</span></li>
-                  <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">✓</span><span><strong>Comprobante de ingresos:</strong> talón de pago (pay stub), cartas de empleador, o declaración de impuestos</span></li>
-                  <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">✓</span><span><strong>Cuenta bancaria:</strong> en EE.UU. para recibir el depósito</span></li>
-                  <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">✓</span><span><strong>Historial crediticio:</strong> algunos prestamistas aceptan score desde 580; otros no tienen mínimo</span></li>
-                  <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">✓</span><span><strong>Dirección en EE.UU.:</strong> comprobante de domicilio (recibo de servicios, contrato de renta)</span></li>
+                <ul className="space-y-2 text-sm" style={{ color: "#555" }}>
+                  <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "0.125rem" }}>✓</span><span><strong style={{ color: "#111" }}>Identificación:</strong> SSN o ITIN (según el prestamista)</span></li>
+                  <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "0.125rem" }}>✓</span><span><strong style={{ color: "#111" }}>Comprobante de ingresos:</strong> talón de pago (pay stub), cartas de empleador, o declaración de impuestos</span></li>
+                  <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "0.125rem" }}>✓</span><span><strong style={{ color: "#111" }}>Cuenta bancaria:</strong> en EE.UU. para recibir el depósito</span></li>
+                  <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "0.125rem" }}>✓</span><span><strong style={{ color: "#111" }}>Historial crediticio:</strong> algunos prestamistas aceptan score desde 580; otros no tienen mínimo</span></li>
+                  <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "0.125rem" }}>✓</span><span><strong style={{ color: "#111" }}>Dirección en EE.UU.:</strong> comprobante de domicilio (recibo de servicios, contrato de renta)</span></li>
                 </ul>
               </div>
 
-              <div className="bg-white rounded-xl border border-slate-200 p-6">
-                <h2 className="text-lg font-semibold text-slate-900 mb-3">
+              <div
+                className="rounded-2xl p-6"
+                style={{ background: "#fff", border: "1px solid #d1e8d9" }}
+              >
+                <h2 className="text-lg font-semibold mb-3" style={{ color: "#111" }}>
                   Cómo calcular el costo real de tu préstamo
                 </h2>
-                <p className="text-sm text-slate-700 mb-3">
+                <p className="text-sm mb-3" style={{ color: "#555" }}>
                   Usa el APR (no la tasa de interés nominal) para comparar. Un préstamo de{" "}
                   <strong>$10,000 a 36 meses al APR 15%</strong> cuesta aproximadamente{" "}
                   <strong>$347/mes</strong> y $2,482 en intereses totales.
@@ -288,44 +344,54 @@ export default async function UsPrestamosPage() {
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs border-collapse">
                     <thead>
-                      <tr className="bg-slate-50">
-                        <th className="border border-slate-200 px-3 py-2 text-left">APR</th>
-                        <th className="border border-slate-200 px-3 py-2 text-left">Cuota mensual</th>
-                        <th className="border border-slate-200 px-3 py-2 text-left">Intereses totales</th>
+                      <tr style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+                        <th className="border px-3 py-2 text-left font-semibold" style={{ borderColor: "#d1e8d9", color: "var(--green)" }}>APR</th>
+                        <th className="border px-3 py-2 text-left font-semibold" style={{ borderColor: "#d1e8d9", color: "var(--green)" }}>Cuota mensual</th>
+                        <th className="border px-3 py-2 text-left font-semibold" style={{ borderColor: "#d1e8d9", color: "var(--green)" }}>Intereses totales</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td className="border border-slate-200 px-3 py-2">10%</td><td className="border border-slate-200 px-3 py-2">$323</td><td className="border border-slate-200 px-3 py-2">$1,616</td></tr>
-                      <tr className="bg-slate-50"><td className="border border-slate-200 px-3 py-2">15%</td><td className="border border-slate-200 px-3 py-2">$347</td><td className="border border-slate-200 px-3 py-2">$2,482</td></tr>
-                      <tr><td className="border border-slate-200 px-3 py-2">20%</td><td className="border border-slate-200 px-3 py-2">$372</td><td className="border border-slate-200 px-3 py-2">$3,396</td></tr>
-                      <tr className="bg-slate-50"><td className="border border-slate-200 px-3 py-2">30%</td><td className="border border-slate-200 px-3 py-2">$420</td><td className="border border-slate-200 px-3 py-2">$5,120</td></tr>
+                      <tr><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>10%</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$323</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$1,616</td></tr>
+                      <tr style={{ background: "var(--green-bg)" }}><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>15%</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$347</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$2,482</td></tr>
+                      <tr><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>20%</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$372</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$3,396</td></tr>
+                      <tr style={{ background: "var(--green-bg)" }}><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>30%</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$420</td><td className="border px-3 py-2" style={{ borderColor: "#d1e8d9", color: "#555" }}>$5,120</td></tr>
                     </tbody>
                   </table>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">$10,000 a 36 meses. Solo referencia.</p>
+                <p className="text-xs mt-2" style={{ color: "#888" }}>$10,000 a 36 meses. Solo referencia.</p>
               </div>
             </div>
 
             {/* Sidebar */}
             <aside className="space-y-4">
-              <div className="bg-emerald-50 rounded-xl border border-emerald-200 p-5">
-                <h3 className="font-semibold text-emerald-900 mb-2 text-sm">
+              <div
+                className="rounded-2xl p-6"
+                style={{ background: "var(--green-bg)", border: "1px solid #d1e8d9" }}
+              >
+                <h3 className="font-semibold mb-2 text-sm" style={{ color: "#111" }}>
                   ¿Sin historial crediticio?
                 </h3>
-                <p className="text-xs text-emerald-800 mb-3">
+                <p className="text-xs mb-3" style={{ color: "#555" }}>
                   Empieza con un préstamo para construir crédito (credit builder loan).
                   Self Financial reporta a Equifax, Experian y TransUnion.
                 </p>
                 <Link
                   href="/us/credito"
-                  className="block text-center text-xs font-medium bg-emerald-600 text-white rounded-lg px-3 py-2 hover:bg-emerald-700"
+                  className="block text-center text-xs font-medium rounded-lg px-3 py-2 transition-colors"
+                  style={{
+                    background: "var(--green)",
+                    color: "#fff",
+                  }}
                 >
                   Guía para construir crédito
                 </Link>
               </div>
 
-              <div className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-semibold text-slate-900 mb-3 text-sm">
+              <div
+                className="rounded-2xl p-6"
+                style={{ background: "#fff", border: "1px solid #d1e8d9" }}
+              >
+                <h3 className="font-semibold mb-3 text-sm" style={{ color: "#111" }}>
                   Préstamos por estado
                 </h3>
                 <ul className="space-y-1">
@@ -333,7 +399,8 @@ export default async function UsPrestamosPage() {
                     <li key={state.slug}>
                       <Link
                         href={`/us/prestamos/${state.slug}`}
-                        className="text-sm text-emerald-600 hover:underline"
+                        className="text-sm hover:underline"
+                        style={{ color: "var(--green)" }}
                       >
                         {state.name} →
                       </Link>
@@ -346,15 +413,21 @@ export default async function UsPrestamosPage() {
         </section>
 
         {/* FAQ */}
-        <section className="mx-auto max-w-5xl px-6 pb-16">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">
+        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-xl font-bold mb-6" style={{ color: "#111" }}>
             Preguntas frecuentes
           </h2>
           <div className="space-y-4">
             {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-medium text-slate-900 mb-2">{faq.name}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
+              <div
+                key={i}
+                className="rounded-2xl p-6"
+                style={{ background: "var(--background)", border: "1px solid #e5e7eb" }}
+              >
+                <h3 className="font-semibold mb-2" style={{ color: "#111" }}>
+                  {faq.name}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
                   {faq.acceptedAnswer.text}
                 </p>
               </div>

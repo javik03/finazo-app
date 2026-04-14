@@ -157,32 +157,32 @@ export default function UsSeguroVidaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <Header />
-      <main className="min-h-screen bg-slate-50">
+      <main className="min-h-screen" style={{ background: "var(--background)" }}>
 
-        <div className="bg-white border-b border-slate-200">
-          <div className="mx-auto max-w-5xl px-6 py-3 text-sm text-slate-500">
-            <Link href="/" className="hover:text-emerald-600">Inicio</Link>
-            {" / "}
-            <Link href="/us" className="hover:text-emerald-600">EE.UU.</Link>
-            {" / "}
-            <span className="text-slate-800 font-medium">Seguro de vida</span>
+        <div style={{ background: "white", borderBottom: "1px solid #d1e8d9" }}>
+          <div className="mx-auto max-w-5xl px-6 py-3 text-sm" style={{ color: "#666" }}>
+            <Link href="/" style={{ color: "var(--green)" }}>Inicio</Link>
+            {" › "}
+            <Link href="/us" style={{ color: "var(--green)" }}>EE.UU.</Link>
+            {" › "}
+            <span style={{ color: "#333", fontWeight: 500 }}>Seguro de vida</span>
           </div>
         </div>
 
-        <section className="bg-white">
+        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
           <div className="mx-auto max-w-5xl px-6 py-12">
-            <span className="inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-200 mb-4">
+            <span className="inline-block rounded-full px-3 py-1 text-xs font-medium mb-4" style={{ background: "white", color: "var(--green)", border: "1px solid #d1e8d9" }}>
               Mercado EE.UU. · Actualizado 2025
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "#1a1a1a" }}>
               Seguro de vida para hispanos en Estados Unidos
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl intro-text">
+            <p className="text-lg max-w-2xl intro-text" style={{ color: "#666" }}>
               Protege a tu familia — en EE.UU. o en tu país de origen — desde $10 al mes.
               Sin importar tu estatus migratorio. Los beneficiarios pueden estar en cualquier país.
             </p>
-            <div className="mt-6 rounded-xl bg-emerald-50 border border-emerald-200 p-4 max-w-2xl">
-              <p className="text-sm text-emerald-900">
+            <div className="mt-6 rounded-xl p-4 max-w-2xl" style={{ background: "#dcfce7", border: "1px solid #86efac" }}>
+              <p className="text-sm" style={{ color: "#166534" }}>
                 <strong>¿Por qué es urgente?</strong> El 60% de los trabajadores hispanos en EE.UU.
                 no tiene seguro de vida. Un hombre de 35 años puede asegurar $250,000 por apenas
                 $18/mes — el costo de una salida a comer. Tus familiares en LATAM pueden ser
@@ -194,70 +194,70 @@ export default function UsSeguroVidaPage() {
 
         {/* Sample rates */}
         <section className="mx-auto max-w-5xl px-6 py-8 rates-grid">
-          <h2 className="text-xl font-semibold text-slate-900 mb-2">
+          <h2 className="text-xl font-semibold mb-2" style={{ color: "#1a1a1a" }}>
             Tarifas de ejemplo para personas hispanas en EE.UU.
           </h2>
-          <p className="text-sm text-slate-600 mb-5">
+          <p className="text-sm mb-5" style={{ color: "#666" }}>
             Primas mensuales estimadas para no fumadores. Las tarifas reales varían según estado,
             aseguradora e historial médico.
           </p>
-          <div className="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+          <div className="rounded-2xl overflow-x-auto" style={{ background: "white", border: "1px solid #d1e8d9" }}>
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Edad</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Género</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Salud</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Cobertura</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Plazo</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Prima/mes</th>
+                <tr style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Edad</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Género</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Salud</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Cobertura</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Plazo</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Prima/mes</th>
                 </tr>
               </thead>
               <tbody>
                 {SAMPLE_RATES.map((row, i) => (
-                  <tr key={i} className="border-b border-slate-100 hover:bg-slate-50">
-                    <td className="px-4 py-3 text-slate-900">{row.age} años</td>
-                    <td className="px-4 py-3 text-slate-600">{row.gender}</td>
-                    <td className="px-4 py-3 text-slate-600">{row.health}</td>
-                    <td className="px-4 py-3 font-medium text-slate-900">{row.coverage}</td>
-                    <td className="px-4 py-3 text-slate-600">{row.term}</td>
-                    <td className="px-4 py-3 font-bold text-emerald-700">{row.monthly}</td>
+                  <tr key={i} style={{ background: i % 2 === 0 ? "#fff" : "#fafafa", borderBottom: "1px solid #f0f0f0" }}>
+                    <td className="px-4 py-3" style={{ color: "#1a1a1a" }}>{row.age} años</td>
+                    <td className="px-4 py-3" style={{ color: "#666" }}>{row.gender}</td>
+                    <td className="px-4 py-3" style={{ color: "#666" }}>{row.health}</td>
+                    <td className="px-4 py-3 font-medium" style={{ color: "#1a1a1a" }}>{row.coverage}</td>
+                    <td className="px-4 py-3" style={{ color: "#666" }}>{row.term}</td>
+                    <td className="px-4 py-3 font-bold" style={{ color: "var(--green)" }}>{row.monthly}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-xs text-slate-400">
+          <p className="mt-2 text-xs" style={{ color: "#999" }}>
             Estimados basados en datos de mercado 2025. Solicita tu cotización exacta directamente con el proveedor.
           </p>
         </section>
 
         {/* Providers */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             Mejores proveedores para hispanos en EE.UU.
           </h2>
           <div className="space-y-4">
             {PROVIDERS.map((provider) => (
-              <div key={provider.name} className="bg-white rounded-xl border border-slate-200 p-5">
+              <div key={provider.name} className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-slate-900">{provider.name}</h3>
+                      <h3 className="font-semibold" style={{ color: "#1a1a1a" }}>{provider.name}</h3>
                       {provider.itin && (
-                        <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-medium">
+                        <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: "var(--green-bg)", color: "var(--green)" }}>
                           Acepta ITIN
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-slate-600 mb-2">{provider.highlight}</p>
-                    <div className="flex flex-wrap gap-4 text-xs text-slate-500">
+                    <p className="text-sm mb-2" style={{ color: "#666" }}>{provider.highlight}</p>
+                    <div className="flex flex-wrap gap-4 text-xs" style={{ color: "#999" }}>
                       <span>Cobertura: {provider.minCoverage} – {provider.maxCoverage}</span>
                       <span>Plazos: {provider.terms}</span>
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-lg font-bold text-emerald-700">Desde {provider.startPrice}</div>
+                    <div className="text-lg font-bold" style={{ color: "var(--green)" }}>Desde {provider.startPrice}</div>
                   </div>
                 </div>
               </div>
@@ -267,7 +267,7 @@ export default function UsSeguroVidaPage() {
 
         {/* How it works */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             Cómo funciona: pasos para obtener tu seguro de vida
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
@@ -277,12 +277,12 @@ export default function UsSeguroVidaPage() {
               { step: "3", title: "Examen médico", desc: "Para coberturas altas (+$500K) se requiere un examen gratuito en tu domicilio. Para coberturas menores, solo preguntas de salud." },
               { step: "4", title: "Designa beneficiarios", desc: "Puedes poner a cualquier persona, en cualquier país. Tu familia en LATAM recibe el pago directamente." },
             ].map((item) => (
-              <div key={item.step} className="bg-white rounded-xl border border-slate-200 p-5">
-                <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center mb-3">
+              <div key={item.step} className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
+                <div className="w-8 h-8 rounded-full text-white font-bold text-sm flex items-center justify-center mb-3" style={{ background: "var(--green)" }}>
                   {item.step}
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                <h3 className="font-semibold mb-2" style={{ color: "#1a1a1a" }}>{item.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -290,14 +290,14 @@ export default function UsSeguroVidaPage() {
 
         {/* FAQ */}
         <section className="mx-auto max-w-5xl px-6 pb-16">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">
+          <h2 className="text-xl font-semibold mb-6" style={{ color: "#1a1a1a" }}>
             Preguntas frecuentes sobre seguro de vida
           </h2>
           <div className="space-y-4">
             {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-medium text-slate-900 mb-2">{faq.name}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              <div key={i} className="rounded-2xl p-5" style={{ background: "var(--background)", border: "1px solid #d1e8d9" }}>
+                <h3 className="font-medium mb-2" style={{ color: "#1a1a1a" }}>{faq.name}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
