@@ -3889,6 +3889,388 @@ Estructura requerida:
 ## Preguntas frecuentes
 ## Conclusión + CTA Finazo${SEO_SUFFIX}`,
   },
+
+  // =========================================================================
+  // US HISPANIC MARKET — English-speaking Hispanics living in EE.UU.
+  // Target: CA, TX, FL, NY, IL, AZ, NJ, CO, NM, NV
+  // Keywords: "hispanos en EE.UU.", "inmigrantes", "ITIN", state-specific
+  // =========================================================================
+
+  // ---- US Préstamos ----
+  {
+    slug: "prestamos-personales-hispanos-california-guia-2026",
+    category: "prestamos",
+    country: "US",
+    imageQuery: "los angeles california hispanic family finance",
+    prompt: `Eres un experto SEO en finanzas personales para hispanos en California. Escribe una guía completa optimizada para "préstamos personales hispanos California".
+
+Keyword principal: "préstamos personales para hispanos en California"
+Título H1: "Préstamos personales para hispanos en California 2026: con ITIN y sin SSN"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; dato: 40% de California es hispano = 15 millones de personas)
+## Prestamistas que aceptan ITIN en California
+(Upgrade, Self Financial, Accion Opportunity Fund, cooperativas locales — tabla con APR, monto, requisitos)
+## Cómo California protege al consumidor en préstamos (DFPI, límites de tasa CFL)
+## Diferencia entre un banco tradicional y un CDFI para hispanos
+## Los mejores prestamistas en línea disponibles en California
+(SoFi, LightStream, Avant — APRs, montos, velocidad)
+## Cómo preparar tu solicitud de préstamo si eres nuevo en EE.UU.
+## Preguntas frecuentes
+## Conclusión + CTA a comparador de Finazo ([compara préstamos en Finazo](/us/prestamos))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-hispanos-texas-itin-sin-ssn-2026",
+    category: "prestamos",
+    country: "US",
+    imageQuery: "houston texas hispanic community finance loan",
+    prompt: `Eres un experto SEO en finanzas personales para hispanos en Texas. Escribe una guía optimizada para "préstamos para hispanos en Texas".
+
+Keyword principal: "préstamos para hispanos en Texas con ITIN"
+Título H1: "Préstamos personales para hispanos en Texas 2026: ITIN, sin SSN, sin buen crédito"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Texas tiene 12 millones de hispanos — 40% del estado)
+## Opciones ITIN en Texas: prestamistas que aceptan sin SSN
+(Accion Texas/Opportunity Fund, LiftFund, Upgrade — tabla con condiciones)
+## Texas vs otros estados: ¿hay protección al consumidor en préstamos?
+(Texas no tiene tope de tasa estatal — qué significa para ti)
+## Cómo encontrar CDFIs y credit unions hispanas en Houston, San Antonio, Dallas, El Paso
+## Los 5 mejores prestamistas en línea en Texas para hispanos con crédito regular
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([ver opciones en Texas](/us/prestamos/texas))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "prestamos-hispanos-florida-miami-comparativa-2026",
+    category: "prestamos",
+    country: "US",
+    imageQuery: "miami florida hispanic community bank loan",
+    prompt: `Eres un experto SEO en finanzas personales para hispanos en Florida. Escribe una guía optimizada para "préstamos para hispanos en Florida".
+
+Keyword principal: "préstamos personales para hispanos en Florida"
+Título H1: "Préstamos para hispanos en Florida 2026: Miami, Orlando, Tampa — con ITIN"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Miami-Dade tiene 70% de población hispana)
+## Opciones de préstamo en Miami para la comunidad cubana, venezolana y centroamericana
+## Bancos comunitarios hispanos en Florida (Amerant Bank, City National Bank — opciones flexibles)
+## Prestamistas en línea disponibles en Florida: APRs y requisitos
+## Cómo el crédito afecta tu préstamo en Florida vs en California
+## Preguntas frecuentes específicas para hispanos del Caribe en Florida
+## Conclusión + CTA Finazo ([comparar en Florida](/us/prestamos/florida))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-obtener-itin-solicitar-prestamo-eeuu-2026",
+    category: "educacion",
+    country: "US",
+    imageQuery: "itin number tax irs document immigrant",
+    prompt: `Eres un experto SEO en finanzas para inmigrantes hispanos en EE.UU. Escribe una guía optimizada para "cómo obtener ITIN en EE.UU.".
+
+Keyword principal: "cómo obtener ITIN en Estados Unidos"
+Título H1: "Cómo obtener tu ITIN en EE.UU. y usarlo para préstamos y cuentas bancarias 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; ITIN = Individual Taxpayer Identification Number)
+## ¿Qué es el ITIN y quién puede solicitarlo?
+## Paso a paso: cómo solicitar el ITIN (formulario W-7 del IRS)
+(documentos requeridos, dónde enviarlo, tiempos de espera 7-11 semanas)
+## Qué puedes hacer con un ITIN (préstamos, tarjetas, cuentas bancarias, seguro de salud)
+## Qué NO puedes hacer con ITIN (vs SSN)
+## Lista de bancos y prestamistas que aceptan ITIN en EE.UU.
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([préstamos con ITIN](/us/prestamos))${SEO_SUFFIX}`,
+  },
+
+  // ---- US Crédito ----
+  {
+    slug: "como-construir-credito-eeuu-inmigrante-hispano-2026",
+    category: "educacion",
+    country: "US",
+    imageQuery: "credit score building immigrant hispanic usa",
+    prompt: `Eres un experto SEO en finanzas para inmigrantes hispanos en EE.UU. Escribe una guía optimizada para "cómo construir crédito en EE.UU. siendo inmigrante".
+
+Keyword principal: "cómo construir crédito en Estados Unidos siendo inmigrante hispano"
+Título H1: "Cómo construir crédito en EE.UU. siendo hispano o inmigrante: de 0 a 700 en 12 meses"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; 1 de cada 3 hispanos en EE.UU. no tiene score crediticio)
+## Por qué el crédito es tan importante en EE.UU. (apartamento, auto, préstamos, seguro)
+## Los 3 métodos más efectivos para empezar desde cero
+(1. Tarjeta asegurada — Discover it, Capital One; 2. Credit builder loan — Self, Credit Strong; 3. Usuario autorizado)
+## Plan de 12 meses para llegar a 700+
+(mes 1-3: abrir tarjeta asegurada; mes 4-6: agregar credit builder; mes 7-12: solicitar tarjeta regular)
+## Los 5 factores del score FICO explicados en español
+## Errores comunes que destruyen el crédito de inmigrantes hispanos
+## Cómo usar Nova Credit si tienes historial en México u otro país
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([guía completa de crédito](/us/credito))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "tarjetas-credito-hispanos-sin-historial-eeuu-2026",
+    category: "tarjetas",
+    country: "US",
+    imageQuery: "secured credit card hispanic immigrant usa",
+    prompt: `Eres un experto SEO en finanzas para hispanos en EE.UU. Escribe una guía optimizada para "tarjetas de crédito para hispanos sin historial en EE.UU.".
+
+Keyword principal: "tarjetas de crédito para hispanos sin historial crediticio EE.UU."
+Título H1: "Las mejores tarjetas de crédito para hispanos sin historial en EE.UU. 2026"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## ¿Qué es una tarjeta de crédito asegurada y cómo funciona?
+## Top 5 tarjetas aseguradas recomendadas para hispanos en 2026
+(Discover it Secured, Capital One Secured, OpenSky, Applied Bank, Bank of America Secured — tabla: depósito, cuota anual, APR, beneficios)
+## Tarjetas sin depósito para crédito regular (score 580-650)
+(Petal 2, Chime Credit Builder, Kikoff)
+## Cómo usar la tarjeta correctamente para subir el score
+## Después de 12 meses: cuándo pedir la tarjeta regular
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([construir crédito](/us/credito))${SEO_SUFFIX}`,
+  },
+
+  // ---- US Seguro de Salud ----
+  {
+    slug: "seguro-salud-hispanos-california-obamacare-2026",
+    category: "seguros",
+    country: "US",
+    imageQuery: "california health insurance hispanic family covered",
+    prompt: `Eres un experto SEO en seguros de salud para hispanos en California. Escribe una guía optimizada para "seguro de salud hispanos California Obamacare".
+
+Keyword principal: "seguro de salud para hispanos en California"
+Título H1: "Seguro de salud para hispanos en California 2026: Covered California, Medi-Cal y subsidios"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; California tiene 40% de habitantes hispanos)
+## Covered California vs Medi-Cal: ¿cuál te corresponde?
+(tabla: ingresos, elegibilidad, costo estimado)
+## Medi-Cal para inmigrantes sin importar estatus migratorio (ALL County Letter)
+## Cómo inscribirte en Covered California en español paso a paso
+## Subsidios disponibles en 2026: cuánto puedes ahorrar
+(ejemplo: familia de 4 con $60,000/año de ingreso — prima estimada con y sin subsidio)
+## Preguntas frecuentes sobre seguro de salud en California
+## Conclusión + CTA Finazo ([guía completa de seguro de salud](/us/seguro-de-salud))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-salud-hispanos-texas-aca-marketplace-2026",
+    category: "seguros",
+    country: "US",
+    imageQuery: "texas healthcare insurance hispanic obamacare",
+    prompt: `Eres un experto SEO en seguros de salud para hispanos en Texas. Escribe una guía optimizada para "seguro de salud hispanos Texas ACA".
+
+Keyword principal: "seguro de salud para hispanos en Texas"
+Título H1: "Seguro de salud para hispanos en Texas 2026: ACA, subsidios y cómo inscribirte"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Texas tiene 12 millones de hispanos; mayor tasa de sin seguro del país)
+## Por qué Texas tiene la mayor tasa de no asegurados en EE.UU.
+## HealthCare.gov: cómo funciona para residentes de Texas
+## Cuánto cuesta el seguro de salud en Texas con subsidio
+(ejemplo: persona de 40 años, $35,000/año — prima estimada en Houston, San Antonio, Dallas)
+## Community Health Centers (FQHCs) para hispanos sin documentos en Texas
+## Períodos de inscripción y eventos de vida calificados
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([guía ACA](/us/seguro-de-salud))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "obamacare-hispanos-indocumentados-eeuu-2026",
+    category: "seguros",
+    country: "US",
+    imageQuery: "healthcare undocumented immigrant hispanic usa",
+    prompt: `Eres un experto SEO en seguros de salud para inmigrantes hispanos en EE.UU. Escribe una guía optimizada para "Obamacare para hispanos sin documentos".
+
+Keyword principal: "seguro de salud para hispanos sin documentos en EE.UU."
+Título H1: "Seguro de salud para hispanos sin documentos en EE.UU. 2026: opciones reales"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; 11 millones de indocumentados en EE.UU., 70% son hispanos)
+## La realidad: ¿qué cubre el ACA para personas sin estatus legal?
+(ACA federal NO cubre indocumentados — excepciones importantes)
+## California: Medi-Cal sin importar estatus migratorio (2024+)
+## Nueva York: Essential Plan para inmigrantes con ingresos bajos
+## Community Health Centers (FQHCs): atención de bajo costo sin estatus
+(más de 1,400 centros en EE.UU., tarifa según ingreso desde $20/visita)
+## Emergencias: EMTALA garantiza atención de emergencia a todos
+## Opciones para niños y mujeres embarazadas sin importar estatus
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([opciones de salud](/us/seguro-de-salud))${SEO_SUFFIX}`,
+  },
+
+  // ---- US Seguro de Auto ----
+  {
+    slug: "seguro-auto-hispanos-california-sin-licencia-eeuu-2026",
+    category: "seguros",
+    country: "US",
+    imageQuery: "california car insurance hispanic driver license",
+    prompt: `Eres un experto SEO en seguros de auto para hispanos en California. Escribe una guía optimizada para "seguro de auto hispanos California".
+
+Keyword principal: "seguro de auto para hispanos en California"
+Título H1: "Seguro de auto para hispanos en California 2026: licencia AB-60 y tarifas más bajas"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones)
+## Licencia AB-60: cómo obtener licencia de conducir en California sin SSN
+(DMV California acepta inmigrantes sin estatus — más de 1 millón emitidas)
+## Cómo California prohíbe usar crédito para calcular el seguro de auto
+(beneficio clave para hispanos sin historial crediticio)
+## Las aseguradoras más económicas para hispanos en California
+(Mercury, GEICO, State Farm, Progressive — tarifas estimadas en LA y el Valle Central)
+## Programa CLCA: seguro de auto de bajo costo para californianos de bajos ingresos
+(hasta $450/año — para ingresos bajo el 250% del nivel de pobreza federal)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([guía de seguro de auto](/us/seguro-de-auto))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "seguro-auto-hispanos-texas-tarifas-conductores-2026",
+    category: "seguros",
+    country: "US",
+    imageQuery: "texas car insurance hispanic driver houston",
+    prompt: `Eres un experto SEO en seguros de auto para hispanos en Texas. Escribe una guía optimizada para "seguro de auto hispanos Texas".
+
+Keyword principal: "seguro de auto para hispanos en Texas"
+Título H1: "Seguro de auto para hispanos en Texas 2026: tarifas por ciudad y cómo ahorrar"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; Texas es uno de los estados más caros del país para seguros de auto)
+## Requisitos mínimos de seguro de auto en Texas: 30/60/25
+## Por qué el seguro de auto es tan caro en Texas para conductores hispanos
+(historial crediticio, edad del conductor, código postal)
+## Las 5 aseguradoras más económicas para hispanos en Houston, San Antonio y Dallas
+(GEICO, State Farm, Progressive, GAINSCO, Farmers — tabla de tarifas estimadas)
+## GAINSCO: la aseguradora especializada en conductores hispanos de Texas
+## Cómo reducir tu prima en Texas con historial de manejo extranjero
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([comparar seguro de auto](/us/seguro-de-auto))${SEO_SUFFIX}`,
+  },
+
+  // ---- US Seguro de Vida ----
+  {
+    slug: "seguro-vida-hispanos-inmigrantes-eeuu-beneficiarios-latam-2026",
+    category: "seguros",
+    country: "US",
+    imageQuery: "life insurance hispanic family usa remittance",
+    prompt: `Eres un experto SEO en seguros de vida para hispanos e inmigrantes en EE.UU. Escribe una guía optimizada para "seguro de vida para inmigrantes hispanos en EE.UU.".
+
+Keyword principal: "seguro de vida para inmigrantes hispanos en Estados Unidos"
+Título H1: "Seguro de vida para inmigrantes hispanos en EE.UU. 2026: desde $10/mes con beneficiarios en LATAM"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; 60% de hispanos en EE.UU. no tiene seguro de vida)
+## ¿Pueden los inmigrantes sin SSN obtener seguro de vida?
+(algunos aceptan ITIN — Haven Life, Bestow en ciertos casos)
+## Tus familiares en México, El Salvador o Guatemala pueden ser beneficiarios
+## Por qué el seguro de vida es especialmente urgente para trabajadores que envían remesas
+(si falleces, tu familia pierde sus remesas — el seguro las reemplaza)
+## Cuánto cuesta: tabla de primas para hombre/mujer hispano/a de 25, 35, 45 años
+## Cómo solicitar sin salir de casa (Haven Life, Bestow — 100% en línea)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([guía de seguro de vida](/us/seguro-de-vida))${SEO_SUFFIX}`,
+  },
+
+  // ---- US Educación Financiera ----
+  {
+    slug: "finanzas-personales-hispanos-inmigrantes-eeuu-guia-2026",
+    category: "educacion",
+    country: "US",
+    imageQuery: "personal finance hispanic immigrant usa money management",
+    prompt: `Eres un experto SEO en finanzas personales para la comunidad hispana en EE.UU. Escribe una guía optimizada para "finanzas personales para hispanos en EE.UU.".
+
+Keyword principal: "finanzas personales para hispanos en Estados Unidos"
+Título H1: "Guía de finanzas personales para hispanos en EE.UU. 2026: crédito, préstamos, seguro y ahorro"
+Extensión: 1200-1500 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; los hispanos son el grupo de mayor crecimiento económico en EE.UU.)
+## Paso 1: Construir tu base — cuenta bancaria e ITIN
+## Paso 2: Construir crédito desde cero (tarjeta asegurada, credit builder loan)
+## Paso 3: Proteger tu familia — seguro de salud, auto y vida
+## Paso 4: Acceder a préstamos con mejores tasas (score 680+)
+## Paso 5: Ahorrar e invertir — fondos de emergencia, 401(k), Roth IRA
+## Las 5 trampas financieras más comunes para hispanos en EE.UU.
+(préstamos predatorios, check cashers, Western Union para todo, sin seguro de auto)
+## Recursos gratuitos en español para educación financiera
+(CFPB en español, NFCC, credit unions locales)
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([explorar productos financieros](/us))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "abrir-cuenta-bancaria-sin-ssn-hispanos-eeuu-2026",
+    category: "educacion",
+    country: "US",
+    imageQuery: "bank account opening hispanic immigrant usa",
+    prompt: `Eres un experto SEO en finanzas para inmigrantes hispanos en EE.UU. Escribe una guía optimizada para "abrir cuenta bancaria sin SSN en EE.UU.".
+
+Keyword principal: "abrir cuenta bancaria sin SSN en Estados Unidos"
+Título H1: "Cómo abrir una cuenta bancaria en EE.UU. sin SSN 2026: opciones con ITIN y matrícula consular"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; 6 millones de hispanos en EE.UU. no tienen cuenta bancaria)
+## Bancos que aceptan ITIN o matrícula consular para abrir cuenta
+(Bank of America, Wells Fargo, Chase — cuentas para inmigrantes; y fintechs: Chime, Varo, Current)
+## Qué es la matrícula consular y cómo usarla para servicios bancarios
+## Cuentas bancarias sin crédito mínimo vs cuentas tradicionales
+## Fintech y neobancos: alternativas más fáciles para hispanos en EE.UU.
+(Chime, Varo, Current — sin chequeo de crédito, sin saldo mínimo)
+## Qué necesitas para abrir tu primera cuenta en EE.UU.
+## Preguntas frecuentes
+## Conclusión + CTA Finazo${SEO_SUFFIX}`,
+  },
+  {
+    slug: "como-enviar-dinero-eeuu-mexico-hispanos-2026",
+    category: "remesas",
+    country: "US",
+    imageQuery: "money transfer usa mexico family remittance",
+    prompt: `Eres un experto SEO en remesas para la diáspora mexicana en EE.UU. Escribe una guía optimizada para "enviar dinero de EE.UU. a México".
+
+Keyword principal: "enviar dinero de Estados Unidos a México 2026"
+Título H1: "Cómo enviar dinero de EE.UU. a México en 2026: las mejores apps para la comunidad mexicana"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; México recibe $60B+/año en remesas — 95% desde EE.UU.)
+## Las 5 mejores apps para enviar dinero a México desde EE.UU.
+(Remitly, Wise, Xoom, Western Union, Ria — tabla con: comisión en $300, tipo de cambio USD/MXN, velocidad, métodos de entrega en México)
+## Cómo comparar el tipo de cambio USD/MXN (el error más costoso)
+## Métodos de entrega en México: SPEI, OXXO, banco, efectivo
+## Apps bancarias: Citi Global Transfer para mexicanos con cuenta Banamex
+## Cómo evitar las comisiones ocultas al enviar dinero
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([comparar remesas a México](/remesas/eeuu-mexico))${SEO_SUFFIX}`,
+  },
+  {
+    slug: "enviar-dinero-eeuu-el-salvador-centroamerica-2026",
+    category: "remesas",
+    country: "US",
+    imageQuery: "el salvador usa remittance transfer dollars",
+    prompt: `Eres un experto SEO en remesas para centroamericanos en EE.UU. Escribe una guía optimizada para "enviar dinero de EE.UU. a El Salvador y Centroamérica".
+
+Keyword principal: "enviar dinero de Estados Unidos a El Salvador"
+Título H1: "Cómo enviar dinero de EE.UU. a El Salvador y Centroamérica 2026: guía completa"
+Extensión: 1000-1200 palabras
+
+Estructura requerida:
+## Introducción (keyword en primeras 2 oraciones; El Salvador recibe $8B/año en remesas — 25% del PIB)
+## Por qué El Salvador usa dólares (ventaja para el receptor)
+## Las mejores apps para enviar a El Salvador, Guatemala y Honduras desde EE.UU.
+(Remitly, Wise, Xoom, Western Union, ViaMérica — tabla comparativa de comisiones para $300)
+## Tigo Money y billeteras móviles en Centroamérica: cómo funciona la entrega digital
+## Cómo los centroamericanos en Los Ángeles, Houston y Nueva York suelen enviar dinero
+## El problema de las tarifas altas en zonas rurales de Centroamérica
+## Preguntas frecuentes
+## Conclusión + CTA Finazo ([comparar remesas a El Salvador](/remesas/eeuu-el-salvador))${SEO_SUFFIX}`,
+  },
 ];
 
 // ---------------------------------------------------------------------------
