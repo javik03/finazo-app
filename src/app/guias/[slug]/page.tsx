@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `https://finazo.lat/guias/${slug}`;
 
   return {
-    title: `${article.title} — Finazo`,
+    title: article.title,
     description: article.metaDescription ?? undefined,
     keywords: article.keywords ?? undefined,
     alternates: {
