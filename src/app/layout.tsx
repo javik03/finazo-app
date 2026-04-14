@@ -66,6 +66,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    other: {
+      "msvalidate.01": "841BB7A4B2109CDCDB28CA6654A32456",
+    },
+  },
 };
 
 const websiteSchema = {
@@ -103,7 +108,7 @@ const organizationSchema = {
     contactType: "customer support",
     availableLanguage: "Spanish",
   },
-  sameAs: [],
+  sameAs: ["https://www.linkedin.com/company/finazo/"],
   description:
     "Comparador financiero independiente para Centroamérica. Comparamos remesas, préstamos y seguros en El Salvador, Guatemala, Honduras y México.",
 };
