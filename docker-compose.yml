@@ -86,6 +86,32 @@ services:
       postgres:
         condition: service_healthy
 
+  # CMS ACA health insurance scraper — daily (US market)
+  scraper-cms-aca:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+    command: sh -c "while true; do npx tsx src/agents/scraper/cms-aca-scraper.ts; sleep 86400; done"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # US loans scraper — weekly (APR tables change infrequently)
+  scraper-us-loans:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+    command: sh -c "while true; do npx tsx src/agents/scraper/us-loans-scraper.ts; sleep 604800; done"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   # Content strategist — daily (proactive: NerdWallet-style evergreen articles)
   writer-strategist:
     build:
