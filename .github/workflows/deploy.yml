@@ -31,6 +31,11 @@ jobs:
           ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
             "cd ${{ env.DEPLOY_PATH }} && git fetch origin master && git reset --hard origin/master"
 
+      - name: Run database migrations
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
+            "cd ${{ env.DEPLOY_PATH }} && docker compose run --rm app npx drizzle-kit migrate 2>&1 | tail -20"
+
       - name: Build and restart containers
         run: |
           ssh -i ~/.ssh/deploy_key ${{ secrets.HETZNER_USER }}@${{ env.HETZNER_HOST }} \
