@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     template: "%s | Finazo",
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
   description:
     "Compara remesas, préstamos y seguros en El Salvador, Guatemala, Honduras, México y República Dominicana. Datos actualizados diariamente. Gratis, en español.",

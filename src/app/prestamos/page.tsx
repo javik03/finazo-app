@@ -15,6 +15,8 @@ export const metadata: Metadata = {
       "es-SV": "https://finazo.lat/prestamos",
       "es-GT": "https://finazo.lat/prestamos",
       "es-HN": "https://finazo.lat/prestamos",
+      "es-MX": "https://finazo.lat/prestamos",
+      "es-US": "https://finazo.lat/prestamos",
       "x-default": "https://finazo.lat/prestamos",
     },
   },

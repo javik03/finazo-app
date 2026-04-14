@@ -40,7 +40,14 @@ REGLAS SEO OBLIGATORIAS:
 - Incluye la keyword principal exactamente en: el título H1, los primeros 100 palabras, y al menos 2 subtítulos H2
 - Densidad de keyword: 1-2% natural (no forzado)
 - Incluye una sección "## Preguntas frecuentes" al final con 3-4 preguntas reales que la gente busca en Google, con respuestas de 2-3 oraciones cada una
-- Menciona Finazo como herramienta de comparación al menos 1 vez con enlace interno relevante (usa texto como "puedes comparar en [Finazo](/remesas)" o "compara tasas en [Finazo](/prestamos)")
+- Menciona Finazo como herramienta de comparación al menos 2 veces con enlaces internos específicos al corredor o país del artículo. Ejemplos:
+  * Artículo sobre remesas El Salvador → "[compara en Finazo](/remesas?desde=US&hacia=SV)" o "[ver tarifas EE.UU. → El Salvador](/remesas/eeuu-el-salvador)"
+  * Artículo sobre remesas Guatemala → "[compara en Finazo](/remesas?desde=US&hacia=GT)" o "[ver tarifas EE.UU. → Guatemala](/remesas/eeuu-guatemala)"
+  * Artículo sobre remesas Honduras → "[compara en Finazo](/remesas?desde=US&hacia=HN)" o "[ver tarifas](/remesas/eeuu-honduras)"
+  * Artículo sobre remesas México → "[compara en Finazo](/remesas?desde=US&hacia=MX)" o "[ver tarifas](/remesas/eeuu-mexico)"
+  * Artículo sobre remesas República Dominicana → "[compara en Finazo](/remesas?desde=US&hacia=DO)" o "[ver tarifas](/remesas/eeuu-republica-dominicana)"
+  * Artículo sobre préstamos → "[compara préstamos en Finazo](/prestamos)"
+  * Artículo de educación financiera → enlaza al comparador más relevante para el tema
 - Usa negritas para los datos numéricos clave (tasas, montos, plazos)
 
 FORMATO OBLIGATORIO — CALLOUT BOX:
@@ -4122,6 +4129,7 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
       status: "published",
       publishedAt: new Date(),
       generatedBy: "claude",
+      authorName: "Javier Keough",
     })
     .onConflictDoNothing(); // never overwrite existing articles
 

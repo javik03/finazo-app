@@ -4,21 +4,43 @@ type Props = {
   rates: RemittanceRate[];
   fromCountry: string;
   toCountry: string;
+  lang?: "es" | "en";
 };
 
-const COUNTRY_NAMES: Record<string, string> = {
+const COUNTRY_NAMES_ES: Record<string, string> = {
   US: "EE.UU.",
   ES: "España",
+  CA: "Canadá",
+  GB: "Reino Unido",
+  IT: "Italia",
   SV: "El Salvador",
   GT: "Guatemala",
   HN: "Honduras",
+  MX: "México",
+  DO: "República Dominicana",
 };
 
-export function RemittanceTable({ rates, fromCountry, toCountry }: Props) {
+const COUNTRY_NAMES_EN: Record<string, string> = {
+  US: "the United States",
+  ES: "Spain",
+  CA: "Canada",
+  GB: "United Kingdom",
+  IT: "Italy",
+  SV: "El Salvador",
+  GT: "Guatemala",
+  HN: "Honduras",
+  MX: "Mexico",
+  DO: "Dominican Republic",
+};
+
+export function RemittanceTable({ rates, fromCountry, toCountry, lang = "es" }: Props) {
+  const isEn = lang === "en";
+  const COUNTRY_NAMES = isEn ? COUNTRY_NAMES_EN : COUNTRY_NAMES_ES;
+
   if (rates.length === 0) {
     return (
       <div className="rounded-xl border border-slate-100 p-10 text-center text-slate-500">
-        Actualizando tasas... Vuelve en unos minutos.
+        {isEn ? "Updating rates… Check back in a few minutes." : "Actualizando tasas... Vuelve en unos minutos."}
       </div>
     );
   }
@@ -30,22 +52,23 @@ export function RemittanceTable({ rates, fromCountry, toCountry }: Props) {
     return fa - fb;
   });
 
+  const dateLocale = isEn ? "en-US" : "es-SV";
+
   return (
     <div className="overflow-x-auto">
       <p className="mb-4 text-sm text-slate-500">
-        Enviando desde {COUNTRY_NAMES[fromCountry] ?? fromCountry} a{" "}
-        {COUNTRY_NAMES[toCountry] ?? toCountry} · Actualizado{" "}
-        {sorted[0]?.scrapedAt
-          ? new Date(sorted[0].scrapedAt).toLocaleDateString("es-SV")
-          : "hoy"}
+        {isEn
+          ? <>Sending from {COUNTRY_NAMES[fromCountry] ?? fromCountry} to {COUNTRY_NAMES[toCountry] ?? toCountry} · Updated {sorted[0]?.scrapedAt ? new Date(sorted[0].scrapedAt).toLocaleDateString(dateLocale) : "today"}</>
+          : <>Enviando desde {COUNTRY_NAMES[fromCountry] ?? fromCountry} a {COUNTRY_NAMES[toCountry] ?? toCountry} · Actualizado {sorted[0]?.scrapedAt ? new Date(sorted[0].scrapedAt).toLocaleDateString(dateLocale) : "hoy"}</>
+        }
       </p>
       <table className="w-full border-collapse text-sm">
         <thead>
           <tr className="border-b border-slate-100 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
             <th className="pb-3 pr-4">#</th>
-            <th className="pb-3 pr-4">Servicio</th>
-            <th className="pb-3 pr-4">Comisión</th>
-            <th className="pb-3 pr-4">Velocidad</th>
+            <th className="pb-3 pr-4">{isEn ? "Service" : "Servicio"}</th>
+            <th className="pb-3 pr-4">{isEn ? "Fee" : "Comisión"}</th>
+            <th className="pb-3 pr-4">{isEn ? "Speed" : "Velocidad"}</th>
             <th className="pb-3"></th>
           </tr>
         </thead>
@@ -53,7 +76,7 @@ export function RemittanceTable({ rates, fromCountry, toCountry }: Props) {
           {sorted.map((rate, i) => {
             const fee = rate.feeFlat
               ? `$${parseFloat(rate.feeFlat).toFixed(2)}`
-              : "Varía";
+              : isEn ? "Varies" : "Varía";
             const isBest = i === 0;
             return (
               <tr
@@ -67,7 +90,7 @@ export function RemittanceTable({ rates, fromCountry, toCountry }: Props) {
                 <td className="py-4 pr-4">
                   {isBest ? (
                     <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-                      Mejor
+                      {isEn ? "Best" : "Mejor"}
                     </span>
                   ) : (
                     <span className="text-xs text-slate-400">{i + 1}</span>
@@ -86,7 +109,7 @@ export function RemittanceTable({ rates, fromCountry, toCountry }: Props) {
                 <td className="py-4 pr-4">
                   {rate.transferSpeed === "instant" ? (
                     <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
-                      Inmediato
+                      {isEn ? "Instant" : "Inmediato"}
                     </span>
                   ) : (
                     <span className="text-slate-500">{rate.transferSpeed}</span>
@@ -100,7 +123,7 @@ export function RemittanceTable({ rates, fromCountry, toCountry }: Props) {
                       rel="noopener noreferrer sponsored"
                       className="rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-slate-700"
                     >
-                      Enviar →
+                      {isEn ? "Send →" : "Enviar →"}
                     </a>
                   )}
                 </td>

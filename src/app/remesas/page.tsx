@@ -15,7 +15,10 @@ export const metadata: Metadata = {
       "es-SV": "https://finazo.lat/remesas",
       "es-GT": "https://finazo.lat/remesas",
       "es-HN": "https://finazo.lat/remesas",
-      "x-default": "https://finazo.lat/remesas",
+      "es-MX": "https://finazo.lat/remesas",
+      "es-US": "https://finazo.lat/remesas",
+      "en-US": "https://finazo.lat/en/send-money",
+      "x-default": "https://finazo.lat/en/send-money",
     },
   },
   openGraph: {
