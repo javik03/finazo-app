@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { remittanceProviders, remittanceRates, rateChangeEvents } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import pino from "pino";
+import { notifyIndexNow } from "@/lib/indexnow";
 
 const logger = pino({ name: "remittance-scraper" });
 
@@ -255,6 +256,18 @@ export async function runRemittanceScraper(): Promise<void> {
     // Throttle between requests
     await new Promise((r) => setTimeout(r, 2000));
   }
+
+  // Notify IndexNow — all remittance pages may have updated rates
+  const corridorUrls = CORRIDORS.map(({ fromCountry, toCountry }) => {
+    const from = fromCountry.toLowerCase();
+    const to = toCountry.toLowerCase();
+    const countryNames: Record<string, string> = {
+      us: "eeuu", es: "espana", sv: "el-salvador",
+      gt: "guatemala", hn: "honduras", mx: "mexico", do: "republica-dominicana",
+    };
+    return `https://finazo.lat/remesas/${countryNames[from] ?? from}-${countryNames[to] ?? to}`;
+  });
+  await notifyIndexNow(["https://finazo.lat/remesas", ...corridorUrls]);
 
   logger.info("Remittance scraper complete");
 }

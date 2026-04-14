@@ -6,6 +6,7 @@ const envSchema = z.object({
   ARTICLE_WEBHOOK_SECRET: z.string().min(16).optional(),
   ADMIN_SECRET: z.string().min(8).optional(),
   PEXELS_API_KEY: z.string().optional(),
+  INDEXNOW_KEY: z.string().optional(),
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
   // Set to "true" only after HTTPS/Nginx SSL is configured
   SECURE_COOKIES: z.enum(["true", "false"]).default("false"),

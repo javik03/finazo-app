@@ -13,6 +13,7 @@ import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { inArray } from "drizzle-orm";
 import { updateArticleContent } from "@/lib/queries/articles";
+import { notifyIndexNow } from "@/lib/indexnow";
 import { fetchFeaturedImage } from "@/lib/pexels";
 import pino from "pino";
 import { config } from "@/lib/config";
@@ -4132,6 +4133,8 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
       authorName: "Javier Keough",
     })
     .onConflictDoNothing(); // never overwrite existing articles
+
+  await notifyIndexNow([`https://finazo.lat/articulos/${topic.slug}`]);
 
   logger.info({ slug: topic.slug, wordCount, category: topic.category, keywordsCount: keywords?.length ?? 0, hasImage: !!featuredImageUrl }, "Evergreen article published");
 }
