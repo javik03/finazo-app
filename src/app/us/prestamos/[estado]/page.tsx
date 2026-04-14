@@ -280,105 +280,193 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-slate-50">
+      <main className="min-h-screen" style={{ background: "#fff" }}>
 
-        <div className="bg-white border-b border-slate-200">
-          <div className="mx-auto max-w-5xl px-6 py-3 text-sm text-slate-500">
-            <Link href="/" className="hover:text-emerald-600">Inicio</Link>
-            {" / "}
-            <Link href="/us" className="hover:text-emerald-600">EE.UU.</Link>
-            {" / "}
-            <Link href="/us/prestamos" className="hover:text-emerald-600">Préstamos</Link>
-            {" / "}
-            <span className="text-slate-800 font-medium">{stateData.name}</span>
-          </div>
-        </div>
-
-        <section className="bg-white">
-          <div className="mx-auto max-w-5xl px-6 py-12">
-            <span className="inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-200 mb-4">
-              {stateData.abbr} · Datos 2025
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        {/* Hero */}
+        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+          <div
+            className="mx-auto px-6 py-10"
+            style={{ maxWidth: "var(--W)" }}
+          >
+            <div className="mb-4 text-sm" style={{ color: "#666" }}>
+              <Link href="/" style={{ color: "var(--green)" }}>
+                Inicio
+              </Link>
+              <span className="mx-2">›</span>
+              <Link href="/us" style={{ color: "var(--green)" }}>
+                EE.UU.
+              </Link>
+              <span className="mx-2">›</span>
+              <Link href="/us/prestamos" style={{ color: "var(--green)" }}>
+                Préstamos
+              </Link>
+              <span className="mx-2">›</span>
+              <span>{stateData.name}</span>
+            </div>
+            <h1 className="text-3xl font-extrabold tracking-tight mb-3" style={{ color: "#111" }}>
               Préstamos personales para hispanos en {stateData.name}
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl">
+            <p className="text-lg max-w-2xl" style={{ color: "#555" }}>
               Compara las mejores opciones de préstamo para la comunidad hispana en {stateData.name}.
               Incluye prestamistas que aceptan ITIN sin necesidad de SSN.
             </p>
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
-              <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 text-center">
-                <div className="text-lg font-bold text-slate-900">{stateData.hispanicPct}</div>
-                <div className="text-xs text-slate-500">Población hispana</div>
+          </div>
+        </section>
+
+        {/* State stats */}
+        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div
+              className="rounded-2xl p-5 text-center"
+              style={{ background: "#fff", border: "1px solid #d1e8d9" }}
+            >
+              <div className="text-2xl font-bold mb-1" style={{ color: "var(--green)" }}>
+                {stateData.hispanicPct}
               </div>
-              <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 text-center">
-                <div className="text-lg font-bold text-slate-900">{stateData.population}</div>
-                <div className="text-xs text-slate-500">Población total</div>
+              <div className="text-sm" style={{ color: "#666" }}>Población hispana</div>
+            </div>
+            <div
+              className="rounded-2xl p-5 text-center"
+              style={{ background: "#fff", border: "1px solid #d1e8d9" }}
+            >
+              <div className="text-2xl font-bold mb-1" style={{ color: "var(--green)" }}>
+                {stateData.population}
               </div>
-              <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 text-center">
-                <div className="text-lg font-bold text-slate-900">{stateData.avgIncome}</div>
-                <div className="text-xs text-slate-500">Ingreso promedio</div>
+              <div className="text-sm" style={{ color: "#666" }}>Población total</div>
+            </div>
+            <div
+              className="rounded-2xl p-5 text-center"
+              style={{ background: "#fff", border: "1px solid #d1e8d9" }}
+            >
+              <div className="text-2xl font-bold mb-1" style={{ color: "var(--green)" }}>
+                {stateData.avgIncome}
               </div>
-              <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 text-center">
-                <div className="text-lg font-bold text-slate-900">desde 7.49%</div>
-                <div className="text-xs text-slate-500">APR mínimo</div>
+              <div className="text-sm" style={{ color: "#666" }}>Ingreso promedio</div>
+            </div>
+            <div
+              className="rounded-2xl p-5 text-center"
+              style={{ background: "#fff", border: "1px solid #d1e8d9" }}
+            >
+              <div className="text-2xl font-bold mb-1" style={{ color: "var(--green)" }}>
+                desde 7.49%
               </div>
+              <div className="text-sm" style={{ color: "#666" }}>APR mínimo</div>
             </div>
           </div>
         </section>
 
         {/* State-specific note */}
-        <section className="mx-auto max-w-5xl px-6 py-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
-            <h2 className="font-semibold text-blue-900 mb-2">
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <div
+            className="rounded-2xl p-6"
+            style={{ background: "var(--green-bg)", border: "1px solid #d1e8d9" }}
+          >
+            <h2 className="font-semibold mb-2" style={{ color: "#111" }}>
               Contexto de préstamos en {stateData.name}
             </h2>
-            <p className="text-sm text-blue-800 leading-relaxed">{stateData.localNote}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#555" }}>
+              {stateData.localNote}
+            </p>
           </div>
         </section>
 
         {/* Lenders table */}
-        <section className="mx-auto max-w-5xl px-6 py-4">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "#111" }}>
             Comparación de prestamistas disponibles en {stateData.abbr}
           </h2>
-          <div className="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+          <div
+            className="rounded-2xl overflow-hidden"
+            style={{ border: "1px solid #d1e8d9" }}
+          >
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Prestamista</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">APR</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Monto</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Score mín.</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">ITIN</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Depósito</th>
+                <tr style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Prestamista
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    APR
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Monto
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Score mín.
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    ITIN
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Depósito
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {sortedLenders.map((lender, i) => (
-                  <tr key={i} className="border-b border-slate-100 hover:bg-slate-50">
+                  <tr
+                    key={i}
+                    className="border-b hover:bg-slate-50 transition-colors"
+                    style={{
+                      borderColor: "#e5e7eb",
+                      background: i % 2 === 0 ? "#fff" : "#fafafa",
+                    }}
+                  >
                     <td className="px-4 py-3">
-                      <div className="font-medium text-slate-900">{lender.provider}</div>
-                      <div className="text-xs text-slate-400">{lender.productName}</div>
+                      <div className="font-medium" style={{ color: "#111" }}>
+                        {lender.provider}
+                      </div>
+                      <div className="text-xs" style={{ color: "#888" }}>
+                        {lender.productName}
+                      </div>
                     </td>
-                    <td className="px-4 py-3">
-                      <span className="font-semibold text-slate-900">{lender.aprMin}%</span>
-                      <span className="text-slate-400"> – {lender.aprMax}%</span>
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
+                      <span className="font-semibold">{lender.aprMin}%</span>
+                      <span> – {lender.aprMax}%</span>
                     </td>
-                    <td className="px-4 py-3 text-slate-600">
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
                       ${parseInt(lender.amountMin).toLocaleString()} – ${parseInt(lender.amountMax).toLocaleString()}
                     </td>
-                    <td className="px-4 py-3 text-slate-600">
-                      {lender.minCreditScore ? lender.minCreditScore : <span className="text-emerald-600 text-xs">Sin mínimo</span>}
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
+                      {lender.minCreditScore ? (
+                        lender.minCreditScore
+                      ) : (
+                        <span style={{ color: "var(--green)", fontSize: "0.75rem" }}>
+                          Sin mínimo
+                        </span>
+                      )}
                     </td>
                     <td className="px-4 py-3">
                       {lender.acceptsItin ? (
-                        <span className="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Sí</span>
+                        <span
+                          className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                          style={{ background: "#dcfce7", color: "#166534" }}
+                        >
+                          ✓ Sí
+                        </span>
                       ) : (
-                        <span className="text-xs text-slate-400">No</span>
+                        <span style={{ color: "#999", fontSize: "0.75rem" }}>No</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-slate-600">
+                    <td className="px-4 py-3" style={{ color: "#555" }}>
                       {lender.fundingDays ? `${lender.fundingDays} días` : "Variable"}
                     </td>
                   </tr>
@@ -389,23 +477,36 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
         </section>
 
         {/* ITIN note */}
-        <section className="mx-auto max-w-5xl px-6 py-6">
-          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
-            <h2 className="font-semibold text-emerald-900 mb-2">
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <div
+            className="rounded-2xl p-6"
+            style={{ background: "var(--green-bg)", border: "1px solid #d1e8d9" }}
+          >
+            <h2 className="font-semibold mb-2" style={{ color: "#111" }}>
               Opciones ITIN en {stateData.name}
             </h2>
-            <p className="text-sm text-emerald-800 leading-relaxed">{stateData.itinNote}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#555" }}>
+              {stateData.itinNote}
+            </p>
           </div>
         </section>
 
         {/* Cities */}
-        <section className="mx-auto max-w-5xl px-6 py-6">
-          <h2 className="text-lg font-semibold text-slate-900 mb-3">
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "#111" }}>
             Principales ciudades con comunidad hispana en {stateData.name}
           </h2>
           <div className="flex flex-wrap gap-2">
             {stateData.topCities.map((city) => (
-              <span key={city} className="inline-block bg-white border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-slate-700">
+              <span
+                key={city}
+                className="inline-block rounded-full px-4 py-1.5 text-sm"
+                style={{
+                  background: "#fff",
+                  border: "1px solid #d1e8d9",
+                  color: "#555",
+                }}
+              >
                 {city}
               </span>
             ))}
@@ -413,8 +514,10 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
         </section>
 
         {/* Other states */}
-        <section className="mx-auto max-w-5xl px-6 pb-8">
-          <h2 className="text-lg font-semibold text-slate-900 mb-3">Ver otros estados</h2>
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "#111" }}>
+            Ver otros estados
+          </h2>
           <div className="flex flex-wrap gap-2">
             {Object.entries(STATE_DATA)
               .filter(([slug]) => slug !== estado)
@@ -422,9 +525,8 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
                 <Link
                   key={slug}
                   href={`/us/prestamos/${slug}`}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:border-emerald-400 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
+                  className="rounded-full border px-4 py-1.5 text-sm font-medium transition-colors border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
                 >
-                  <span className="text-xs text-slate-400">{data.abbr}</span>
                   {data.name}
                 </Link>
               ))}
@@ -432,15 +534,23 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
         </section>
 
         {/* FAQ */}
-        <section className="mx-auto max-w-5xl px-6 pb-16">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">
+        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-xl font-bold mb-6" style={{ color: "#111" }}>
             Preguntas frecuentes — Préstamos en {stateData.name}
           </h2>
           <div className="space-y-4">
             {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-medium text-slate-900 mb-2">{faq.name}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              <div
+                key={i}
+                className="rounded-2xl p-6"
+                style={{ background: "var(--background)", border: "1px solid #e5e7eb" }}
+              >
+                <h3 className="font-semibold mb-2" style={{ color: "#111" }}>
+                  {faq.name}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
+                  {faq.acceptedAnswer.text}
+                </p>
               </div>
             ))}
           </div>

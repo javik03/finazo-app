@@ -199,33 +199,33 @@ export default function UsCreditoPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <Header />
-      <main className="min-h-screen bg-slate-50">
+      <main className="min-h-screen" style={{ background: "var(--background)" }}>
 
-        <div className="bg-white border-b border-slate-200">
-          <div className="mx-auto max-w-5xl px-6 py-3 text-sm text-slate-500">
-            <Link href="/" className="hover:text-emerald-600">Inicio</Link>
-            {" / "}
-            <Link href="/us" className="hover:text-emerald-600">EE.UU.</Link>
-            {" / "}
-            <span className="text-slate-800 font-medium">Construir crédito</span>
+        <div style={{ background: "white", borderBottom: "1px solid #d1e8d9" }}>
+          <div className="mx-auto max-w-5xl px-6 py-3 text-sm" style={{ color: "#666" }}>
+            <Link href="/" style={{ color: "var(--green)" }}>Inicio</Link>
+            {" › "}
+            <Link href="/us" style={{ color: "var(--green)" }}>EE.UU.</Link>
+            {" › "}
+            <span style={{ color: "#333", fontWeight: 500 }}>Construir crédito</span>
           </div>
         </div>
 
-        <section className="bg-white">
+        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
           <div className="mx-auto max-w-5xl px-6 py-12">
-            <span className="inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-200 mb-4">
+            <span className="inline-block rounded-full px-3 py-1 text-xs font-medium mb-4" style={{ background: "white", color: "var(--green)", border: "1px solid #d1e8d9" }}>
               Guía para inmigrantes hispanos · EE.UU.
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "#1a1a1a" }}>
               Cómo construir crédito en EE.UU. siendo hispano o inmigrante
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl intro-text">
+            <p className="text-lg max-w-2xl intro-text" style={{ color: "#666" }}>
               Sin historial crediticio en EE.UU. pagas más por todo: seguro de auto,
               préstamos y hasta apartamentos. Esta guía te muestra cómo llegar a 700+
               en 12-24 meses, con o sin SSN.
             </p>
-            <div className="mt-6 rounded-xl bg-emerald-50 border border-emerald-200 p-4 max-w-2xl">
-              <p className="text-sm text-emerald-900">
+            <div className="mt-6 rounded-xl p-4 max-w-2xl" style={{ background: "#dcfce7", border: "1px solid #86efac" }}>
+              <p className="text-sm" style={{ color: "#166534" }}>
                 <strong>La estrategia ganadora:</strong> Tarjeta asegurada ($200 depósito) +
                 credit builder loan ($25/mes) + pago puntual = 650+ en 6 meses,
                 700+ en 12 meses. Funciona con ITIN, sin SSN.
@@ -236,39 +236,49 @@ export default function UsCreditoPage() {
 
         {/* Score ranges */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             ¿Qué significa tu credit score?
           </h2>
           <div className="space-y-2">
-            {SCORE_RANGES.map((range) => (
-              <div key={range.range} className={`rounded-xl border ${range.color} p-4 flex flex-col sm:flex-row sm:items-center gap-3`}>
-                <div className="shrink-0">
-                  <span className="font-mono font-bold text-lg">{range.range}</span>
-                  <span className="ml-3 font-medium">{range.label}</span>
+            {SCORE_RANGES.map((range) => {
+              const colorMap: { [key: string]: { bg: string; text: string; border: string } } = {
+                "bg-red-100 text-red-800 border-red-200": { bg: "#fee2e2", text: "#991b1b", border: "#fecaca" },
+                "bg-orange-100 text-orange-800 border-orange-200": { bg: "#fed7aa", text: "#92400e", border: "#fdba74" },
+                "bg-yellow-100 text-yellow-800 border-yellow-200": { bg: "#fef3c7", text: "#78350f", border: "#fcd34d" },
+                "bg-emerald-100 text-emerald-800 border-emerald-200": { bg: "#dcfce7", text: "#065f46", border: "#a7f3d0" },
+                "bg-blue-100 text-blue-800 border-blue-200": { bg: "#dbeafe", text: "#1e3a8a", border: "#93c5fd" },
+              };
+              const colors = colorMap[range.color] || { bg: "#f5f5f5", text: "#666", border: "#ddd" };
+              return (
+                <div key={range.range} className="rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center gap-3" style={{ background: colors.bg, border: `1px solid ${colors.border}` }}>
+                  <div className="shrink-0">
+                    <span className="font-mono font-bold text-lg" style={{ color: colors.text }}>{range.range}</span>
+                    <span className="ml-3 font-medium" style={{ color: colors.text }}>{range.label}</span>
+                  </div>
+                  <p className="text-sm" style={{ color: colors.text }}>{range.desc}</p>
                 </div>
-                <p className="text-sm">{range.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         {/* Step by step */}
         <section className="mx-auto max-w-5xl px-6 py-8 credit-steps">
-          <h2 className="text-xl font-semibold text-slate-900 mb-2">
+          <h2 className="text-xl font-semibold mb-2" style={{ color: "#1a1a1a" }}>
             De 0 a 700+: tu plan de 12 meses
           </h2>
-          <p className="text-sm text-slate-600 mb-6">
+          <p className="text-sm mb-6" style={{ color: "#666" }}>
             Sigue estos pasos en orden. No necesitas SSN para empezar — con ITIN es suficiente.
           </p>
           <div className="space-y-4">
             {howToSchema.step.map((step, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5 flex gap-4">
-                <div className="shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">
+              <div key={i} className="rounded-2xl p-5 flex gap-4" style={{ background: "white", border: "1px solid #d1e8d9" }}>
+                <div className="shrink-0 w-8 h-8 rounded-full text-white font-bold text-sm flex items-center justify-center" style={{ background: "var(--green)" }}>
                   {i + 1}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">{step.name}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{step.text}</p>
+                  <h3 className="font-semibold mb-1" style={{ color: "#1a1a1a" }}>{step.name}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{step.text}</p>
                 </div>
               </div>
             ))}
@@ -277,29 +287,29 @@ export default function UsCreditoPage() {
 
         {/* Tools comparison */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             Herramientas para construir crédito
           </h2>
           <div className="space-y-4">
             {CREDIT_TOOLS.map((tool) => (
-              <div key={tool.name} className="bg-white rounded-xl border border-slate-200 p-5">
+              <div key={tool.name} className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold text-slate-900">{tool.name}</h3>
-                      <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">{tool.type}</span>
+                      <h3 className="font-semibold" style={{ color: "#1a1a1a" }}>{tool.name}</h3>
+                      <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "#f5f5f5", color: "#666" }}>{tool.type}</span>
                       {tool.itin && (
-                        <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-medium">Acepta ITIN</span>
+                        <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: "var(--green-bg)", color: "var(--green)" }}>Acepta ITIN</span>
                       )}
                     </div>
-                    <p className="text-sm text-slate-600">{tool.highlight}</p>
+                    <p className="text-sm" style={{ color: "#666" }}>{tool.highlight}</p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-4 text-xs text-slate-500 border-t border-slate-100 pt-3">
-                  {tool.deposit !== "N/A" && <span>Depósito: <strong className="text-slate-700">{tool.deposit}</strong></span>}
-                  {tool.apr !== "N/A" && <span>APR: <strong className="text-slate-700">{tool.apr}</strong></span>}
-                  <span>Costo: <strong className="text-slate-700">{tool.fee}</strong></span>
-                  <span className="text-emerald-700 font-medium">Mejor para: {tool.bestFor}</span>
+                <div className="flex flex-wrap gap-4 text-xs" style={{ color: "#999", borderTop: "1px solid #eee", paddingTop: "12px" }}>
+                  {tool.deposit !== "N/A" && <span>Depósito: <strong style={{ color: "#1a1a1a" }}>{tool.deposit}</strong></span>}
+                  {tool.apr !== "N/A" && <span>APR: <strong style={{ color: "#1a1a1a" }}>{tool.apr}</strong></span>}
+                  <span>Costo: <strong style={{ color: "#1a1a1a" }}>{tool.fee}</strong></span>
+                  <span style={{ color: "var(--green)", fontWeight: 500 }}>Mejor para: {tool.bestFor}</span>
                 </div>
               </div>
             ))}
@@ -308,7 +318,7 @@ export default function UsCreditoPage() {
 
         {/* Score factors */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             Los 5 factores que determinan tu score FICO
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
@@ -319,10 +329,10 @@ export default function UsCreditoPage() {
               { pct: "10%", factor: "Mezcla de productos", tip: "Tarjeta + préstamo es mejor." },
               { pct: "10%", factor: "Solicitudes nuevas", tip: "No apliques a muchas a la vez." },
             ].map((item) => (
-              <div key={item.factor} className="bg-white rounded-xl border border-slate-200 p-4 text-center">
-                <div className="text-2xl font-bold text-emerald-600 mb-1">{item.pct}</div>
-                <div className="text-sm font-medium text-slate-900 mb-2">{item.factor}</div>
-                <p className="text-xs text-slate-500 leading-relaxed">{item.tip}</p>
+              <div key={item.factor} className="rounded-2xl p-4 text-center" style={{ background: "white", border: "1px solid #d1e8d9" }}>
+                <div className="text-2xl font-bold mb-1" style={{ color: "var(--green)" }}>{item.pct}</div>
+                <div className="text-sm font-medium mb-2" style={{ color: "#1a1a1a" }}>{item.factor}</div>
+                <p className="text-xs leading-relaxed" style={{ color: "#999" }}>{item.tip}</p>
               </div>
             ))}
           </div>
@@ -330,14 +340,14 @@ export default function UsCreditoPage() {
 
         {/* FAQ */}
         <section className="mx-auto max-w-5xl px-6 pb-16">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">
+          <h2 className="text-xl font-semibold mb-6" style={{ color: "#1a1a1a" }}>
             Preguntas frecuentes sobre crédito para hispanos en EE.UU.
           </h2>
           <div className="space-y-4">
             {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-medium text-slate-900 mb-2">{faq.name}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              <div key={i} className="rounded-2xl p-5" style={{ background: "var(--background)", border: "1px solid #d1e8d9" }}>
+                <h3 className="font-medium mb-2" style={{ color: "#1a1a1a" }}>{faq.name}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>

@@ -160,48 +160,57 @@ export default function UsSeguroSaludPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <Header />
-      <main className="min-h-screen bg-slate-50">
+      <main className="min-h-screen" style={{ background: "#fff" }}>
 
-        <div className="bg-white border-b border-slate-200">
-          <div className="mx-auto max-w-5xl px-6 py-3 text-sm text-slate-500">
-            <Link href="/" className="hover:text-emerald-600">Inicio</Link>
-            {" / "}
-            <Link href="/us" className="hover:text-emerald-600">EE.UU.</Link>
-            {" / "}
-            <span className="text-slate-800 font-medium">Seguro de salud</span>
-          </div>
-        </div>
-
-        <section className="bg-white">
-          <div className="mx-auto max-w-5xl px-6 py-12">
-            <span className="inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-200 mb-4">
-              Mercado EE.UU. · ACA 2025
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        {/* Hero */}
+        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+          <div
+            className="mx-auto px-6 py-10"
+            style={{ maxWidth: "var(--W)" }}
+          >
+            <div className="mb-4 text-sm" style={{ color: "#666" }}>
+              <Link href="/" style={{ color: "var(--green)" }}>
+                Inicio
+              </Link>
+              <span className="mx-2">›</span>
+              <Link href="/us" style={{ color: "var(--green)" }}>
+                EE.UU.
+              </Link>
+              <span className="mx-2">›</span>
+              <span>Seguro de salud</span>
+            </div>
+            <h1 className="text-3xl font-extrabold tracking-tight mb-3" style={{ color: "#111" }}>
               Seguro de salud para hispanos en Estados Unidos
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl intro-text">
+            <p className="text-lg max-w-2xl intro-text" style={{ color: "#555" }}>
               Guía completa del Marketplace ACA (Obamacare) en español: cómo
               funciona, cuánto cuesta con subsidios y cómo inscribirte en tu
               estado.
             </p>
-            <div className="mt-6 rounded-xl bg-amber-50 border border-amber-200 p-4 max-w-2xl">
-              <p className="text-sm text-amber-900">
-                <strong>Lo esencial:</strong> Con ingreso de $35,000/año, una
-                persona puede pagar $0-80/mes con subsidio en un plan Silver.
-                El período de inscripción abierta es del 1 nov al 15 enero.
-                California acepta residentes sin importar estatus migratorio.
-              </p>
-            </div>
+          </div>
+        </section>
+
+        {/* Key callout */}
+        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
+          <div
+            className="rounded-2xl p-6 max-w-2xl"
+            style={{ background: "var(--green-bg)", border: "1px solid #d1e8d9" }}
+          >
+            <p className="text-sm" style={{ color: "#555" }}>
+              <strong style={{ color: "#111" }}>Lo esencial:</strong> Con ingreso de $35,000/año, una
+              persona puede pagar $0-80/mes con subsidio en un plan Silver.
+              El período de inscripción abierta es del 1 nov al 15 enero.
+              California acepta residentes sin importar estatus migratorio.
+            </p>
           </div>
         </section>
 
         {/* Metal levels */}
-        <section className="mx-auto max-w-5xl px-6 py-8 metal-levels">
-          <h2 className="text-xl font-semibold text-slate-900 mb-2">
+        <section className="mx-auto px-6 py-12 metal-levels" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-xl font-bold mb-2" style={{ color: "#111" }}>
             Los 4 niveles de planes ACA: ¿cuál elegir?
           </h2>
-          <p className="text-sm text-slate-600 mb-5">
+          <p className="text-sm mb-6" style={{ color: "#666" }}>
             Todos los planes ACA cubren los 10 servicios esenciales: consultas médicas,
             emergencias, hospitalización, medicamentos, salud mental, maternidad y más.
             La diferencia es cómo se divide el costo.
@@ -210,23 +219,56 @@ export default function UsSeguroSaludPage() {
             {METAL_LEVELS.map((level) => (
               <div
                 key={level.level}
-                className={`rounded-xl border ${level.borderColor} ${level.bgColor} p-5 relative`}
+                className="rounded-2xl p-6 relative"
+                style={{
+                  background: "#fff",
+                  border: "1px solid #d1e8d9",
+                }}
               >
                 {level.recommended && (
-                  <span className="absolute -top-2 left-4 rounded-full bg-emerald-600 px-2 py-0.5 text-xs font-bold text-white">
+                  <span
+                    className="absolute -top-2 left-4 rounded-full px-2.5 py-0.5 text-xs font-bold text-white"
+                    style={{ background: "var(--green)" }}
+                  >
                     Recomendado
                   </span>
                 )}
-                <div className={`inline-block rounded-full ${level.color} px-3 py-1 text-xs font-bold text-white mb-3`}>
+                <div
+                  className="inline-block rounded-full px-3 py-1 text-xs font-bold text-white mb-3"
+                  style={{
+                    background:
+                      level.level === "Bronce"
+                        ? "#b45309"
+                        : level.level === "Plata"
+                        ? "#64748b"
+                        : level.level === "Oro"
+                        ? "#eab308"
+                        : "#4b5563",
+                    color:
+                      level.level === "Oro" ? "#111" : "#fff",
+                  }}
+                >
                   {level.level}
                 </div>
-                <div className="space-y-1.5 text-xs">
-                  <div><span className="text-slate-500">El seguro paga:</span> <strong>{level.insurerPays}</strong></div>
-                  <div><span className="text-slate-500">Tú pagas:</span> <strong>{level.youPay}</strong></div>
-                  <div><span className="text-slate-500">Prima:</span> {level.premium}</div>
-                  <div><span className="text-slate-500">Deducible:</span> {level.deductible}</div>
+                <div className="space-y-2 text-xs mb-3">
+                  <div>
+                    <span style={{ color: "#888" }}>El seguro paga:</span>{" "}
+                    <strong style={{ color: "#111" }}>{level.insurerPays}</strong>
+                  </div>
+                  <div>
+                    <span style={{ color: "#888" }}>Tú pagas:</span>{" "}
+                    <strong style={{ color: "#111" }}>{level.youPay}</strong>
+                  </div>
+                  <div>
+                    <span style={{ color: "#888" }}>Prima:</span>{" "}
+                    <strong style={{ color: "#111" }}>{level.premium}</strong>
+                  </div>
+                  <div>
+                    <span style={{ color: "#888" }}>Deducible:</span>{" "}
+                    <strong style={{ color: "#111" }}>{level.deductible}</strong>
+                  </div>
                 </div>
-                <p className={`mt-3 text-xs ${level.textColor} leading-relaxed`}>
+                <p className="text-xs leading-relaxed" style={{ color: "#666" }}>
                   {level.bestFor}
                 </p>
               </div>
@@ -235,50 +277,93 @@ export default function UsSeguroSaludPage() {
         </section>
 
         {/* Marketplaces by state */}
-        <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "#111" }}>
             Dónde inscribirte según tu estado
           </h2>
-          <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <div
+            className="rounded-2xl overflow-hidden"
+            style={{ border: "1px solid #d1e8d9" }}
+          >
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Estado</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Plataforma</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Notas importantes</th>
+                <tr style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Estado
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Plataforma
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: "var(--green)" }}
+                  >
+                    Notas importantes
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {STATES_MARKETPLACES.map((row, i) => (
-                  <tr key={i} className="border-b border-slate-100 hover:bg-slate-50">
-                    <td className="px-4 py-3 font-medium text-slate-900">{row.state}</td>
+                  <tr
+                    key={i}
+                    className="border-b hover:bg-slate-50 transition-colors"
+                    style={{
+                      borderColor: "#e5e7eb",
+                      background: i % 2 === 0 ? "#fff" : "#fafafa",
+                    }}
+                  >
+                    <td className="px-4 py-3 font-medium" style={{ color: "#111" }}>
+                      {row.state}
+                    </td>
                     <td className="px-4 py-3">
-                      <a href={row.url} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">
+                      <a
+                        href={row.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                        style={{ color: "var(--green)" }}
+                      >
                         {row.platform}
                       </a>
                     </td>
-                    <td className="px-4 py-3 text-slate-500 text-xs">{row.note ?? "HealthCare.gov estándar"}</td>
+                    <td className="px-4 py-3 text-xs" style={{ color: "#888" }}>
+                      {row.note ?? "HealthCare.gov estándar"}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-xs text-slate-500">
+          <p className="mt-3 text-xs" style={{ color: "#888" }}>
             Para asistencia gratuita en español llama al{" "}
             <strong>1-800-318-2596</strong> (TTY: 1-855-889-4325). Disponible 24/7.
           </p>
         </section>
 
         {/* FAQ */}
-        <section className="mx-auto max-w-5xl px-6 pb-16">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">
+        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
+          <h2 className="text-xl font-bold mb-6" style={{ color: "#111" }}>
             Preguntas frecuentes sobre seguro de salud
           </h2>
           <div className="space-y-4">
             {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-medium text-slate-900 mb-2">{faq.name}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              <div
+                key={i}
+                className="rounded-2xl p-6"
+                style={{ background: "var(--background)", border: "1px solid #e5e7eb" }}
+              >
+                <h3 className="font-semibold mb-2" style={{ color: "#111" }}>
+                  {faq.name}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
+                  {faq.acceptedAnswer.text}
+                </p>
               </div>
             ))}
           </div>

@@ -118,33 +118,33 @@ export default function UsSeguroAutoPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <Header />
-      <main className="min-h-screen bg-slate-50">
+      <main className="min-h-screen" style={{ background: "var(--background)" }}>
 
-        <div className="bg-white border-b border-slate-200">
-          <div className="mx-auto max-w-5xl px-6 py-3 text-sm text-slate-500">
-            <Link href="/" className="hover:text-emerald-600">Inicio</Link>
-            {" / "}
-            <Link href="/us" className="hover:text-emerald-600">EE.UU.</Link>
-            {" / "}
-            <span className="text-slate-800 font-medium">Seguro de auto</span>
+        <div style={{ background: "white", borderBottom: "1px solid #d1e8d9" }}>
+          <div className="mx-auto max-w-5xl px-6 py-3 text-sm" style={{ color: "#666" }}>
+            <Link href="/" style={{ color: "var(--green)" }}>Inicio</Link>
+            {" › "}
+            <Link href="/us" style={{ color: "var(--green)" }}>EE.UU.</Link>
+            {" › "}
+            <span style={{ color: "#333", fontWeight: 500 }}>Seguro de auto</span>
           </div>
         </div>
 
-        <section className="bg-white">
+        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
           <div className="mx-auto max-w-5xl px-6 py-12">
-            <span className="inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-200 mb-4">
+            <span className="inline-block rounded-full px-3 py-1 text-xs font-medium mb-4" style={{ background: "white", color: "var(--green)", border: "1px solid #d1e8d9" }}>
               Mercado EE.UU. · Datos 2025
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "#1a1a1a" }}>
               Seguro de auto para hispanos en Estados Unidos
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl intro-text">
+            <p className="text-lg max-w-2xl intro-text" style={{ color: "#666" }}>
               Tarifas promedio por estado, requisitos mínimos legales y proveedores
               con atención en español. Incluye opciones para conductores sin historial
               crediticio en EE.UU.
             </p>
-            <div className="mt-6 rounded-xl bg-amber-50 border border-amber-200 p-4 max-w-2xl">
-              <p className="text-sm text-amber-900">
+            <div className="mt-6 rounded-xl p-4 max-w-2xl" style={{ background: "#fff3cd", border: "1px solid #ffc107" }}>
+              <p className="text-sm" style={{ color: "#664d00" }}>
                 <strong>Lo esencial:</strong> Florida es el estado más caro ($3,240/año).
                 California prohíbe usar tu crédito para calcular tu prima y acepta
                 licencia AB-60 para inmigrantes. Sin historial crediticio en EE.UU.,
@@ -156,75 +156,75 @@ export default function UsSeguroAutoPage() {
 
         {/* Rates by state */}
         <section className="mx-auto max-w-5xl px-6 py-8 rates-table">
-          <h2 className="text-xl font-semibold text-slate-900 mb-2">
+          <h2 className="text-xl font-semibold mb-2" style={{ color: "#1a1a1a" }}>
             Tarifas promedio por estado (2025)
           </h2>
-          <p className="text-sm text-slate-600 mb-5">
+          <p className="text-sm mb-5" style={{ color: "#666" }}>
             Prima anual promedio para conductor de 35 años con historial limpio y vehículo sedán 2020.
             Fuente: NAIC y datos de mercado 2025.
           </p>
-          <div className="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+          <div className="rounded-2xl overflow-x-auto" style={{ background: "white", border: "1px solid #d1e8d9" }}>
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Estado</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Prima promedio/año</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Mínimo legal</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">¿Usa crédito?</th>
-                  <th className="px-4 py-3 text-left font-semibold text-slate-700">Notas para hispanos</th>
+                <tr style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Estado</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Prima promedio/año</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Mínimo legal</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>¿Usa crédito?</th>
+                  <th className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider" style={{ color: "var(--green)" }}>Notas para hispanos</th>
                 </tr>
               </thead>
               <tbody>
-                {STATE_RATES.map((row) => (
-                  <tr key={row.abbr} className="border-b border-slate-100 hover:bg-slate-50">
+                {STATE_RATES.map((row, i) => (
+                  <tr key={row.abbr} style={{ background: i % 2 === 0 ? "#fff" : "#fafafa", borderBottom: "1px solid #f0f0f0" }}>
                     <td className="px-4 py-3">
-                      <span className="font-medium text-slate-900">{row.state}</span>
-                      <span className="ml-2 text-xs text-slate-400">{row.abbr}</span>
+                      <span style={{ color: "#1a1a1a", fontWeight: 500 }}>{row.state}</span>
+                      <span className="ml-2 text-xs" style={{ color: "#999" }}>{row.abbr}</span>
                     </td>
-                    <td className="px-4 py-3 font-semibold text-slate-900">{row.annualAvg}</td>
-                    <td className="px-4 py-3 text-slate-600 text-xs font-mono">{row.minReq}</td>
+                    <td className="px-4 py-3" style={{ color: "var(--green)", fontWeight: 600 }}>{row.annualAvg}</td>
+                    <td className="px-4 py-3 text-xs font-mono" style={{ color: "#666" }}>{row.minReq}</td>
                     <td className="px-4 py-3">
                       {row.creditUsed ? (
-                        <span className="text-amber-700 font-medium text-xs">Sí</span>
+                        <span className="text-xs font-medium" style={{ color: "#d97706" }}>Sí</span>
                       ) : (
-                        <span className="text-emerald-700 font-medium text-xs">No ✓</span>
+                        <span className="text-xs font-medium" style={{ color: "var(--green)" }}>No ✓</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-slate-500 text-xs">{row.note}</td>
+                    <td className="px-4 py-3 text-xs" style={{ color: "#666" }}>{row.note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-xs text-slate-400">
+          <p className="mt-2 text-xs" style={{ color: "#999" }}>
             Nota: Mínimo legal en formato Lesiones/Accidente/Propiedad (miles de dólares).
           </p>
         </section>
 
         {/* What affects your rate */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             Qué afecta tu prima como conductor hispano en EE.UU.
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-white rounded-xl border border-slate-200 p-5">
-              <h3 className="font-semibold text-slate-900 mb-2">Factores que suben tu prima</h3>
-              <ul className="space-y-2 text-sm text-slate-600">
-                <li className="flex gap-2"><span className="text-red-500 mt-0.5">↑</span> Sin historial de conducir en EE.UU. (0-3 años)</li>
-                <li className="flex gap-2"><span className="text-red-500 mt-0.5">↑</span> Sin historial crediticio local (en la mayoría de estados)</li>
-                <li className="flex gap-2"><span className="text-red-500 mt-0.5">↑</span> Vivir en código postal urbano de alto riesgo</li>
-                <li className="flex gap-2"><span className="text-red-500 mt-0.5">↑</span> Conductor menor de 25 años</li>
-                <li className="flex gap-2"><span className="text-red-500 mt-0.5">↑</span> Vehículo con año reciente o valor alto</li>
+            <div className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
+              <h3 className="font-semibold mb-2" style={{ color: "#1a1a1a" }}>Factores que suben tu prima</h3>
+              <ul className="space-y-2 text-sm" style={{ color: "#666" }}>
+                <li className="flex gap-2"><span style={{ color: "#dc2626", marginTop: "2px" }}>↑</span> Sin historial de conducir en EE.UU. (0-3 años)</li>
+                <li className="flex gap-2"><span style={{ color: "#dc2626", marginTop: "2px" }}>↑</span> Sin historial crediticio local (en la mayoría de estados)</li>
+                <li className="flex gap-2"><span style={{ color: "#dc2626", marginTop: "2px" }}>↑</span> Vivir en código postal urbano de alto riesgo</li>
+                <li className="flex gap-2"><span style={{ color: "#dc2626", marginTop: "2px" }}>↑</span> Conductor menor de 25 años</li>
+                <li className="flex gap-2"><span style={{ color: "#dc2626", marginTop: "2px" }}>↑</span> Vehículo con año reciente o valor alto</li>
               </ul>
             </div>
-            <div className="bg-white rounded-xl border border-slate-200 p-5">
-              <h3 className="font-semibold text-slate-900 mb-2">Cómo reducir tu prima</h3>
-              <ul className="space-y-2 text-sm text-slate-600">
-                <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">↓</span> Pedir historial de manejo de país de origen (carta de tu aseguradora)</li>
-                <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">↓</span> Construir crédito (secured card + 12 meses = descuento en 43 estados)</li>
-                <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">↓</span> Tomar curso de manejo defensivo (descuento 5-15%)</li>
-                <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">↓</span> Agrupar seguro de auto + renter/homeowner con la misma compañía (10-25%)</li>
-                <li className="flex gap-2"><span className="text-emerald-500 mt-0.5">↓</span> Comparar al menos 3 aseguradoras cada año</li>
+            <div className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
+              <h3 className="font-semibold mb-2" style={{ color: "#1a1a1a" }}>Cómo reducir tu prima</h3>
+              <ul className="space-y-2 text-sm" style={{ color: "#666" }}>
+                <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "2px" }}>↓</span> Pedir historial de manejo de país de origen (carta de tu aseguradora)</li>
+                <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "2px" }}>↓</span> Construir crédito (secured card + 12 meses = descuento en 43 estados)</li>
+                <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "2px" }}>↓</span> Tomar curso de manejo defensivo (descuento 5-15%)</li>
+                <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "2px" }}>↓</span> Agrupar seguro de auto + renter/homeowner con la misma compañía (10-25%)</li>
+                <li className="flex gap-2"><span style={{ color: "var(--green)", marginTop: "2px" }}>↓</span> Comparar al menos 3 aseguradoras cada año</li>
               </ul>
             </div>
           </div>
@@ -232,23 +232,24 @@ export default function UsSeguroAutoPage() {
 
         {/* Providers with Spanish service */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             Aseguradoras con atención en español
           </h2>
           <div className="space-y-3">
             {PROVIDERS.map((provider) => (
-              <div key={provider.name} className="bg-white rounded-xl border border-slate-200 p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div key={provider.name} className="rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: "white", border: "1px solid #d1e8d9" }}>
                 <div>
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="font-semibold text-slate-900">{provider.name}</span>
-                    <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">Rating AM Best: {provider.rating}</span>
+                    <span className="font-semibold" style={{ color: "#1a1a1a" }}>{provider.name}</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "var(--green-bg)", color: "var(--green)" }}>Rating AM Best: {provider.rating}</span>
                   </div>
-                  <p className="text-sm text-slate-600">{provider.specialty}</p>
-                  <p className="text-xs text-emerald-700 mt-1">🌐 {provider.languages}</p>
+                  <p className="text-sm" style={{ color: "#666" }}>{provider.specialty}</p>
+                  <p className="text-xs mt-1" style={{ color: "var(--green)" }}>🌐 {provider.languages}</p>
                 </div>
                 <a
                   href={`tel:${provider.phone.replace(/[^0-9+]/g, "")}`}
-                  className="shrink-0 text-sm font-medium text-emerald-700 hover:underline"
+                  className="shrink-0 text-sm font-medium hover:underline"
+                  style={{ color: "var(--green)" }}
                 >
                   {provider.phone}
                 </a>
@@ -259,53 +260,53 @@ export default function UsSeguroAutoPage() {
 
         {/* Coverage types explained */}
         <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
             Tipos de cobertura: ¿cuál necesitas?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl border border-slate-200 p-5">
+            <div className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
               <div className="text-2xl mb-2">🛡️</div>
-              <h3 className="font-semibold text-slate-900 mb-2">Responsabilidad civil</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <h3 className="font-semibold mb-2" style={{ color: "#1a1a1a" }}>Responsabilidad civil</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
                 Obligatoria en todos los estados. Cubre los daños que causes a otras personas
                 y su propiedad. <strong>No cubre tu vehículo.</strong> Si tienes un auto de bajo
                 valor, puede ser suficiente.
               </p>
-              <p className="text-xs text-slate-400 mt-3">~$400-800/año para mínimo legal</p>
+              <p className="text-xs mt-3" style={{ color: "#999" }}>~$400-800/año para mínimo legal</p>
             </div>
-            <div className="bg-white rounded-xl border border-slate-200 p-5">
+            <div className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
               <div className="text-2xl mb-2">🔧</div>
-              <h3 className="font-semibold text-slate-900 mb-2">Cobertura completa (Full Coverage)</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <h3 className="font-semibold mb-2" style={{ color: "#1a1a1a" }}>Cobertura completa (Full Coverage)</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
                 Responsabilidad + colisión + comprensivo. Cubre tu vehículo en accidentes,
                 robo, fenómenos naturales y vandalismo. <strong>Requerida si tu auto tiene
                 préstamo o lease.</strong>
               </p>
-              <p className="text-xs text-slate-400 mt-3">~$1,400-3,000/año promedio</p>
+              <p className="text-xs mt-3" style={{ color: "#999" }}>~$1,400-3,000/año promedio</p>
             </div>
-            <div className="bg-white rounded-xl border border-slate-200 p-5">
+            <div className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
               <div className="text-2xl mb-2">🏥</div>
-              <h3 className="font-semibold text-slate-900 mb-2">PIP / MedPay</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <h3 className="font-semibold mb-2" style={{ color: "#1a1a1a" }}>PIP / MedPay</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
                 Personal Injury Protection cubre tus gastos médicos y de pasajeros independientemente
                 de quién tuvo la culpa. Obligatorio en Florida y otros estados no-fault.
                 <strong> Muy recomendado para familias.</strong>
               </p>
-              <p className="text-xs text-slate-400 mt-3">~$100-400/año adicional</p>
+              <p className="text-xs mt-3" style={{ color: "#999" }}>~$100-400/año adicional</p>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
         <section className="mx-auto max-w-5xl px-6 pb-16">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">
+          <h2 className="text-xl font-semibold mb-6" style={{ color: "#1a1a1a" }}>
             Preguntas frecuentes sobre seguro de auto
           </h2>
           <div className="space-y-4">
             {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-medium text-slate-900 mb-2">{faq.name}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              <div key={i} className="rounded-2xl p-5" style={{ background: "var(--background)", border: "1px solid #d1e8d9" }}>
+                <h3 className="font-medium mb-2" style={{ color: "#1a1a1a" }}>{faq.name}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
