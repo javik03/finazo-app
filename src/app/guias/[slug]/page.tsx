@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical,
       languages: {
         "es-SV": canonical,
+        "es-GT": canonical,
+        "es-HN": canonical,
+        "es-US": canonical,
         "x-default": canonical,
       },
     },

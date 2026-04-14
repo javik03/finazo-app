@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { CORRIDORS, getCorridorBySlug } from "@/lib/constants/corridors";
+import { getEnCorridorByEsSlug } from "@/lib/constants/en-corridors";
 import { getRemittanceRates } from "@/lib/queries/remittances";
 import { RemittanceTable } from "@/components/comparison/RemittanceTable";
 import { Header } from "@/components/layout/Header";
@@ -25,6 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `¿Quién cobra menos? Compara Wise, Remitly, Western Union y más para envíos de ${corridor.fromLabel} a ${corridor.toLabel}. Tasas y comisiones actualizadas automáticamente.`;
   const canonical = `https://finazo.lat/remesas/${slug}`;
 
+  const enCorridor = getEnCorridorByEsSlug(slug);
+  const enCanonical = enCorridor
+    ? `https://finazo.lat/en/send-money/${enCorridor.slug}`
+    : "https://finazo.lat/en/send-money";
+
   return {
     title,
     description,
@@ -34,7 +40,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "es-SV": canonical,
         "es-GT": canonical,
         "es-HN": canonical,
-        "x-default": canonical,
+        "es-MX": canonical,
+        "es-US": canonical,
+        "en-US": enCanonical,
+        "x-default": enCanonical,
       },
     },
     openGraph: {
