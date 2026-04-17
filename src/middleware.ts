@@ -1,6 +1,47 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(_request: NextRequest): NextResponse {
+// Locales that indicate a US-based visitor wanting the US Hispanic experience
+const US_LOCALES = new Set(["en-us", "es-us"]);
+// Locales that indicate a LATAM visitor — always serve the default LATAM page
+const LATAM_LOCALES = new Set(["es-sv", "es-gt", "es-hn", "es-ni", "es-cr", "es-pa", "es-mx", "es-do", "es-pe", "es-co"]);
+
+function isUsVisitor(request: NextRequest): boolean {
+  const acceptLanguage = request.headers.get("accept-language") ?? "";
+
+  // Parse locales in priority order (e.g. "es-US,es;q=0.9,en-US;q=0.8")
+  const locales = acceptLanguage
+    .split(",")
+    .map((part) => part.split(";")[0].trim().toLowerCase())
+    .filter(Boolean);
+
+  for (const locale of locales) {
+    if (LATAM_LOCALES.has(locale)) return false;
+    if (US_LOCALES.has(locale)) return true;
+    // "en" alone (no region) maps to US by default
+    if (locale === "en") return true;
+  }
+
+  return false;
+}
+
+export function middleware(request: NextRequest): NextResponse {
+  const { pathname } = request.nextUrl;
+
+  // ── Geo-routing: redirect homepage visitors to /us if they're US-based ──────
+  // Only route the root path to avoid interfering with /us/* sub-pages
+  if (pathname === "/") {
+    const regionCookie = request.cookies.get("finazo_region")?.value;
+
+    if (regionCookie === "us") {
+      return NextResponse.redirect(new URL("/us", request.url));
+    }
+
+    // Cookie says LATAM explicitly — skip detection
+    if (regionCookie !== "latam" && isUsVisitor(request)) {
+      return NextResponse.redirect(new URL("/us", request.url));
+    }
+  }
+
   const response = NextResponse.next();
 
   // Prevent MIME-type sniffing

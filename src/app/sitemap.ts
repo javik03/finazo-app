@@ -118,6 +118,50 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    // US Hispanic hub
+    {
+      url: `${base}/us`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.9,
+      alternates: {
+        languages: {
+          "es-US": `${base}/us`,
+          "en-US": `${base}/en`,
+          "x-default": `${base}/us`,
+        },
+      },
+    },
+    {
+      url: `${base}/us/prestamos`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
+      url: `${base}/us/seguro-de-salud`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}/us/seguro-de-auto`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}/us/seguro-de-vida`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/us/credito`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
     // English hub pages
     {
       url: `${base}/en`,
