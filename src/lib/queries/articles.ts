@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
-import { eq, desc, and, ne } from "drizzle-orm";
+import { eq, desc, and, ne, asc } from "drizzle-orm";
 
 export async function getPublishedArticles(options?: {
   category?: string;
@@ -40,6 +40,48 @@ export async function getArticleBySlug(slug: string) {
     .limit(1);
 
   return rows[0] ?? null;
+}
+
+// Sidebar/footer: articles in the same category, excluding the current slug
+export async function getRelatedArticles(
+  currentSlug: string,
+  category: string,
+  limit = 5,
+) {
+  return db
+    .select({
+      slug: articles.slug,
+      title: articles.title,
+      category: articles.category,
+      publishedAt: articles.publishedAt,
+    })
+    .from(articles)
+    .where(
+      and(
+        eq(articles.status, "published"),
+        eq(articles.category, category),
+        ne(articles.slug, currentSlug),
+      ),
+    )
+    .orderBy(desc(articles.publishedAt))
+    .limit(limit);
+}
+
+// Count of published articles per category — used by hub pages
+export async function getArticleCountByCategory(): Promise<
+  Record<string, number>
+> {
+  const rows = await db
+    .select({ category: articles.category, slug: articles.slug })
+    .from(articles)
+    .where(eq(articles.status, "published"))
+    .orderBy(asc(articles.category));
+
+  const counts: Record<string, number> = {};
+  for (const row of rows) {
+    counts[row.category] = (counts[row.category] ?? 0) + 1;
+  }
+  return counts;
 }
 
 export async function getAllArticleSlugs() {

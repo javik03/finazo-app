@@ -1,33 +1,63 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getPublishedArticles } from "@/lib/queries/articles";
+import { getPublishedArticles, getArticleCountByCategory } from "@/lib/queries/articles";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Guías financieras para Centroamérica — Finazo",
+  title: "Guías financieras para Centroamérica | Finazo",
   description:
-    "Guías prácticas sobre remesas, préstamos y educación financiera para El Salvador, Guatemala y Honduras.",
+    "Guías prácticas sobre remesas, préstamos, tarjetas, seguros y educación financiera para El Salvador, Guatemala, Honduras y México. Datos oficiales, sin letra pequeña.",
   alternates: { canonical: "https://finazo.lat/guias" },
   openGraph: {
     title: "Guías financieras para Centroamérica | Finazo",
     description:
-      "Aprende sobre remesas, préstamos y finanzas personales con guías prácticas en español.",
+      "Aprende sobre remesas, préstamos y finanzas personales con guías prácticas en español para Centroamérica.",
     url: "https://finazo.lat/guias",
   },
 };
 
 export const revalidate = 3600;
 
-const CATEGORY_LABELS: Record<string, string> = {
-  remesas: "Remesas",
-  prestamos: "Préstamos",
-  tarjetas: "Tarjetas",
-  seguros: "Seguros",
-  educacion: "Educación financiera",
-};
+const CATEGORIES = [
+  {
+    slug: "remesas",
+    label: "Remesas",
+    color: "bg-sky-100 text-sky-700",
+    border: "border-sky-200",
+    description: "Comparativas de servicios de envío y guías para reducir comisiones.",
+  },
+  {
+    slug: "prestamos",
+    label: "Préstamos",
+    color: "bg-emerald-100 text-emerald-700",
+    border: "border-emerald-200",
+    description: "Tasas, requisitos y análisis de crédito bancario en Centroamérica.",
+  },
+  {
+    slug: "tarjetas",
+    label: "Tarjetas",
+    color: "bg-rose-100 text-rose-700",
+    border: "border-rose-200",
+    description: "Comparativas de tarjetas de crédito: anualidades, beneficios y tasas.",
+  },
+  {
+    slug: "seguros",
+    label: "Seguros",
+    color: "bg-violet-100 text-violet-700",
+    border: "border-violet-200",
+    description: "Seguros de vida, salud y automóvil: coberturas y costos reales.",
+  },
+  {
+    slug: "educacion",
+    label: "Educación financiera",
+    color: "bg-amber-100 text-amber-700",
+    border: "border-amber-200",
+    description: "Ahorro, inversión, presupuesto y salida de deudas para la región.",
+  },
+];
 
 const CATEGORY_COLORS: Record<string, string> = {
   remesas: "bg-sky-100 text-sky-700",
@@ -37,38 +67,102 @@ const CATEGORY_COLORS: Record<string, string> = {
   educacion: "bg-amber-100 text-amber-700",
 };
 
+const CATEGORY_LABELS: Record<string, string> = {
+  remesas: "Remesas",
+  prestamos: "Préstamos",
+  tarjetas: "Tarjetas",
+  seguros: "Seguros",
+  educacion: "Educación financiera",
+};
+
+const hubSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Guías financieras para Centroamérica — Finazo",
+  description:
+    "Guías prácticas sobre remesas, préstamos, tarjetas, seguros y educación financiera para El Salvador, Guatemala, Honduras y México.",
+  url: "https://finazo.lat/guias",
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
+      { "@type": "ListItem", position: 2, name: "Guías", item: "https://finazo.lat/guias" },
+    ],
+  },
+};
+
 export default async function GuiasPage() {
-  const articles = await getPublishedArticles().catch(() => []);
+  const [articles, categoryCounts] = await Promise.all([
+    getPublishedArticles().catch(() => []),
+    getArticleCountByCategory().catch(() => ({} as Record<string, number>)),
+  ]);
 
   return (
     <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hubSchema) }} />
       <Header activePath="/guias" />
 
       <main className="mx-auto max-w-5xl px-6 py-12">
         {/* Breadcrumb */}
         <div className="mb-6 text-sm text-slate-500">
-          <Link href="/" className="hover:text-slate-700">
-            Inicio
-          </Link>
+          <Link href="/" className="hover:text-slate-700">Inicio</Link>
           <span className="mx-2">›</span>
           <span>Guías</span>
         </div>
 
+        {/* Hub intro */}
         <div className="mb-10">
-          <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-slate-900">
-            Guías financieras
+          <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-900">
+            Guías financieras para Centroamérica
           </h1>
-          <p className="text-slate-600">
-            Aprende sobre remesas, préstamos y finanzas personales con guías
-            escritas en español para Centroamérica.
-          </p>
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+            <p className="mb-4">
+              Finazo publica guías financieras independientes para El Salvador, Guatemala, Honduras y México. Cubrimos todo el ciclo de las finanzas personales: cómo enviar dinero al menor costo, qué banco ofrece el préstamo más barato, qué tarjeta de crédito tiene la menor anualidad y cómo construir una base financiera sólida para tu familia.
+            </p>
+            <p>
+              Usamos datos oficiales de la <strong>SSF</strong> (El Salvador), la <strong>SIB</strong> (Guatemala) y la <strong>CNBS</strong> (Honduras), y actualizamos los artículos cuando las tasas cambian. Todos los artículos son escritos por{" "}
+              <Link href="/autor/javier-keough" className="text-emerald-600 hover:underline font-medium">
+                Javier Keough
+              </Link>
+              , fundador de Finazo y analista financiero con foco en mercados centroamericanos.
+            </p>
+          </div>
+        </div>
+
+        {/* Category cards */}
+        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {CATEGORIES.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/guias/${cat.slug}`}
+              className={`group rounded-xl border p-5 transition-shadow hover:shadow-md ${cat.border}`}
+            >
+              <div className="mb-2 flex items-center justify-between">
+                <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${cat.color}`}>
+                  {cat.label}
+                </span>
+                {categoryCounts[cat.slug] && (
+                  <span className="text-xs text-slate-400">
+                    {categoryCounts[cat.slug]} guías
+                  </span>
+                )}
+              </div>
+              <p className="text-sm text-slate-600 group-hover:text-slate-800">
+                {cat.description}
+              </p>
+            </Link>
+          ))}
+        </div>
+
+        {/* All articles — reverse-chronological */}
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-slate-900">Todas las guías</h2>
+          <span className="text-sm text-slate-500">{articles.length} publicadas</span>
         </div>
 
         {articles.length === 0 ? (
           <div className="rounded-2xl border border-slate-100 p-12 text-center">
-            <p className="text-slate-500">
-              Próximamente publicaremos guías financieras.
-            </p>
+            <p className="text-slate-500">Próximamente publicaremos guías financieras.</p>
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2">
@@ -81,8 +175,7 @@ export default async function GuiasPage() {
                 <div className="mb-3 flex items-center gap-2">
                   <span
                     className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                      CATEGORY_COLORS[article.category] ??
-                      "bg-slate-100 text-slate-700"
+                      CATEGORY_COLORS[article.category] ?? "bg-slate-100 text-slate-700"
                     }`}
                   >
                     {CATEGORY_LABELS[article.category] ?? article.category}
@@ -101,15 +194,23 @@ export default async function GuiasPage() {
                     {article.metaDescription}
                   </p>
                 )}
-                {article.publishedAt && (
-                  <p className="mt-3 text-xs text-slate-400">
-                    {new Date(article.publishedAt).toLocaleDateString("es-SV", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                )}
+                <div className="mt-3 flex items-center gap-2 text-xs text-slate-400">
+                  {article.publishedAt && (
+                    <span>
+                      {new Date(article.publishedAt).toLocaleDateString("es-SV", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+                  )}
+                  {article.authorName && (
+                    <>
+                      <span>·</span>
+                      <span>{article.authorName}</span>
+                    </>
+                  )}
+                </div>
               </Link>
             ))}
           </div>

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { getArticleBySlug, getAllArticleSlugs } from "@/lib/queries/articles";
+import { getArticleBySlug, getAllArticleSlugs, getRelatedArticles } from "@/lib/queries/articles";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CommentSection } from "@/components/articles/CommentSection";
@@ -53,13 +53,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const CATEGORY_LABELS: Record<string, string> = {
+  remesas: "Remesas",
+  prestamos: "Préstamos",
+  tarjetas: "Tarjetas",
+  seguros: "Seguros",
+  educacion: "Educación financiera",
+};
+
 export default async function GuiaPage({ params }: Props) {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
+  const related = await getRelatedArticles(slug, article.category, 5).catch(() => []);
+
   const authorDisplayName = article.authorName ?? "Equipo Finazo";
   const isNamedAuthor = Boolean(article.authorName);
+
+  const categoryLabel = article.category ? (CATEGORY_LABELS[article.category] ?? null) : null;
+  const categoryPath = article.category ? `/guias/${article.category}` : "/guias";
 
   const schema = {
     "@context": "https://schema.org",
@@ -87,31 +100,20 @@ export default async function GuiaPage({ params }: Props) {
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
+        { "@type": "ListItem", position: 2, name: "Guías", item: "https://finazo.lat/guias" },
+        ...(categoryLabel
+          ? [{ "@type": "ListItem", position: 3, name: categoryLabel, item: `https://finazo.lat${categoryPath}` }]
+          : []),
         {
           "@type": "ListItem",
-          position: 1,
-          name: "Inicio",
-          item: "https://finazo.lat",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Guías",
-          item: "https://finazo.lat/guias",
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
+          position: categoryLabel ? 4 : 3,
           name: article.title,
           item: `https://finazo.lat/guias/${slug}`,
         },
       ],
     },
   };
-
-  const categoryLabel = article.category
-    ? article.category.charAt(0).toUpperCase() + article.category.slice(1).replace(/-/g, " ")
-    : null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -123,15 +125,17 @@ export default async function GuiaPage({ params }: Props) {
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-slate-500">
-          <Link href="/" className="hover:text-slate-700">
-            Inicio
-          </Link>
-          <span className="mx-2">›</span>
-          <Link href="/guias" className="hover:text-slate-700">
-            Guías
-          </Link>
-          <span className="mx-2">›</span>
+        <div className="mb-6 flex flex-wrap items-center gap-1 text-sm text-slate-500">
+          <Link href="/" className="hover:text-slate-700">Inicio</Link>
+          <span className="mx-1">›</span>
+          <Link href="/guias" className="hover:text-slate-700">Guías</Link>
+          {categoryLabel && (
+            <>
+              <span className="mx-1">›</span>
+              <Link href={categoryPath} className="hover:text-slate-700">{categoryLabel}</Link>
+            </>
+          )}
+          <span className="mx-1">›</span>
           <span className="line-clamp-1">{article.title}</span>
         </div>
 
@@ -200,6 +204,54 @@ export default async function GuiaPage({ params }: Props) {
         </article>
 
         <CommentSection articleSlug={slug} />
+
+        {/* Related articles */}
+        {related.length > 0 && (
+          <aside className="mt-12 border-t border-slate-100 pt-10">
+            <h2 className="mb-5 text-lg font-bold text-slate-900">
+              {categoryLabel ? `Más guías de ${categoryLabel}` : "Guías relacionadas"}
+            </h2>
+            <ul className="space-y-3">
+              {related.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    href={`/guias/${r.slug}`}
+                    className="group flex items-start gap-3 rounded-lg border border-slate-100 p-4 transition-shadow hover:shadow-sm"
+                  >
+                    <span
+                      className="mt-0.5 shrink-0 text-emerald-500"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                    <div>
+                      <p className="font-medium text-slate-900 group-hover:text-emerald-700 leading-snug">
+                        {r.title}
+                      </p>
+                      {r.publishedAt && (
+                        <p className="mt-1 text-xs text-slate-400">
+                          {new Date(r.publishedAt).toLocaleDateString("es-SV", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {categoryLabel && (
+              <Link
+                href={categoryPath}
+                className="mt-4 inline-block text-sm text-emerald-600 hover:underline"
+              >
+                Ver todas las guías de {categoryLabel} →
+              </Link>
+            )}
+          </aside>
+        )}
 
         {/* CTA */}
         <div className="mt-12 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
