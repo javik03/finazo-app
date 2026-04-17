@@ -217,7 +217,7 @@ const faqSchema = {
 // ── Page ───────────────────────────────────────────────────────────────────
 
 export default async function HomePage() {
-  const recentArticles = await getPublishedArticles({ excludeCountry: "US" });
+  const recentArticles = await getPublishedArticles({ country: "US" });
   const featuredArticles = recentArticles.slice(0, 6);
   return (
     <div className="min-h-screen" style={{ background: "var(--background)" }}>
