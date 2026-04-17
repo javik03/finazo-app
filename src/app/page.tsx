@@ -9,7 +9,7 @@ import { getPublishedArticles } from "@/lib/queries/articles";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Finazo — Compara remesas, préstamos y seguros en Centroamérica y México",
+  title: "Finazo — Remesas, préstamos y seguros en Centroamérica",
   description:
     "Encuentra las mejores tasas de remesas, préstamos personales y seguros en El Salvador, Guatemala, Honduras y México. Datos actualizados diariamente, gratis.",
   alternates: { canonical: "https://finazo.lat" },

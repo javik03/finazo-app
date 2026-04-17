@@ -48,6 +48,9 @@ export async function markdownToHtml(markdown: string): Promise<string> {
   );
   html = html.replace(/<td>/g, '<td class="px-5 py-3.5 text-slate-700">');
 
+  // Demote h1 → h2 in article body (page JSX already has the canonical h1)
+  html = html.replace(/<h1>/g, "<h2>").replace(/<\/h1>/g, "</h2>");
+
   // External links → open in new tab
   html = html.replace(
     /<a href="(https?:\/\/[^"]+)"/g,

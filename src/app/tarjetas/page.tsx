@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Tarjetas de crédito en El Salvador, Guatemala y Honduras — Finazo",
+  title: "Tarjetas de crédito en Centroamérica — Finazo",
   description:
     "Compara tarjetas de crédito en Centroamérica. Tasas de interés, cuotas anuales y beneficios de todos los bancos regulados.",
   alternates: {
@@ -59,13 +59,13 @@ const GUIDE_TOPICS = [
     title: "¿Cómo elegir tu primera tarjeta de crédito?",
     description:
       "Considera la tasa de interés, la cuota anual, el límite de crédito y los beneficios antes de aplicar.",
-    slug: "tarjetas-credito-el-salvador-guia-2026",
+    href: "/guias",
   },
   {
     title: "Cómo usar la tarjeta sin endeudarte",
     description:
       "La regla de oro: paga el total antes de la fecha de corte. Si no puedes, no gastes con tarjeta.",
-    slug: "como-usar-tarjeta-credito-sin-endeudarse-centroamerica",
+    href: "/guias",
   },
 ];
 
@@ -148,8 +148,8 @@ export default function TarjetasPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               {GUIDE_TOPICS.map((g) => (
                 <Link
-                  key={g.slug}
-                  href={`/guias/${g.slug}`}
+                  key={g.title}
+                  href={g.href}
                   className="group rounded-2xl p-5 transition-shadow hover:shadow-md"
                   style={{
                     background: "#fff",
