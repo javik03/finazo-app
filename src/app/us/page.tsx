@@ -252,7 +252,7 @@ const faqSchema = {
 // ── Page ───────────────────────────────────────────────────────────────────
 
 export default async function UsHubPage() {
-  const recentArticles = await getPublishedArticles();
+  const recentArticles = await getPublishedArticles({ country: "US" });
   const featuredArticles = recentArticles.slice(0, 6);
 
   return (

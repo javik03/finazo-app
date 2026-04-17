@@ -2,10 +2,19 @@ import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { eq, desc, and, ne } from "drizzle-orm";
 
-export async function getPublishedArticles(category?: string) {
-  const conditions = category
-    ? and(eq(articles.status, "published"), eq(articles.category, category))
-    : eq(articles.status, "published");
+export async function getPublishedArticles(options?: {
+  category?: string;
+  country?: string;
+  excludeCountry?: string;
+}) {
+  const { category, country, excludeCountry } = options ?? {};
+
+  const clauses = [eq(articles.status, "published")];
+  if (category) clauses.push(eq(articles.category, category));
+  if (country) clauses.push(eq(articles.country, country));
+  if (excludeCountry) clauses.push(ne(articles.country, excludeCountry));
+
+  const conditions = clauses.length === 1 ? clauses[0] : and(...clauses);
 
   return db
     .select({
@@ -19,7 +28,7 @@ export async function getPublishedArticles(category?: string) {
       authorName: articles.authorName,
     })
     .from(articles)
-    .where(conditions)
+    .where(conditions!)
     .orderBy(desc(articles.publishedAt));
 }
 

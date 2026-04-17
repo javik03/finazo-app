@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function InformesPage(): Promise<React.ReactElement> {
-  const allArticles = await getPublishedArticles("remesas");
+  const allArticles = await getPublishedArticles({ category: "remesas" });
   const reports = allArticles.filter((a) => a.slug.startsWith("remesas-"));
 
   return (

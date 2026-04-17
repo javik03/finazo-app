@@ -112,7 +112,7 @@ services:
       postgres:
         condition: service_healthy
 
-  # Content strategist — daily (proactive: NerdWallet-style evergreen articles)
+  # Content strategist — daily (proactive: NerdWallet-style evergreen articles, LATAM)
   writer-strategist:
     build:
       context: .
@@ -123,6 +123,21 @@ services:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - PEXELS_API_KEY=${PEXELS_API_KEY}
     command: sh -c "while true; do npx tsx src/agents/writer/content-strategist.ts; sleep 86400; done"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # US content strategist — daily (US Hispanic market: ITIN loans, ACA, insurance, credit)
+  writer-us-strategist:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - PEXELS_API_KEY=${PEXELS_API_KEY}
+    command: sh -c "while true; do npx tsx src/agents/writer/us-content-strategist.ts; sleep 86400; done"
     depends_on:
       postgres:
         condition: service_healthy
