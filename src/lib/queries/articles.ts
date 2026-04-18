@@ -1,13 +1,15 @@
 import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
-import { eq, desc, and, ne, asc } from "drizzle-orm";
+import { eq, desc, and, ne, asc, count } from "drizzle-orm";
 
 export async function getPublishedArticles(options?: {
   category?: string;
   country?: string;
   excludeCountry?: string;
+  limit?: number;
+  offset?: number;
 }) {
-  const { category, country, excludeCountry } = options ?? {};
+  const { category, country, excludeCountry, limit, offset } = options ?? {};
 
   const clauses = [eq(articles.status, "published")];
   if (category) clauses.push(eq(articles.category, category));
@@ -16,7 +18,7 @@ export async function getPublishedArticles(options?: {
 
   const conditions = clauses.length === 1 ? clauses[0] : and(...clauses);
 
-  return db
+  let query = db
     .select({
       slug: articles.slug,
       title: articles.title,
@@ -29,7 +31,35 @@ export async function getPublishedArticles(options?: {
     })
     .from(articles)
     .where(conditions!)
-    .orderBy(desc(articles.publishedAt));
+    .orderBy(desc(articles.publishedAt))
+    .$dynamic();
+
+  if (limit !== undefined) query = query.limit(limit);
+  if (offset !== undefined) query = query.offset(offset);
+
+  return query;
+}
+
+export async function getPublishedArticlesCount(options?: {
+  category?: string;
+  country?: string;
+  excludeCountry?: string;
+}): Promise<number> {
+  const { category, country, excludeCountry } = options ?? {};
+
+  const clauses = [eq(articles.status, "published")];
+  if (category) clauses.push(eq(articles.category, category));
+  if (country) clauses.push(eq(articles.country, country));
+  if (excludeCountry) clauses.push(ne(articles.country, excludeCountry));
+
+  const conditions = clauses.length === 1 ? clauses[0] : and(...clauses);
+
+  const rows = await db
+    .select({ total: count() })
+    .from(articles)
+    .where(conditions!);
+
+  return rows[0]?.total ?? 0;
 }
 
 export async function getArticleBySlug(slug: string) {

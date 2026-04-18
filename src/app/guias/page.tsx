@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { getPublishedArticles, getArticleCountByCategory } from "@/lib/queries/articles";
+import { getPublishedArticles, getPublishedArticlesCount, getArticleCountByCategory } from "@/lib/queries/articles";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
+const PAGE_SIZE = 12;
 
 const CATEGORIES = [
   {
@@ -91,11 +92,22 @@ const hubSchema = {
   },
 };
 
-export default async function GuiasPage() {
-  const [articles, categoryCounts] = await Promise.all([
-    getPublishedArticles().catch(() => []),
+type Props = { searchParams: Promise<{ page?: string }> };
+
+export default async function GuiasPage({ searchParams }: Props) {
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
+  const offset = (page - 1) * PAGE_SIZE;
+
+  const [articles, total, categoryCounts] = await Promise.all([
+    getPublishedArticles({ limit: PAGE_SIZE, offset }).catch(() => []),
+    getPublishedArticlesCount().catch(() => 0),
     getArticleCountByCategory().catch(() => ({} as Record<string, number>)),
   ]);
+
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  const hasPrev = page > 1;
+  const hasNext = page < totalPages;
 
   return (
     <div className="min-h-screen bg-white">
@@ -154,10 +166,10 @@ export default async function GuiasPage() {
           ))}
         </div>
 
-        {/* All articles — reverse-chronological */}
+        {/* All articles — paginated */}
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-xl font-bold text-slate-900">Todas las guías</h2>
-          <span className="text-sm text-slate-500">{articles.length} publicadas</span>
+          <span className="text-sm text-slate-500">{total} publicadas</span>
         </div>
 
         {articles.length === 0 ? (
@@ -166,54 +178,108 @@ export default async function GuiasPage() {
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2">
-            {articles.map((article) => (
+            {articles.map((article, i) => (
               <Link
                 key={article.slug}
                 href={`/guias/${article.slug}`}
-                className="group rounded-2xl border border-slate-100 p-6 shadow-sm transition-shadow hover:shadow-md"
+                className="group flex flex-col rounded-2xl border border-slate-100 shadow-sm transition-shadow hover:shadow-md overflow-hidden"
               >
-                <div className="mb-3 flex items-center gap-2">
-                  <span
-                    className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                      CATEGORY_COLORS[article.category] ?? "bg-slate-100 text-slate-700"
-                    }`}
-                  >
-                    {CATEGORY_LABELS[article.category] ?? article.category}
-                  </span>
-                  {article.wordCount && (
-                    <span className="text-xs text-slate-400">
-                      {Math.ceil(article.wordCount / 200)} min de lectura
+                {/* Featured image */}
+                {article.featuredImageUrl ? (
+                  <div className="relative h-44 w-full bg-slate-100 shrink-0">
+                    <Image
+                      src={article.featuredImageUrl}
+                      alt={article.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover"
+                      loading={i < 4 ? "eager" : "lazy"}
+                    />
+                  </div>
+                ) : (
+                  <div className="h-44 w-full bg-gradient-to-br from-slate-100 to-slate-50 shrink-0 flex items-center justify-center">
+                    <span className={`rounded-full px-3 py-1 text-sm font-semibold ${CATEGORY_COLORS[article.category] ?? "bg-slate-100 text-slate-500"}`}>
+                      {CATEGORY_LABELS[article.category] ?? article.category}
                     </span>
-                  )}
-                </div>
-                <h2 className="mb-2 font-semibold text-slate-900 group-hover:text-emerald-700">
-                  {article.title}
-                </h2>
-                {article.metaDescription && (
-                  <p className="text-sm text-slate-600 line-clamp-2">
-                    {article.metaDescription}
-                  </p>
+                  </div>
                 )}
-                <div className="mt-3 flex items-center gap-2 text-xs text-slate-400">
-                  {article.publishedAt && (
-                    <span>
-                      {new Date(article.publishedAt).toLocaleDateString("es-SV", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
+
+                {/* Card body */}
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span
+                      className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                        CATEGORY_COLORS[article.category] ?? "bg-slate-100 text-slate-700"
+                      }`}
+                    >
+                      {CATEGORY_LABELS[article.category] ?? article.category}
                     </span>
+                    {article.wordCount && (
+                      <span className="text-xs text-slate-400">
+                        {Math.ceil(article.wordCount / 200)} min
+                      </span>
+                    )}
+                  </div>
+                  <h2 className="mb-1.5 font-semibold text-slate-900 group-hover:text-emerald-700 leading-snug">
+                    {article.title}
+                  </h2>
+                  {article.metaDescription && (
+                    <p className="text-sm text-slate-600 line-clamp-2 flex-1">
+                      {article.metaDescription}
+                    </p>
                   )}
-                  {article.authorName && (
-                    <>
-                      <span>·</span>
-                      <span>{article.authorName}</span>
-                    </>
-                  )}
+                  <div className="mt-3 flex items-center gap-2 text-xs text-slate-400">
+                    {article.publishedAt && (
+                      <span>
+                        {new Date(article.publishedAt).toLocaleDateString("es-SV", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </span>
+                    )}
+                    {article.authorName && (
+                      <>
+                        <span>·</span>
+                        <span>{article.authorName}</span>
+                      </>
+                    )}
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <nav className="mt-10 flex items-center justify-between border-t border-slate-100 pt-6">
+            {hasPrev ? (
+              <Link
+                href={`/guias?page=${page - 1}`}
+                className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                ← Anterior
+              </Link>
+            ) : (
+              <span />
+            )}
+
+            <span className="text-sm text-slate-500">
+              Página {page} de {totalPages}
+            </span>
+
+            {hasNext ? (
+              <Link
+                href={`/guias?page=${page + 1}`}
+                className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                Siguiente →
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
         )}
       </main>
 
