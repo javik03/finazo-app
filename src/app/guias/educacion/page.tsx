@@ -56,7 +56,7 @@ const intro = (
 );
 
 export default async function EducacionHubPage() {
-  const articles = await getPublishedArticles({ category: "educacion" }).catch(() => []);
+  const articles = await getPublishedArticles({ category: "educacion", excludeCountry: "US" }).catch(() => []);
 
   return (
     <>

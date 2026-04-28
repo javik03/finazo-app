@@ -78,16 +78,24 @@ export function middleware(request: NextRequest): NextResponse {
     return response;
   }
 
-  // ── finazo.lat host (or unknown host) — original behavior ─────────────────
-  // Geo-route the homepage to /us if Accept-Language suggests US visitor.
+  // ── finazo.lat host (or unknown host) — purely LATAM ──────────────────────
+  // 1. Any /us/* path → cross-domain 301 to finazo.us (strip the /us prefix)
+  //    so SEO equity transfers and finazo.lat stays purely LATAM.
+  if (pathname === "/us" || pathname.startsWith("/us/")) {
+    const stripped = pathname === "/us" ? "/" : pathname.slice(3); // "/us/x" → "/x"
+    const url = new URL(stripped + request.nextUrl.search, "https://finazo.us");
+    return NextResponse.redirect(url, 301);
+  }
+
+  // 2. Geo-route US visitors landing on finazo.lat/ → cross-domain to finazo.us
   if (pathname === "/") {
     const regionCookie = request.cookies.get("finazo_region")?.value;
 
     if (regionCookie === "us") {
-      return NextResponse.redirect(new URL("/us", request.url));
+      return NextResponse.redirect(new URL("/", "https://finazo.us"));
     }
     if (regionCookie !== "latam" && isUsVisitor(request)) {
-      return NextResponse.redirect(new URL("/us", request.url));
+      return NextResponse.redirect(new URL("/", "https://finazo.us"));
     }
   }
 

@@ -56,7 +56,7 @@ const intro = (
 );
 
 export default async function SegurosHubPage() {
-  const articles = await getPublishedArticles({ category: "seguros" }).catch(() => []);
+  const articles = await getPublishedArticles({ category: "seguros", excludeCountry: "US" }).catch(() => []);
 
   return (
     <>
