@@ -59,9 +59,35 @@ Inmediatamente después de la introducción (antes del primer H2), un blockquote
 > punto 2 brevísimo.
 > punto 3 brevísimo.
 
-FORMATO OBLIGATORIO — DIVULGACIÓN AL PIE:
-Si mencionas Cubierto, Hogares o productos afiliados de remesas, agrega al final:
-> **Divulgación:** [línea factual de la relación comercial]
+CONVERSIÓN — BLOQUES CTA OBLIGATORIOS según categoría:
+
+Si el artículo es de SEGUROS (auto/hogar/salud/vida) — incluye DOS CTAs:
+1. CTA inline (en mitad del artículo, después de la tabla comparativa o sección "alternativas"):
+> **Cotiza ahora con Cubierto** — Compara con 8+ aseguradoras en 90 segundos por WhatsApp. Sin llamadas, en español, gratis para ti. [Hablar con Carmen →](https://wa.me/13055551234?text=Hola%20Carmen%2C%20cotizar%20seguro)
+
+2. CTA al final (antes de Preguntas frecuentes):
+## ¿Listo para cotizar?
+[Compara con 8+ aseguradoras en Cubierto](/us/herramientas/cotizador-seguro) — toma menos de 2 minutos. O escribe a Carmen directamente por WhatsApp y te cotiza con tarifas reales.
+
+Si el artículo es de HIPOTECAS / COMPRA DE CASA — incluye DOS CTAs:
+1. CTA inline (después de explicar opciones non-QM o ITIN):
+> **Pre-califícate con Hogares** — Si el banco tradicional te dijo que no, Hogares te conecta con 4 wholesalers non-QM en 24 horas. ITIN, self-employed y bank-statement loans aceptados. [Hablar con Sofía →](https://wa.me/13055551234?text=Hola%20Sofia%2C%20pre-calificar%20hipoteca)
+
+2. CTA al final:
+## ¿Listo para pre-calificar?
+[Pre-calificación gratis con Hogares](/us/hipotecas) — respuesta en 24 horas. O simula tu pago mensual con el [simulador de hipoteca](/us/herramientas/simulador-hipoteca).
+
+Si el artículo es de CRÉDITO / BANKING / TAXES / EDUCACIÓN — incluye UN CTA al final:
+## ¿Tienes una pregunta específica?
+[Pregúntale a Finazo por WhatsApp](https://wa.me/13055551234?text=Hola%20Finazo) — el bot te responde en español, sin tener que descargar nada. O usa el [tracker de credit score](/us/herramientas/credit-tracker) para tu plan personal.
+
+Si el artículo es de REMESAS — incluye UN CTA al final:
+## ¿Cuánto te ahorras hoy?
+[Compara apps de remesas en vivo](/us/herramientas/comparador-remesas) — Wise vs Remitly vs Western Union, comisiones reales actualizadas cada 6 horas para el corredor que tú eliges.
+
+FORMATO OBLIGATORIO — DIVULGACIÓN AL PIE (cuando menciones Cubierto/Hogares/afiliados):
+Al final del artículo, antes de META:
+> **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que Finazo). Recibimos comisión cuando te conectamos con un agente — la paga la aseguradora o el wholesaler, no tú. Más detalles en nuestra [metodología](/metodologia).
 
 Al final del artículo, en líneas separadas:
 META: [meta description de 150-160 caracteres con la keyword principal]
@@ -107,7 +133,7 @@ Estructura requerida:
     slug: "estrella-insurance-alternativa-mejor-seguro-hispanos-florida",
     category: "seguros",
     imageQuery: "auto insurance florida hispanic agent",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     homepageSeed: true,
     prompt: `Eres un experto en seguros de auto en Florida para la comunidad Hispana. Escribe un comparativo en español optimizado para "Estrella Insurance alternativa".
 
@@ -136,7 +162,7 @@ Estructura requerida:
     slug: "direct-general-vs-fred-loya-comparativo-hispanos",
     category: "seguros",
     imageQuery: "compare car insurance two options",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en seguros de auto para Hispanos en EE.UU. Escribe un comparativo head-to-head en español.
 
 Keyword principal: "Direct General vs Fred Loya"
@@ -165,7 +191,7 @@ Estructura:
     slug: "es-obligatorio-seguro-auto-texas-hispanos",
     category: "seguros",
     imageQuery: "texas highway driving car",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     homepageSeed: true,
     prompt: `Eres un experto en seguros de auto en Texas. Escribe una guía en español sobre la ley.
 
@@ -212,7 +238,7 @@ Estructura:
     slug: "cobertura-minima-seguro-auto-california-hispanos",
     category: "seguros",
     imageQuery: "california highway car driving",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en seguros de auto en California. Escribe una guía en español.
 
 Keyword principal: "cobertura mínima de seguro de auto en California"
@@ -372,7 +398,7 @@ Estructura:
     slug: "inscripcion-aca-open-enrollment-hispanos-2026",
     category: "seguros",
     imageQuery: "online health enrollment laptop",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en inscripción ACA para Hispanos. Escribe una guía paso-a-paso en español.
 
 Keyword principal: "inscripción ACA en español"
@@ -425,7 +451,7 @@ Estructura:
     slug: "seguro-vida-mandar-familia-mexico-centroamerica",
     category: "seguros",
     imageQuery: "family video call abroad sending support",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en seguros de vida para inmigrantes Hispanos que mandan dinero a casa. Escribe una guía en español.
 
 Keyword principal: "seguro de vida para mandar a la familia"
