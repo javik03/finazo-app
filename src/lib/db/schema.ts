@@ -161,8 +161,10 @@ export const usLoanProducts = pgTable("us_loan_products", {
   providerId: uuid("provider_id").references(() => usLoanProviders.id),
   productName: text("product_name").notNull(),
   loanType: text("loan_type").notNull(), // personal | auto | business | credit-builder
-  aprMin: decimal("apr_min", { precision: 6, scale: 4 }),
-  aprMax: decimal("apr_max", { precision: 6, scale: 4 }),
+  // APR stored as percentage value (e.g. 59.99 = 59.99%, 160.00 = 160%).
+  // Widened from decimal(6,4) — OppLoans / payday-tier ITIN loans hit 100%+.
+  aprMin: decimal("apr_min", { precision: 6, scale: 2 }),
+  aprMax: decimal("apr_max", { precision: 6, scale: 2 }),
   amountMin: decimal("amount_min", { precision: 12, scale: 2 }),
   amountMax: decimal("amount_max", { precision: 12, scale: 2 }),
   termMinMonths: integer("term_min_months"),
