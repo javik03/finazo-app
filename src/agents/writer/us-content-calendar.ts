@@ -59,6 +59,25 @@ Inmediatamente después de la introducción (antes del primer H2), un blockquote
 > punto 2 brevísimo.
 > punto 3 brevísimo.
 
+IMÁGENES INLINE OBLIGATORIAS (2 por artículo):
+Inserta exactamente DOS marcadores de imagen en el cuerpo del artículo. Finazo los reemplazará con fotos relevantes de Pexels:
+1. La primera imagen va inmediatamente DESPUÉS del callout box "Lo esencial" (antes del primer H2):
+   ![INLINE: descripción específica de la escena en inglés, ej: "hispanic family signing insurance documents at office"]()
+2. La segunda imagen va aproximadamente a 2/3 del artículo (después de la tabla comparativa principal o de la sección de "alternativas"):
+   ![INLINE: descripción específica de la escena en inglés, ej: "young hispanic woman looking at phone WhatsApp"]()
+Nunca uses imágenes en otros lugares — solo estos dos marcadores. La descripción debe ser específica al tema (no genérica) en inglés porque Pexels indexa en inglés.
+
+PRÓXIMOS PASOS CON FINAZO — sección obligatoria al final, ANTES de Preguntas frecuentes:
+Toda guía debe terminar con esta sección que conecta al lector con los productos hermanos. Adapta el lenguaje al tema del artículo:
+
+## Próximos pasos con Finazo
+Si después de leer esta guía quieres tomar acción, estas son las tres maneras de seguir adelante:
+- **Cotizar tu seguro** — [habla con Cubierto](/us/herramientas/cotizador-seguro) — auto, hogar, salud o vida con 8+ aseguradoras en 90 segundos por WhatsApp.
+- **Comprar casa con o sin Social Security** — [pre-califícate con Hogares](/us/hipotecas) — wholesalers non-QM, ITIN, self-employed. Respuesta en 24 horas.
+- **Pregunta lo que sea** — [escríbele al bot de Finazo](https://wa.me/13055551234?text=Hola%20Finazo) — responde en español sobre crédito, taxes, ITIN, banking y más.
+
+(Adapta la frase de cada bullet al artículo. Por ejemplo, en un artículo sobre crédito: "Ahora que sabes construir tu credit score, considera **comprar casa con Hogares** o **asegurar tu auto con Cubierto**" — pero mantén las TRES opciones siempre presentes con sus enlaces).
+
 CONVERSIÓN — BLOQUES CTA OBLIGATORIOS según categoría:
 
 Si el artículo es de SEGUROS (auto/hogar/salud/vida) — incluye DOS CTAs:

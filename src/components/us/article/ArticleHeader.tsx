@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 type ArticleHeaderProps = {
   category?: string;
@@ -9,6 +10,7 @@ type ArticleHeaderProps = {
   authorInitial: string;
   publishedAt: Date | null;
   wordCount: number | null;
+  featuredImageUrl: string | null;
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -38,6 +40,7 @@ export function ArticleHeader({
   authorInitial,
   publishedAt,
   wordCount,
+  featuredImageUrl,
 }: ArticleHeaderProps): React.ReactElement {
   const readingMins = wordCount ? Math.max(1, Math.round(wordCount / 220)) : 5;
 
@@ -74,6 +77,20 @@ export function ArticleHeader({
           )}
         </div>
       </div>
+
+      {featuredImageUrl && (
+        <div className="us-article-image">
+          <Image
+            src={featuredImageUrl}
+            alt={title}
+            width={1200}
+            height={630}
+            priority
+            sizes="(max-width: 760px) 100vw, 760px"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </div>
+      )}
     </header>
   );
 }

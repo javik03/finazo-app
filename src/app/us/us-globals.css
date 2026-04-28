@@ -1020,6 +1020,13 @@
   border: none; border-top: 1px solid var(--us-line);
   margin: 40px 0;
 }
+.finazo-us .us-prose img {
+  display: block;
+  width: 100%; height: auto;
+  margin: 32px 0;
+  border-radius: var(--us-radius);
+  box-shadow: var(--us-shadow-sm);
+}
 .finazo-us .us-prose table {
   width: 100%; border-collapse: collapse; margin: 28px 0;
   font-size: 14px;

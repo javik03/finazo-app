@@ -44,6 +44,36 @@ const DEFAULT_BATCH_SIZE = 3;
 const MAX_BATCH_SIZE = 12;
 
 // ---------------------------------------------------------------------------
+// Inline image resolution — replaces [INLINE: query]() with real Pexels images
+// ---------------------------------------------------------------------------
+
+const INLINE_MARKER = /!\[INLINE:\s*([^\]]+?)\s*\]\(\)/g;
+
+async function resolveInlineImages(content: string): Promise<string> {
+  const matches = [...content.matchAll(INLINE_MARKER)];
+  if (matches.length === 0) return content;
+
+  const replacements = await Promise.all(
+    matches.map(async (match) => {
+      const query = match[1].trim();
+      const url = await fetchFeaturedImage(query);
+      const altText = query.charAt(0).toUpperCase() + query.slice(1);
+      return {
+        marker: match[0],
+        replacement: url ? `![${altText}](${url})` : "",
+      };
+    }),
+  );
+
+  let result = content;
+  for (const { marker, replacement } of replacements) {
+    // Replace first occurrence each time to handle duplicate queries safely.
+    result = result.replace(marker, replacement);
+  }
+  return result;
+}
+
+// ---------------------------------------------------------------------------
 // Single-article generator
 // ---------------------------------------------------------------------------
 
@@ -75,10 +105,14 @@ async function generateUsArticle(topic: UsContentTopic): Promise<boolean> {
         .filter(Boolean)
     : null;
 
-  const articleContent = fullText
+  let articleContent = fullText
     .replace(/^META:.*$/m, "")
     .replace(/^KEYWORDS:.*$/m, "")
     .trim();
+
+  // Replace [INLINE: query]() markers with real Pexels images.
+  // Claude inserts exactly 2 of these per article — see us-content-calendar.ts.
+  articleContent = await resolveInlineImages(articleContent);
 
   const titleMatch = articleContent.match(/^#\s+(.+)$/m);
   const title = titleMatch
