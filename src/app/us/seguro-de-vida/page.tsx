@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Nav } from "@/components/us/layout/Nav";
+import { UsFooter } from "@/components/us/layout/UsFooter";
+import { FloatingWA } from "@/components/us/layout/FloatingWA";
 
 export const metadata: Metadata = {
   title: "Seguro de Vida para Hispanos en EE.UU. — Desde $10/mes | Finazo",
@@ -156,7 +157,7 @@ export default function UsSeguroVidaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
-      <Header />
+      <Nav currentPath="/us/seguros" />
       <main className="min-h-screen" style={{ background: "var(--background)" }}>
 
         <div style={{ background: "white", borderBottom: "1px solid #d1e8d9" }}>
@@ -303,7 +304,8 @@ export default function UsSeguroVidaPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <UsFooter />
+      <FloatingWA />
     </>
   );
 }

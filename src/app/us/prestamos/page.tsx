@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Nav } from "@/components/us/layout/Nav";
+import { UsFooter } from "@/components/us/layout/UsFooter";
+import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { getUsLoanProducts } from "@/lib/queries/us-loans";
 
 export const metadata: Metadata = {
@@ -148,7 +149,7 @@ export default async function UsPrestamosPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
       />
-      <Header />
+      <Nav currentPath="/us/prestamos" />
       <main className="min-h-screen" style={{ background: "#fff" }}>
 
         {/* Hero */}
@@ -435,7 +436,8 @@ export default async function UsPrestamosPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <UsFooter />
+      <FloatingWA />
     </>
   );
 }
