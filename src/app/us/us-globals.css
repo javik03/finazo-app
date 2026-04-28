@@ -886,6 +886,339 @@
   max-width: 720px; font-size: 11.5px;
 }
 
+/* ─────────────── ARTICLE / E-E-A-T PAGES ─────────────── */
+
+.finazo-us .us-page-shell {
+  max-width: 760px; margin: 0 auto; padding: 48px 32px 72px;
+}
+@media (max-width: 640px) {
+  .finazo-us .us-page-shell { padding: 32px 20px 48px; }
+}
+
+.finazo-us .us-breadcrumb {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 6px; font-size: 12px; color: var(--us-ink-3);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em; margin-bottom: 32px;
+}
+.finazo-us .us-breadcrumb a {
+  color: var(--us-ink-3); transition: color 0.15s;
+}
+.finazo-us .us-breadcrumb a:hover { color: var(--us-green); }
+.finazo-us .us-breadcrumb-sep { color: var(--us-line-2); }
+.finazo-us .us-breadcrumb .us-current {
+  color: var(--us-ink-2);
+  display: inline-block; max-width: 320px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.finazo-us .us-article-head {
+  border-bottom: 1px solid var(--us-line);
+  padding-bottom: 28px; margin-bottom: 32px;
+}
+.finazo-us .us-article-cat {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--us-green); font-weight: 500;
+  margin-bottom: 18px; display: inline-block;
+}
+.finazo-us .us-article-title {
+  font-size: clamp(32px, 4.5vw, 52px); font-weight: 400;
+  letter-spacing: -0.022em; line-height: 1.08; margin-bottom: 18px;
+}
+.finazo-us .us-article-deck {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(18px, 1.6vw, 22px); line-height: 1.45;
+  color: var(--us-ink-2); margin-bottom: 24px;
+}
+.finazo-us .us-article-byline {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px; color: var(--us-ink-3);
+  padding-top: 16px; border-top: 1px solid var(--us-line);
+}
+.finazo-us .us-article-byline .us-byline-name { color: var(--us-ink); font-weight: 600; }
+.finazo-us .us-article-byline .us-byline-name:hover { color: var(--us-green); }
+.finazo-us .us-article-byline .us-byline-sep { color: var(--us-line-2); margin: 0 4px; }
+.finazo-us .us-article-image {
+  margin-top: 24px; border-radius: var(--us-radius);
+  overflow: hidden;
+}
+.finazo-us .us-article-image img {
+  width: 100%; height: auto; display: block;
+}
+
+/* ─── Prose body — all markdown-rendered HTML ─── */
+.finazo-us .us-prose {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 17px; line-height: 1.75;
+  color: var(--us-ink-2);
+}
+.finazo-us .us-prose h2 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(24px, 2.4vw, 32px); font-weight: 500;
+  color: var(--us-ink); letter-spacing: -0.015em; line-height: 1.15;
+  margin: 48px 0 16px;
+}
+.finazo-us .us-prose h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(20px, 1.8vw, 24px); font-weight: 500;
+  color: var(--us-ink); letter-spacing: -0.012em; line-height: 1.2;
+  margin: 32px 0 12px;
+}
+.finazo-us .us-prose h4 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 18px; font-weight: 500; color: var(--us-ink);
+  margin: 24px 0 10px;
+}
+.finazo-us .us-prose p { margin: 0 0 18px; }
+.finazo-us .us-prose strong { color: var(--us-ink); font-weight: 600; }
+.finazo-us .us-prose em { font-style: italic; }
+.finazo-us .us-prose a {
+  color: var(--us-green); text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+.finazo-us .us-prose a:hover { color: var(--us-green-2); }
+.finazo-us .us-prose ul,
+.finazo-us .us-prose ol {
+  margin: 0 0 20px 24px; padding: 0;
+}
+.finazo-us .us-prose li {
+  margin-bottom: 8px; line-height: 1.7;
+}
+.finazo-us .us-prose blockquote {
+  margin: 28px 0;
+  padding: 20px 24px;
+  background: var(--us-green-3);
+  border-left: 3px solid var(--us-green);
+  border-radius: var(--us-radius-sm);
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 17px; line-height: 1.55;
+  color: var(--us-ink);
+}
+.finazo-us .us-prose blockquote p { margin: 0 0 8px; }
+.finazo-us .us-prose blockquote p:last-child { margin: 0; }
+.finazo-us .us-prose blockquote strong { color: var(--us-green-2); }
+.finazo-us .us-prose code {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+  background: var(--us-paper-2);
+  padding: 2px 6px; border-radius: 4px;
+  color: var(--us-ink);
+}
+.finazo-us .us-prose pre {
+  background: var(--us-paper-2);
+  padding: 16px 20px;
+  border-radius: var(--us-radius);
+  overflow-x: auto; margin: 24px 0;
+  font-size: 14px; line-height: 1.6;
+}
+.finazo-us .us-prose pre code {
+  background: none; padding: 0; font-size: inherit;
+}
+.finazo-us .us-prose hr {
+  border: none; border-top: 1px solid var(--us-line);
+  margin: 40px 0;
+}
+.finazo-us .us-prose table {
+  width: 100%; border-collapse: collapse; margin: 28px 0;
+  font-size: 14px;
+}
+.finazo-us .us-prose th,
+.finazo-us .us-prose td {
+  text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid var(--us-line);
+}
+.finazo-us .us-prose th {
+  background: var(--us-paper-2); font-weight: 600;
+  color: var(--us-ink);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+/* ─── Related articles aside ─── */
+.finazo-us .us-related {
+  margin-top: 64px; padding-top: 32px;
+  border-top: 1px solid var(--us-line);
+}
+.finazo-us .us-related h2 {
+  font-size: 18px; font-weight: 500;
+  color: var(--us-ink); margin-bottom: 18px;
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+.finazo-us .us-related-list {
+  display: flex; flex-direction: column; gap: 12px;
+  list-style: none; padding: 0; margin: 0;
+}
+.finazo-us .us-related-item {
+  display: flex; gap: 12px; padding: 14px 16px;
+  border: 1px solid var(--us-line); border-radius: var(--us-radius);
+  background: white; transition: all 0.15s;
+}
+.finazo-us .us-related-item:hover {
+  border-color: var(--us-green);
+  box-shadow: var(--us-shadow-sm);
+  transform: translateY(-1px);
+}
+.finazo-us .us-related-item .us-arrow { color: var(--us-green); flex-shrink: 0; }
+.finazo-us .us-related-item-title {
+  font-weight: 500; color: var(--us-ink);
+  line-height: 1.4; font-size: 15px;
+}
+.finazo-us .us-related-item-meta {
+  font-size: 11px; color: var(--us-ink-3);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em; margin-top: 4px;
+}
+.finazo-us .us-related-all {
+  display: inline-block; margin-top: 16px;
+  font-size: 12px;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--us-green); transition: color 0.15s;
+}
+.finazo-us .us-related-all:hover { color: var(--us-green-2); }
+
+/* ─── Article-end CTA card ─── */
+.finazo-us .us-article-cta-card {
+  margin-top: 48px; padding: 28px;
+  border: 1px solid var(--us-line);
+  border-radius: var(--us-radius-lg);
+  background: var(--us-green-3);
+}
+.finazo-us .us-article-cta-card h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 22px; font-weight: 500;
+  color: var(--us-ink); margin-bottom: 8px;
+}
+.finazo-us .us-article-cta-card p {
+  font-size: 14px; color: var(--us-ink-2);
+  line-height: 1.55; margin-bottom: 16px;
+}
+.finazo-us .us-article-cta-card-btns {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.finazo-us .us-cta-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  transition: all 0.15s;
+}
+.finazo-us .us-cta-btn.us-primary {
+  background: var(--us-green); color: white;
+}
+.finazo-us .us-cta-btn.us-primary:hover { background: var(--us-green-2); }
+.finazo-us .us-cta-btn.us-secondary {
+  background: white; color: var(--us-green);
+  border: 1px solid var(--us-green);
+}
+.finazo-us .us-cta-btn.us-secondary:hover {
+  background: var(--us-green); color: white;
+}
+
+/* ─── Author byline avatar ─── */
+.finazo-us .us-author-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--us-green), var(--us-green-2));
+  color: white;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 500; font-size: 14px; flex-shrink: 0;
+}
+
+/* ─── Hub card grid (used by /us/guias) ─── */
+.finazo-us .us-hub-head {
+  padding: 48px 0 32px; border-bottom: 1px solid var(--us-line);
+  margin-bottom: 40px;
+}
+.finazo-us .us-hub-head h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 400;
+  letter-spacing: -0.025em; line-height: 1.1;
+  margin-bottom: 12px;
+}
+.finazo-us .us-hub-head h1 i { font-style: italic; color: var(--us-green); }
+.finazo-us .us-hub-head p {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 18px; line-height: 1.5;
+  color: var(--us-ink-2); max-width: 640px;
+}
+
+.finazo-us .us-hub-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  padding-bottom: 56px;
+}
+@media (max-width: 900px) {
+  .finazo-us .us-hub-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .finazo-us .us-hub-grid { grid-template-columns: 1fr; }
+}
+
+.finazo-us .us-pager {
+  display: flex; justify-content: center; gap: 12px;
+  padding: 32px 0 64px;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 12px; letter-spacing: 0.06em;
+}
+.finazo-us .us-pager a, .finazo-us .us-pager span {
+  padding: 8px 14px;
+  border: 1px solid var(--us-line); border-radius: 6px;
+  color: var(--us-ink-2); transition: all 0.15s;
+}
+.finazo-us .us-pager a:hover {
+  border-color: var(--us-green); color: var(--us-green);
+}
+.finazo-us .us-pager .us-pager-current {
+  background: var(--us-ink); color: var(--us-paper); border-color: var(--us-ink);
+}
+
+/* ─── Author bio page ─── */
+.finazo-us .us-author-hero {
+  display: flex; gap: 28px; align-items: center;
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--us-line); margin-bottom: 40px;
+}
+@media (max-width: 600px) {
+  .finazo-us .us-author-hero { flex-direction: column; align-items: flex-start; }
+}
+.finazo-us .us-author-hero .us-big-avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--us-green), var(--us-green-2));
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 500; font-size: 36px; flex-shrink: 0;
+}
+.finazo-us .us-author-hero h1 {
+  font-size: clamp(32px, 4vw, 44px); font-weight: 400;
+  letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px;
+}
+.finazo-us .us-author-hero .us-author-role {
+  font-size: 14px; color: var(--us-ink-3);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em; margin-bottom: 12px;
+}
+.finazo-us .us-author-links {
+  display: flex; gap: 14px; align-items: center;
+  font-size: 13px;
+}
+.finazo-us .us-author-links a {
+  color: var(--us-green); transition: color 0.15s;
+  text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 2px;
+}
+.finazo-us .us-author-links a:hover { color: var(--us-green-2); }
+.finazo-us .us-author-expertise {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+}
+.finazo-us .us-author-expertise span {
+  font-size: 11px; padding: 3px 9px;
+  background: var(--us-paper-2); border-radius: 4px;
+  color: var(--us-ink-2);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+
 /* ─────────────── FLOATING WA ─────────────── */
 .finazo-us .us-float-wa {
   position: fixed; bottom: 24px; right: 24px; z-index: 100;
