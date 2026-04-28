@@ -1,0 +1,102 @@
+/* ============================================================================
+ * Finazo US V2 — design tokens
+ * Scoped to .finazo-us so they don't bleed into the LATAM site.
+ * Source of truth: C:/Users/PC/Downloads/finazo-us-v2.html
+ * ============================================================================ */
+
+.finazo-us {
+  /* Neutrals: paper → ink, warm cool */
+  --us-paper: #FAFAF7;
+  --us-paper-2: #F3F2ED;
+  --us-line: #E6E4DD;
+  --us-line-2: #D1CEC4;
+  --us-ink: #14140F;
+  --us-ink-2: #4A4940;
+  --us-ink-3: #878474;
+
+  /* Editorial green (single brand accent) */
+  --us-green: #1F5F3F;
+  --us-green-2: #164A30;
+  --us-green-3: #E8F0EA;
+
+  /* WhatsApp action — only on WA CTAs */
+  --us-wa: #25D366;
+  --us-wa-deep: #128C7E;
+
+  /* Radii */
+  --us-radius-sm: 6px;
+  --us-radius: 10px;
+  --us-radius-lg: 14px;
+
+  /* Shadows */
+  --us-shadow-sm: 0 1px 2px rgba(20, 20, 15, 0.04);
+  --us-shadow: 0 4px 16px -4px rgba(20, 20, 15, 0.08);
+  --us-shadow-lg: 0 20px 50px -20px rgba(20, 20, 15, 0.2);
+
+  background: var(--us-paper);
+  color: var(--us-ink);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+.finazo-us h1,
+.finazo-us h2,
+.finazo-us h3,
+.finazo-us h4 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--us-ink);
+  line-height: 1.05;
+  font-feature-settings: "ss01";
+}
+
+.finazo-us .us-serif {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-feature-settings: "ss01";
+}
+
+.finazo-us .us-mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.finazo-us a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.finazo-us button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Reveal on scroll — used by .reveal class throughout components */
+.finazo-us .us-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.finazo-us .us-reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Container */
+.finazo-us .us-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 640px) {
+  .finazo-us .us-container {
+    padding: 0 20px;
+  }
+}
