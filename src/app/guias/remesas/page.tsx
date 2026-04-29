@@ -56,7 +56,7 @@ const intro = (
 );
 
 export default async function RemesasHubPage() {
-  const articles = await getPublishedArticles({ category: "remesas" }).catch(() => []);
+  const articles = await getPublishedArticles({ category: "remesas", excludeCountry: "US" }).catch(() => []);
 
   return (
     <>

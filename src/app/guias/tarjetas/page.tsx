@@ -56,7 +56,7 @@ const intro = (
 );
 
 export default async function TarjetasHubPage() {
-  const articles = await getPublishedArticles({ category: "tarjetas" }).catch(() => []);
+  const articles = await getPublishedArticles({ category: "tarjetas", excludeCountry: "US" }).catch(() => []);
 
   return (
     <>

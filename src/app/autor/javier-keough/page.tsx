@@ -38,7 +38,7 @@ const authorSchema = {
 };
 
 export default async function JavierKeoughPage(): Promise<React.ReactElement> {
-  const allArticles = await getPublishedArticles();
+  const allArticles = await getPublishedArticles({ excludeCountry: "US" });
   const authorArticles = allArticles.filter(
     (a) => a.authorName === "Javier Keough",
   );

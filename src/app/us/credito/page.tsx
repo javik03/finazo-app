@@ -1,359 +1,255 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Nav } from "@/components/us/layout/Nav";
+import { UsFooter } from "@/components/us/layout/UsFooter";
+import { FloatingWA } from "@/components/us/layout/FloatingWA";
+import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Cómo Construir Crédito en EE.UU. para Hispanos e Inmigrantes 2025 | Finazo",
+  title: "Crédito en EE.UU. para Hispanos — construir score con o sin SSN | Finazo",
   description:
-    "Guía para empezar tu historial crediticio en Estados Unidos siendo inmigrante hispano. Tarjetas aseguradas, credit builder loans y estrategias para subir tu score rápido.",
-  alternates: {
-    canonical: "https://finazo.lat/us/credito",
-    languages: {
-      "es-US": "https://finazo.lat/us/credito",
-      "x-default": "https://finazo.lat/us/credito",
-    },
-  },
-  openGraph: {
-    title: "Construir Crédito en EE.UU. siendo Hispano e Inmigrante | Finazo",
-    description:
-      "De 0 a 700+: estrategia paso a paso para hispanos e inmigrantes. Tarjetas sin SSN, credit builder loans y cómo usar tu crédito de otro país.",
-    url: "https://finazo.lat/us/credito",
-    locale: "es_US",
-  },
+    "Cómo construir tu credit score desde cero, con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans, y cómo subir el score rápido.",
+  alternates: { canonical: "https://finazo.us/credito" },
 };
+
+const SECURED_CARDS = [
+  { card: "Discover it Secured", deposit: "$200 mín.", apr: "27.74% var.", annual: "$0", reports: "3 bureaus", itin: "Sí" },
+  { card: "Capital One Platinum Secured", deposit: "$49–$200", apr: "29.74% var.", annual: "$0", reports: "3 bureaus", itin: "Sí" },
+  { card: "OpenSky Plus Secured", deposit: "$300 mín.", apr: "29.99% fija", annual: "$35", reports: "3 bureaus", itin: "Sí" },
+  { card: "Self Visa", deposit: "Combina con CB loan", apr: "28.24% var.", annual: "$25", reports: "3 bureaus", itin: "Sí" },
+  { card: "Chime Credit Builder", deposit: "Sin depósito tradicional", apr: "0%", annual: "$0", reports: "3 bureaus", itin: "Sí" },
+];
+
+const TIMELINE = [
+  { month: "Mes 0", action: "Sacar ITIN si no lo tienes (formulario W-7) + abrir cuenta de banco" },
+  { month: "Mes 1", action: "Solicitar tarjeta asegurada + credit-builder loan (Self o Kikoff)" },
+  { month: "Mes 2–3", action: "Usar 10–30% del límite, pagar al 100% cada mes. No abrir más cuentas." },
+  { month: "Mes 6", action: "Score esperado: 600–650. Pedir aumento de límite (sin hard pull si es posible)." },
+  { month: "Mes 9", action: "Score esperado: 650–700. Considerar segunda tarjeta para mix de crédito." },
+  { month: "Mes 12+", action: "Score 700+. Listo para hipoteca con Hogares o seguro mejor con Cubierto." },
+];
+
+const FAQS = [
+  {
+    q: "¿Puedo construir credit score con ITIN sin SSN?",
+    a: "Sí. Las tarjetas aseguradas y credit-builder loans listadas arriba aceptan ITIN y reportan a las 3 bureaus (Experian, Equifax, TransUnion). En 9–12 meses puedes llegar a 650+.",
+  },
+  {
+    q: "¿Cuántas tarjetas debo tener?",
+    a: "Empieza con 1, agrega la segunda al mes 9–12 cuando tu score llegue a 650+. Más tarjetas = más mix de crédito (15% del FICO), pero abrirlas todas a la vez baja el promedio de edad de cuentas.",
+  },
+  {
+    q: "¿Cuándo debo pasar de tarjeta asegurada a regular?",
+    a: "Cuando tu score llegue a 700+ y tengas 12 meses de historial. Las tarjetas como Discover y Capital One se convierten automáticamente. Otras requieren que apliques a una nueva — entonces pides cancelación de la asegurada para recuperar el depósito.",
+  },
+  {
+    q: "¿De qué sirve tener buen credit score?",
+    a: "Hipoteca: el banco te aprueba con tasa más baja. Hogares te conecta con wholesalers ITIN si tu score está en 620+. Seguro de auto: en 47 estados un buen credit baja tu prima 15–40%. Cubierto compara con esa ventaja.",
+  },
+];
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
-    { "@type": "ListItem", position: 2, name: "EE.UU.", item: "https://finazo.lat/us" },
-    { "@type": "ListItem", position: 3, name: "Construir crédito", item: "https://finazo.lat/us/credito" },
-  ],
-};
-
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Cómo construir crédito en EE.UU. siendo inmigrante hispano",
-  description: "Pasos para empezar y crecer tu historial crediticio en Estados Unidos sin historial previo.",
-  totalTime: "PT12M",
-  step: [
-    {
-      "@type": "HowToStep",
-      name: "Obtén tu ITIN o SSN",
-      text: "El ITIN (formulario W-7 del IRS) te permite acceder a productos financieros sin SSN. Si tienes visa de trabajo, obtén tu SSN en la oficina del Seguro Social.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Abre una tarjeta de crédito asegurada",
-      text: "Deposita $200-500 como garantía en bancos como Discover it Secured, Capital One Secured o Bank of America Secured. Usa la tarjeta mensualmente para gastos pequeños.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Paga el saldo completo cada mes",
-      text: "Nunca dejes un saldo pendiente. El 35% de tu score depende del historial de pagos. Configura autopago para no olvidarlo.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Mantén utilización bajo el 10%",
-      text: "Si tu límite es $500, no uses más de $50 al mes. La utilización de crédito (30% del score) mejora dramáticamente bajo el 10%.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Agrega un credit builder loan",
-      text: "Self Financial o Credit Strong ofrecen préstamos de construcción de crédito desde $25/mes. El dinero va a una cuenta de ahorro y tú lo recibes al final.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Hazte usuario autorizado",
-      text: "Si tienes un familiar o amigo con buen crédito en EE.UU., pídele que te agregue como usuario autorizado en su tarjeta. Su historial se suma al tuyo.",
-    },
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.us" },
+    { "@type": "ListItem", position: 2, name: "Crédito", item: "https://finazo.us/credito" },
   ],
 };
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "¿Puedo construir crédito en EE.UU. con ITIN y sin SSN?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sí. El ITIN (Individual Taxpayer Identification Number) te permite abrir cuentas bancarias, obtener tarjetas de crédito aseguradas y credit builder loans. Bancos como Wells Fargo, Bank of America y Self Financial aceptan ITIN. El ITIN se solicita con el formulario W-7 del IRS y lo recibes en 7-11 semanas.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Cuánto tiempo tarda en subir mi score crediticio desde cero?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Con una estrategia correcta: 6 meses para tener un score inicial (600-650). 12 meses para llegar a buen crédito (670-700). 24 meses para excelente crédito (740+). La clave es: nunca fallar un pago, mantener utilización bajo 10%, y no abrir muchas cuentas al mismo tiempo. Con score 700+ puedes acceder a préstamos personales, mejor seguro de auto y eventualmente hipoteca.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Puedo usar mi historial crediticio de México o Centroamérica en EE.UU.?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La mayoría de los bureaus crediticios no comparten datos entre países. Sin embargo, Nova Credit ofrece un servicio llamado 'Credit Passport' que traduce historial crediticio de México, India, Filipinas y otros países. American Express y algunos bancos lo aceptan. También puedes llevar una carta de tu banco en tu país documentando tu historial como referencia para algunos prestamistas comunitarios.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Qué es una tarjeta de crédito asegurada y cómo funciona?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Una secured credit card requiere un depósito inicial ($200-500 típicamente) que sirve como tu límite de crédito. Usas la tarjeta normalmente para compras pequeñas y pagas el saldo completo cada mes. El banco reporta tus pagos a los tres bureaus (Equifax, Experian, TransUnion) y construyes historial. Después de 12-18 meses de buen comportamiento, muchos bancos devuelven tu depósito y te dan una tarjeta regular.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Cuáles son los factores que más afectan mi credit score en EE.UU.?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Los 5 factores del score FICO son: 1) Historial de pagos (35%) — el más importante, nunca te atrasas; 2) Utilización del crédito (30%) — mantén bajo el 10% de tu límite; 3) Antigüedad del crédito (15%) — no cierres tus cuentas más antiguas; 4) Mezcla de crédito (10%) — tener tarjeta + préstamo es mejor que solo uno; 5) Nuevas solicitudes (10%) — no apliques a muchas cuentas en poco tiempo.",
-      },
-    },
-  ],
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
-const speakableSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  speakable: {
-    "@type": "SpeakableSpecification",
-    cssSelector: ["h1", ".intro-text", ".credit-steps"],
-  },
-  url: "https://finazo.lat/us/credito",
-};
-
-const CREDIT_TOOLS = [
-  {
-    name: "Discover it Secured",
-    type: "Tarjeta asegurada",
-    deposit: "$200 mín.",
-    apr: "28.24%",
-    fee: "Sin cuota anual",
-    itin: false,
-    highlight: "2% cashback en restaurantes y gasolina. Revisión automática a los 7 meses para pasar a no-secured.",
-    bestFor: "Primera tarjeta en EE.UU.",
-  },
-  {
-    name: "Capital One Secured",
-    type: "Tarjeta asegurada",
-    deposit: "$49-200",
-    apr: "30.74%",
-    fee: "Sin cuota anual",
-    itin: false,
-    highlight: "Depósito mínimo desde $49 según historial. Límite inicial $200. Aumento automático con 5 meses de buen uso.",
-    bestFor: "Menor depósito inicial",
-  },
-  {
-    name: "Self Financial",
-    type: "Credit builder loan",
-    deposit: "N/A",
-    apr: "15.65%",
-    fee: "$9 de apertura",
-    itin: true,
-    highlight: "Acepta ITIN. Depositas $25-150/mes, al final del plazo recibes el dinero. Reporta a los 3 bureaus.",
-    bestFor: "Sin tarjeta, construir ahorro y crédito a la vez",
-  },
-  {
-    name: "Credit Strong",
-    type: "Credit builder loan",
-    deposit: "N/A",
-    apr: "~15%",
-    fee: "$15 de apertura",
-    itin: true,
-    highlight: "Acepta ITIN. Varias opciones de monto y plazo. Muy recomendado en comunidades de inmigrantes.",
-    bestFor: "Inmigrantes sin historial crediticio",
-  },
-  {
-    name: "Nova Credit",
-    type: "Transferencia de historial",
-    deposit: "N/A",
-    apr: "N/A",
-    fee: "Sin costo",
-    itin: false,
-    highlight: "Traduce historial crediticio de México, India, Filipinas y 10+ países. Funciona con AmEx y algunos bancos.",
-    bestFor: "Si ya tienes buen crédito en tu país de origen",
-  },
-];
-
-const SCORE_RANGES = [
-  { range: "300-579", label: "Muy malo", color: "bg-red-100 text-red-800 border-red-200", desc: "Sin acceso a crédito. Trabaja 12+ meses en construir historial." },
-  { range: "580-669", label: "Regular", color: "bg-orange-100 text-orange-800 border-orange-200", desc: "Acceso limitado. Tarjetas aseguradas y préstamos de alto interés." },
-  { range: "670-739", label: "Bueno", color: "bg-yellow-100 text-yellow-800 border-yellow-200", desc: "Acceso a la mayoría de productos. Tasas competitivas." },
-  { range: "740-799", label: "Muy bueno", color: "bg-emerald-100 text-emerald-800 border-emerald-200", desc: "Mejores tasas disponibles en préstamos y tarjetas premium." },
-  { range: "800-850", label: "Excelente", color: "bg-blue-100 text-blue-800 border-blue-200", desc: "Acceso a las mejores condiciones. Tasas hipotecarias más bajas." },
-];
-
-export default function UsCreditoPage() {
+export default function UsCreditoPage(): React.ReactElement {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
-      <Header />
-      <main className="min-h-screen" style={{ background: "var(--background)" }}>
+      <Nav currentPath="/us/credito" />
 
-        <div style={{ background: "white", borderBottom: "1px solid #d1e8d9" }}>
-          <div className="mx-auto max-w-5xl px-6 py-3 text-sm" style={{ color: "#666" }}>
-            <Link href="/" style={{ color: "var(--green)" }}>Inicio</Link>
-            {" › "}
-            <Link href="/us" style={{ color: "var(--green)" }}>EE.UU.</Link>
-            {" › "}
-            <span style={{ color: "#333", fontWeight: 500 }}>Construir crédito</span>
-          </div>
-        </div>
+      <main>
+        <div className="us-sub-shell">
+          <UsBreadcrumb
+            crumbs={[
+              { label: "Inicio", href: "/us" },
+              { label: "Crédito" },
+            ]}
+          />
 
-        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
-          <div className="mx-auto max-w-5xl px-6 py-12">
-            <span className="inline-block rounded-full px-3 py-1 text-xs font-medium mb-4" style={{ background: "white", color: "var(--green)", border: "1px solid #d1e8d9" }}>
-              Guía para inmigrantes hispanos · EE.UU.
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "#1a1a1a" }}>
-              Cómo construir crédito en EE.UU. siendo hispano o inmigrante
+          <header className="us-sub-hero">
+            <div className="us-hero-kicker">Crédito · ITIN OK</div>
+            <h1 className="us-serif">
+              Construye tu credit score <i>de 0 a 700+</i> en 12 meses.
             </h1>
-            <p className="text-lg max-w-2xl intro-text" style={{ color: "#666" }}>
-              Sin historial crediticio en EE.UU. pagas más por todo: seguro de auto,
-              préstamos y hasta apartamentos. Esta guía te muestra cómo llegar a 700+
-              en 12-24 meses, con o sin SSN.
+            <p>
+              Si tienes ITIN — o ni siquiera eso — sí puedes construir credit en EE.UU.
+              Te explicamos los pasos exactos, cuáles tarjetas reportan a las 3 bureaus, y
+              cómo el credit te abre seguros, hipoteca y mejores tasas con Cubierto y Hogares.
             </p>
-            <div className="mt-6 rounded-xl p-4 max-w-2xl" style={{ background: "#dcfce7", border: "1px solid #86efac" }}>
-              <p className="text-sm" style={{ color: "#166534" }}>
-                <strong>La estrategia ganadora:</strong> Tarjeta asegurada ($200 depósito) +
-                credit builder loan ($25/mes) + pago puntual = 650+ en 6 meses,
-                700+ en 12 meses. Funciona con ITIN, sin SSN.
+          </header>
+
+          {/* Timeline */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                El plan <i>mes por mes</i>
+              </h2>
+              <p>El cronograma realista para subir de 0 a 700+ FICO con ITIN o sin SSN.</p>
+            </div>
+            <div className="us-data-table-wrap">
+              <table className="us-data-table">
+                <thead>
+                  <tr>
+                    <th style={{ width: 110 }}>Mes</th>
+                    <th>Qué hacer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {TIMELINE.map((row) => (
+                    <tr key={row.month}>
+                      <td className="us-strong">{row.month}</td>
+                      <td>{row.action}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* Secured cards */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                Tarjetas <i>aseguradas</i> que aceptan ITIN
+              </h2>
+              <p>
+                Las que reportan a las 3 bureaus (sino, no sirven para construir score).
+                Todas aceptan ITIN.
               </p>
             </div>
-          </div>
-        </section>
+            <div className="us-data-table-wrap">
+              <table className="us-data-table">
+                <thead>
+                  <tr>
+                    <th>Tarjeta</th>
+                    <th>Depósito</th>
+                    <th>APR</th>
+                    <th>Cuota anual</th>
+                    <th>Reporta</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SECURED_CARDS.map((row) => (
+                    <tr key={row.card}>
+                      <td className="us-strong">{row.card}</td>
+                      <td>{row.deposit}</td>
+                      <td className="us-num">{row.apr}</td>
+                      <td>{row.annual}</td>
+                      <td style={{ fontSize: 13 }}>{row.reports}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="us-data-source">
+              FUENTE: TÉRMINOS PÚBLICOS DE CADA BANCO · ACTUALIZADO 2026
+            </div>
+          </section>
 
-        {/* Score ranges */}
-        <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
-            ¿Qué significa tu credit score?
-          </h2>
-          <div className="space-y-2">
-            {SCORE_RANGES.map((range) => {
-              const colorMap: { [key: string]: { bg: string; text: string; border: string } } = {
-                "bg-red-100 text-red-800 border-red-200": { bg: "#fee2e2", text: "#991b1b", border: "#fecaca" },
-                "bg-orange-100 text-orange-800 border-orange-200": { bg: "#fed7aa", text: "#92400e", border: "#fdba74" },
-                "bg-yellow-100 text-yellow-800 border-yellow-200": { bg: "#fef3c7", text: "#78350f", border: "#fcd34d" },
-                "bg-emerald-100 text-emerald-800 border-emerald-200": { bg: "#dcfce7", text: "#065f46", border: "#a7f3d0" },
-                "bg-blue-100 text-blue-800 border-blue-200": { bg: "#dbeafe", text: "#1e3a8a", border: "#93c5fd" },
-              };
-              const colors = colorMap[range.color] || { bg: "#f5f5f5", text: "#666", border: "#ddd" };
-              return (
-                <div key={range.range} className="rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center gap-3" style={{ background: colors.bg, border: `1px solid ${colors.border}` }}>
-                  <div className="shrink-0">
-                    <span className="font-mono font-bold text-lg" style={{ color: colors.text }}>{range.range}</span>
-                    <span className="ml-3 font-medium" style={{ color: colors.text }}>{range.label}</span>
-                  </div>
-                  <p className="text-sm" style={{ color: colors.text }}>{range.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Step by step */}
-        <section className="mx-auto max-w-5xl px-6 py-8 credit-steps">
-          <h2 className="text-xl font-semibold mb-2" style={{ color: "#1a1a1a" }}>
-            De 0 a 700+: tu plan de 12 meses
-          </h2>
-          <p className="text-sm mb-6" style={{ color: "#666" }}>
-            Sigue estos pasos en orden. No necesitas SSN para empezar — con ITIN es suficiente.
-          </p>
-          <div className="space-y-4">
-            {howToSchema.step.map((step, i) => (
-              <div key={i} className="rounded-2xl p-5 flex gap-4" style={{ background: "white", border: "1px solid #d1e8d9" }}>
-                <div className="shrink-0 w-8 h-8 rounded-full text-white font-bold text-sm flex items-center justify-center" style={{ background: "var(--green)" }}>
-                  {i + 1}
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1" style={{ color: "#1a1a1a" }}>{step.name}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{step.text}</p>
-                </div>
+          {/* What's next - cross-funnel to Cubierto + Hogares */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                ¿Qué hacer con <i>el credit</i> que construyes?
+              </h2>
+              <p>
+                Buen credit score abre puertas concretas — Cubierto y Hogares son las dos más
+                grandes para Hispanos.
+              </p>
+            </div>
+            <div className="us-info-grid">
+              <div className="us-info-card">
+                <span className="us-info-emoji">🚗</span>
+                <h3 className="us-serif">Mejor seguro de auto con Cubierto</h3>
+                <p>
+                  En 47 estados un buen credit baja tu prima 15–40%. Cubierto cotiza con 8+
+                  aseguradoras y aplica el descuento automáticamente.
+                </p>
+                <Link href="/us/seguro-de-auto" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
+                  Cotizar con Cubierto →
+                </Link>
               </div>
-            ))}
-          </div>
-        </section>
+              <div className="us-info-card">
+                <span className="us-info-emoji">🏡</span>
+                <h3 className="us-serif">Hipoteca ITIN con Hogares</h3>
+                <p>
+                  Una vez tu score llegue a 620+, Hogares te conecta con wholesalers que
+                  prestan a clientes ITIN, self-employed y bank-statement loans.
+                </p>
+                <Link href="/us/hipotecas" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
+                  Pre-calificar con Hogares →
+                </Link>
+              </div>
+            </div>
+          </section>
 
-        {/* Tools comparison */}
-        <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
-            Herramientas para construir crédito
-          </h2>
-          <div className="space-y-4">
-            {CREDIT_TOOLS.map((tool) => (
-              <div key={tool.name} className="rounded-2xl p-5" style={{ background: "white", border: "1px solid #d1e8d9" }}>
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+          {/* FAQ */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                Preguntas <i>frecuentes</i>
+              </h2>
+            </div>
+            <div className="us-faq-list">
+              {FAQS.map((faq) => (
+                <div key={faq.q} className="us-faq-item">
+                  <h3>{faq.q}</h3>
+                  <p>{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Related guides */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">Guías <i>relacionadas</i></h2>
+            </div>
+            <ul className="us-related-list">
+              <li>
+                <Link href="/us/guias/construir-credit-score-sin-social-security-itin" className="us-related-item">
+                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
                   <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold" style={{ color: "#1a1a1a" }}>{tool.name}</h3>
-                      <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "#f5f5f5", color: "#666" }}>{tool.type}</span>
-                      {tool.itin && (
-                        <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: "var(--green-bg)", color: "var(--green)" }}>Acepta ITIN</span>
-                      )}
-                    </div>
-                    <p className="text-sm" style={{ color: "#666" }}>{tool.highlight}</p>
+                    <div className="us-related-item-title">Cómo construir credit score sin Social Security: guía 2026</div>
                   </div>
-                </div>
-                <div className="flex flex-wrap gap-4 text-xs" style={{ color: "#999", borderTop: "1px solid #eee", paddingTop: "12px" }}>
-                  {tool.deposit !== "N/A" && <span>Depósito: <strong style={{ color: "#1a1a1a" }}>{tool.deposit}</strong></span>}
-                  {tool.apr !== "N/A" && <span>APR: <strong style={{ color: "#1a1a1a" }}>{tool.apr}</strong></span>}
-                  <span>Costo: <strong style={{ color: "#1a1a1a" }}>{tool.fee}</strong></span>
-                  <span style={{ color: "var(--green)", fontWeight: 500 }}>Mejor para: {tool.bestFor}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Score factors */}
-        <section className="mx-auto max-w-5xl px-6 py-8">
-          <h2 className="text-xl font-semibold mb-4" style={{ color: "#1a1a1a" }}>
-            Los 5 factores que determinan tu score FICO
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
-            {[
-              { pct: "35%", factor: "Historial de pagos", tip: "Nunca falles un pago — ni uno." },
-              { pct: "30%", factor: "Utilización del crédito", tip: "Usa menos del 10% de tu límite." },
-              { pct: "15%", factor: "Antigüedad del crédito", tip: "No cierres cuentas antiguas." },
-              { pct: "10%", factor: "Mezcla de productos", tip: "Tarjeta + préstamo es mejor." },
-              { pct: "10%", factor: "Solicitudes nuevas", tip: "No apliques a muchas a la vez." },
-            ].map((item) => (
-              <div key={item.factor} className="rounded-2xl p-4 text-center" style={{ background: "white", border: "1px solid #d1e8d9" }}>
-                <div className="text-2xl font-bold mb-1" style={{ color: "var(--green)" }}>{item.pct}</div>
-                <div className="text-sm font-medium mb-2" style={{ color: "#1a1a1a" }}>{item.factor}</div>
-                <p className="text-xs leading-relaxed" style={{ color: "#999" }}>{item.tip}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="mx-auto max-w-5xl px-6 pb-16">
-          <h2 className="text-xl font-semibold mb-6" style={{ color: "#1a1a1a" }}>
-            Preguntas frecuentes sobre crédito para hispanos en EE.UU.
-          </h2>
-          <div className="space-y-4">
-            {faqSchema.mainEntity.map((faq, i) => (
-              <div key={i} className="rounded-2xl p-5" style={{ background: "var(--background)", border: "1px solid #d1e8d9" }}>
-                <h3 className="font-medium mb-2" style={{ color: "#1a1a1a" }}>{faq.name}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{faq.acceptedAnswer.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+                </Link>
+              </li>
+              <li>
+                <Link href="/us/guias/abrir-cuenta-bancaria-sin-social-security-2026" className="us-related-item">
+                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                  <div>
+                    <div className="us-related-item-title">Cómo abrir cuenta bancaria sin Social Security en EE.UU.</div>
+                  </div>
+                </Link>
+              </li>
+            </ul>
+          </section>
+        </div>
       </main>
-      <Footer />
+
+      <UsFooter />
+      <FloatingWA />
     </>
   );
 }
