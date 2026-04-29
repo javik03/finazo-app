@@ -50,6 +50,14 @@ export function middleware(request: NextRequest): NextResponse {
   // The /us tree IS the site on this host. Root → /us, /seguros → /us/seguros, etc.
   // Subpaths /admin and /api are excluded from the rewrite.
   if (onUsHost) {
+    // Top-level static verification files (IndexNow keys, Google/Bing HTML
+    // verification, etc.) live in /public and must serve from root, not rewritten
+    // into /us/. Match any single-segment path with a static extension.
+    const isRootStaticFile =
+      /^\/[a-zA-Z0-9_-]+\.(txt|xml|html|json|webmanifest|ico|svg|png|jpg|jpeg|webp)$/.test(
+        pathname
+      );
+
     const isExcluded =
       pathname.startsWith("/api") ||
       pathname.startsWith("/admin") ||
@@ -59,7 +67,8 @@ export function middleware(request: NextRequest): NextResponse {
       pathname === "/sitemap-us-en.xml" ||
       pathname === "/robots.txt" ||
       pathname === "/llms.txt" ||
-      pathname === "/llms-full.txt";
+      pathname === "/llms-full.txt" ||
+      isRootStaticFile;
 
     // Only rewrite paths that don't already start with /us — otherwise we'd loop.
     // Visitors typing /us/seguros directly on finazo.us still resolve correctly.
