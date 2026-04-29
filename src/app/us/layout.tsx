@@ -5,6 +5,52 @@ import "./us-globals.css";
 
 const GA4_MEASUREMENT_ID = "G-TKWPYCDJVH";
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Finazo",
+  url: "https://finazo.us",
+  description:
+    "Publicación independiente de finanzas para Hispanos en EE.UU. Guías y comparativos sobre seguros, hipotecas, crédito y remesas.",
+  inLanguage: ["es-US", "en-US"],
+  publisher: { "@type": "Organization", name: "Finazo", url: "https://finazo.us" },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://finazo.us/#organization",
+  name: "Finazo",
+  legalName: "MAQ UNO DOS TRES S.A. de C.V.",
+  alternateName: "Finazo US",
+  url: "https://finazo.us",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://finazo.us/icon.svg",
+    width: 512,
+    height: 512,
+  },
+  description:
+    "Publicación independiente de finanzas para Hispanos en EE.UU. — guías, comparativos y conexiones con Cubierto (seguros) y Hogares (hipotecas).",
+  parentOrganization: { "@type": "Organization", name: "Kornugle" },
+  knowsLanguage: ["es", "en"],
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  audience: {
+    "@type": "PeopleAudience",
+    name: "Hispanic United States residents",
+  },
+  sameAs: ["https://www.linkedin.com/company/finazo/"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "legal@finazo.us",
+    availableLanguage: ["Spanish", "English"],
+  },
+};
+
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
@@ -68,6 +114,14 @@ export default function UsLayout({
       <Script id="ga4-finazo-us" strategy="afterInteractive">
         {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_MEASUREMENT_ID}');`}
       </Script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       {children}
     </div>
   );

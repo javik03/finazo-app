@@ -60,15 +60,14 @@ export function middleware(request: NextRequest): NextResponse {
         pathname
       );
 
-    // /sitemap.xml is intentionally NOT excluded — on finazo.us it must be
-    // rewritten to /us/sitemap.xml so the finazo.us-specific sitemap renders.
-    // /robots.txt and /llms.txt remain excluded because they're host-agnostic.
+    // /sitemap.xml and /llms.txt are intentionally NOT excluded — on finazo.us
+    // they must be rewritten to /us/sitemap.xml and /us/llms.txt so the
+    // finazo.us-specific versions render. /robots.txt is host-agnostic.
     const isExcluded =
       pathname.startsWith("/api") ||
       pathname.startsWith("/admin") ||
       pathname.startsWith("/_next") ||
       pathname === "/robots.txt" ||
-      pathname === "/llms.txt" ||
       pathname === "/llms-full.txt" ||
       isRootStaticFile;
 

@@ -32,6 +32,9 @@ export default function robots(): MetadataRoute.Robots {
       // Common Crawl (training data for many models)
       { userAgent: "CCBot", allow: "/" },
     ],
-    sitemap: "https://finazo.lat/sitemap.xml",
+    sitemap: [
+      "https://finazo.lat/sitemap.xml",
+      "https://finazo.us/sitemap.xml",
+    ],
   };
 }

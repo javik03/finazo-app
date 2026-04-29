@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Lora, DM_Sans } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const lora = Lora({
@@ -114,20 +113,14 @@ const organizationSchema = {
     "Comparador financiero independiente para Centroamérica. Comparamos remesas, préstamos y seguros en El Salvador, Guatemala, Honduras y México.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Gate finazo.lat-specific tags by host. /us/layout.tsx ships its own
-  // GA4 tag (G-TKWPYCDJVH) and finazo.us-specific schema, so we don't
-  // want the LATAM tag firing alongside it on the same pageview.
-  const headersList = await headers();
-  const rawHost = (
-    headersList.get("x-forwarded-host") ?? headersList.get("host") ?? ""
-  ).toLowerCase().split(":")[0];
-  const isUsHost = rawHost === "finazo.us" || rawHost === "www.finazo.us";
-
+  // The LATAM gtag self-disables on finazo.us at runtime (client-side host
+  // check) so we keep this layout fully static — calling headers() here
+  // breaks ISR for every revalidate-cached page in the tree.
   return (
     <html
       lang="es"
@@ -136,25 +129,20 @@ export default async function RootLayout({
       <head>
         {/* Impact.com site verification */}
         <meta name="impact-site-verification" content="76fde1c7-852b-427f-b3fd-1fef795e1cf4" />
-        {!isUsHost && (
-          <>
-            {/* Google Analytics 4 — finazo.lat property */}
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0" />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');`,
-              }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-            />
-          </>
-        )}
+        {/* Google Analytics 4 — finazo.lat property; self-disables on finazo.us */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var h=location.hostname.toLowerCase();if(h==='finazo.us'||h==='www.finazo.us')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');})();`,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
