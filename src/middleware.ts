@@ -52,19 +52,21 @@ export function middleware(request: NextRequest): NextResponse {
   if (onUsHost) {
     // Top-level static verification files (IndexNow keys, Google/Bing HTML
     // verification, etc.) live in /public and must serve from root, not rewritten
-    // into /us/. Match any single-segment path with a static extension.
+    // into /us/. Match single-segment paths with static extensions — but NOT
+    // .xml, since /sitemap.xml needs the rewrite to hit the finazo.us-specific
+    // sitemap at /us/sitemap.xml.
     const isRootStaticFile =
-      /^\/[a-zA-Z0-9_-]+\.(txt|xml|html|json|webmanifest|ico|svg|png|jpg|jpeg|webp)$/.test(
+      /^\/[a-zA-Z0-9_-]+\.(txt|html|json|webmanifest|ico|svg|png|jpg|jpeg|webp)$/.test(
         pathname
       );
 
+    // /sitemap.xml is intentionally NOT excluded — on finazo.us it must be
+    // rewritten to /us/sitemap.xml so the finazo.us-specific sitemap renders.
+    // /robots.txt and /llms.txt remain excluded because they're host-agnostic.
     const isExcluded =
       pathname.startsWith("/api") ||
       pathname.startsWith("/admin") ||
       pathname.startsWith("/_next") ||
-      pathname === "/sitemap.xml" ||
-      pathname === "/sitemap-us.xml" ||
-      pathname === "/sitemap-us-en.xml" ||
       pathname === "/robots.txt" ||
       pathname === "/llms.txt" ||
       pathname === "/llms-full.txt" ||
