@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./us-globals.css";
+
+const GA4_MEASUREMENT_ID = "G-TKWPYCDJVH";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -58,6 +61,13 @@ export default function UsLayout({
     <div
       className={`finazo-us ${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="ga4-finazo-us" strategy="afterInteractive">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_MEASUREMENT_ID}');`}
+      </Script>
       {children}
     </div>
   );

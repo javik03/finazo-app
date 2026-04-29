@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lora, DM_Sans } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const lora = Lora({
@@ -113,11 +114,20 @@ const organizationSchema = {
     "Comparador financiero independiente para Centroamérica. Comparamos remesas, préstamos y seguros en El Salvador, Guatemala, Honduras y México.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Gate finazo.lat-specific tags by host. /us/layout.tsx ships its own
+  // GA4 tag (G-TKWPYCDJVH) and finazo.us-specific schema, so we don't
+  // want the LATAM tag firing alongside it on the same pageview.
+  const headersList = await headers();
+  const rawHost = (
+    headersList.get("x-forwarded-host") ?? headersList.get("host") ?? ""
+  ).toLowerCase().split(":")[0];
+  const isUsHost = rawHost === "finazo.us" || rawHost === "www.finazo.us";
+
   return (
     <html
       lang="es"
@@ -126,21 +136,25 @@ export default function RootLayout({
       <head>
         {/* Impact.com site verification */}
         <meta name="impact-site-verification" content="76fde1c7-852b-427f-b3fd-1fef795e1cf4" />
-        {/* Google Analytics 4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');`,
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+        {!isUsHost && (
+          <>
+            {/* Google Analytics 4 — finazo.lat property */}
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0" />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');`,
+              }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+            />
+          </>
+        )}
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
