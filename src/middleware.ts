@@ -50,24 +50,26 @@ export function middleware(request: NextRequest): NextResponse {
   // The /us tree IS the site on this host. Root → /us, /seguros → /us/seguros, etc.
   // Subpaths /admin and /api are excluded from the rewrite.
   if (onUsHost) {
-    // Top-level static verification files (IndexNow keys, Google/Bing HTML
-    // verification, etc.) live in /public and must serve from root, not rewritten
-    // into /us/. Match single-segment paths with static extensions — but NOT
-    // .xml, since /sitemap.xml needs the rewrite to hit the finazo.us-specific
-    // sitemap at /us/sitemap.xml.
+    // Verification files that must serve from root without rewrite:
+    //  - IndexNow keys: /[32-hex].txt → finazo.us/{key}.txt for Bing IndexNow
+    //  - GSC HTML: /google*.html → not used (DNS verification preferred)
+    //  - Image assets at root (icons, favicons)
+    // /llms.txt and /sitemap.xml are NOT in this list — they need rewriting
+    // to /us/* so the finazo.us-specific versions render.
     const isRootStaticFile =
-      /^\/[a-zA-Z0-9_-]+\.(txt|html|json|webmanifest|ico|svg|png|jpg|jpeg|webp)$/.test(
-        pathname
-      );
+      /^\/[a-f0-9]{32}\.txt$/.test(pathname) ||
+      /^\/google[a-z0-9]+\.html$/.test(pathname) ||
+      /^\/[a-zA-Z0-9_-]+\.(ico|svg|png|jpg|jpeg|webp|webmanifest)$/.test(pathname);
 
-    // /sitemap.xml and /llms.txt are intentionally NOT excluded — on finazo.us
-    // they must be rewritten to /us/sitemap.xml and /us/llms.txt so the
-    // finazo.us-specific versions render. /robots.txt is host-agnostic.
+    // /sitemap.xml is intentionally NOT excluded — on finazo.us it rewrites
+    // to /us/sitemap.xml. /llms.txt and /robots.txt are excluded because
+    // they're served by host-aware route handlers at the root level.
     const isExcluded =
       pathname.startsWith("/api") ||
       pathname.startsWith("/admin") ||
       pathname.startsWith("/_next") ||
       pathname === "/robots.txt" ||
+      pathname === "/llms.txt" ||
       pathname === "/llms-full.txt" ||
       isRootStaticFile;
 
