@@ -1226,6 +1226,331 @@
   letter-spacing: 0.04em; text-transform: uppercase;
 }
 
+/* ─────────────── SUB-PAGE TEMPLATE (insurance / mortgage funnels) ─────────────── */
+
+.finazo-us .us-sub-shell {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+@media (max-width: 640px) {
+  .finazo-us .us-sub-shell { padding: 0 20px; }
+}
+
+/* Editorial hero for sub-pages */
+.finazo-us .us-sub-hero {
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--us-line);
+}
+.finazo-us .us-sub-hero .us-hero-kicker {
+  margin-bottom: 18px;
+}
+.finazo-us .us-sub-hero h1 {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400; letter-spacing: -0.025em;
+  line-height: 1.08; margin-bottom: 18px;
+  max-width: 880px;
+}
+.finazo-us .us-sub-hero h1 i { font-style: italic; color: var(--us-green); }
+.finazo-us .us-sub-hero p {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(17px, 1.6vw, 21px); line-height: 1.5;
+  color: var(--us-ink-2);
+  max-width: 720px;
+}
+
+/* Featured product card (Cubierto / Hogares) above-fold */
+.finazo-us .us-product-feature {
+  margin: 40px 0 0;
+  padding: 32px;
+  background: white;
+  border: 1px solid var(--us-line);
+  border-radius: var(--us-radius-lg);
+  box-shadow: var(--us-shadow);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .finazo-us .us-product-feature { grid-template-columns: 1fr; }
+}
+.finazo-us .us-product-feature-eyebrow {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--us-green); margin-bottom: 8px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.finazo-us .us-product-feature-eyebrow .us-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--us-wa);
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.2);
+  animation: us-pulse-dot 2s infinite;
+}
+.finazo-us .us-product-feature h2 {
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 400; letter-spacing: -0.02em;
+  line-height: 1.15; margin-bottom: 10px;
+}
+.finazo-us .us-product-feature h2 i { font-style: italic; color: var(--us-green); }
+.finazo-us .us-product-feature p {
+  font-size: 15px; color: var(--us-ink-2);
+  line-height: 1.6; max-width: 540px;
+}
+.finazo-us .us-product-feature-stats {
+  display: flex; gap: 24px; margin-top: 18px;
+}
+.finazo-us .us-product-feature-stat .us-n {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 26px; font-weight: 500;
+  color: var(--us-ink); letter-spacing: -0.02em;
+  line-height: 1;
+}
+.finazo-us .us-product-feature-stat .us-l {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--us-ink-3); margin-top: 4px;
+}
+
+/* Section heads on sub-pages */
+.finazo-us .us-sub-section {
+  padding: 56px 0;
+}
+.finazo-us .us-sub-section + .us-sub-section {
+  padding-top: 0;
+}
+.finazo-us .us-sub-section-head {
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--us-ink);
+  padding-bottom: 18px;
+}
+.finazo-us .us-sub-section-head h2 {
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 500; letter-spacing: -0.015em;
+  margin-bottom: 6px;
+}
+.finazo-us .us-sub-section-head h2 i { font-style: italic; color: var(--us-green); }
+.finazo-us .us-sub-section-head p {
+  font-size: 14px; color: var(--us-ink-3); line-height: 1.55;
+  max-width: 720px;
+}
+
+/* Data table — used for state rates, plan tiers, etc */
+.finazo-us .us-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid var(--us-line);
+  border-radius: var(--us-radius);
+  overflow: hidden;
+  font-size: 14px;
+}
+.finazo-us .us-data-table thead {
+  background: var(--us-ink); color: white;
+}
+.finazo-us .us-data-table th {
+  padding: 12px 16px; text-align: left;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; font-weight: 500;
+  white-space: nowrap;
+}
+.finazo-us .us-data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--us-line);
+  color: var(--us-ink-2);
+  vertical-align: top;
+}
+.finazo-us .us-data-table tbody tr:last-child td { border-bottom: none; }
+.finazo-us .us-data-table tbody tr:hover { background: var(--us-paper-2); }
+.finazo-us .us-data-table .us-num {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--us-green); font-weight: 600;
+}
+.finazo-us .us-data-table .us-strong {
+  color: var(--us-ink); font-weight: 600;
+}
+.finazo-us .us-data-table .us-row-highlight {
+  background: var(--us-green-3) !important;
+}
+.finazo-us .us-data-table .us-row-highlight td {
+  border-bottom-color: var(--us-green);
+}
+.finazo-us .us-data-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--us-radius);
+}
+.finazo-us .us-data-source {
+  font-size: 12px; color: var(--us-ink-3);
+  margin-top: 10px;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+/* "Why us > going direct" 4-up grid */
+.finazo-us .us-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .finazo-us .us-why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .finazo-us .us-why-grid { grid-template-columns: 1fr; }
+}
+.finazo-us .us-why-card {
+  padding: 24px;
+  background: white;
+  border: 1px solid var(--us-line);
+  border-radius: var(--us-radius);
+  transition: all 0.2s;
+}
+.finazo-us .us-why-card:hover {
+  border-color: var(--us-green);
+  background: var(--us-green-3);
+  transform: translateY(-2px);
+}
+.finazo-us .us-why-card .us-why-num {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic; font-size: 32px;
+  color: var(--us-green); line-height: 1;
+  margin-bottom: 14px; display: block;
+}
+.finazo-us .us-why-card h3 {
+  font-size: 17px; font-weight: 500;
+  letter-spacing: -0.01em; margin-bottom: 8px;
+}
+.finazo-us .us-why-card p {
+  font-size: 13px; color: var(--us-ink-2); line-height: 1.55;
+}
+
+/* Hard-sell full-width CTA */
+.finazo-us .us-hard-cta {
+  margin: 56px 0;
+  padding: 56px 48px;
+  background: var(--us-ink);
+  color: var(--us-paper);
+  border-radius: var(--us-radius-lg);
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .finazo-us .us-hard-cta { padding: 40px 24px; }
+}
+.finazo-us .us-hard-cta .us-eyebrow {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #7BC297;
+  margin-bottom: 16px;
+}
+.finazo-us .us-hard-cta h2 {
+  color: var(--us-paper);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400; letter-spacing: -0.02em;
+  line-height: 1.1; margin-bottom: 12px;
+}
+.finazo-us .us-hard-cta h2 i { font-style: italic; color: #7BC297; }
+.finazo-us .us-hard-cta p {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 18px; line-height: 1.5;
+  color: rgba(250, 250, 247, 0.75);
+  max-width: 560px;
+  margin: 0 auto 28px;
+}
+.finazo-us .us-hard-cta-buttons {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.finazo-us .us-hard-cta-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--us-wa); color: white;
+  padding: 16px 28px; border-radius: 999px;
+  font-size: 15px; font-weight: 600;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.35);
+}
+.finazo-us .us-hard-cta-primary:hover {
+  background: var(--us-wa-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+}
+.finazo-us .us-hard-cta-primary svg { width: 18px; height: 18px; }
+.finazo-us .us-hard-cta-secondary {
+  display: inline-flex; align-items: center;
+  background: transparent; color: var(--us-paper);
+  padding: 16px 24px; border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  border: 1px solid rgba(250, 250, 247, 0.3);
+  transition: all 0.15s;
+}
+.finazo-us .us-hard-cta-secondary:hover {
+  border-color: #7BC297; color: #7BC297;
+}
+
+/* 2-column info grid (factors, coverage types, etc) */
+.finazo-us .us-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (max-width: 700px) {
+  .finazo-us .us-info-grid { grid-template-columns: 1fr; }
+}
+.finazo-us .us-info-grid.us-info-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 700px) {
+  .finazo-us .us-info-grid.us-info-grid-3 { grid-template-columns: 1fr; }
+}
+.finazo-us .us-info-card {
+  background: white;
+  border: 1px solid var(--us-line);
+  border-radius: var(--us-radius);
+  padding: 24px;
+}
+.finazo-us .us-info-card h3 {
+  font-size: 17px; font-weight: 500;
+  letter-spacing: -0.01em; margin-bottom: 12px;
+}
+.finazo-us .us-info-card ul {
+  list-style: none; padding: 0; margin: 0;
+}
+.finazo-us .us-info-card li {
+  display: flex; gap: 10px;
+  font-size: 14px; color: var(--us-ink-2);
+  padding: 6px 0; line-height: 1.5;
+}
+.finazo-us .us-info-card li .us-bullet-up { color: #C45441; flex-shrink: 0; }
+.finazo-us .us-info-card li .us-bullet-down { color: var(--us-green); flex-shrink: 0; }
+.finazo-us .us-info-card .us-info-emoji {
+  font-size: 24px; margin-bottom: 12px; display: block;
+}
+.finazo-us .us-info-card p {
+  font-size: 14px; color: var(--us-ink-2); line-height: 1.6;
+}
+.finazo-us .us-info-card .us-info-foot {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 11px; color: var(--us-ink-3);
+  letter-spacing: 0.04em; margin-top: 14px;
+}
+
+/* FAQ accordion-ish (simple list) */
+.finazo-us .us-faq-list {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.finazo-us .us-faq-item {
+  background: white;
+  border: 1px solid var(--us-line);
+  border-radius: var(--us-radius);
+  padding: 22px 24px;
+}
+.finazo-us .us-faq-item h3 {
+  font-size: 16px; font-weight: 500;
+  letter-spacing: -0.01em; margin-bottom: 8px;
+  color: var(--us-ink);
+}
+.finazo-us .us-faq-item p {
+  font-size: 14px; color: var(--us-ink-2); line-height: 1.6;
+}
+
 /* ─────────────── FLOATING WA ─────────────── */
 .finazo-us .us-float-wa {
   position: fixed; bottom: 24px; right: 24px; z-index: 100;
