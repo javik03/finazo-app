@@ -318,6 +318,60 @@ export const usLeadAttribution = pgTable("us_lead_attribution", {
 });
 
 // ---------------------------------------------------------------------------
+// US Market — Topic proposals (self-update loop for the strategist)
+// ---------------------------------------------------------------------------
+// Sources of proposals:
+//   - "gsc"           — derived from Search Console queries with high
+//                       impressions but no dedicated finazo.us page
+//   - "internal"      — derived from internal analytics / Claude reflection
+//                       on existing successful articles
+//   - "manual"        — added by hand via admin UI or psql
+// Status flow: pending → approved → published (or rejected)
+// The strategist consumes status='approved' rows alongside the calendar.
+
+export const usTopicProposals = pgTable("us_topic_proposals", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  source: text("source").notNull(),               // gsc | internal | manual
+  slug: text("slug").notNull().unique(),
+  category: text("category").notNull(),           // matches articles.category
+  preferredAuthor: text("preferred_author").notNull(), // javier-keough | sabrina-keough
+  imageQuery: text("image_query"),
+  promptText: text("prompt_text").notNull(),
+  rationale: text("rationale"),                   // why proposed; useful for review
+  /** GSC signal that triggered this — query string, impressions, etc. */
+  signalContext: jsonb("signal_context"),
+  status: text("status").notNull().default("pending"), // pending | approved | rejected | published
+  approvedBy: text("approved_by"),
+  approvedAt: timestamp("approved_at", { withTimezone: true }),
+  publishedSlug: text("published_slug"),          // set when strategist generates the article
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Search Console performance snapshots
+// ---------------------------------------------------------------------------
+// One row per (date, page, query) — 16-month max retention to match GSC.
+// Used by the topic-proposer to find:
+//  - High-impression queries with no dedicated landing page (new topic)
+//  - Pages with high impressions but low CTR (rewrite title/meta)
+//  - Pages with strong position but no clicks (improve content)
+
+export const usGscSnapshots = pgTable("us_gsc_snapshots", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  snapshotDate: timestamp("snapshot_date", { withTimezone: true }).notNull(),
+  page: text("page").notNull(),                   // canonical URL
+  query: text("query").notNull(),                 // search query
+  impressions: integer("impressions").notNull().default(0),
+  clicks: integer("clicks").notNull().default(0),
+  ctr: decimal("ctr", { precision: 6, scale: 4 }), // 0.0000–1.0000
+  position: decimal("position", { precision: 6, scale: 2 }),
+  country: text("country"),                       // typically "usa"
+  device: text("device"),                         // mobile | desktop | tablet
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
 // Article comments
 // ---------------------------------------------------------------------------
 

@@ -20,8 +20,8 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { db } from "@/lib/db";
-import { articles } from "@/lib/db/schema";
-import { inArray } from "drizzle-orm";
+import { articles, usTopicProposals } from "@/lib/db/schema";
+import { and, eq, inArray } from "drizzle-orm";
 import { notifyIndexNow } from "@/lib/indexnow";
 import { fetchFeaturedImage } from "@/lib/pexels";
 import pino from "pino";
@@ -31,6 +31,7 @@ import {
   type UsContentTopic,
   type UsAuthorSlug,
 } from "./us-content-calendar";
+import { getAllProgrammaticTopics } from "./us-topic-templates";
 
 const logger = pino({ name: "us-content-strategist" });
 const anthropic = new Anthropic({ apiKey: config.ANTHROPIC_API_KEY });
@@ -148,6 +149,9 @@ async function generateUsArticle(topic: UsContentTopic): Promise<boolean> {
   // Notify the correct host (was pointing to finazo.lat — bug).
   await notifyIndexNow([`https://finazo.us/guias/${topic.slug}`]);
 
+  // If this slug came from the proposals queue, close the loop.
+  await markProposalPublished(topic.slug);
+
   logger.info(
     {
       slug: topic.slug,
@@ -162,17 +166,86 @@ async function generateUsArticle(topic: UsContentTopic): Promise<boolean> {
 }
 
 // ---------------------------------------------------------------------------
-// Filter calendar by what's already in the DB
+// Topic source aggregation
 // ---------------------------------------------------------------------------
+// Unified source: hardcoded calendar ∪ programmatic templates ∪ approved
+// proposals from the DB. Order = priority (calendar first, then templates,
+// then DB proposals). Deduplication by slug — first occurrence wins.
+
+async function getApprovedProposals(): Promise<UsContentTopic[]> {
+  try {
+    const rows = await db
+      .select()
+      .from(usTopicProposals)
+      .where(eq(usTopicProposals.status, "approved"));
+
+    return rows.map((r): UsContentTopic => ({
+      slug: r.slug,
+      category: r.category as UsContentTopic["category"],
+      imageQuery: r.imageQuery ?? `${r.category} hispanic family`,
+      preferredAuthor: r.preferredAuthor as UsAuthorSlug,
+      prompt: r.promptText,
+    }));
+  } catch (err) {
+    logger.warn({ err }, "Failed to load approved proposals — continuing with calendar + templates only");
+    return [];
+  }
+}
+
+function dedupeBySlug(topics: UsContentTopic[]): UsContentTopic[] {
+  const seen = new Set<string>();
+  const result: UsContentTopic[] = [];
+  for (const t of topics) {
+    if (seen.has(t.slug)) continue;
+    seen.add(t.slug);
+    result.push(t);
+  }
+  return result;
+}
+
+async function getAllTopics(): Promise<UsContentTopic[]> {
+  const proposals = await getApprovedProposals();
+  return dedupeBySlug([
+    ...US_CONTENT_CALENDAR,        // 1st: hand-curated, highest priority
+    ...getAllProgrammaticTopics(), // 2nd: template-generated
+    ...proposals,                  // 3rd: GSC/internal proposals
+  ]);
+}
 
 async function getMissingTopics(): Promise<UsContentTopic[]> {
-  const allSlugs = US_CONTENT_CALENDAR.map((t) => t.slug);
+  const all = await getAllTopics();
+  const allSlugs = all.map((t) => t.slug);
+
+  // Chunk the IN-clause to avoid Postgres parameter limits when the topic
+  // pool grows past ~32k. Stays performant well past 1000 topics.
   const existing = await db
     .select({ slug: articles.slug })
     .from(articles)
-    .where(inArray(articles.slug, allSlugs));
+    .where(
+      and(
+        eq(articles.country, "US"),
+        inArray(articles.slug, allSlugs),
+      ),
+    );
+
   const existingSet = new Set(existing.map((r) => r.slug));
-  return US_CONTENT_CALENDAR.filter((t) => !existingSet.has(t.slug));
+  return all.filter((t) => !existingSet.has(t.slug));
+}
+
+/**
+ * After a proposal-sourced topic publishes, mark the proposal row as
+ * 'published' so the queue stays clean.
+ */
+async function markProposalPublished(slug: string): Promise<void> {
+  try {
+    await db
+      .update(usTopicProposals)
+      .set({ status: "published", publishedSlug: slug, updatedAt: new Date() })
+      .where(eq(usTopicProposals.slug, slug));
+  } catch (err) {
+    // Non-fatal — proposal might not exist if topic came from calendar/templates
+    logger.debug({ slug, err }, "No proposal row to update (expected for calendar/template topics)");
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -201,8 +274,13 @@ export async function runUsContentStrategist(
   }
 
   if (candidates.length === 0) {
+    const allTopics = await getAllTopics();
     logger.info(
-      { totalCalendar: US_CONTENT_CALENDAR.length, missing: missing.length },
+      {
+        totalTopics: allTopics.length,
+        calendarTopics: US_CONTENT_CALENDAR.length,
+        missing: missing.length,
+      },
       "Nothing to generate",
     );
     return;
