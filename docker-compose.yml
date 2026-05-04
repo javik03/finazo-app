@@ -168,5 +168,36 @@ services:
       postgres:
         condition: service_healthy
 
+  # GSC fetcher — daily snapshot of Search Console performance.
+  # No-op until GSC_SERVICE_ACCOUNT_JSON is set in .env (fails gracefully).
+  seo-gsc-fetcher:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - GSC_SERVICE_ACCOUNT_JSON=${GSC_SERVICE_ACCOUNT_JSON:-}
+    command: sh -c "while true; do npx tsx src/agents/seo/gsc-fetcher.ts; sleep 86400; done"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Topic proposer — weekly job that turns GSC signal into proposed articles.
+  # Reads us_gsc_snapshots, writes us_topic_proposals (status='pending').
+  # Humans flip status to 'approved' before strategist picks them up.
+  seo-topic-proposer:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    command: sh -c "while true; do npx tsx src/agents/seo/topic-proposer.ts; sleep 604800; done"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   postgres_data:
