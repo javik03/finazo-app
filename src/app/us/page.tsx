@@ -32,7 +32,6 @@ export const metadata: Metadata = {
     canonical: "https://finazo.us",
     languages: {
       "es-US": "https://finazo.us",
-      "en-US": "https://finazo.us/en",
     },
   },
   openGraph: {
@@ -92,7 +91,7 @@ export default async function UsHomePage(): Promise<React.ReactElement> {
   return (
     <>
       <MastheadTop date={today} />
-      <Nav currentPath="/us" />
+      <Nav currentPath="/" />
 
       <main>
         <Hero
@@ -125,7 +124,7 @@ export default async function UsHomePage(): Promise<React.ReactElement> {
                 Lo más <i>leído</i> esta semana
               </>
             }
-            href="/us/guias"
+            href="/guias"
             hrefLabel="Ver todas las guías"
           />
           <FeaturedGrid
@@ -146,7 +145,7 @@ export default async function UsHomePage(): Promise<React.ReactElement> {
                 Más de <i>Finazo</i>
               </>
             }
-            href="/us/guias"
+            href="/guias"
             hrefLabel="Archivo completo"
           />
           <MoreArticles articles={moreList} />

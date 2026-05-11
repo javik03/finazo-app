@@ -11,23 +11,32 @@ type NavProps = {
 };
 
 const NAV_LINKS: Array<{ href: string; label: string }> = [
-  { href: "/us", label: "Portada" },
-  { href: "/us/seguros", label: "Seguros" },
-  { href: "/us/hipotecas", label: "Hipotecas" },
-  { href: "/us/remesas", label: "Remesas" },
-  { href: "/us/credito", label: "Crédito" },
-  { href: "/us/guias", label: "Guías" },
-  { href: "/us/herramientas", label: "Calculadoras" },
+  { href: "/", label: "Portada" },
+  { href: "/seguros", label: "Seguros" },
+  { href: "/hipotecas", label: "Hipotecas" },
+  { href: "/remesas", label: "Remesas" },
+  { href: "/credito", label: "Crédito" },
+  { href: "/guias", label: "Guías" },
+  { href: "/herramientas", label: "Calculadoras" },
 ];
 
+// Normalize legacy /us-prefixed currentPath values so highlighting still works
+// during the transition. `/us/seguros` and `/seguros` both highlight Seguros.
+function normalize(path: string): string {
+  if (path === "/us") return "/";
+  if (path.startsWith("/us/")) return path.slice(3);
+  return path;
+}
+
 export function Nav({
-  currentPath = "/us",
+  currentPath = "/",
   waUrl = "https://wa.me/13055551234",
 }: NavProps): React.ReactElement {
+  const current = normalize(currentPath);
   return (
     <nav className="us-nav">
       <div className="us-container us-nav-inner">
-        <Link href="/us" className="us-logo">
+        <Link href="/" className="us-logo">
           finazo
           <span className="us-logo-mark">.</span>
         </Link>
@@ -37,7 +46,7 @@ export function Nav({
             <Link
               key={link.href}
               href={link.href}
-              className={currentPath === link.href ? "is-current" : undefined}
+              className={current === link.href ? "is-current" : undefined}
             >
               {link.label}
             </Link>
@@ -45,7 +54,7 @@ export function Nav({
         </div>
 
         <div className="us-nav-right">
-          <Link href="/us/buscar" className="us-nav-search">
+          <Link href="/guias" className="us-nav-search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="7" />
               <path d="M20 20l-3.5-3.5" />

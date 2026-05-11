@@ -137,6 +137,51 @@ export async function getAllUsArticleSlugs(): Promise<{ slug: string }[]> {
     );
 }
 
+/**
+ * Per spec §1.7.3 — find the counterpart slug in the other language for
+ * hreflang emission. Looks up the translation_of FK both directions.
+ * Returns null when no counterpart exists yet.
+ */
+export async function getTranslationCounterpartSlug(
+  article: { id: string; language: string | null; translationOf: string | null },
+): Promise<{ slug: string; language: "es" | "en" } | null> {
+  // Case 1: this article is itself a translation OF another → look up parent.
+  if (article.translationOf) {
+    const parent = await db
+      .select({ slug: articles.slug, language: articles.language })
+      .from(articles)
+      .where(eq(articles.id, article.translationOf))
+      .limit(1);
+    if (parent[0]) {
+      return {
+        slug: parent[0].slug,
+        language: (parent[0].language as "es" | "en") ?? "es",
+      };
+    }
+  }
+
+  // Case 2: another article translates this one → look up child.
+  const child = await db
+    .select({ slug: articles.slug, language: articles.language })
+    .from(articles)
+    .where(
+      and(
+        eq(articles.translationOf, article.id),
+        eq(articles.status, "published"),
+        eq(articles.country, "US"),
+      ),
+    )
+    .limit(1);
+  if (child[0]) {
+    return {
+      slug: child[0].slug,
+      language: (child[0].language as "es" | "en") ?? "en",
+    };
+  }
+
+  return null;
+}
+
 // ─── Authors ───────────────────────────────────────────────────────────────
 
 export type UsAuthor = Awaited<ReturnType<typeof getUsAuthorBySlug>>;

@@ -17,17 +17,108 @@ export type UsContentTopic = {
   prompt: string;
   /** Marks this topic as a high-impact homepage seed candidate. */
   homepageSeed?: boolean;
+  /**
+   * Per-topic overrides for the quality gate. Glossary topics can drop the
+   * comparison-table requirement and lower the word-count floor; competitor-
+   * alternative pages can raise it. Defaults: minWordCount=1200, table required.
+   */
+  qualityGate?: {
+    minWordCount?: number;
+    allowMissingTable?: boolean;
+    allowMissingCallout?: boolean;
+  };
+  /**
+   * Structured geo / cohort context — persists to articles.templateVariables
+   * (jsonb) on insert. Read by resolveArticleGeo() to bypass slug parsing.
+   * Optional: legacy topics without this still work via slug parsing.
+   */
+  templateVariables?: {
+    stateSlug?: string;
+    city?: string;
+    cohort?: string;
+    intent?: string;
+    competitor?: string;
+  };
 };
 
 // ─── Shared SEO + E-E-A-T suffix appended to every prompt ──────────────────
 
 export const US_SEO_SUFFIX = `
 
-REGLAS SEO (obligatorias):
-- Titular plain-Spanish primero ("sin Social Security"); ITIN como mención técnica secundaria, no como keyword principal del título.
+REGLAS GEO / WELTER — DISCIPLINA DE ENCABEZADOS (obligatorio, bloquea publicación si falla):
+Google y los motores de IA (ChatGPT, Perplexity, Claude, Gemini) indexan por chunks. Cada H2 y H3 DEBE cargar contexto semántico completo — no etiquetas perezosas.
+- Cada H2: mínimo 8 palabras, debe incluir tema + geo/estado + cohorte (o año si es temporal).
+- Cada H3: mínimo 6 palabras, debe responder una sub-pregunta concreta.
+- PROHIBIDOS como H2/H3 sueltos: "Conclusión", "Introducción", "Preguntas frecuentes", "Cómo funciona", "Tarifas", "Resumen", "Por qué Cubierto", "Lo bueno y lo malo".
+  Permitidos solo cuando se expanden: "## Preguntas frecuentes sobre hipoteca con ITIN en Houston en 2026" sí; "## Preguntas frecuentes" NO.
+- Ejemplos válidos:
+  - "## Tarifas promedio de Progressive, GEICO y State Farm para conductores con ITIN en Houston en 2026"
+  - "## Cómo cotizar tu seguro de auto con licencia extranjera en Florida por WhatsApp"
+  - "### ¿Necesitas Social Security para abrir cuenta bancaria en Chase en 2026?"
+
+REGLAS GEO — INDEPENDENCIA DE CHUNKS (obligatorio):
+Cada párrafo debe leerse fuera de contexto. Imagina que un asistente de IA cita SOLO ese párrafo — ¿sigue teniendo sentido?
+- PROHIBIDOS al inicio de párrafo: "Como mencionamos antes", "Como vimos arriba", "Volviendo a", "Si recuerdas", "Más adelante", "Antes vimos", "En la sección anterior".
+- Cada párrafo del cuerpo (no FAQ) debe contener al menos UN dato local específico: una cifra, una fecha, un nombre propio (aseguradora/banco/estado/condado), o una referencia a estatuto.
+- Cada párrafo mínimo 40 palabras (excepto FAQ que pueden ser más cortas).
+
+QUERY FAN-OUT — COBERTURA DE SUB-CONSULTAS (obligatorio):
+Una sola búsqueda se descompone en 5+ sub-consultas. Cada artículo DEBE responder explícitamente en H3 al menos 5 sub-preguntas relacionadas con el tema. Ejemplos para "seguro auto ITIN Tampa":
+  → "¿Se puede tener seguro de auto solo con ITIN en Florida?"
+  → "¿Qué aseguradoras aceptan ITIN en Tampa?"
+  → "¿Cuánto cuesta el seguro de auto con ITIN en 2026?"
+  → "¿Necesito SSN para sacar seguro de auto en Florida?"
+  → "¿Cómo cotizar siendo indocumentado sin licencia americana?"
+Identifica las 5 sub-preguntas más buscadas del tema y crea un H3 para cada una. La primera oración bajo el H3 responde directo.
+
+BLOQUE DE DATOS REALES — REAL-DATA BLOCK (obligatorio, una vez por artículo):
+Una sección con datos verificables citados a fuente primaria. Sin esto el artículo no rankea contra NerdWallet/Bankrate.
+Fuentes aceptadas (cita la URL en markdown, no inventes):
+- Estatales: state DOI / DFS / TDI rate filings (floir.com, tdi.texas.gov, dfs.ny.gov)
+- Federales: IRS.gov, CFPB.gov, HealthCare.gov, CMS.gov, FRED (St. Louis Fed), HUD.gov, Freddie Mac PMMS
+- Demográficos: US Census ACS (data.census.gov con tabla específica), HRSA findahealthcenter
+- Industria: KFF.org, NAIC, MBA, Brookings, Urban Institute, MPI, NILC
+- Quejas: BBB profile pages, state DOI complaint indexes
+Formato del bloque:
+  ## [H2 con tema + geo + año]
+  > **Fuente:** [Nombre de la fuente con URL]
+  [Tabla o párrafo con la cifra real, año del dato, y contexto]
+
+CITATION DENSITY (obligatorio): mínimo 2 URLs a fuentes autoritativas distintas (no contar Cubierto/Hogares/finazo.us). Idealmente 1 cita cada 250 palabras.
+
+YEAR-STAMPING (obligatorio): todo dato numérico DEBE llevar el año del dato — "según el CFPB en 2024", "tabla del IRS 2026", "rate filing de Florida OIR de 2025". Sin año, el dato envejece sin avisar.
+
+PATRONES PROHIBIDOS (bloquean publicación):
+- Cifras de ahorro sin sustentar: "ahorra $147", "te están cobrando demasiado", "tus aseguradoras te están robando".
+- Marcos conspirativos: "lo que tu aseguradora no quiere que sepas", "el secreto que los bancos esconden".
+- Urgencia manipuladora: "solo por hoy", "últimos cupos", "antes que cierre el plazo".
+- Promesas sin disclaimer: "definitivamente calificas", "te aprueban seguro".
+- Cubierto como aseguradora ("Cubierto te asegura"); es CORREDOR — "Cubierto te conecta con aseguradoras".
+- Hogares como prestamista; es BROKER — "Hogares te conecta con wholesalers".
+- Cualquier "el mejor" / "el más barato" sin fuente que lo sustente con tabla comparativa.
+
+REGLAS SEO clásicas (obligatorias, además de las GEO):
+
+CRÍTICO — LENGUAJE PLANO EN TITULAR Y LEAD (bloquea publicación si falla):
+La mayoría de Hispanos que buscan estos temas NO saben qué es ITIN. Buscan en lenguaje cotidiano: "sin Social Security", "sin SSN", "sin seguro social". Esos son los keywords reales — no "ITIN".
+
+- TÍTULO H1: usar lenguaje plano que la gente busca. "Comprar casa sin Social Security en Houston" SÍ; "Hipoteca con ITIN en Houston" NO.
+- LEAD (primer párrafo): el keyword plano aparece en las primeras 100 palabras. ITIN puede aparecer como término técnico secundario en una frase tipo "ITIN, el número del IRS que reemplaza al SSN".
+- ITIN como término principal SOLO está permitido cuando el artículo es específicamente sobre qué es ITIN (slug que-es-itin, ITIN renewal, etc).
+- Variantes aceptadas como keyword principal: "sin Social Security", "sin SSN", "sin seguro social", "sin número de Social Security", "comprar X sin papeles", "X para indocumentados".
+
+Aplicación práctica:
+- "Hipoteca con ITIN" → "Comprar casa sin Social Security"
+- "Tarjeta de crédito ITIN" → "Tarjeta de crédito sin Social Security"
+- "Seguro auto ITIN" → "Seguro de auto sin Social Security"
+- "Cuenta bancaria ITIN" → "Abrir cuenta bancaria sin SSN"
+- "Taxes con ITIN" → "Declarar impuestos sin Social Security"
+
+Explicación dentro del cuerpo (sí, está permitido y de hecho útil): "ITIN (Individual Taxpayer Identification Number) es el número que emite el IRS para gente que tiene que declarar impuestos pero no califica para Social Security. Es lo que sustituye al SSN."
+
 - Incluye la keyword principal en: H1, primer párrafo (primeras 100 palabras), y al menos 2 H2.
 - Densidad de keyword 1-2% natural — nunca forzada.
-- Mínimo una sección "## Preguntas frecuentes" al final (3-5 preguntas reales que la gente busca, respuestas de 2-3 oraciones).
+- Mínimo una sección de Preguntas Frecuentes al final (5-7 preguntas reales que la gente busca, respuestas de 2-3 oraciones cada una, encabezado H2 expandido — ver regla Welter arriba).
 - Mínimo una tabla comparativa con encabezados en formato Markdown:
   | Producto | Métrica 1 | Métrica 2 |
   | --- | --- | --- |
@@ -40,16 +131,18 @@ REGLAS E-E-A-T (obligatorias):
 - Incluye un enlace al perfil del autor (Finazo lo insertará en el byline; tú no escribas el byline).
 - Si recomiendas un producto pagado de socio (Cubierto, Hogares), incluye una línea de divulgación: "Cubierto / Hogares es parte de Kornugle. Recibimos comisión cuando te conectas con ellos — no de ti, del proveedor."
 
-ENLACES INTERNOS — usa SOLO rutas de finazo.us:
-- Préstamos → "[compara opciones de préstamo en Finazo](/us/prestamos)"
-- Seguro de auto → "[compara seguros de auto](/us/seguro-de-auto)"
-- Seguro de salud → "[compara planes de salud](/us/seguro-de-salud)"
-- Seguro de vida → "[compara seguros de vida](/us/seguro-de-vida)"
-- Hipoteca → "[pre-califica tu hipoteca](/us/hipotecas)"
-- Crédito / score → "[construye tu credit score](/us/credito)"
-- Remesas → "[compara apps de remesas](/us/herramientas/comparador-remesas)"
-- Cotizador seguro → "[cotiza con 8+ aseguradoras](/us/herramientas/cotizador-seguro)"
-- Simulador hipoteca → "[simula tu pago mensual](/us/herramientas/simulador-hipoteca)"
+ENLACES INTERNOS — usa SOLO rutas canónicas de finazo.us (sin prefijo /us — el middleware reescribe):
+- Préstamos → "[compara opciones de préstamo en Finazo](/prestamos)"
+- Seguro de auto → "[compara seguros de auto](/seguro-de-auto)"
+- Seguro de salud → "[compara planes de salud](/seguro-de-salud)"
+- Seguro de vida → "[compara seguros de vida](/seguro-de-vida)"
+- Hipoteca → "[pre-califica tu hipoteca](/hipotecas)"
+- Crédito / score → "[construye tu credit score](/credito)"
+- Remesas → "[compara apps de remesas](/herramientas/comparador-remesas)"
+- Cotizador seguro → "[cotiza con 8+ aseguradoras](/herramientas/cotizador-seguro)"
+- Simulador hipoteca → "[simula tu pago mensual](/herramientas/simulador-hipoteca)"
+- Hub de seguros → "[ver guía de seguros](/seguros)"
+- Hub fiscal/ITIN → "[guía fiscal e ITIN](/fiscal)"
 
 NUNCA enlaces a finazo.lat — esos son contenidos LATAM.
 
@@ -72,8 +165,8 @@ Toda guía debe terminar con esta sección que conecta al lector con los product
 
 ## Próximos pasos con Finazo
 Si después de leer esta guía quieres tomar acción, estas son las tres maneras de seguir adelante:
-- **Cotizar tu seguro** — [habla con Cubierto](/us/herramientas/cotizador-seguro) — auto, hogar, salud o vida con 8+ aseguradoras en 90 segundos por WhatsApp.
-- **Comprar casa con o sin Social Security** — [pre-califícate con Hogares](/us/hipotecas) — wholesalers non-QM, ITIN, self-employed. Respuesta en 24 horas.
+- **Cotizar tu seguro** — [habla con Cubierto](/herramientas/cotizador-seguro) — auto, hogar, salud o vida con 8+ aseguradoras en 90 segundos por WhatsApp.
+- **Comprar casa con o sin Social Security** — [pre-califícate con Hogares](/hipotecas) — wholesalers non-QM, ITIN, self-employed. Respuesta en 24 horas.
 - **Pregunta lo que sea** — [escríbele al bot de Finazo](https://wa.me/13055551234?text=Hola%20Finazo) — responde en español sobre crédito, taxes, ITIN, banking y más.
 
 (Adapta la frase de cada bullet al artículo. Por ejemplo, en un artículo sobre crédito: "Ahora que sabes construir tu credit score, considera **comprar casa con Hogares** o **asegurar tu auto con Cubierto**" — pero mantén las TRES opciones siempre presentes con sus enlaces).
@@ -86,7 +179,7 @@ Si el artículo es de SEGUROS (auto/hogar/salud/vida) — incluye DOS CTAs:
 
 2. CTA al final (antes de Preguntas frecuentes):
 ## ¿Listo para cotizar?
-[Compara con 8+ aseguradoras en Cubierto](/us/herramientas/cotizador-seguro) — toma menos de 2 minutos. O escribe a Carmen directamente por WhatsApp y te cotiza con tarifas reales.
+[Compara con 8+ aseguradoras en Cubierto](/herramientas/cotizador-seguro) — toma menos de 2 minutos. O escribe a Carmen directamente por WhatsApp y te cotiza con tarifas reales.
 
 Si el artículo es de HIPOTECAS / COMPRA DE CASA — incluye DOS CTAs:
 1. CTA inline (después de explicar opciones non-QM o ITIN):
@@ -94,15 +187,15 @@ Si el artículo es de HIPOTECAS / COMPRA DE CASA — incluye DOS CTAs:
 
 2. CTA al final:
 ## ¿Listo para pre-calificar?
-[Pre-calificación gratis con Hogares](/us/hipotecas) — respuesta en 24 horas. O simula tu pago mensual con el [simulador de hipoteca](/us/herramientas/simulador-hipoteca).
+[Pre-calificación gratis con Hogares](/hipotecas) — respuesta en 24 horas. O simula tu pago mensual con el [simulador de hipoteca](/herramientas/simulador-hipoteca).
 
 Si el artículo es de CRÉDITO / BANKING / TAXES / EDUCACIÓN — incluye UN CTA al final:
 ## ¿Tienes una pregunta específica?
-[Pregúntale a Finazo por WhatsApp](https://wa.me/13055551234?text=Hola%20Finazo) — el bot te responde en español, sin tener que descargar nada. O usa el [tracker de credit score](/us/herramientas/credit-tracker) para tu plan personal.
+[Pregúntale a Finazo por WhatsApp](https://wa.me/13055551234?text=Hola%20Finazo) — el bot te responde en español, sin tener que descargar nada. O usa el [tracker de credit score](/herramientas/credit-tracker) para tu plan personal.
 
 Si el artículo es de REMESAS — incluye UN CTA al final:
 ## ¿Cuánto te ahorras hoy?
-[Compara apps de remesas en vivo](/us/herramientas/comparador-remesas) — Wise vs Remitly vs Western Union, comisiones reales actualizadas cada 6 horas para el corredor que tú eliges.
+[Compara apps de remesas en vivo](/herramientas/comparador-remesas) — Wise vs Remitly vs Western Union, comisiones reales actualizadas cada 6 horas para el corredor que tú eliges.
 
 FORMATO OBLIGATORIO — DIVULGACIÓN AL PIE (cuando menciones Cubierto/Hogares/afiliados):
 Al final del artículo, antes de META:
@@ -637,7 +730,7 @@ Incluir: Wise, Remitly, Western Union, MoneyGram, Xoom, Ria, World Remit, Felix 
 ## Western Union para zonas rurales sin internet
 ## Truco: cómo verificar el tipo de cambio real (mid-market en xe.com)
 ## Preguntas frecuentes
-## Conclusión + CTA al [comparador en vivo](/us/herramientas/comparador-remesas)${US_SEO_SUFFIX}`,
+## Conclusión + CTA al [comparador en vivo](/herramientas/comparador-remesas)${US_SEO_SUFFIX}`,
   },
   {
     slug: "wise-vs-remitly-comparativo-2026",

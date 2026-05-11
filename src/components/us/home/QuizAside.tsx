@@ -31,7 +31,7 @@ function buildFinalState(intent: Exclude<Intent, null>, state: string): FinalSta
       title: <>Empezá por <i>acá</i>.</>,
       subtitle: "240+ guías en español. Sin jerga, sin ventas.",
       ctaLabel: "Ver las guías",
-      href: "/us/guias",
+      href: "/guias",
     };
   }
   if (intent === "remesa") {
@@ -40,7 +40,7 @@ function buildFinalState(intent: Exclude<Intent, null>, state: string): FinalSta
       title: <>Te mostramos dónde <i>sale más barato</i>.</>,
       subtitle: "Wise, Remitly, Western Union — comparados en vivo.",
       ctaLabel: "Ver comparador",
-      href: "/us/herramientas/comparador-remesas",
+      href: "/herramientas/comparador-remesas",
     };
   }
   if (intent === "casa") {

@@ -41,7 +41,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           "es-GT": `${base}`,
           "es-HN": `${base}`,
           "es-MX": `${base}`,
-          "es-US": `${base}`,
           "en-US": `${base}/en`,
         },
       },
@@ -57,7 +56,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           "es-GT": `${base}/remesas`,
           "es-HN": `${base}/remesas`,
           "es-MX": `${base}/remesas`,
-          "es-US": `${base}/remesas`,
           "en-US": `${base}/en/send-money`,
         },
       },
@@ -72,7 +70,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           "es-SV": `${base}/prestamos`,
           "es-GT": `${base}/prestamos`,
           "es-HN": `${base}/prestamos`,
-          "es-US": `${base}/prestamos`,
+        },
+      },
+    },
+    {
+      url: `${base}/prestamos-por-tu-carro`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: {
+        languages: {
+          "es-SV": `${base}/prestamos-por-tu-carro`,
+          "x-default": `${base}/prestamos-por-tu-carro`,
         },
       },
     },
@@ -148,50 +157,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    // US Hispanic hub
-    {
-      url: `${base}/us`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.9,
-      alternates: {
-        languages: {
-          "es-US": `${base}/us`,
-          "en-US": `${base}/en`,
-          "x-default": `${base}/us`,
-        },
-      },
-    },
-    {
-      url: `${base}/us/prestamos`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${base}/us/seguro-de-salud`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${base}/us/seguro-de-auto`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${base}/us/seguro-de-vida`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${base}/us/credito`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
     // English hub pages
     {
       url: `${base}/en`,
@@ -202,7 +167,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         languages: {
           "en-US": `${base}/en`,
           "es-SV": `${base}`,
-          "es-US": `${base}`,
         },
       },
     },
@@ -215,7 +179,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         languages: {
           "en-US": `${base}/en/send-money`,
           "es-SV": `${base}/remesas`,
-          "es-US": `${base}/remesas`,
         },
       },
     },
@@ -237,7 +200,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               "es-GT": `${base}/remesas/${c.slug}`,
               "es-HN": `${base}/remesas/${c.slug}`,
               "es-MX": `${base}/remesas/${c.slug}`,
-              "es-US": `${base}/remesas/${c.slug}`,
               "en-US": `${base}/en/send-money/${enCorridor.slug}`,
             },
           }
@@ -257,7 +219,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         "en-US": `${base}/en/send-money/${c.slug}`,
         "es-SV": `${base}/remesas/${c.esSlug}`,
         "es-GT": `${base}/remesas/${c.esSlug}`,
-        "es-US": `${base}/remesas/${c.esSlug}`,
       },
     },
   }));
@@ -272,7 +233,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     alternates: {
       languages: {
         "en-US": `${base}/en/send-money/from/${c.slug}`,
-        "es-US": `${base}/remesas/${c.esCorridorSlug}`,
       },
     },
   }));

@@ -5,6 +5,7 @@ import {
   getAllUsArticleSlugs,
   getUsRelatedArticles,
   getUsAuthorByDisplayName,
+  getTranslationCounterpartSlug,
 } from "@/lib/queries/us-articles";
 import { Nav } from "@/components/us/layout/Nav";
 import { UsFooter } from "@/components/us/layout/UsFooter";
@@ -13,7 +14,9 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ArticleHeader } from "@/components/us/article/ArticleHeader";
 import { ArticleProse } from "@/components/us/article/ArticleProse";
 import { RelatedArticles } from "@/components/us/article/RelatedArticles";
-import { ArticleCTACard } from "@/components/us/article/ArticleCTACard";
+import { StateAwareCTA } from "@/components/us/article/StateAwareCTA";
+import { extractFaqEntries, buildFaqSchema } from "@/lib/faq-extractor";
+import { resolveArticleGeo } from "@/lib/article-geo";
 
 export const revalidate = 3600;
 
@@ -43,6 +46,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `https://finazo.us/guias/${slug}`;
 
+  // Per spec §1.7.3 — if an English counterpart exists, emit it under en-US.
+  // Spanish is always the x-default since it's the primary audience.
+  const counterpart = await getTranslationCounterpartSlug({
+    id: article.id,
+    language: article.language,
+    translationOf: article.translationOf,
+  }).catch(() => null);
+
+  const languages: Record<string, string> = {
+    "es-US": canonical,
+    "x-default": canonical,
+  };
+  if (counterpart?.language === "en") {
+    languages["en-US"] = `https://finazo.us/en/${counterpart.slug}`;
+  }
+
   return {
     title:
       article.title.length > 60
@@ -52,10 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: article.keywords ?? undefined,
     alternates: {
       canonical,
-      languages: {
-        "es-US": canonical,
-        "x-default": canonical,
-      },
+      languages,
     },
     openGraph: {
       title: article.title,
@@ -92,6 +108,14 @@ export default async function UsGuiaPage({
   const authorInitial = authorDisplayName.charAt(0).toUpperCase();
 
   const categoryLabel = CATEGORY_LABELS[article.category] ?? article.category;
+
+  const faqEntries = extractFaqEntries(article.content);
+  const faqSchema = buildFaqSchema(faqEntries);
+  const geo = resolveArticleGeo(
+    slug,
+    article.category,
+    (article.templateVariables ?? null) as Parameters<typeof resolveArticleGeo>[2],
+  );
 
   const schema = {
     "@context": "https://schema.org",
@@ -152,13 +176,19 @@ export default async function UsGuiaPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <Nav currentPath="/us/guias" />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      <Nav currentPath="/guias" />
 
       <main className="us-page-shell">
         <UsBreadcrumb
           crumbs={[
-            { label: "Inicio", href: "/us" },
-            { label: "Guías", href: "/us/guias" },
+            { label: "Inicio", href: "/" },
+            { label: "Guías", href: "/guias" },
             { label: article.title },
           ]}
         />
@@ -182,10 +212,10 @@ export default async function UsGuiaPage({
         <RelatedArticles
           articles={related}
           categoryLabel={categoryLabel}
-          categoryHref="/us/guias"
+          categoryHref="/guias"
         />
 
-        <ArticleCTACard />
+        <StateAwareCTA state={geo.state} product={geo.product} />
       </main>
 
       <UsFooter />

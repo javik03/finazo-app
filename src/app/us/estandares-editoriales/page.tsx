@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 export default function EstandaresPage(): React.ReactElement {
   return (
     <>
-      <Nav currentPath="/us/estandares-editoriales" />
+      <Nav currentPath="/estandares-editoriales" />
 
       <main className="us-page-shell">
         <UsBreadcrumb
           crumbs={[
-            { label: "Inicio", href: "/us" },
+            { label: "Inicio", href: "/" },
             { label: "Estándares editoriales" },
           ]}
         />

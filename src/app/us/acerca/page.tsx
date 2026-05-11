@@ -20,11 +20,11 @@ export default async function AcercaPage(): Promise<React.ReactElement> {
 
   return (
     <>
-      <Nav currentPath="/us/acerca" />
+      <Nav currentPath="/acerca" />
 
       <main className="us-page-shell">
         <UsBreadcrumb
-          crumbs={[{ label: "Inicio", href: "/us" }, { label: "Acerca" }]}
+          crumbs={[{ label: "Inicio", href: "/" }, { label: "Acerca" }]}
         />
 
         <header className="us-article-head">

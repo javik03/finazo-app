@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 export default function MetodologiaPage(): React.ReactElement {
   return (
     <>
-      <Nav currentPath="/us/metodologia" />
+      <Nav currentPath="/metodologia" />
 
       <main className="us-page-shell">
         <UsBreadcrumb
           crumbs={[
-            { label: "Inicio", href: "/us" },
+            { label: "Inicio", href: "/" },
             { label: "Metodología" },
           ]}
         />

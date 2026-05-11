@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     canonical: "https://finazo.us/guias",
     languages: {
       "es-US": "https://finazo.us/guias",
-      "en-US": "https://finazo.us/en/guides",
     },
   },
   openGraph: {
@@ -65,7 +64,7 @@ export default async function UsGuiasHubPage({
 
   return (
     <>
-      <Nav currentPath="/us/guias" />
+      <Nav currentPath="/guias" />
 
       <main className="us-container">
         <div className="us-hub-head">

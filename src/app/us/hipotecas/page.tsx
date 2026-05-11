@@ -9,9 +9,9 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 
 export const metadata: Metadata = {
-  title: "Hipotecas para Hispanos en EE.UU. — ITIN, non-QM, self-employed | Finazo",
+  title: "Comprar casa sin Social Security — hipotecas para Hispanos 2026 | Finazo",
   description:
-    "Hipoteca sin Social Security, non-QM, FHA, conventional. Hogares te conecta con 4+ wholesalers que prestan a clientes ITIN y self-employed. Pre-calificación por WhatsApp en 24h.",
+    "Comprar casa sin Social Security en EE.UU. Hipotecas non-QM, FHA, conventional. Hogares te conecta con 4+ wholesalers que prestan a Hispanos sin SSN y self-employed. Pre-calificación en 24h.",
   alternates: { canonical: "https://finazo.us/hipotecas" },
 };
 
@@ -115,19 +115,19 @@ export default function UsHipotecasPage(): React.ReactElement {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Nav currentPath="/us/hipotecas" />
+      <Nav currentPath="/hipotecas" />
 
       <main>
         <div className="us-sub-shell">
           <UsBreadcrumb
             crumbs={[
-              { label: "Inicio", href: "/us" },
+              { label: "Inicio", href: "/" },
               { label: "Hipotecas" },
             ]}
           />
 
           <header className="us-sub-hero">
-            <div className="us-hero-kicker">Hipotecas · ITIN · Non-QM</div>
+            <div className="us-hero-kicker">Hipotecas · Sin SSN · Non-QM</div>
             <h1 className="us-serif">
               Comprar casa <i>sin Social Security</i> sí se puede.
             </h1>
@@ -256,7 +256,7 @@ export default function UsHipotecasPage(): React.ReactElement {
             </div>
             <ul className="us-related-list">
               <li>
-                <Link href="/us/guias/hipoteca-sin-social-security-itin-2026" className="us-related-item">
+                <Link href="/guias/hipoteca-sin-social-security-itin-2026" className="us-related-item">
                   <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>

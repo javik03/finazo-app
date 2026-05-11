@@ -1122,6 +1122,25 @@
 .finazo-us .us-cta-btn.us-secondary:hover {
   background: var(--us-green); color: white;
 }
+.finazo-us .us-cta-disclosure {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--us-ink-3);
+  line-height: 1.5;
+}
+.finazo-us .us-aca-disclaimer {
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--us-green);
+  background: var(--us-green-3);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--us-ink-2);
+  border-radius: 0 6px 6px 0;
+}
+.finazo-us .us-aca-disclaimer a {
+  color: var(--us-green); text-decoration: underline;
+}
 
 /* ─── Author byline avatar ─── */
 .finazo-us .us-author-avatar {

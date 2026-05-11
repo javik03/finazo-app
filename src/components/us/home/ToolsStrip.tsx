@@ -9,7 +9,7 @@ type Tool = {
 
 const TOOLS: Tool[] = [
   {
-    href: "/us/herramientas/cotizador-seguro",
+    href: "/herramientas/cotizador-seguro",
     title: "Cotizador de seguro",
     description: "Compara 8+ aseguradoras ingresando solo 5 datos.",
     icon: (
@@ -19,7 +19,7 @@ const TOOLS: Tool[] = [
     ),
   },
   {
-    href: "/us/herramientas/simulador-hipoteca",
+    href: "/herramientas/simulador-hipoteca",
     title: "Simulador de hipoteca",
     description: "Cuota mensual, down payment y closing costs reales.",
     icon: (
@@ -29,7 +29,7 @@ const TOOLS: Tool[] = [
     ),
   },
   {
-    href: "/us/herramientas/comparador-remesas",
+    href: "/herramientas/comparador-remesas",
     title: "Comparador remesas",
     description: "Envía $X a México, GT, SV, HN — ve dónde sale más.",
     icon: (
@@ -39,7 +39,7 @@ const TOOLS: Tool[] = [
     ),
   },
   {
-    href: "/us/herramientas/credit-tracker",
+    href: "/herramientas/credit-tracker",
     title: "Credit score tracker",
     description: "Plan de 12 meses para subir de 0 a 700+ sin SSN.",
     icon: (

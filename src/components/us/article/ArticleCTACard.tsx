@@ -14,13 +14,13 @@ export function ArticleCTACard(): React.ReactElement {
       </p>
       <div className="us-article-cta-card-btns">
         <Link
-          href="/us/herramientas/cotizador-seguro"
+          href="/herramientas/cotizador-seguro"
           className="us-cta-btn us-primary"
         >
           Cotizar seguro
         </Link>
         <Link
-          href="/us/herramientas/simulador-hipoteca"
+          href="/herramientas/simulador-hipoteca"
           className="us-cta-btn us-secondary"
         >
           Simular hipoteca

@@ -209,7 +209,7 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
         <main className="min-h-screen bg-slate-50 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-slate-900 mb-2">Estado no encontrado</h1>
-            <Link href="/us/prestamos" className="text-emerald-600 hover:underline">Ver todos los préstamos</Link>
+            <Link href="/prestamos" className="text-emerald-600 hover:underline">Ver todos los préstamos</Link>
           </div>
         </main>
         <Footer />
@@ -297,7 +297,7 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
                 EE.UU.
               </Link>
               <span className="mx-2">›</span>
-              <Link href="/us/prestamos" style={{ color: "var(--green)" }}>
+              <Link href="/prestamos" style={{ color: "var(--green)" }}>
                 Préstamos
               </Link>
               <span className="mx-2">›</span>

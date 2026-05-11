@@ -9,7 +9,7 @@ import { getUsLoanProducts } from "@/lib/queries/us-loans";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Préstamos personales para Hispanos en EE.UU. — ITIN, sin historial | Finazo",
+  title: "Préstamos personales sin Social Security — para Hispanos 2026 | Finazo",
   description:
     "Préstamos personales para Hispanos en EE.UU. APR desde 7%, opciones con ITIN, sin historial crediticio previo. Para grandes montos (hipoteca), funnel a Hogares.",
   alternates: { canonical: "https://finazo.us/prestamos" },
@@ -76,13 +76,13 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Nav currentPath="/us/prestamos" />
+      <Nav currentPath="/prestamos" />
 
       <main>
         <div className="us-sub-shell">
           <UsBreadcrumb
             crumbs={[
-              { label: "Inicio", href: "/us" },
+              { label: "Inicio", href: "/" },
               { label: "Préstamos" },
             ]}
           />
@@ -173,7 +173,7 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
                   Si necesitas más de $50K para casa, hipoteca con Hogares cuesta 60–80%
                   menos en interés total que un préstamo personal. ITIN OK.
                 </p>
-                <Link href="/us/hipotecas" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
+                <Link href="/hipotecas" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
                   Pre-calificar con Hogares →
                 </Link>
               </div>
@@ -184,7 +184,7 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
                   Necesitas auto loan + seguro. Cubierto te ayuda con el seguro de auto
                   (no con el loan, pero el bot te orienta a opciones ITIN).
                 </p>
-                <Link href="/us/seguro-de-auto" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
+                <Link href="/seguro-de-auto" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
                   Cotizar seguro con Cubierto →
                 </Link>
               </div>
@@ -195,7 +195,7 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
                   Si vas a pedir préstamo personal solo para construir score, hay opciones
                   más baratas — secured cards o credit-builder loans.
                 </p>
-                <Link href="/us/credito" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
+                <Link href="/credito" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
                   Plan de crédito 0→700+ →
                 </Link>
               </div>
@@ -223,7 +223,7 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
                 </svg>
                 Hablar con el bot
               </a>
-              <Link href="/us/credito" className="us-hard-cta-secondary">
+              <Link href="/credito" className="us-hard-cta-secondary">
                 Plan de crédito ITIN
               </Link>
             </div>

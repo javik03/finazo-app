@@ -8,28 +8,6 @@ const US_HOSTS = new Set([
   "www.finazo.us",
 ]);
 
-// ─── Locale detection (used only on finazo.lat for LATAM-vs-US fallback) ───
-const US_LOCALES = new Set(["en-us", "es-us"]);
-const LATAM_LOCALES = new Set([
-  "es-sv", "es-gt", "es-hn", "es-ni", "es-cr",
-  "es-pa", "es-mx", "es-do", "es-pe", "es-co",
-]);
-
-function isUsVisitor(request: NextRequest): boolean {
-  const acceptLanguage = request.headers.get("accept-language") ?? "";
-  const locales = acceptLanguage
-    .split(",")
-    .map((part) => part.split(";")[0].trim().toLowerCase())
-    .filter(Boolean);
-
-  for (const locale of locales) {
-    if (LATAM_LOCALES.has(locale)) return false;
-    if (US_LOCALES.has(locale)) return true;
-    if (locale === "en") return true;
-  }
-  return false;
-}
-
 function getHost(request: NextRequest): string {
   // Prefer X-Forwarded-Host (set by nginx) then Host header
   const forwarded = request.headers.get("x-forwarded-host");
@@ -48,22 +26,17 @@ export function middleware(request: NextRequest): NextResponse {
 
   // ── finazo.us host routing ────────────────────────────────────────────────
   // The /us tree IS the site on this host. Root → /us, /seguros → /us/seguros, etc.
-  // Subpaths /admin and /api are excluded from the rewrite.
+  // User-facing canonical URLs never include the /us prefix.
   if (onUsHost) {
     // Verification files that must serve from root without rewrite:
-    //  - IndexNow keys: /[32-hex].txt → finazo.us/{key}.txt for Bing IndexNow
-    //  - GSC HTML: /google*.html → not used (DNS verification preferred)
+    //  - IndexNow keys: /[32-hex].txt
+    //  - GSC HTML verification: /google*.html
     //  - Image assets at root (icons, favicons)
-    // /llms.txt and /sitemap.xml are NOT in this list — they need rewriting
-    // to /us/* so the finazo.us-specific versions render.
     const isRootStaticFile =
       /^\/[a-f0-9]{32}\.txt$/.test(pathname) ||
       /^\/google[a-z0-9]+\.html$/.test(pathname) ||
       /^\/[a-zA-Z0-9_-]+\.(ico|svg|png|jpg|jpeg|webp|webmanifest)$/.test(pathname);
 
-    // /sitemap.xml is intentionally NOT excluded — on finazo.us it rewrites
-    // to /us/sitemap.xml. /llms.txt and /robots.txt are excluded because
-    // they're served by host-aware route handlers at the root level.
     const isExcluded =
       pathname.startsWith("/api") ||
       pathname.startsWith("/admin") ||
@@ -73,42 +46,37 @@ export function middleware(request: NextRequest): NextResponse {
       pathname === "/llms-full.txt" ||
       isRootStaticFile;
 
-    // Only rewrite paths that don't already start with /us — otherwise we'd loop.
-    // Visitors typing /us/seguros directly on finazo.us still resolve correctly.
-    if (!isExcluded && !pathname.startsWith("/us")) {
-      const rewritten = pathname === "/" ? "/us" : `/us${pathname}`;
+    if (!isExcluded) {
+      // /en, /en/* — Lane A (helping-family) + Lane B (research) English
+      // content per spec §1.4.1.b. Rewritten to /us/en tree like everything
+      // else; not redirected.
+      // /us, /us/* — legacy URLs from before the host split. 301 to the
+      // stripped form so SEO equity transfers and GSC stops reporting 404s.
+      if (pathname === "/us" || pathname.startsWith("/us/")) {
+        const url = request.nextUrl.clone();
+        url.pathname = pathname === "/us" ? "/" : pathname.slice(3);
+        return NextResponse.redirect(url, 301);
+      }
+
       const url = request.nextUrl.clone();
-      url.pathname = rewritten;
+      url.pathname = pathname === "/" ? "/us" : `/us${pathname}`;
       const response = NextResponse.rewrite(url);
       addSecurityHeaders(response);
       return response;
     }
 
-    // Already on /us tree — pass through with security headers
     const response = NextResponse.next();
     addSecurityHeaders(response);
     return response;
   }
 
-  // ── finazo.lat host (or unknown host) — purely LATAM ──────────────────────
-  // 1. Any /us/* path → cross-domain 301 to finazo.us (strip the /us prefix)
-  //    so SEO equity transfers and finazo.lat stays purely LATAM.
+  // ── finazo.lat host (or unknown host) — purely LATAM, standalone ──────────
+  // Any /us/* path → cross-domain 301 to finazo.us (strip the /us prefix) so
+  // legacy SEO equity transfers. Otherwise pass through — no geo-routing.
   if (pathname === "/us" || pathname.startsWith("/us/")) {
-    const stripped = pathname === "/us" ? "/" : pathname.slice(3); // "/us/x" → "/x"
+    const stripped = pathname === "/us" ? "/" : pathname.slice(3);
     const url = new URL(stripped + request.nextUrl.search, "https://finazo.us");
     return NextResponse.redirect(url, 301);
-  }
-
-  // 2. Geo-route US visitors landing on finazo.lat/ → cross-domain to finazo.us
-  if (pathname === "/") {
-    const regionCookie = request.cookies.get("finazo_region")?.value;
-
-    if (regionCookie === "us") {
-      return NextResponse.redirect(new URL("/", "https://finazo.us"));
-    }
-    if (regionCookie !== "latam" && isUsVisitor(request)) {
-      return NextResponse.redirect(new URL("/", "https://finazo.us"));
-    }
   }
 
   const response = NextResponse.next();

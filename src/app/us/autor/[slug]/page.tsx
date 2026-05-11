@@ -98,13 +98,13 @@ export default async function AutorPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <Nav currentPath="/us/acerca" />
+      <Nav currentPath="/acerca" />
 
       <main className="us-page-shell">
         <UsBreadcrumb
           crumbs={[
-            { label: "Inicio", href: "/us" },
-            { label: "Acerca", href: "/us/acerca" },
+            { label: "Inicio", href: "/" },
+            { label: "Acerca", href: "/acerca" },
             { label: author.displayName },
           ]}
         />

@@ -84,7 +84,6 @@ export const metadata: Metadata = {
     canonical: "https://finazo.us",
     languages: {
       "es-US": "https://finazo.us",
-      "en-US": "https://finazo.us/en",
     },
   },
   openGraph: {

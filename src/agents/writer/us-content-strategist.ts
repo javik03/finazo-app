@@ -21,7 +21,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { db } from "@/lib/db";
 import { articles, usTopicProposals } from "@/lib/db/schema";
-import { and, eq, inArray } from "drizzle-orm";
+import { and, eq, inArray, lt, sql } from "drizzle-orm";
 import { notifyIndexNow } from "@/lib/indexnow";
 import { fetchFeaturedImage } from "@/lib/pexels";
 import pino from "pino";
@@ -32,6 +32,17 @@ import {
   type UsAuthorSlug,
 } from "./us-content-calendar";
 import { getAllProgrammaticTopics } from "./us-topic-templates";
+import {
+  evaluateArticle,
+  buildRetryInstructions,
+  type QualityGateOptions,
+} from "./quality-gate";
+import { resolveInlineImages } from "./inline-images";
+import {
+  detectOepMode,
+  prioritizeForOep,
+  type OepMode,
+} from "./oep-cadence";
 
 const logger = pino({ name: "us-content-strategist" });
 const anthropic = new Anthropic({ apiKey: config.ANTHROPIC_API_KEY });
@@ -45,82 +56,122 @@ const DEFAULT_BATCH_SIZE = 3;
 const MAX_BATCH_SIZE = 12;
 
 // ---------------------------------------------------------------------------
-// Inline image resolution — replaces [INLINE: query]() with real Pexels images
-// ---------------------------------------------------------------------------
-
-const INLINE_MARKER = /!\[INLINE:\s*([^\]]+?)\s*\]\(\)/g;
-
-async function resolveInlineImages(content: string): Promise<string> {
-  const matches = [...content.matchAll(INLINE_MARKER)];
-  if (matches.length === 0) return content;
-
-  const replacements = await Promise.all(
-    matches.map(async (match) => {
-      const query = match[1].trim();
-      const url = await fetchFeaturedImage(query);
-      const altText = query.charAt(0).toUpperCase() + query.slice(1);
-      return {
-        marker: match[0],
-        replacement: url ? `![${altText}](${url})` : "",
-      };
-    }),
-  );
-
-  let result = content;
-  for (const { marker, replacement } of replacements) {
-    // Replace first occurrence each time to handle duplicate queries safely.
-    result = result.replace(marker, replacement);
-  }
-  return result;
-}
-
-// ---------------------------------------------------------------------------
 // Single-article generator
 // ---------------------------------------------------------------------------
+
+const MAX_QUALITY_RETRIES = 2;
+
+async function callClaudeForArticle(prompt: string): Promise<string | null> {
+  const message = await anthropic.messages.create({
+    model: "claude-sonnet-4-6",
+    max_tokens: 8192,
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  const content = message.content[0];
+  if (content.type !== "text") return null;
+  return content.text;
+}
+
+function deriveQualityOptions(topic: UsContentTopic): QualityGateOptions {
+  // Glossary topics (que-es-*) are shorter explainers with no comparison table
+  // requirement. Everything else uses the standard 1200-word floor + table.
+  const isGlossary = topic.slug.startsWith("que-es-");
+  return {
+    minWordCount: topic.qualityGate?.minWordCount ?? (isGlossary ? 800 : 1200),
+    allowMissingTable: topic.qualityGate?.allowMissingTable ?? isGlossary,
+    allowMissingCallout: topic.qualityGate?.allowMissingCallout ?? false,
+  };
+}
+
+type GeneratedArticle = {
+  articleContent: string;
+  metaDescription: string | null;
+  keywords: string[] | null;
+  title: string;
+  wordCount: number;
+};
+
+/**
+ * Generate body + metadata for a topic, with quality-gate retries.
+ * Returns null when all retries fail. No DB writes.
+ */
+async function generateArticleBody(
+  topic: UsContentTopic,
+): Promise<GeneratedArticle | null> {
+  const qualityOptions = deriveQualityOptions(topic);
+
+  let prompt = topic.prompt;
+  let articleContent = "";
+  let metaDescription: string | null = null;
+  let keywords: string[] | null = null;
+  let passed = false;
+
+  for (let attempt = 0; attempt <= MAX_QUALITY_RETRIES; attempt += 1) {
+    const fullText = await callClaudeForArticle(prompt);
+    if (fullText === null) {
+      logger.error({ slug: topic.slug, attempt }, "Unexpected response type from Claude");
+      return null;
+    }
+
+    const metaMatch = fullText.match(/META:\s*(.+)$/m);
+    metaDescription = metaMatch ? metaMatch[1].trim() : null;
+
+    const keywordsMatch = fullText.match(/KEYWORDS:\s*\[?([^\]\n]+)/);
+    keywords = keywordsMatch
+      ? keywordsMatch[1]
+          .split(",")
+          .map((k) => k.trim().replace(/[\[\]"']/g, ""))
+          .filter(Boolean)
+      : null;
+
+    articleContent = fullText
+      .replace(/^META:.*$/m, "")
+      .replace(/^KEYWORDS:.*$/m, "")
+      .trim();
+
+    articleContent = await resolveInlineImages(articleContent);
+
+    const gate = evaluateArticle(articleContent, qualityOptions);
+    if (gate.pass) {
+      logger.info({ slug: topic.slug, attempt, metrics: gate.metrics }, "Quality gate passed");
+      passed = true;
+      break;
+    }
+
+    logger.warn(
+      { slug: topic.slug, attempt, reasons: gate.reasons, metrics: gate.metrics },
+      "Quality gate failed",
+    );
+
+    if (attempt < MAX_QUALITY_RETRIES) {
+      prompt = topic.prompt + buildRetryInstructions(gate);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    }
+  }
+
+  if (!passed) {
+    logger.error(
+      { slug: topic.slug, retries: MAX_QUALITY_RETRIES },
+      "Quality gate failed after all retries — skipping article",
+    );
+    return null;
+  }
+
+  const titleMatch = articleContent.match(/^#\s+(.+)$/m);
+  const title = titleMatch ? titleMatch[1].trim() : topic.slug.replace(/-/g, " ");
+  const wordCount = articleContent.split(/\s+/).length;
+
+  return { articleContent, metaDescription, keywords, title, wordCount };
+}
 
 async function generateUsArticle(topic: UsContentTopic): Promise<boolean> {
   logger.info({ slug: topic.slug, author: topic.preferredAuthor }, "Generating");
 
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: 8192,
-    messages: [{ role: "user", content: topic.prompt }],
-  });
+  const body = await generateArticleBody(topic);
+  if (!body) return false;
 
-  const content = message.content[0];
-  if (content.type !== "text") {
-    logger.error({ slug: topic.slug }, "Unexpected response type from Claude");
-    return false;
-  }
-
-  const fullText = content.text;
-
-  const metaMatch = fullText.match(/META:\s*(.+)$/m);
-  const metaDescription = metaMatch ? metaMatch[1].trim() : null;
-
-  const keywordsMatch = fullText.match(/KEYWORDS:\s*\[?([^\]\n]+)/);
-  const keywords = keywordsMatch
-    ? keywordsMatch[1]
-        .split(",")
-        .map((k) => k.trim().replace(/[\[\]"']/g, ""))
-        .filter(Boolean)
-    : null;
-
-  let articleContent = fullText
-    .replace(/^META:.*$/m, "")
-    .replace(/^KEYWORDS:.*$/m, "")
-    .trim();
-
-  // Replace [INLINE: query]() markers with real Pexels images.
-  // Claude inserts exactly 2 of these per article — see us-content-calendar.ts.
-  articleContent = await resolveInlineImages(articleContent);
-
-  const titleMatch = articleContent.match(/^#\s+(.+)$/m);
-  const title = titleMatch
-    ? titleMatch[1].trim()
-    : topic.slug.replace(/-/g, " ");
-  const wordCount = articleContent.split(/\s+/).length;
-
+  const { articleContent, metaDescription, keywords, title, wordCount } = body;
   const featuredImageUrl = await fetchFeaturedImage(topic.imageQuery);
 
   await db
@@ -143,13 +194,11 @@ async function generateUsArticle(topic: UsContentTopic): Promise<boolean> {
       authorSlug: topic.preferredAuthor,
       humanReviewed: false,
       templateType: "editorial",
+      templateVariables: topic.templateVariables ?? undefined,
     })
     .onConflictDoNothing();
 
-  // Notify the correct host (was pointing to finazo.lat — bug).
   await notifyIndexNow([`https://finazo.us/guias/${topic.slug}`]);
-
-  // If this slug came from the proposals queue, close the loop.
   await markProposalPublished(topic.slug);
 
   logger.info(
@@ -249,22 +298,137 @@ async function markProposalPublished(slug: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Refresh mode — regenerate stale articles for AI-citation freshness
+// ---------------------------------------------------------------------------
+// AI engines (Perplexity, ChatGPT, Gemini) weight pages with fresh dateModified
+// more heavily when citing. Articles older than 60 days get regenerated with
+// current data + the new quality gate, then updatedAt bumps so the JSON-LD
+// dateModified updates and IndexNow re-pings.
+
+const DEFAULT_REFRESH_AGE_DAYS = 60;
+
+async function findStaleArticleSlugs(maxAgeDays: number): Promise<string[]> {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - maxAgeDays);
+
+  const rows = await db
+    .select({ slug: articles.slug })
+    .from(articles)
+    .where(
+      and(
+        eq(articles.country, "US"),
+        eq(articles.status, "published"),
+        lt(articles.updatedAt, cutoff),
+      ),
+    );
+
+  return rows.map((r) => r.slug);
+}
+
+async function refreshUsArticle(topic: UsContentTopic): Promise<boolean> {
+  logger.info({ slug: topic.slug }, "Refreshing stale article");
+
+  const body = await generateArticleBody(topic);
+  if (!body) return false;
+
+  const { articleContent, metaDescription, keywords, title, wordCount } = body;
+
+  await db
+    .update(articles)
+    .set({
+      title,
+      metaDescription,
+      content: articleContent,
+      keywords: keywords ?? undefined,
+      wordCount,
+      authorName: AUTHOR_DISPLAY_NAMES[topic.preferredAuthor],
+      authorSlug: topic.preferredAuthor,
+      // sql`NOW()` forces a fresh timestamp even when no other field changed
+      updatedAt: sql`NOW()`,
+    })
+    .where(eq(articles.slug, topic.slug));
+
+  await notifyIndexNow([`https://finazo.us/guias/${topic.slug}`]);
+
+  logger.info({ slug: topic.slug, wordCount }, "Refreshed");
+  return true;
+}
+
+export async function runUsContentRefresh(opts: {
+  maxAgeDays?: number;
+  batchSize?: number;
+} = {}): Promise<void> {
+  const maxAgeDays = opts.maxAgeDays ?? DEFAULT_REFRESH_AGE_DAYS;
+  const batchSize = Math.min(opts.batchSize ?? DEFAULT_BATCH_SIZE, MAX_BATCH_SIZE);
+
+  const staleSlugs = await findStaleArticleSlugs(maxAgeDays);
+  if (staleSlugs.length === 0) {
+    logger.info({ maxAgeDays }, "No stale articles to refresh");
+    return;
+  }
+
+  const allTopics = await getAllTopics();
+  const topicBySlug = new Map(allTopics.map((t) => [t.slug, t]));
+
+  // Only refresh articles where we still have the original topic prompt; one-off
+  // articles without a topic stay as-is rather than being regenerated from a
+  // guessed prompt.
+  const refreshable = staleSlugs
+    .map((s) => topicBySlug.get(s))
+    .filter((t): t is UsContentTopic => Boolean(t));
+
+  logger.info(
+    { staleCount: staleSlugs.length, refreshable: refreshable.length, batchSize },
+    "Refresh candidates",
+  );
+
+  const batch = refreshable.slice(0, batchSize);
+  let succeeded = 0;
+  let failed = 0;
+  for (const topic of batch) {
+    try {
+      const ok = await refreshUsArticle(topic);
+      if (ok) succeeded += 1;
+      else failed += 1;
+      await new Promise((resolve) => setTimeout(resolve, 4000));
+    } catch (err) {
+      failed += 1;
+      logger.error({ err, slug: topic.slug }, "Refresh failed");
+    }
+  }
+  logger.info({ succeeded, failed }, "Refresh run complete");
+}
+
+// ---------------------------------------------------------------------------
 // Main runner
 // ---------------------------------------------------------------------------
 
 type RunOptions = {
   batchSize?: number;
   homepageOnly?: boolean;
+  refresh?: boolean;
+  refreshMaxAgeDays?: number;
+  /** Override the auto-detected OEP mode. Spec §8.6.4. */
+  oepMode?: OepMode;
 };
 
 export async function runUsContentStrategist(
   options: RunOptions = {},
 ): Promise<void> {
+  if (options.refresh) {
+    await runUsContentRefresh({
+      maxAgeDays: options.refreshMaxAgeDays,
+      batchSize: options.batchSize,
+    });
+    return;
+  }
+
   const batchSize = Math.min(
     options.batchSize ?? DEFAULT_BATCH_SIZE,
     MAX_BATCH_SIZE,
   );
-  logger.info({ batchSize, homepageOnly: options.homepageOnly }, "Starting");
+  const oepMode = options.oepMode ?? detectOepMode();
+  logger.info({ batchSize, homepageOnly: options.homepageOnly, oepMode }, "Starting");
 
   const missing = await getMissingTopics();
 
@@ -272,6 +436,10 @@ export async function runUsContentStrategist(
   if (options.homepageOnly) {
     candidates = candidates.filter((t) => t.homepageSeed === true);
   }
+
+  // Spec §8.6.4 — during OEP preparation (Aug-Oct) and active (Nov 1 - Jan 15)
+  // windows, ACA topics float to the front of the queue.
+  candidates = prioritizeForOep(candidates, oepMode);
 
   if (candidates.length === 0) {
     const allTopics = await getAllTopics();
@@ -324,8 +492,13 @@ function parseArgs(): RunOptions {
 
   for (const arg of args) {
     if (arg === "--homepage") opts.homepageOnly = true;
+    if (arg === "--refresh") opts.refresh = true;
     const batchMatch = arg.match(/^--batch=(\d+)$/);
     if (batchMatch) opts.batchSize = Number.parseInt(batchMatch[1], 10);
+    const ageMatch = arg.match(/^--max-age-days=(\d+)$/);
+    if (ageMatch) opts.refreshMaxAgeDays = Number.parseInt(ageMatch[1], 10);
+    const oepMatch = arg.match(/^--oep-mode=(preparation|active|post)$/);
+    if (oepMatch) opts.oepMode = oepMatch[1] as OepMode;
   }
   return opts;
 }

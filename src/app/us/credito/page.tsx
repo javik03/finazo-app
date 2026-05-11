@@ -6,7 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Crédito en EE.UU. para Hispanos — construir score con o sin SSN | Finazo",
+  title: "Construir credit score sin Social Security — guía Hispanos 2026 | Finazo",
   description:
     "Cómo construir tu credit score desde cero, con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans, y cómo subir el score rápido.",
   alternates: { canonical: "https://finazo.us/credito" },
@@ -72,19 +72,19 @@ export default function UsCreditoPage(): React.ReactElement {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Nav currentPath="/us/credito" />
+      <Nav currentPath="/credito" />
 
       <main>
         <div className="us-sub-shell">
           <UsBreadcrumb
             crumbs={[
-              { label: "Inicio", href: "/us" },
+              { label: "Inicio", href: "/" },
               { label: "Crédito" },
             ]}
           />
 
           <header className="us-sub-hero">
-            <div className="us-hero-kicker">Crédito · ITIN OK</div>
+            <div className="us-hero-kicker">Crédito · Sin SSN OK</div>
             <h1 className="us-serif">
               Construye tu credit score <i>de 0 a 700+</i> en 12 meses.
             </h1>
@@ -182,7 +182,7 @@ export default function UsCreditoPage(): React.ReactElement {
                   En 47 estados un buen credit baja tu prima 15–40%. Cubierto cotiza con 8+
                   aseguradoras y aplica el descuento automáticamente.
                 </p>
-                <Link href="/us/seguro-de-auto" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
+                <Link href="/seguro-de-auto" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
                   Cotizar con Cubierto →
                 </Link>
               </div>
@@ -193,7 +193,7 @@ export default function UsCreditoPage(): React.ReactElement {
                   Una vez tu score llegue a 620+, Hogares te conecta con wholesalers que
                   prestan a clientes ITIN, self-employed y bank-statement loans.
                 </p>
-                <Link href="/us/hipotecas" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
+                <Link href="/hipotecas" className="us-tool-link" style={{ marginTop: 12, display: "inline-flex" }}>
                   Pre-calificar con Hogares →
                 </Link>
               </div>
@@ -224,7 +224,7 @@ export default function UsCreditoPage(): React.ReactElement {
             </div>
             <ul className="us-related-list">
               <li>
-                <Link href="/us/guias/construir-credit-score-sin-social-security-itin" className="us-related-item">
+                <Link href="/guias/construir-credit-score-sin-social-security-itin" className="us-related-item">
                   <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>
@@ -234,7 +234,7 @@ export default function UsCreditoPage(): React.ReactElement {
                 </Link>
               </li>
               <li>
-                <Link href="/us/guias/abrir-cuenta-bancaria-sin-social-security-2026" className="us-related-item">
+                <Link href="/guias/abrir-cuenta-bancaria-sin-social-security-2026" className="us-related-item">
                   <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>

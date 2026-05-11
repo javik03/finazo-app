@@ -65,14 +65,14 @@ export default function UsSeguroVidaPage(): React.ReactElement {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Nav currentPath="/us/seguros" />
+      <Nav currentPath="/seguros" />
 
       <main>
         <div className="us-sub-shell">
           <UsBreadcrumb
             crumbs={[
-              { label: "Inicio", href: "/us" },
-              { label: "Seguros", href: "/us/seguros" },
+              { label: "Inicio", href: "/" },
+              { label: "Seguros", href: "/seguros" },
               { label: "Seguro de vida" },
             ]}
           />
@@ -184,7 +184,7 @@ export default function UsSeguroVidaPage(): React.ReactElement {
             </div>
             <ul className="us-related-list">
               <li>
-                <Link href="/us/guias" className="us-related-item">
+                <Link href="/guias" className="us-related-item">
                   <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>

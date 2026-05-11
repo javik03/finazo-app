@@ -35,9 +35,7 @@ export function MastheadTop({
           ))}
         </div>
         <div className="us-mt-right">
-          <a href="/us/iniciar-sesion">Iniciar sesión</a>
-          <a href="/us/boletin">Boletín</a>
-          <a href="/us/en">🇺🇸 EN</a>
+          <a href="https://wa.me/13055551234">WhatsApp</a>
         </div>
       </div>
     </div>

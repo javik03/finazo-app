@@ -30,7 +30,7 @@ const COPY: Record<CTAProps["variant"], CTACopy> = {
     primaryText: "Hablar con Carmen ahora",
     primaryWa: "Hola Carmen, cotizar seguro de auto",
     secondaryText: "Comparar con calculadora",
-    secondaryHref: "/us/herramientas/cotizador-seguro",
+    secondaryHref: "/herramientas/cotizador-seguro",
   },
   "cubierto-salud": {
     eyebrow: "TU PRÓXIMA CITA SIN CITA",
@@ -44,7 +44,7 @@ const COPY: Record<CTAProps["variant"], CTACopy> = {
     primaryText: "Hablar con Carmen ahora",
     primaryWa: "Hola Carmen, cotizar seguro de salud",
     secondaryText: "Ver guías de ACA",
-    secondaryHref: "/us/guias",
+    secondaryHref: "/guias",
   },
   "cubierto-vida": {
     eyebrow: "TU PRÓXIMA CITA SIN CITA",
@@ -58,7 +58,7 @@ const COPY: Record<CTAProps["variant"], CTACopy> = {
     primaryText: "Hablar con Carmen ahora",
     primaryWa: "Hola Carmen, cotizar seguro de vida",
     secondaryText: "Ver guías de seguros",
-    secondaryHref: "/us/guias",
+    secondaryHref: "/guias",
   },
   hogares: {
     eyebrow: "TU PRÓXIMA CITA SIN CITA",
@@ -72,7 +72,7 @@ const COPY: Record<CTAProps["variant"], CTACopy> = {
     primaryText: "Hablar con Sofía ahora",
     primaryWa: "Hola Sofía, pre-calificar hipoteca",
     secondaryText: "Simulador de hipoteca",
-    secondaryHref: "/us/herramientas/simulador-hipoteca",
+    secondaryHref: "/herramientas/simulador-hipoteca",
   },
 };
 
