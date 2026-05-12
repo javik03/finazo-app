@@ -4,6 +4,7 @@
  */
 
 import Link from "next/link";
+import { FINAZO_WA_URL } from "@/lib/wa";
 
 type NavProps = {
   currentPath?: string;
@@ -30,7 +31,7 @@ function normalize(path: string): string {
 
 export function Nav({
   currentPath = "/",
-  waUrl = "https://wa.me/13055551234",
+  waUrl = FINAZO_WA_URL,
 }: NavProps): React.ReactElement {
   const current = normalize(currentPath);
   return (

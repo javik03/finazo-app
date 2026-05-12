@@ -117,6 +117,31 @@ export default async function UsGuiaPage({
     (article.templateVariables ?? null) as Parameters<typeof resolveArticleGeo>[2],
   );
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: "https://finazo.us",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Guías",
+        item: "https://finazo.us/guias",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: `https://finazo.us/guias/${slug}`,
+      },
+    ],
+  };
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -143,30 +168,6 @@ export default async function UsGuiaPage({
       "@type": "Organization",
       name: "Finazo",
       url: "https://finazo.us",
-      parentOrganization: { "@type": "Organization", name: "Kornugle" },
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Inicio",
-          item: "https://finazo.us",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Guías",
-          item: "https://finazo.us/guias",
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: article.title,
-          item: `https://finazo.us/guias/${slug}`,
-        },
-      ],
     },
   };
 
@@ -175,6 +176,10 @@ export default async function UsGuiaPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {faqSchema && (
         <script

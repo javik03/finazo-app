@@ -1,3 +1,5 @@
+import { FINAZO_WA_URL } from "@/lib/wa";
+
 /**
  * "This is what it looks like" section — left column copy, right column
  * fake WhatsApp phone mockup with sample conversation.
@@ -48,7 +50,7 @@ export function ConvoProof(): React.ReactElement {
             </div>
           </div>
 
-          <a href="https://wa.me/13055551234" className="us-btn-wa">
+          <a href={FINAZO_WA_URL} className="us-btn-wa">
             {WA_SVG}
             Empezar conversación
           </a>

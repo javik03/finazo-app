@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FINAZO_WA_URL } from "@/lib/wa";
 
 /**
  * End-of-article CTA — points to working tools and the WhatsApp bot.
@@ -26,7 +27,7 @@ export function ArticleCTACard(): React.ReactElement {
           Simular hipoteca
         </Link>
         <a
-          href="https://wa.me/13055551234"
+          href={FINAZO_WA_URL}
           className="us-cta-btn us-secondary"
         >
           Pregúntale a Finazo

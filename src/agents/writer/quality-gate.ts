@@ -277,13 +277,15 @@ const HEDGE_OPENERS = [
  * acceptable factual claims.
  */
 const SOURCE_PREFIXES = [
-  /\bseg[uú]n\s+(?:el|la|los|las|un|una)?\s*[A-Z][\w]+/i, // "Según el NAIC", "Según ValuePenguin"
+  /\bseg[uú]n\s+(?:el|la|los|las|un|una|nuestra|nuestro|nuestras|nuestros)?\s*[\w]+/i, // "Según el NAIC", "Según ValuePenguin", "Según nuestra metodología"
   /\bde\s+acuerdo\s+a\b/i,
   /\bcita(?:r|do|da)?\s+(?:al|a la|del)\b/i,
   /\bbasado\s+en\b/i,
   /\bun\s+reporte\s+de\b/i,
   /\bel\s+complaint\s+index\b/i,
   /\bel\s+rate\s+filing\b/i,
+  /\bla\s+oficina\s+de\b/i, // "la Oficina de Regulación de Seguros de Florida"
+  /\bel\s+departamento\s+de\b/i, // "el Departamento de Seguros de California"
 ];
 
 const CFPB_INSURANCE_PATTERNS = [
@@ -357,6 +359,16 @@ function findUnsourcedCompetitorClaims(content: string): string[] {
     const hasSource = SOURCE_PREFIXES.some((p) => p.test(para));
     const hasHedge = HEDGE_OPENERS.some((p) => p.test(para));
     if (hasSource || hasHedge) continue;
+
+    // Skip when the paragraph is primarily describing Cubierto or Hogares
+    // (our own brands) rather than making a comparative claim about a
+    // third-party carrier. Indicator: "Cubierto" / "Hogares" appears more
+    // often than the named carrier in the paragraph. Common case: "Cubierto
+    // trabaja con portadoras que incluyen Infinity, Bristol West" — that's
+    // Cubierto-self-description, not a competitor claim.
+    const cubiertoMentions = (para.match(/\b(?:Cubierto|Hogares)\b/gi) ?? []).length;
+    const carrierMentions = (para.match(carrierPattern) ?? []).length;
+    if (cubiertoMentions >= carrierMentions && cubiertoMentions > 0) continue;
 
     offenders.push(para.slice(0, 120) + (para.length > 120 ? "…" : ""));
   }

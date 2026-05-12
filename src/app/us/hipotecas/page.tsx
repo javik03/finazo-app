@@ -9,7 +9,7 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 
 export const metadata: Metadata = {
-  title: "Comprar casa sin Social Security — hipotecas para Hispanos 2026 | Finazo",
+  title: "Comprar casa sin Social Security — hipotecas 2026",
   description:
     "Comprar casa sin Social Security en EE.UU. Hipotecas non-QM, FHA, conventional. Hogares te conecta con 4+ wholesalers que prestan a Hispanos sin SSN y self-employed. Pre-calificación en 24h.",
   alternates: { canonical: "https://finazo.us/hipotecas" },

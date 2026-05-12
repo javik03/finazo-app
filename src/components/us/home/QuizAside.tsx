@@ -10,11 +10,12 @@
 "use client";
 
 import { useState } from "react";
+import { FINAZO_WA_URL } from "@/lib/wa";
 
 type Step = 1 | 2 | 3;
 type Intent = "auto" | "casa" | "remesa" | "info" | null;
 
-const WA_BASE = "https://wa.me/13055551234";
+const WA_BASE = FINAZO_WA_URL;
 
 type FinalState = {
   avatarLetter: string;

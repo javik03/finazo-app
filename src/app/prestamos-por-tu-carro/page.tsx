@@ -85,7 +85,6 @@ const articleSchema = {
     "@type": "Organization",
     name: "Finazo",
     url: "https://finazo.lat",
-    parentOrganization: { "@type": "Organization", name: "Kornugle" },
   },
   datePublished: "2026-05-11",
   dateModified: new Date().toISOString().slice(0, 10),
@@ -251,9 +250,12 @@ export default async function PrestamoPorTuCarroPillarPage(): Promise<React.Reac
             </a>
           </p>
           <p className="my-0 text-sm text-gray-700">
-            <strong>Divulgación:</strong> CrediMóvil es parte del grupo
-            Kornugle, al igual que Finazo. Cuando te conectamos con ellos
-            recibimos comisión — la paga la compañía, no vos.
+            <strong>Divulgación:</strong> CrediMóvil es un{" "}
+            <strong>socio afiliado</strong> de Finazo. Cuando te conectamos
+            con ellos recibimos comisión — la paga la compañía, no vos.
+            Finazo es una publicación independiente; CrediMóvil opera bajo
+            su propia entidad legal con responsabilidad propia sobre su
+            producto financiero.
           </p>
         </div>
 

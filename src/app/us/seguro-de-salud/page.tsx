@@ -9,7 +9,7 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 
 export const metadata: Metadata = {
-  title: "Seguro de salud para Hispanos en EE.UU. — ACA, Medicaid y más | Finazo",
+  title: "Seguro de salud para Hispanos — ACA y Medicaid",
   description:
     "Marketplace ACA, Medicaid expansion, planes para indocumentados, subsidios. Cubierto te ayuda a encontrar el plan correcto en español por WhatsApp.",
   alternates: { canonical: "https://finazo.us/seguro-de-salud" },

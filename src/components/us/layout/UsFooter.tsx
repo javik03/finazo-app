@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FINAZO_WA_URL } from "@/lib/wa";
 
 type FooterColumn = {
   heading: string;
@@ -29,9 +30,9 @@ const COLUMNS: FooterColumn[] = [
     heading: "Servicios",
     links: [
       { href: "/acerca", label: "Sobre Finazo" },
-      { href: "https://wa.me/13055551234?text=Hola%20Carmen%2C%20cotizar%20seguro", label: "Cubierto — Seguros" },
-      { href: "https://wa.me/13055551234?text=Hola%20Sof%C3%ADa%2C%20pre-calificar%20hipoteca", label: "Hogares — Hipotecas" },
-      { href: "https://wa.me/13055551234", label: "WhatsApp directo" },
+      { href: `${FINAZO_WA_URL}?text=Hola%20Carmen%2C%20cotizar%20seguro`, label: "Cubierto — Seguros" },
+      { href: `${FINAZO_WA_URL}?text=Hola%20Sof%C3%ADa%2C%20pre-calificar%20hipoteca`, label: "Hogares — Hipotecas" },
+      { href: FINAZO_WA_URL, label: "WhatsApp directo" },
     ],
   },
   {
@@ -58,7 +59,7 @@ export function UsFooter(): React.ReactElement {
             </div>
             <p className="us-foot-tag">
               Publicación independiente de finanzas en español para la familia
-              Hispana en EE.UU. Parte de Kornugle.
+              Hispana en EE.UU.
             </p>
           </div>
           {COLUMNS.map((col) => (
@@ -73,14 +74,27 @@ export function UsFooter(): React.ReactElement {
           ))}
         </div>
         <div className="us-foot-bottom">
-          <span>© {year} KORNUGLE · MAQ UNO DOS TRES S.A. DE C.V.</span>
+          <span>© {year} Finazo LLC</span>
           <p className="us-disc">
-            Finazo es una marca editorial de Kornugle. Recibimos comisión cuando
-            nos conectas con Cubierto (agencia de seguros) u Hogares (broker
-            hipotecario), pero no te cobramos a ti — la paga la aseguradora o
-            wholesaler. Las cotizaciones mostradas son estimados y no
-            constituyen oferta de contrato. Hogares no es prestamista directo —
-            coordinamos con wholesalers licenciados.
+            Finazo es una publicación independiente de finanzas personales.
+            Cubierto (agencia de seguros) y Hogares (broker hipotecario) son
+            <strong> socios afiliados</strong> — recibimos comisión cuando te
+            conectas con ellos, pero no te cobramos a ti: la paga la
+            aseguradora o wholesaler. Las cotizaciones mostradas son estimados
+            y no constituyen oferta de contrato. Esta página es solo para fines
+            informativos y no es asesoría legal, fiscal ni financiera — verifica
+            con un profesional licenciado para tu situación específica.
+          </p>
+          <p className="us-disc">
+            <Link href="/privacidad">Privacidad</Link>
+            {" · "}
+            <Link href="/terminos">Términos</Link>
+            {" · "}
+            <Link href="/legal">Disclaimer legal</Link>
+            {" · "}
+            <Link href="/metodologia">Metodología</Link>
+            {" · "}
+            <Link href="/estandares-editoriales">Estándares editoriales</Link>
           </p>
         </div>
       </div>

@@ -21,7 +21,7 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": "https://finazo.us/#organization",
   name: "Finazo",
-  legalName: "MAQ UNO DOS TRES S.A. de C.V.",
+  legalName: "Finazo LLC",
   alternateName: "Finazo US",
   url: "https://finazo.us",
   logo: {
@@ -31,8 +31,7 @@ const organizationSchema = {
     height: 512,
   },
   description:
-    "Publicación independiente de finanzas para Hispanos en EE.UU. — guías, comparativos y conexiones con Cubierto (seguros) y Hogares (hipotecas).",
-  parentOrganization: { "@type": "Organization", name: "Kornugle" },
+    "Publicación independiente de finanzas para Hispanos en EE.UU. — guías, comparativos y conexiones con socios afiliados como Cubierto (seguros) y Hogares (hipotecas).",
   knowsLanguage: ["es", "en"],
   areaServed: {
     "@type": "Country",
@@ -82,9 +81,6 @@ export const metadata: Metadata = {
     "Publicación independiente de finanzas para Hispanos en EE.UU. Guías, comparativos y cotizaciones por WhatsApp.",
   alternates: {
     canonical: "https://finazo.us",
-    languages: {
-      "es-US": "https://finazo.us",
-    },
   },
   openGraph: {
     title: "Finazo — Finanzas en español, para los nuestros",

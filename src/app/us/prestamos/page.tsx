@@ -9,7 +9,7 @@ import { getUsLoanProducts } from "@/lib/queries/us-loans";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Préstamos personales sin Social Security — para Hispanos 2026 | Finazo",
+  title: "Préstamos personales sin Social Security 2026",
   description:
     "Préstamos personales para Hispanos en EE.UU. APR desde 7%, opciones con ITIN, sin historial crediticio previo. Para grandes montos (hipoteca), funnel a Hogares.",
   alternates: { canonical: "https://finazo.us/prestamos" },
@@ -53,7 +53,9 @@ const faqSchema = {
   })),
 };
 
-const WA_BASE = "https://wa.me/13055551234";
+import { FINAZO_WA_URL } from "@/lib/wa";
+
+const WA_BASE = FINAZO_WA_URL;
 
 function formatPercent(value: string | null): string {
   if (!value) return "—";

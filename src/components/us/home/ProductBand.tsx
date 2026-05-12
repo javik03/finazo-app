@@ -1,6 +1,9 @@
+import { FINAZO_WA_URL } from "@/lib/wa";
+
 /**
  * Editorial endorsement band for Cubierto (insurance) + Hogares (mortgage).
- * Disclosure copy reflects Kornugle parent + commission model.
+ * Disclosure copy reflects the affiliate-partner commission model — Cubierto
+ * and Hogares are independent partners of Finazo, not corporate siblings.
  */
 
 type ProductCardData = {
@@ -55,7 +58,7 @@ const CUBIERTO: ProductCardData = {
     { value: "$0", label: "para ti" },
   ],
   ctaLabel: "Hablar con Carmen por WhatsApp",
-  ctaUrl: "https://wa.me/13055551234?text=Hola%20Carmen",
+  ctaUrl: `${FINAZO_WA_URL}?text=Hola%20Carmen`,
   disclosure: "CUBIERTO ES PARTE DE KORNUGLE · DIVULGACIÓN DE COMISIÓN",
 };
 
@@ -86,7 +89,7 @@ const HOGARES: ProductCardData = {
     { value: "34d", label: "cierre promedio" },
   ],
   ctaLabel: "Hablar con Sofía por WhatsApp",
-  ctaUrl: "https://wa.me/13055551234?text=Hola%20Sofia",
+  ctaUrl: `${FINAZO_WA_URL}?text=Hola%20Sofia`,
   disclosure: "HOGARES ES PARTE DE KORNUGLE · NMLS PENDIENTE",
 };
 

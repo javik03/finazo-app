@@ -128,7 +128,6 @@ export async function ClusterLanding({
       "@type": "Organization",
       name: "Finazo",
       url: "https://finazo.us",
-      parentOrganization: { "@type": "Organization", name: "Kornugle" },
     },
     dateModified: new Date().toISOString().slice(0, 10),
   };

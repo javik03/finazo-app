@@ -149,14 +149,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = STATE_DATA[estado];
 
   if (!data) {
-    return { title: "Estado no encontrado | Finazo" };
+    return { title: "Estado no encontrado" };
   }
 
   return {
-    title: `Préstamos Personales para Hispanos en ${data.name} — Compara APRs 2025 | Finazo`,
+    title: `Préstamos personales en ${data.name} — APRs 2026`,
     description: `Compara préstamos personales en ${data.name} para hispanos. APRs desde 7.49%, opciones con ITIN sin SSN. Información en español para la comunidad hispana de ${data.name}.`,
     alternates: {
-      canonical: `https://finazo.lat/us/prestamos/${estado}`,
+      canonical: `https://finazo.us/prestamos/${estado}`,
       languages: {
         "es-US": `https://finazo.lat/us/prestamos/${estado}`,
         "x-default": `https://finazo.lat/us/prestamos/${estado}`,

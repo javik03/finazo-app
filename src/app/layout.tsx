@@ -95,12 +95,20 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Finazo",
-  legalName: "MAQ UNO DOS TRES S.A. de C.V.",
+  legalName: "Finazo LLC",
   url: "https://finazo.lat",
   logo: "https://finazo.lat/icon.svg",
   foundingLocation: {
     "@type": "Country",
     name: "El Salvador",
+  },
+  audience: {
+    "@type": "PeopleAudience",
+    name: "Central American consumers",
+    geographicArea: {
+      "@type": "AdministrativeArea",
+      name: "Central America",
+    },
   },
   contactPoint: {
     "@type": "ContactPoint",

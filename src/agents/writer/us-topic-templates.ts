@@ -306,7 +306,7 @@ Estructura:
 ## Programas estatales de bajo costo
 ## Cómo conseguir SR-22 en ${state.nameEs} (si aplica)
 ## Cubierto — broker que cotiza con 8+ aseguradoras
-(divulgación)
+(NO incluyas callout de divulgación — vive en /legal y footer)
 ## Preguntas frecuentes
 ## Conclusión${US_SEO_SUFFIX}`,
   };
@@ -336,7 +336,7 @@ Estructura:
 ## Documentos que necesitás sin SSN
 ## Programas estatales para first-time buyer en ${state.nameEs}
 ## Hogares — pre-calificación por WhatsApp en 24h
-(divulgación)
+(NO incluyas callout de divulgación — vive en /legal y footer)
 ## Errores que rechazan tu hipoteca cuando no tenés SSN
 ## Preguntas frecuentes
 ## Conclusión${US_SEO_SUFFIX}`,
@@ -367,7 +367,7 @@ Estructura:
 ## Programas locales/estatales para first-time buyer
 ## Cómo escoger un agente bilingüe en ${city.nameEs}
 ## Hogares — broker non-QM
-(divulgación)
+(NO incluyas callout de divulgación — vive en /legal y footer)
 ## Errores comunes que rechazan tu hipoteca sin SSN en ${city.nameEs}
 ## Preguntas frecuentes
 ## Conclusión${US_SEO_SUFFIX}`,
@@ -469,8 +469,7 @@ ${comp.category === "seguros" ? `1. **CFPB NO aplica a seguros.** Por la secció
    - Un rango — NUNCA un solo número plano
    Si no tenés datos sustentables, reemplazá el número específico con una afirmación cualitativa ("GEICO tiende a ser más barata para perfiles con buen crédito").
 
-4. **Divulgación de afiliado al inicio**, no al final. Inmediatamente después de la intro, antes de la primera tabla:
-   > **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que Finazo). Si nos contactás a través de un enlace de esta guía, recibimos comisión pagada por la aseguradora o wholesaler — no por vos. Más detalles en [Metodología](/metodologia).` : `1. Citar fuentes autoritativas con año (CFPB, IRS, state regulators según aplique al tema).
+4. **Divulgación de afiliado** — NO incluyas un callout de divulgación dentro del artículo. La divulgación afiliada vive en /legal y en el footer del sitio (patrón NerdWallet). Mencionar a Cubierto u Hogares por nombre en el cuerpo del artículo es OK; agregar "> **Divulgación:**..." dentro del Markdown NO.` : `1. Citar fuentes autoritativas con año (CFPB, IRS, state regulators según aplique al tema).
 
 2. Toda afirmación sobre ${comp.a} o ${comp.b} debe estar sourceada o hedged.
 
@@ -478,8 +477,6 @@ ${comp.category === "seguros" ? `1. **CFPB NO aplica a seguros.** Por la secció
 
 Estructura:
 ## Introducción (keyword primeras 100 palabras; quién gana en una oración)
-
-[CALLOUT DE DIVULGACIÓN obligatorio acá, antes de la primera tabla — ver Regla 4 arriba]
 
 ## Resumen rápido — quién gana en qué
 (Tabla: Categoría | ${comp.a} | ${comp.b} | Ganador — cada celda debe ser una afirmación verificable con fuente o hedge)
@@ -583,8 +580,8 @@ Estructura:
 ## Cómo cambiar de aseguranza sin pagar cancelación en ${state.nameEs}
 (Contenido operacional real: derechos de cancelación estatales, cálculo de refund, timing relativo al renewal)
 
-## Divulgación: Cubierto es nuestro corredor afiliado en ${state.nameEs}
-(El handoff estándar — incluye cuándo Cubierto SÍ es la opción correcta Y cuándo NO. Esto es lo que preserva nuestro estatus de publisher)
+## Cuándo Cubierto SÍ es la opción correcta — y cuándo NO en ${state.nameEs}
+(Tratamiento editorial honesto del afiliado. Cuándo conviene cotizar con Cubierto y cuándo otro broker o ir directo a la aseguradora es mejor. NO incluyas un callout "> **Divulgación:**..." — la divulgación afiliada vive en /legal y en el footer.)
 
 ## Preguntas frecuentes sobre cambiar de ${comp.competitor} a otra aseguranza en ${state.nameEs}
 (5-7 Q&A reales)${US_SEO_SUFFIX}`,

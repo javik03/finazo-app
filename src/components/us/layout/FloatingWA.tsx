@@ -1,10 +1,12 @@
+import { FINAZO_WA_URL } from "@/lib/wa";
+
 type FloatingWAProps = {
   href?: string;
   ariaLabel?: string;
 };
 
 export function FloatingWA({
-  href = "https://wa.me/13055551234",
+  href = FINAZO_WA_URL,
   ariaLabel = "Pregúntale a Finazo por WhatsApp",
 }: FloatingWAProps): React.ReactElement {
   return (

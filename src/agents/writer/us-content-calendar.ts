@@ -100,18 +100,12 @@ o cualquier otra), las siguientes 4 reglas son OBLIGATORIAS:
      para perfiles con buen crédito; Progressive suele ser más competitiva para
      conductores nuevos") y eliminá el número.
 
-4. **Divulgación de afiliado en formato callout, al INICIO del artículo**
-   (FTC 16 CFR § 255 exige "clear and conspicuous" cerca de la recomendación,
-   no al pie). Inmediatamente después de la introducción, antes de la primera
-   tabla comparativa:
-   > **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que
-   > Finazo). Si nos contactás a través de un enlace de esta guía, recibimos
-   > comisión pagada por la aseguradora o wholesaler — no por vos. Más detalles
-   > en [Metodología](/metodologia).
-   - Mantené una versión breve cerca de cada CTA: "(Comisión pagada por la
-     aseguradora, no por vos.)"
-   - La divulgación general al pie del artículo puede permanecer pero NO
-     reemplaza la del callout superior.
+4. **Divulgación de afiliado** — NO incluyas un callout de divulgación dentro
+   del artículo. La divulgación afiliada vive en la página de Disclaimer Legal
+   ([/legal](/legal)) y en el footer persistente del sitio (patrón NerdWallet).
+   Mencionar a Cubierto u Hogares en el cuerpo está bien, pero NO escribas
+   "> **Divulgación:**..." ni equivalentes en el artículo — eso satura al lector
+   y duplica innecesariamente lo que ya está en el footer + /legal.
 
 ═══════════════════════════════════════════════════════════════════════════
 
@@ -200,7 +194,7 @@ REGLAS E-E-A-T (obligatorias):
 - Incluye un enlace a la metodología de Finazo: "[según nuestra metodología](/metodologia)".
 - Incluye un enlace al perfil del autor (Finazo lo insertará en el byline; tú no escribas el byline).
 - Para artículos de seguros: el autor por default es Javier Keough, quien tiene licencia activa de seguros 2-20 en Florida. NO digas "licencia pendiente" — di "agente licenciado" o cita la licencia directamente. La agencia (Cubierto LLC) tiene la application en curso pero Javier individual tiene su licencia 2-20 activa.
-- Si recomiendas un producto pagado de socio (Cubierto, Hogares), incluye una línea de divulgación: "Cubierto / Hogares es parte de Kornugle. Recibimos comisión cuando te conectas con ellos — no de ti, del proveedor."
+- NO incluyas líneas de divulgación de afiliado dentro del artículo. La divulgación está en [/legal](/legal) y el footer del sitio. Mencionar a Cubierto/Hogares por nombre cuando aplique al tema es OK; agregar "Cubierto es socio afiliado..." en el cuerpo NO es OK.
 
 ENLACES INTERNOS — usa SOLO rutas canónicas de finazo.us (sin prefijo /us — el middleware reescribe):
 - Préstamos → "[compara opciones de préstamo en Finazo](/prestamos)"
@@ -234,7 +228,7 @@ Nunca uses imágenes en otros lugares — solo estos dos marcadores. La descripc
 PRÓXIMOS PASOS CON FINAZO — sección obligatoria al final, ANTES de Preguntas frecuentes:
 Toda guía debe terminar con esta sección que conecta al lector con los productos hermanos. Adapta el lenguaje al tema del artículo:
 
-## Próximos pasos con Finazo
+## Próximos pasos con Finazo para Hispanos en EE.UU. en 2026
 Si después de leer esta guía quieres tomar acción, estas son las tres maneras de seguir adelante:
 - **Cotizar tu seguro** — [habla con Cubierto](/herramientas/cotizador-seguro) — auto, hogar, salud o vida con 8+ aseguradoras en 90 segundos por WhatsApp.
 - **Comprar casa con o sin Social Security** — [pre-califícate con Hogares](/hipotecas) — wholesalers non-QM, ITIN, self-employed. Respuesta en 24 horas.
@@ -249,7 +243,7 @@ Si el artículo es de SEGUROS (auto/hogar/salud/vida) — incluye DOS CTAs:
 > **Cotiza ahora con Cubierto** — Compara con 8+ aseguradoras en 90 segundos por WhatsApp. Sin llamadas, en español, gratis para ti. [Hablar con Carmen →](https://wa.me/13055551234?text=Hola%20Carmen%2C%20cotizar%20seguro)
 
 2. CTA al final (antes de Preguntas frecuentes):
-## ¿Listo para cotizar?
+## ¿Listo para cotizar tu seguro de auto con Cubierto en EE.UU. en 2026?
 [Compara con 8+ aseguradoras en Cubierto](/herramientas/cotizador-seguro) — toma menos de 2 minutos. O escribe a Carmen directamente por WhatsApp y te cotiza con tarifas reales.
 
 Si el artículo es de HIPOTECAS / COMPRA DE CASA — incluye DOS CTAs:
@@ -257,20 +251,22 @@ Si el artículo es de HIPOTECAS / COMPRA DE CASA — incluye DOS CTAs:
 > **Pre-califícate con Hogares** — Si el banco tradicional te dijo que no, Hogares te conecta con 4 wholesalers non-QM en 24 horas. ITIN, self-employed y bank-statement loans aceptados. [Hablar con Sofía →](https://wa.me/13055551234?text=Hola%20Sofia%2C%20pre-calificar%20hipoteca)
 
 2. CTA al final:
-## ¿Listo para pre-calificar?
+## ¿Listo para pre-calificar tu hipoteca con Hogares sin Social Security?
 [Pre-calificación gratis con Hogares](/hipotecas) — respuesta en 24 horas. O simula tu pago mensual con el [simulador de hipoteca](/herramientas/simulador-hipoteca).
 
 Si el artículo es de CRÉDITO / BANKING / TAXES / EDUCACIÓN — incluye UN CTA al final:
-## ¿Tienes una pregunta específica?
+## ¿Tienes una pregunta específica sobre crédito o taxes en EE.UU. en 2026?
 [Pregúntale a Finazo por WhatsApp](https://wa.me/13055551234?text=Hola%20Finazo) — el bot te responde en español, sin tener que descargar nada. O usa el [tracker de credit score](/herramientas/credit-tracker) para tu plan personal.
 
 Si el artículo es de REMESAS — incluye UN CTA al final:
-## ¿Cuánto te ahorras hoy?
+## ¿Cuánto te ahorras enviando dinero a tu familia hoy en 2026?
 [Compara apps de remesas en vivo](/herramientas/comparador-remesas) — Wise vs Remitly vs Western Union, comisiones reales actualizadas cada 6 horas para el corredor que tú eliges.
 
-FORMATO OBLIGATORIO — DIVULGACIÓN AL PIE (cuando menciones Cubierto/Hogares/afiliados):
-Al final del artículo, antes de META:
-> **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que Finazo). Recibimos comisión cuando te conectamos con un agente — la paga la aseguradora o el wholesaler, no tú. Más detalles en nuestra [metodología](/metodologia).
+NO incluyas un bloque de divulgación de afiliado dentro del artículo —
+ni al inicio, ni al pie, ni en formato callout. La divulgación vive en
+[/legal](/legal) y en el footer del sitio, persistente en todas las páginas.
+Mencionar a Cubierto u Hogares por nombre en el cuerpo del artículo es OK;
+agregar un "> **Divulgación:**..." dentro del Markdown NO es OK.
 
 Al final del artículo, en líneas separadas:
 META: [meta description de 150-160 caracteres con la keyword principal]
@@ -298,18 +294,30 @@ Keyword principal: "Fred Loya alternativa"
 Título H1: "Fred Loya: 5 alternativas más baratas para Hispanos en 2026"
 Extensión: 1200-1400 palabras
 
+REGLA CRÍTICA PARA ESTE ARTÍCULO ESPECÍFICAMENTE:
+Este artículo describe 5 aseguradoras alternativas. CADA descripción de carrier (Infinity, Direct General, Progressive, GEICO, Cubierto) DEBE empezar con una de estas dos frases — sin excepción:
+  - "En nuestra experiencia ayudando a conductores hispanos, [carrier]..." (Pattern B hedge)
+  - "Según [fuente pública con año], [carrier]..." (Pattern A source — solo si tenés fuente real)
+NUNCA describir un carrier con una afirmación factual plana como "Infinity es...", "Direct General opera en...", "Progressive ofrece..." — eso crea exposición Lanham Act. SIEMPRE el hedge.
+
+NUNCA incluyas primas mensuales o anuales específicas para los carriers alternativos (ni rangos plana de $X-$Y). Si querés indicar precio, usá afirmaciones cualitativas: "tiende a ser más barata para...", "suele estar en el rango bajo del mercado para...". Las cifras planas tipo "$160/mes" están PROHIBIDAS en este artículo.
+
 Estructura requerida:
 ## Introducción (keyword en primeras 100 palabras; cualquier mención de volumen de quejas DEBE citar NAIC complaint index — NUNCA CFPB, que no tiene jurisdicción sobre seguros per Dodd-Frank § 1027(f))
-## Por qué buscar alternativa a Fred Loya (cualquier afirmación específica sobre Fred Loya debe estar precedida por "Según [fuente nombrada con año]" o por un hedge tipo "En nuestra experiencia ayudando a conductores hispanos...")
-(Tabla: Aseguradora alternativa | Prima mensual estimada con rango por estado y fuente citada | Acepta ITIN según política publicada | NAIC complaint index año más reciente | Estados disponibles)
-## Alternativa 1: Infinity (foco en mercado Hispano, ITIN-friendly)
-## Alternativa 2: Direct General (sin licencia OK en algunos estados)
-## Alternativa 3: Progressive (cobertura amplia, app en español)
-## Alternativa 4: GEICO (mejor precio para conductores limpios)
-## Alternativa 5: Cubierto — broker que cotiza con 8+ aseguradoras
-(menciona divulgación de comisión)
-## Cómo cambiar de Fred Loya sin penalización
-## Preguntas frecuentes
+## Por qué buscar alternativa a Fred Loya según patrones de quejas públicas (cualquier afirmación específica sobre Fred Loya debe estar precedida por "Según [fuente nombrada con año]" o por hedge "En nuestra experiencia...")
+(Tabla: Aseguradora alternativa | Características cualitativas de precio | Acepta ITIN según política publicada | NAIC complaint index año más reciente | Estados disponibles. NO incluir cifras de dólar específicas en esta tabla)
+## Infinity como alternativa a Fred Loya para Hispanos en EE.UU. en 2026
+(empezar el primer párrafo con "En nuestra experiencia ayudando a conductores hispanos, Infinity..." o equivalente con "Según [fuente]")
+## Direct General como alternativa a Fred Loya en el sureste de EE.UU. en 2026
+(mismo patrón obligatorio)
+## Progressive como alternativa a Fred Loya con cobertura amplia en 2026
+(mismo patrón obligatorio)
+## GEICO como alternativa a Fred Loya para conductores con historial limpio en 2026
+(mismo patrón obligatorio)
+## Cubierto — nuestro corredor afiliado que cotiza con 8+ aseguradoras en 2026
+(Cubierto es CORREDOR, no aseguradora; empezar con "En nuestra experiencia operando Cubierto, te conectamos con 8+ aseguradoras...". NO incluyas un callout de divulgación de comisión en esta sección — la divulgación está en /legal y en el footer del sitio.)
+## Cómo cambiar de Fred Loya sin penalización en EE.UU. en 2026
+## Preguntas frecuentes sobre alternativas a Fred Loya para Hispanos en 2026
 ## Conclusión + CTA${US_SEO_SUFFIX}`,
   },
   {
@@ -336,7 +344,7 @@ Estructura requerida:
 ## Alternativa 2: Ocean Harbor (FL específico)
 ## Alternativa 3: Windhaven (cobertura SR-22)
 ## Alternativa 4: Cubierto — cotiza con 8+ aseguradoras desde WhatsApp
-(divulgación de comisión)
+(NO incluyas callout de divulgación — vive en /legal y footer)
 ## Cómo migrar de Estrella sin perder cobertura
 ## Preguntas frecuentes
 ## Conclusión${US_SEO_SUFFIX}`,
@@ -466,7 +474,7 @@ Incluir: ACC Mortgage, Arc Home, NE1st Bank, NFM
 ## Qué documentos necesitas con ITIN
 ## Cuánto down payment necesitas (10-25% típico)
 ## Programa de Hogares: pre-calificación por WhatsApp en 24h
-(divulgación de comisión)
+(NO incluyas callout de divulgación — vive en /legal y footer)
 ## Errores que rechazan tu hipoteca sin SSN
 ## Preguntas frecuentes
 ## Conclusión${US_SEO_SUFFIX}`,
@@ -493,7 +501,7 @@ Estructura:
 ## Paso 6: Cierre y costos
 ## Programas de asistencia para first-time buyers Hispanos
 ## Hogares — Pre-calificación por WhatsApp si el banco te dijo que no
-(divulgación)
+(NO incluyas callout de divulgación — vive en /legal y footer)
 ## Preguntas frecuentes
 ## Conclusión${US_SEO_SUFFIX}`,
   },
@@ -517,7 +525,7 @@ Estructura:
 ## Profit & Loss loans para freelancers
 ## Asset-based loans para inversionistas
 ## Hogares — broker que te conecta con todos
-(divulgación)
+(NO incluyas callout de divulgación — vive en /legal y footer)
 ## Errores que rechazan a self-employed
 ## Preguntas frecuentes
 ## Conclusión${US_SEO_SUFFIX}`,

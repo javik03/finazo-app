@@ -47,9 +47,79 @@ import { resolveInlineImages } from "./inline-images";
 const logger = pino({ name: "fix-insurance-compliance" });
 const anthropic = new Anthropic({ apiKey: config.ANTHROPIC_API_KEY });
 
-const MAX_QUALITY_RETRIES = 2;
+const MAX_QUALITY_RETRIES = 3;
 const DEFAULT_BATCH_SIZE = 3;
 const MAX_BATCH_SIZE = 12;
+
+/**
+ * Hard compliance preamble prepended ABOVE the original topic prompt for
+ * every rewrite. This sits at position 0 so Claude reads it before the
+ * article-specific brief — strongest possible weighting on these rules.
+ *
+ * Use case: when retry feedback at the END of the prompt fails to penetrate
+ * because Claude over-attends to the article brief at the top. Empirically,
+ * hardcoded carrier-alternative articles (Fred Loya, Estrella, etc.) kept
+ * regenerating CFPB references with feedback at the bottom; moving the rules
+ * to the top fixes it.
+ */
+const COMPLIANCE_PREAMBLE = `═══════════════════════════════════════════════════════════════════════════
+COMPLIANCE PREAMBLE — LEE ESTO PRIMERO
+═══════════════════════════════════════════════════════════════════════════
+
+Este artículo ESTÁ SIENDO REESCRITO porque la versión anterior tenía problemas
+de compliance editorial que crean exposición Lanham Act § 43(a) y FDUTPA. La
+versión nueva DEBE cumplir las 4 reglas siguientes — si tu output viola
+cualquiera, será rechazado:
+
+REGLA 1 — CFPB NO aplica a seguros (Dodd-Frank § 1027(f)). CERO menciones de
+"CFPB", "Consumer Financial Protection Bureau", o "consumerfinance.gov" en
+todo el artículo. Para datos de quejas de aseguradoras usar NAIC complaint
+index (https://content.naic.org/cis_consumer_information.htm) o el state DOI
+correspondiente (Florida OIR: floir.com, California DOI: insurance.ca.gov,
+Texas TDI: tdi.texas.gov).
+
+REGLA 2 — Toda afirmación factual sobre una aseguradora nombrada
+(Progressive, GEICO, State Farm, Allstate, Esurance, Direct General, Infinity,
+Fred Loya, Estrella, Confie, Acceptance, Bristol West, Windhaven, Ocean
+Harbor, etc.) DEBE empezar con UNO de los dos patrones:
+  - Patrón A — Fuente nombrada: "Según [fuente con año], [afirmación]". Ej:
+    "Según el NAIC complaint index para 2024, Progressive tuvo un índice de
+    1.23, lo que indica más quejas que el promedio del sector."
+  - Patrón B — Hedge: empezar el párrafo con "En nuestra experiencia
+    ayudando a conductores hispanos", "Según reportes de usuarios en
+    [foro]", "Anecdóticamente", "Hemos observado que".
+NUNCA presentar como hecho plano: "Fred Loya recibe X quejas", "Progressive
+es más restrictiva", "Estrella cobra de más" — esos patrones son los que
+crean exposición Lanham.
+
+REGLA 3 — Toda cifra de prima (anual o mensual) DEBE incluir las tres cosas:
+  (a) fuente nombrada con año (Bankrate 2024, ValuePenguin, NerdWallet, The
+      Zebra, Insurance Information Institute iii.org, o state DOI rate filing),
+  (b) calificador geográfico (national average vs por estado específico),
+  (c) un rango (entre $X y $Y) — NUNCA un solo número plano.
+Si no tenés datos sustentables al momento de escribir, NO inventes un número
+— reemplazá con una afirmación cualitativa ("GEICO tiende a ser más barata
+para perfiles con buen crédito").
+
+REGLA 4 — Cubierto es un CORREDOR (broker), no una aseguradora ni una
+compañía de seguros. Lenguaje requerido: "Cubierto te conecta con
+aseguradoras", "Cubierto cotiza con 8+ carriers". Lenguaje PROHIBIDO:
+"Cubierto te asegura", "Cubierto emite la póliza", "Cubierto es una
+aseguradora". Esta regla aplica también a Hogares (broker hipotecario, no
+prestamista directo).
+
+DIVULGACIÓN DE AFILIADO — NO incluir dentro del artículo. La divulgación
+afiliada vive en la página /legal y en el footer persistente del sitio
+(patrón NerdWallet). NO escribas "> **Divulgación:**..." ni equivalentes
+dentro del Markdown del artículo. Mencionar a Cubierto u Hogares en el
+cuerpo cuando aplique al tema editorial es OK; un callout o sección
+explícita de divulgación de afiliado NO es OK.
+
+═══════════════════════════════════════════════════════════════════════════
+
+Ahora, el brief original del artículo que necesita reescritura:
+
+`;
 
 // ─── Detection: which articles need fixing ────────────────────────────────
 
@@ -148,7 +218,13 @@ async function rewriteArticle(topic: UsContentTopic): Promise<Rewritten | null> 
     category: topic.category,
   };
 
-  let prompt = topic.prompt;
+  // Prepend the compliance preamble so Claude reads it BEFORE the article
+  // brief — empirically the only way to keep CFPB references and flat
+  // pricing out of the regenerated content on the hardcoded carrier-
+  // alternative prompts.
+  const promptWithPreamble = COMPLIANCE_PREAMBLE + topic.prompt;
+
+  let prompt = promptWithPreamble;
   let articleContent = "";
   let metaDescription: string | null = null;
   let keywords: string[] | null = null;
@@ -192,7 +268,9 @@ async function rewriteArticle(topic: UsContentTopic): Promise<Rewritten | null> 
     );
 
     if (attempt < MAX_QUALITY_RETRIES) {
-      prompt = topic.prompt + buildRetryInstructions(gate);
+      // Keep the preamble on the retry prompt too — Claude needs to see the
+      // 4 rules at the top across every attempt, not just the first.
+      prompt = promptWithPreamble + buildRetryInstructions(gate);
       await new Promise((resolve) => setTimeout(resolve, 2000));
     }
   }
