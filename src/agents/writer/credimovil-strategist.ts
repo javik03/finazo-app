@@ -57,6 +57,7 @@ function deriveQualityOptions(topic: CredimovilTopic): QualityGateOptions {
     minWordCount: topic.qualityGate?.minWordCount ?? 1300,
     allowMissingTable: topic.qualityGate?.allowMissingTable ?? false,
     allowMissingCallout: topic.qualityGate?.allowMissingCallout ?? false,
+    category: topic.category,
   };
 }
 

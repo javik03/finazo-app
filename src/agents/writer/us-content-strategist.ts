@@ -81,6 +81,9 @@ function deriveQualityOptions(topic: UsContentTopic): QualityGateOptions {
     minWordCount: topic.qualityGate?.minWordCount ?? (isGlossary ? 800 : 1200),
     allowMissingTable: topic.qualityGate?.allowMissingTable ?? isGlossary,
     allowMissingCallout: topic.qualityGate?.allowMissingCallout ?? false,
+    // Passes through so the gate can activate insurance-compliance checks
+    // (CFPB ban, sourced-or-hedged competitor claims, sourced pricing).
+    category: topic.category,
   };
 }
 

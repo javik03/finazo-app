@@ -62,6 +62,7 @@ function deriveQualityOptions(topic: EnContentTopic): QualityGateOptions {
     minWordCount: topic.qualityGate?.minWordCount ?? 1500,
     allowMissingTable: topic.qualityGate?.allowMissingTable ?? false,
     allowMissingCallout: topic.qualityGate?.allowMissingCallout ?? false,
+    category: topic.category,
   };
 }
 
