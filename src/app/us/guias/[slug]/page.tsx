@@ -143,7 +143,6 @@ export default async function UsGuiaPage({
       "@type": "Organization",
       name: "Finazo",
       url: "https://finazo.us",
-      parentOrganization: { "@type": "Organization", name: "Kornugle" },
     },
     breadcrumb: {
       "@type": "BreadcrumbList",

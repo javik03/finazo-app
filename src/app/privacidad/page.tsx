@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const LAST_UPDATED = "6 de abril de 2026";
-const COMPANY = "MAQ UNO DOS TRES S.A. de C.V.";
+const COMPANY = "Finazo LLC";
 const CONTACT_EMAIL = "legal@finazo.lat";
 
 export default function PrivacidadPage() {

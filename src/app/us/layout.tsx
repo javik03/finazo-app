@@ -21,7 +21,7 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": "https://finazo.us/#organization",
   name: "Finazo",
-  legalName: "MAQ UNO DOS TRES S.A. de C.V.",
+  legalName: "Finazo LLC",
   alternateName: "Finazo US",
   url: "https://finazo.us",
   logo: {
@@ -31,8 +31,7 @@ const organizationSchema = {
     height: 512,
   },
   description:
-    "Publicación independiente de finanzas para Hispanos en EE.UU. — guías, comparativos y conexiones con Cubierto (seguros) y Hogares (hipotecas).",
-  parentOrganization: { "@type": "Organization", name: "Kornugle" },
+    "Publicación independiente de finanzas para Hispanos en EE.UU. — guías, comparativos y conexiones con socios afiliados como Cubierto (seguros) y Hogares (hipotecas).",
   knowsLanguage: ["es", "en"],
   areaServed: {
     "@type": "Country",

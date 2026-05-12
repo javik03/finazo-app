@@ -136,12 +136,15 @@ export default function MetodologiaPage(): React.ReactElement {
 
           <h2>Independencia editorial</h2>
           <p>
-            Finazo es parte de Kornugle, el grupo que también opera Cubierto
-            (agencia de seguros) y Hogares (broker de hipotecas). Nuestra
-            política editorial garantiza que <strong>los artículos no se
-            modifican para favorecer a los productos hermanos</strong>. Si
-            Cubierto u Hogares no son la mejor opción para tu caso, lo decimos
-            — y te explicamos cuál sí lo es.
+            Finazo es una publicación independiente operada por Finazo LLC.
+            Cubierto (agencia de seguros) y Hogares (broker de hipotecas) son{" "}
+            <strong>socios afiliados</strong> — entidades independientes con sus
+            propias licencias, no parte del mismo grupo corporativo que Finazo.
+            Cuando referimos lectores y se cierra un negocio, recibimos comisión
+            del socio. Nuestra política editorial garantiza que{" "}
+            <strong>los artículos no se modifican para favorecer a un socio
+            afiliado</strong>. Si Cubierto u Hogares no son la mejor opción para
+            tu caso, lo decimos — y te explicamos cuál sí lo es.
           </p>
 
           <h2>Cómo verificamos al equipo editorial</h2>

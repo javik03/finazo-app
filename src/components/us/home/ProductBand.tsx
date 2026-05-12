@@ -1,6 +1,7 @@
 /**
  * Editorial endorsement band for Cubierto (insurance) + Hogares (mortgage).
- * Disclosure copy reflects Kornugle parent + commission model.
+ * Disclosure copy reflects the affiliate-partner commission model — Cubierto
+ * and Hogares are independent partners of Finazo, not corporate siblings.
  */
 
 type ProductCardData = {

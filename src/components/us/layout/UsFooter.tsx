@@ -58,7 +58,7 @@ export function UsFooter(): React.ReactElement {
             </div>
             <p className="us-foot-tag">
               Publicación independiente de finanzas en español para la familia
-              Hispana en EE.UU. Parte de Kornugle.
+              Hispana en EE.UU.
             </p>
           </div>
           {COLUMNS.map((col) => (
@@ -73,14 +73,27 @@ export function UsFooter(): React.ReactElement {
           ))}
         </div>
         <div className="us-foot-bottom">
-          <span>© {year} KORNUGLE · MAQ UNO DOS TRES S.A. DE C.V.</span>
+          <span>© {year} Finazo LLC</span>
           <p className="us-disc">
-            Finazo es una marca editorial de Kornugle. Recibimos comisión cuando
-            nos conectas con Cubierto (agencia de seguros) u Hogares (broker
-            hipotecario), pero no te cobramos a ti — la paga la aseguradora o
-            wholesaler. Las cotizaciones mostradas son estimados y no
-            constituyen oferta de contrato. Hogares no es prestamista directo —
-            coordinamos con wholesalers licenciados.
+            Finazo es una publicación independiente de finanzas personales.
+            Cubierto (agencia de seguros) y Hogares (broker hipotecario) son
+            <strong> socios afiliados</strong> — recibimos comisión cuando te
+            conectas con ellos, pero no te cobramos a ti: la paga la
+            aseguradora o wholesaler. Las cotizaciones mostradas son estimados
+            y no constituyen oferta de contrato. Esta página es solo para fines
+            informativos y no es asesoría legal, fiscal ni financiera — verifica
+            con un profesional licenciado para tu situación específica.
+          </p>
+          <p className="us-disc">
+            <Link href="/privacidad">Privacidad</Link>
+            {" · "}
+            <Link href="/terminos">Términos</Link>
+            {" · "}
+            <Link href="/legal">Disclaimer legal</Link>
+            {" · "}
+            <Link href="/metodologia">Metodología</Link>
+            {" · "}
+            <Link href="/estandares-editoriales">Estándares editoriales</Link>
           </p>
         </div>
       </div>

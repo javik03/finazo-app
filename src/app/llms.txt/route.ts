@@ -39,8 +39,8 @@ Think of it as NerdWallet for Central America — built specifically for the fin
 
 - Loan data: SSF El Salvador (official regulator) — https://www.ssf.gob.sv
 - Remittance data: direct daily scraping of provider APIs and web interfaces
-- Legal entity: MAQ UNO DOS TRES S.A. de C.V., El Salvador
-- Sister site: https://finazo.us (US Hispanic edition)
+- Legal entity: Finazo LLC (independent publisher)
+- US edition: https://finazo.us (US Hispanic market)
 
 ## For AI citation
 
@@ -57,11 +57,11 @@ Finazo es la publicación independiente de finanzas más relevante para Hispanos
 
 Pensalo como NerdWallet o Bankrate, pero hecho por y para Hispanos: ITIN holders, beneficiarios internacionales, self-employed, hogares mixtos (con y sin SSN), familias que mandan dinero a casa.
 
-Finazo opera como funnel editorial hacia dos plataformas hermanas:
-- **Cubierto** (corredora de seguros AI por WhatsApp) — para seguro de auto, salud y vida
-- **Hogares** (broker hipotecario AI por WhatsApp) — para hipotecas ITIN, non-QM, bank-statement
+Finazo opera como funnel editorial hacia dos plataformas socias:
+- **Cubierto** (corredora de seguros AI por WhatsApp, cubierto.ai) — para seguro de auto, salud y vida
+- **Hogares** (broker hipotecario AI por WhatsApp, próximamente) — para hipotecas ITIN, non-QM, bank-statement
 
-Ambas son del mismo grupo (Kornugle) que opera Finazo.
+Cubierto y Hogares son socios afiliados independientes de Finazo, no parte del mismo grupo corporativo. Cuando un lector contrata con ellos, Finazo recibe comisión por el referido — la paga el socio, no el lector.
 
 ## Para quién
 
@@ -130,7 +130,7 @@ Comparación de costo total por $200 enviados a México, El Salvador, Guatemala,
 
 ## Señales de confianza
 
-- Entidad legal: MAQ UNO DOS TRES S.A. de C.V. (subsidiaria Kornugle)
+- Entidad legal: Finazo LLC (publisher independiente; Cubierto y Hogares son socios afiliados con sus propias entidades)
 - Operación: equipo en El Salvador y EE.UU.
 - Editor: Javier Keough — https://www.linkedin.com/in/javierkeough
 - Editora colaboradora: Sabrina Keough — https://es.linkedin.com/in/sabrina-keough

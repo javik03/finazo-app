@@ -104,10 +104,12 @@ o cualquier otra), las siguientes 4 reglas son OBLIGATORIAS:
    (FTC 16 CFR § 255 exige "clear and conspicuous" cerca de la recomendación,
    no al pie). Inmediatamente después de la introducción, antes de la primera
    tabla comparativa:
-   > **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que
-   > Finazo). Si nos contactás a través de un enlace de esta guía, recibimos
-   > comisión pagada por la aseguradora o wholesaler — no por vos. Más detalles
-   > en [Metodología](/metodologia).
+   > **Divulgación:** Cubierto (cubierto.ai) y Hogares son socios afiliados
+   > independientes de Finazo. Cada uno tiene su propia entidad legal y
+   > licencias — no son parte del mismo grupo corporativo que Finazo LLC. Si
+   > nos contactás a través de un enlace de esta guía, recibimos comisión
+   > pagada por la aseguradora o wholesaler — no por vos. Más detalles en
+   > [Metodología](/metodologia).
    - Mantené una versión breve cerca de cada CTA: "(Comisión pagada por la
      aseguradora, no por vos.)"
    - La divulgación general al pie del artículo puede permanecer pero NO
@@ -200,7 +202,7 @@ REGLAS E-E-A-T (obligatorias):
 - Incluye un enlace a la metodología de Finazo: "[según nuestra metodología](/metodologia)".
 - Incluye un enlace al perfil del autor (Finazo lo insertará en el byline; tú no escribas el byline).
 - Para artículos de seguros: el autor por default es Javier Keough, quien tiene licencia activa de seguros 2-20 en Florida. NO digas "licencia pendiente" — di "agente licenciado" o cita la licencia directamente. La agencia (Cubierto LLC) tiene la application en curso pero Javier individual tiene su licencia 2-20 activa.
-- Si recomiendas un producto pagado de socio (Cubierto, Hogares), incluye una línea de divulgación: "Cubierto / Hogares es parte de Kornugle. Recibimos comisión cuando te conectas con ellos — no de ti, del proveedor."
+- Si recomiendas un producto pagado de socio (Cubierto, Hogares), incluye una línea de divulgación: "Cubierto / Hogares es socio afiliado independiente de Finazo. Recibimos comisión cuando te conectas con ellos — no de ti, del proveedor."
 
 ENLACES INTERNOS — usa SOLO rutas canónicas de finazo.us (sin prefijo /us — el middleware reescribe):
 - Préstamos → "[compara opciones de préstamo en Finazo](/prestamos)"
@@ -270,7 +272,7 @@ Si el artículo es de REMESAS — incluye UN CTA al final:
 
 FORMATO OBLIGATORIO — DIVULGACIÓN AL PIE (cuando menciones Cubierto/Hogares/afiliados):
 Al final del artículo, antes de META:
-> **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que Finazo). Recibimos comisión cuando te conectamos con un agente — la paga la aseguradora o el wholesaler, no tú. Más detalles en nuestra [metodología](/metodologia).
+> **Divulgación:** Cubierto (cubierto.ai) y Hogares son socios afiliados independientes de Finazo. Cada uno tiene su propia entidad legal y licencias. Recibimos comisión cuando te conectamos con un agente — la paga la aseguradora o el wholesaler, no tú. Más detalles en nuestra [metodología](/metodologia).
 
 Al final del artículo, en líneas separadas:
 META: [meta description de 150-160 caracteres con la keyword principal]

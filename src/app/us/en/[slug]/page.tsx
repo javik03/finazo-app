@@ -145,7 +145,6 @@ export default async function EnGuiaPage({ params }: Props): Promise<React.React
       "@type": "Organization",
       name: "Finazo",
       url: "https://finazo.us",
-      parentOrganization: { "@type": "Organization", name: "Kornugle" },
     },
     breadcrumb: {
       "@type": "BreadcrumbList",

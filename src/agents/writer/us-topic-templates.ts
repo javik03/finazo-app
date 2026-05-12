@@ -470,7 +470,7 @@ ${comp.category === "seguros" ? `1. **CFPB NO aplica a seguros.** Por la secció
    Si no tenés datos sustentables, reemplazá el número específico con una afirmación cualitativa ("GEICO tiende a ser más barata para perfiles con buen crédito").
 
 4. **Divulgación de afiliado al inicio**, no al final. Inmediatamente después de la intro, antes de la primera tabla:
-   > **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que Finazo). Si nos contactás a través de un enlace de esta guía, recibimos comisión pagada por la aseguradora o wholesaler — no por vos. Más detalles en [Metodología](/metodologia).` : `1. Citar fuentes autoritativas con año (CFPB, IRS, state regulators según aplique al tema).
+   > **Divulgación:** Cubierto (cubierto.ai) y Hogares son socios afiliados independientes de Finazo — entidades legales separadas con sus propias licencias, no parte del mismo grupo corporativo. Si nos contactás a través de un enlace, recibimos comisión pagada por la aseguradora o wholesaler — no por vos. Más detalles en [Metodología](/metodologia).` : `1. Citar fuentes autoritativas con año (CFPB, IRS, state regulators según aplique al tema).
 
 2. Toda afirmación sobre ${comp.a} o ${comp.b} debe estar sourceada o hedged.
 

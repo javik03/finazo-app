@@ -95,7 +95,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Finazo",
-  legalName: "MAQ UNO DOS TRES S.A. de C.V.",
+  legalName: "Finazo LLC",
   url: "https://finazo.lat",
   logo: "https://finazo.lat/icon.svg",
   foundingLocation: {

@@ -68,7 +68,7 @@ export default function EstandaresPage(): React.ReactElement {
           <ul>
             <li>Quién paga la comisión (la aseguradora, el wholesaler, etc.)</li>
             <li>Si el lector paga algo extra (en el 99% de los casos: no)</li>
-            <li>La relación corporativa con Cubierto / Hogares (parte de Kornugle)</li>
+            <li>La relación de afiliado con Cubierto y Hogares (socios afiliados independientes, no parte del mismo grupo corporativo que Finazo)</li>
           </ul>
 
           <h2>5. Política de uso de IA</h2>

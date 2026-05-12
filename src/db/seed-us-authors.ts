@@ -18,9 +18,9 @@ const AUTHORS = [
     slug: "javier-keough",
     displayName: "Javier Keough",
     bioShort:
-      "Fundador de Finazo y Kornugle. Construye productos financieros para la comunidad Hispana en EE.UU. y Centroamérica.",
+      "Fundador de Finazo. Agente licenciado de seguros (Florida 2-20). Construye productos financieros para la comunidad Hispana en EE.UU.",
     bioLong:
-      "Javier Keough es fundador de Finazo y de Kornugle, el grupo detrás de Cubierto (agencia de seguros) y Hogares (broker de hipotecas). Lleva más de una década construyendo productos para la comunidad Hispana, con foco en el acceso a crédito, seguros y servicios financieros sin papeles tradicionales. Escribe sobre cómo navegar el sistema financiero de EE.UU. en español, con énfasis en familias con ITIN, self-employed y recién llegados.",
+      "Javier Keough es fundador de Finazo LLC, publicación independiente de finanzas personales para Hispanos en EE.UU. Es agente de seguros licenciado en Florida (licencia 2-20) y socio afiliado de Cubierto (agencia de seguros) y Hogares (broker hipotecario, próximamente). Lleva más de una década construyendo productos para la comunidad Hispana, con foco en el acceso a crédito, seguros y servicios financieros sin papeles tradicionales. Escribe sobre cómo navegar el sistema financiero de EE.UU. en español, con énfasis en familias con ITIN, self-employed y recién llegados.",
     linkedinUrl: "https://www.linkedin.com/in/javier-keough",
     twitterUrl: null,
     avatarUrl: null,

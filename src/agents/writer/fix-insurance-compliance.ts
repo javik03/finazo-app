@@ -110,9 +110,11 @@ prestamista directo).
 
 DIVULGACIÓN DE AFILIADO AL INICIO (FTC 16 CFR § 255): inmediatamente después
 de la introducción, antes de la primera tabla:
-> **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que
-> Finazo). Si nos contactás a través de un enlace, recibimos comisión pagada
-> por la aseguradora o wholesaler — no por vos.
+> **Divulgación:** Cubierto (cubierto.ai) y Hogares son socios afiliados
+> independientes de Finazo — entidades legales separadas con sus propias
+> licencias, no parte del mismo grupo corporativo. Si nos contactás a través
+> de un enlace, recibimos comisión pagada por la aseguradora o wholesaler —
+> no por vos.
 
 ═══════════════════════════════════════════════════════════════════════════
 

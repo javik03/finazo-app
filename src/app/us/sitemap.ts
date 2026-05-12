@@ -56,6 +56,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/acerca`,                            lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/metodologia`,                       lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/estandares-editoriales`,            lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/legal`,                             lastModified: now, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${BASE}/privacidad`,                        lastModified: now, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${BASE}/terminos`,                          lastModified: now, changeFrequency: "monthly", priority: 0.4 },
   ];
 
   const articleUrls: MetadataRoute.Sitemap = articles.map((a) => ({

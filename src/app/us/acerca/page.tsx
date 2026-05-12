@@ -86,13 +86,15 @@ export default async function AcercaPage(): Promise<React.ReactElement> {
           </p>
           <ul>
             <li>
-              <strong>Cubierto</strong> — agencia de seguros (parte de
-              Kornugle). Cuando un lector cotiza con Cubierto, la aseguradora
-              paga comisión a Cubierto.
+              <strong>Cubierto</strong> — agencia de seguros, socio afiliado
+              independiente (cubierto.ai). Cuando un lector cotiza con
+              Cubierto, la aseguradora paga comisión a Cubierto, y Cubierto
+              comparte una porción con Finazo por el referido.
             </li>
             <li>
-              <strong>Hogares</strong> — broker hipotecario (parte de Kornugle).
-              Cuando cierra un préstamo, el wholesaler paga comisión.
+              <strong>Hogares</strong> — broker hipotecario, socio afiliado
+              independiente (próximamente). Cuando cierra un préstamo, el
+              wholesaler paga comisión.
             </li>
             <li>
               <strong>Wise, Remitly, Western Union</strong> y otros partners de
@@ -164,11 +166,14 @@ export default async function AcercaPage(): Promise<React.ReactElement> {
 
           <h2>Estructura corporativa</h2>
           <p>
-            Finazo es una marca editorial de <strong>Kornugle</strong> (entidad
-            legal: <em>MAQ UNO DOS TRES S.A. DE C.V.</em>), el grupo que opera
-            las marcas hermanas Cubierto y Hogares. La política editorial es
-            independiente de la operación comercial — el equipo de redacción no
-            tiene cuotas de venta ni comisiones por artículo publicado.
+            Finazo es operada por <strong>Finazo LLC</strong>, una entidad
+            independiente. Cubierto y Hogares son <strong>socios afiliados</strong>{" "}
+            con sus propias entidades legales, licencias y responsabilidades —
+            no son subsidiarias ni parte del mismo grupo corporativo que Finazo.
+            La relación es estrictamente afiliada: Finazo refiere lectores, los
+            socios pagan comisión por contrataciones cerradas. El equipo
+            editorial no tiene cuotas de venta ni comisiones por artículo
+            publicado.
           </p>
 
           <h2>Cómo contactarnos</h2>

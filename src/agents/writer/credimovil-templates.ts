@@ -98,7 +98,7 @@ ENLACE EXTERNO A CREDIMÓVIL (obligatorio en artículos de préstamo por carro):
 
 DIVULGACIÓN OBLIGATORIA (cuando mencionés CrediMóvil):
 Al final del artículo, antes de Preguntas Frecuentes:
-> **Divulgación:** CrediMóvil es parte del grupo Kornugle, al igual que Finazo. Cuando te conectamos con ellos recibimos comisión — la paga la compañía, no vos. Esto no afecta nuestra evaluación editorial del producto.
+> **Divulgación:** CrediMóvil es socio afiliado independiente de Finazo — opera bajo su propia entidad legal y licencias en El Salvador, no parte del mismo grupo corporativo que Finazo. Cuando te conectamos con ellos recibimos comisión — la paga la compañía, no vos. Esto no afecta nuestra evaluación editorial del producto.
 
 FORMATO OBLIGATORIO — CALLOUT BOX:
 Después de la introducción, antes del primer H2:
@@ -300,7 +300,7 @@ ESTRUCTURA SUGERIDA:
 (Tabla con columnas claras y filas por criterio)
 ## [H2 expandido sobre cuándo conviene cada opción según el perfil del usuario]
 ## [H2 expandido sobre riesgos a considerar antes de firmar cada producto]
-## Divulgación: CrediMóvil es parte del grupo Kornugle
+## Divulgación: CrediMóvil es socio afiliado independiente de Finazo
 (El bloque de divulgación obligatorio)
 ## Preguntas frecuentes sobre ${c.title.toLowerCase()} en ${SEO_TARGET_YEAR}${SV_CREDIMOVIL_SUFFIX}`,
   };
@@ -349,7 +349,7 @@ ESTRUCTURA SUGERIDA:
 ## [H2 sobre dónde está disponible en El Salvador en ${SEO_TARGET_YEAR}]
 (Enlaces internos a las páginas de ciudad: San Salvador, Santa Ana, San Miguel, Soyapango, Mejicanos, Santa Tecla — usá rutas /guias/{slug-de-cada-ciudad})
 
-## Divulgación: CrediMóvil es parte del grupo Kornugle
+## Divulgación: CrediMóvil es socio afiliado independiente de Finazo
 
 ## Preguntas frecuentes sobre préstamos por tu carro en El Salvador en ${SEO_TARGET_YEAR}${SV_CREDIMOVIL_SUFFIX}`,
   };
