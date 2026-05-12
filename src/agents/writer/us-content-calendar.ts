@@ -298,18 +298,30 @@ Keyword principal: "Fred Loya alternativa"
 Título H1: "Fred Loya: 5 alternativas más baratas para Hispanos en 2026"
 Extensión: 1200-1400 palabras
 
+REGLA CRÍTICA PARA ESTE ARTÍCULO ESPECÍFICAMENTE:
+Este artículo describe 5 aseguradoras alternativas. CADA descripción de carrier (Infinity, Direct General, Progressive, GEICO, Cubierto) DEBE empezar con una de estas dos frases — sin excepción:
+  - "En nuestra experiencia ayudando a conductores hispanos, [carrier]..." (Pattern B hedge)
+  - "Según [fuente pública con año], [carrier]..." (Pattern A source — solo si tenés fuente real)
+NUNCA describir un carrier con una afirmación factual plana como "Infinity es...", "Direct General opera en...", "Progressive ofrece..." — eso crea exposición Lanham Act. SIEMPRE el hedge.
+
+NUNCA incluyas primas mensuales o anuales específicas para los carriers alternativos (ni rangos plana de $X-$Y). Si querés indicar precio, usá afirmaciones cualitativas: "tiende a ser más barata para...", "suele estar en el rango bajo del mercado para...". Las cifras planas tipo "$160/mes" están PROHIBIDAS en este artículo.
+
 Estructura requerida:
 ## Introducción (keyword en primeras 100 palabras; cualquier mención de volumen de quejas DEBE citar NAIC complaint index — NUNCA CFPB, que no tiene jurisdicción sobre seguros per Dodd-Frank § 1027(f))
-## Por qué buscar alternativa a Fred Loya (cualquier afirmación específica sobre Fred Loya debe estar precedida por "Según [fuente nombrada con año]" o por un hedge tipo "En nuestra experiencia ayudando a conductores hispanos...")
-(Tabla: Aseguradora alternativa | Prima mensual estimada con rango por estado y fuente citada | Acepta ITIN según política publicada | NAIC complaint index año más reciente | Estados disponibles)
-## Alternativa 1: Infinity (foco en mercado Hispano, ITIN-friendly)
-## Alternativa 2: Direct General (sin licencia OK en algunos estados)
-## Alternativa 3: Progressive (cobertura amplia, app en español)
-## Alternativa 4: GEICO (mejor precio para conductores limpios)
-## Alternativa 5: Cubierto — broker que cotiza con 8+ aseguradoras
-(menciona divulgación de comisión)
-## Cómo cambiar de Fred Loya sin penalización
-## Preguntas frecuentes
+## Por qué buscar alternativa a Fred Loya según patrones de quejas públicas (cualquier afirmación específica sobre Fred Loya debe estar precedida por "Según [fuente nombrada con año]" o por hedge "En nuestra experiencia...")
+(Tabla: Aseguradora alternativa | Características cualitativas de precio | Acepta ITIN según política publicada | NAIC complaint index año más reciente | Estados disponibles. NO incluir cifras de dólar específicas en esta tabla)
+## Infinity como alternativa a Fred Loya para Hispanos en EE.UU. en 2026
+(empezar el primer párrafo con "En nuestra experiencia ayudando a conductores hispanos, Infinity..." o equivalente con "Según [fuente]")
+## Direct General como alternativa a Fred Loya en el sureste de EE.UU. en 2026
+(mismo patrón obligatorio)
+## Progressive como alternativa a Fred Loya con cobertura amplia en 2026
+(mismo patrón obligatorio)
+## GEICO como alternativa a Fred Loya para conductores con historial limpio en 2026
+(mismo patrón obligatorio)
+## Cubierto — nuestro corredor afiliado que cotiza con 8+ aseguradoras en 2026
+(Cubierto es CORREDOR, no aseguradora; menciona divulgación de comisión; empezar con "En nuestra experiencia operando Cubierto, te conectamos con 8+ aseguradoras...")
+## Cómo cambiar de Fred Loya sin penalización en EE.UU. en 2026
+## Preguntas frecuentes sobre alternativas a Fred Loya para Hispanos en 2026
 ## Conclusión + CTA${US_SEO_SUFFIX}`,
   },
   {
