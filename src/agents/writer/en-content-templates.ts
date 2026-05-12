@@ -101,8 +101,12 @@ REQUIRED STRUCTURAL ELEMENTS:
   ![INLINE: bicultural family looking at phone screen together]()
   Place the first right after the callout; the second around the 2/3 mark.
 
-AFFILIATE DISCLOSURE BLOCK (mandatory near the end):
-> **Disclosure:** Finazo is a Spanish-language personal finance publisher serving Hispanic families in the US. We have affiliated products (Cubierto for insurance, Hogares for mortgage) and partner with several other financial services brands as affiliates. We earn commission when readers use our recommendations.
+AFFILIATE DISCLOSURE — do NOT include inside the article. The affiliate
+disclosure lives on the /legal page and in the persistent site footer
+(NerdWallet pattern). Don't write "> **Disclosure:**..." in the article
+Markdown. Mentioning Cubierto, Hogares or other partners by name in the
+body when relevant to the topic is fine; an in-article disclosure callout
+is not.
 
 INTERNAL LINKS — use canonical English paths where available:
 - English hub → /en

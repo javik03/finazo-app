@@ -108,13 +108,12 @@ aseguradoras", "Cubierto cotiza con 8+ carriers". Lenguaje PROHIBIDO:
 aseguradora". Esta regla aplica también a Hogares (broker hipotecario, no
 prestamista directo).
 
-DIVULGACIÓN DE AFILIADO AL INICIO (FTC 16 CFR § 255): inmediatamente después
-de la introducción, antes de la primera tabla:
-> **Divulgación:** Cubierto (cubierto.ai) y Hogares son socios afiliados
-> independientes de Finazo — entidades legales separadas con sus propias
-> licencias, no parte del mismo grupo corporativo. Si nos contactás a través
-> de un enlace, recibimos comisión pagada por la aseguradora o wholesaler —
-> no por vos.
+DIVULGACIÓN DE AFILIADO — NO incluir dentro del artículo. La divulgación
+afiliada vive en la página /legal y en el footer persistente del sitio
+(patrón NerdWallet). NO escribas "> **Divulgación:**..." ni equivalentes
+dentro del Markdown del artículo. Mencionar a Cubierto u Hogares en el
+cuerpo cuando aplique al tema editorial es OK; un callout o sección
+explícita de divulgación de afiliado NO es OK.
 
 ═══════════════════════════════════════════════════════════════════════════
 

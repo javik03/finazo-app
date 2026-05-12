@@ -96,9 +96,13 @@ ENLACES INTERNOS — usar SOLO rutas canónicas de finazo.lat:
 ENLACE EXTERNO A CREDIMÓVIL (obligatorio en artículos de préstamo por carro):
 "[Cotiza con CrediMóvil](${CREDIMOVIL_AFFILIATE_URL}?utm_source=finazo&utm_medium=editorial&utm_campaign=prestamos-carro)" — usar el UTM exacto para attribution.
 
-DIVULGACIÓN OBLIGATORIA (cuando mencionés CrediMóvil):
-Al final del artículo, antes de Preguntas Frecuentes:
-> **Divulgación:** CrediMóvil es socio afiliado independiente de Finazo — opera bajo su propia entidad legal y licencias en El Salvador, no parte del mismo grupo corporativo que Finazo. Cuando te conectamos con ellos recibimos comisión — la paga la compañía, no vos. Esto no afecta nuestra evaluación editorial del producto.
+DIVULGACIÓN DE AFILIADO — NO incluir dentro del artículo:
+La divulgación afiliada (CrediMóvil es socio afiliado de Finazo, comisión por
+referidos, etc.) vive en la página /legal y en el footer persistente del sitio
+(patrón NerdWallet). NO escribas "> **Divulgación:**..." ni equivalentes
+dentro del Markdown del artículo. Mencionar a CrediMóvil por nombre cuando
+aplique al tema editorial es OK; agregar un callout o sección de divulgación
+en el cuerpo NO es OK.
 
 FORMATO OBLIGATORIO — CALLOUT BOX:
 Después de la introducción, antes del primer H2:
@@ -300,8 +304,7 @@ ESTRUCTURA SUGERIDA:
 (Tabla con columnas claras y filas por criterio)
 ## [H2 expandido sobre cuándo conviene cada opción según el perfil del usuario]
 ## [H2 expandido sobre riesgos a considerar antes de firmar cada producto]
-## Divulgación: CrediMóvil es socio afiliado independiente de Finazo
-(El bloque de divulgación obligatorio)
+(NO incluyas sección de divulgación dentro del artículo — vive en /legal y en el footer del sitio)
 ## Preguntas frecuentes sobre ${c.title.toLowerCase()} en ${SEO_TARGET_YEAR}${SV_CREDIMOVIL_SUFFIX}`,
   };
 }
@@ -348,8 +351,6 @@ ESTRUCTURA SUGERIDA:
 
 ## [H2 sobre dónde está disponible en El Salvador en ${SEO_TARGET_YEAR}]
 (Enlaces internos a las páginas de ciudad: San Salvador, Santa Ana, San Miguel, Soyapango, Mejicanos, Santa Tecla — usá rutas /guias/{slug-de-cada-ciudad})
-
-## Divulgación: CrediMóvil es socio afiliado independiente de Finazo
 
 ## Preguntas frecuentes sobre préstamos por tu carro en El Salvador en ${SEO_TARGET_YEAR}${SV_CREDIMOVIL_SUFFIX}`,
   };
