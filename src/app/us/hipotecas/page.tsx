@@ -7,6 +7,7 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HogaresFeatureCard } from "@/components/us/sub/HogaresFeatureCard";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 
 export const metadata: Metadata = {
   title: "Comprar casa sin Social Security — hipotecas 2026",
@@ -110,7 +111,7 @@ const faqSchema = {
   })),
 };
 
-export default function UsHipotecasPage(): React.ReactElement {
+export default async function UsHipotecasPage(): Promise<React.ReactElement> {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -249,24 +250,7 @@ export default function UsHipotecasPage(): React.ReactElement {
             </div>
           </section>
 
-          {/* Related guides */}
-          <section className="us-sub-section">
-            <div className="us-sub-section-head">
-              <h2 className="us-serif">Guías <i>relacionadas</i></h2>
-            </div>
-            <ul className="us-related-list">
-              <li>
-                <Link href="/guias/hipoteca-sin-social-security-itin-2026" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">Hipoteca sin Social Security en 2026: cómo comprar casa con ITIN</div>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-          </section>
+          <ClusterArticlesSection clusterKey="hipotecas" />
         </div>
       </main>
 

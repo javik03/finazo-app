@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 
 export const metadata: Metadata = {
   title: "Seguros para Hispanos en EE.UU. — auto, salud, vida",
@@ -103,7 +104,7 @@ const faqSchema = {
   })),
 };
 
-export default function UsSegurosHubPage(): React.ReactElement {
+export default async function UsSegurosHubPage(): Promise<React.ReactElement> {
   return (
     <>
       <script
@@ -190,123 +191,7 @@ export default function UsSegurosHubPage(): React.ReactElement {
             </div>
           </section>
 
-          <section className="us-sub-section">
-            <div className="us-sub-section-head">
-              <h2 className="us-serif">
-                Guías <i>relacionadas</i>
-              </h2>
-            </div>
-            <ul className="us-related-list">
-              <li>
-                <Link href="/guias" className="us-related-item">
-                  <svg
-                    className="us-arrow"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Archivo completo de guías de seguros
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/credito" className="us-related-item">
-                  <svg
-                    className="us-arrow"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Crédito: cómo el credit score baja tu prima de seguro
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/hipotecas" className="us-related-item">
-                  <svg
-                    className="us-arrow"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Hipotecas con ITIN: la guía completa
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/guias/alternativa-a-confie-seguros-texas-2026" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Alternativas a Confie Seguros en Texas (2026)
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/guias/estrella-insurance-alternativa-mejor-seguro-hispanos-florida" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Alternativas a Estrella Insurance en Florida (2026)
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/guias/progressive-vs-geico-hispanos" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Progressive vs GEICO para conductores Hispanos
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/guias/alternativa-a-freeway-insurance-florida-2026" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Alternativas a Freeway Insurance en Florida (2026)
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-          </section>
+          <ClusterArticlesSection clusterKey="seguros" />
         </div>
       </main>
 

@@ -54,6 +54,7 @@ const faqSchema = {
 };
 
 import { FINAZO_WA_URL } from "@/lib/wa";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 
 const WA_BASE = FINAZO_WA_URL;
 
@@ -247,6 +248,8 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
               ))}
             </div>
           </section>
+
+          <ClusterArticlesSection clusterKey="prestamos" />
         </div>
       </main>
 
