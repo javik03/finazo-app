@@ -6,7 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Remesas de EE.UU. a LATAM en español — comparar y ahorrar | Finazo",
+  title: "Remesas EE.UU. a LATAM — comparar y ahorrar",
   description:
     "Guía editorial sobre remesas de EE.UU. a México, Guatemala, El Salvador, Honduras y más. Compara Wise, Remitly, WU y MoneyGram al mejor tipo de cambio.",
   alternates: { canonical: "https://finazo.us/remesas" },

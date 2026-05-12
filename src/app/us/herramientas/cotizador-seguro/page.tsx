@@ -7,7 +7,7 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 
 export const metadata: Metadata = {
-  title: "Cotizador de seguro en español — 8+ aseguradoras por WhatsApp | Finazo",
+  title: "Cotizador de seguro — 8+ aseguradoras por WhatsApp",
   description:
     "Cotiza seguro de auto, salud o vida con 8+ aseguradoras en una sola conversación de WhatsApp. ITIN OK. Gratis para ti. Carmen, agente virtual de Cubierto.",
   alternates: { canonical: "https://finazo.us/herramientas/cotizador-seguro" },

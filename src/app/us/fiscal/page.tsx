@@ -6,8 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title:
-    "Declarar impuestos sin Social Security — guía Hispanos 2026 | Finazo",
+  title: "Declarar impuestos sin Social Security 2026",
   description:
     "Guía editorial sobre impuestos en EE.UU. para la comunidad Hispana sin Social Security: cómo sacar ITIN con Form W-7, declarar con SSN o sin él, créditos para padres, errores que cuestan dinero.",
   alternates: { canonical: "https://finazo.us/fiscal" },

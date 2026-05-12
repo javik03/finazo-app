@@ -7,8 +7,7 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 
 export const metadata: Metadata = {
-  title:
-    "Seguros en español para Hispanos en EE.UU. — auto, salud, vida | Finazo",
+  title: "Seguros para Hispanos en EE.UU. — auto, salud, vida",
   description:
     "Guía editorial sobre seguro de auto, salud y vida para la comunidad Hispana en EE.UU. Tarifas reales por estado, opciones con ITIN, cotización por WhatsApp con Cubierto.",
   alternates: { canonical: "https://finazo.us/seguros" },
@@ -254,6 +253,54 @@ export default function UsSegurosHubPage(): React.ReactElement {
                   <div>
                     <div className="us-related-item-title">
                       Hipotecas con ITIN: la guía completa
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guias/alternativa-a-confie-seguros-texas-2026" className="us-related-item">
+                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                  <div>
+                    <div className="us-related-item-title">
+                      Alternativas a Confie Seguros en Texas (2026)
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guias/estrella-insurance-alternativa-mejor-seguro-hispanos-florida" className="us-related-item">
+                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                  <div>
+                    <div className="us-related-item-title">
+                      Alternativas a Estrella Insurance en Florida (2026)
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guias/progressive-vs-geico-hispanos" className="us-related-item">
+                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                  <div>
+                    <div className="us-related-item-title">
+                      Progressive vs GEICO para conductores Hispanos
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guias/alternativa-a-freeway-insurance-florida-2026" className="us-related-item">
+                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                  <div>
+                    <div className="us-related-item-title">
+                      Alternativas a Freeway Insurance en Florida (2026)
                     </div>
                   </div>
                 </Link>

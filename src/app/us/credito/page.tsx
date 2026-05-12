@@ -6,7 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Construir credit score sin Social Security — guía Hispanos 2026 | Finazo",
+  title: "Construir credit score sin Social Security 2026",
   description:
     "Cómo construir tu credit score desde cero, con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans, y cómo subir el score rápido.",
   alternates: { canonical: "https://finazo.us/credito" },

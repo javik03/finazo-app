@@ -5,7 +5,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Disclaimer legal — información, no asesoría | Finazo",
+  title: "Disclaimer legal — información, no asesoría",
   description:
     "Finazo publica contenido informativo sobre finanzas personales. No somos asesores legales, fiscales ni financieros. Lee el disclaimer completo antes de tomar decisiones financieras.",
   alternates: { canonical: "https://finazo.us/legal" },

@@ -6,7 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Política de privacidad | Finazo",
+  title: "Política de privacidad",
   description:
     "Cómo Finazo LLC recopila, usa y protege tus datos personales. Cobertura de privacy laws estatales (CCPA / CPRA / VCDPA / TDPSA y otras).",
   alternates: { canonical: "https://finazo.us/privacidad" },

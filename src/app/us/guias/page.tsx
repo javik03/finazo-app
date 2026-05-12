@@ -15,14 +15,11 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Guías financieras para Hispanos en EE.UU. | Finazo",
+  title: "Guías financieras para Hispanos en EE.UU.",
   description:
     "Guías en español sobre seguros, hipotecas, remesas, crédito e impuestos. Sin jerga, sin letra chica.",
   alternates: {
     canonical: "https://finazo.us/guias",
-    languages: {
-      "es-US": "https://finazo.us/guias",
-    },
   },
   openGraph: {
     title: "Guías financieras para Hispanos en EE.UU.",

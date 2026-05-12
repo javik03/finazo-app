@@ -9,7 +9,7 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 
 export const metadata: Metadata = {
-  title: "Seguro de vida para Hispanos en EE.UU. — desde $10/mes | Finazo",
+  title: "Seguro de vida para Hispanos — desde $10/mes",
   description:
     "Term life, whole life, sin examen médico. Para inmigrantes, ITIN, beneficiarios en otro país. Cubierto compara opciones por WhatsApp en español.",
   alternates: { canonical: "https://finazo.us/seguro-de-vida" },

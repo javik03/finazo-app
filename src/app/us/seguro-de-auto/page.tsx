@@ -9,7 +9,7 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 
 export const metadata: Metadata = {
-  title: "Seguro de auto para Hispanos en EE.UU. — cotiza con Cubierto | Finazo",
+  title: "Seguro de auto para Hispanos en EE.UU.",
   description:
     "Tarifas promedio por estado, requisitos legales, factores que afectan tu prima. Cotiza con 8+ aseguradoras por WhatsApp en 90 segundos con Cubierto. ITIN OK.",
   alternates: { canonical: "https://finazo.us/seguro-de-auto" },

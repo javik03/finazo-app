@@ -9,7 +9,7 @@ import { getUsLoanProducts } from "@/lib/queries/us-loans";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Préstamos personales sin Social Security — para Hispanos 2026 | Finazo",
+  title: "Préstamos personales sin Social Security 2026",
   description:
     "Préstamos personales para Hispanos en EE.UU. APR desde 7%, opciones con ITIN, sin historial crediticio previo. Para grandes montos (hipoteca), funnel a Hogares.",
   alternates: { canonical: "https://finazo.us/prestamos" },

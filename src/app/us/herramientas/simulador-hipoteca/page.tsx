@@ -7,7 +7,7 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 
 export const metadata: Metadata = {
-  title: "Simulador de hipoteca en español — cuota mensual, ITIN OK | Finazo",
+  title: "Simulador de hipoteca — cuota mensual, ITIN OK",
   description:
     "Calcula tu cuota mensual, down payment, closing costs y DTI. Pre-calificación non-QM con ITIN o self-employed con Hogares por WhatsApp.",
   alternates: { canonical: "https://finazo.us/herramientas/simulador-hipoteca" },

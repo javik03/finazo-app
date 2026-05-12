@@ -6,7 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Comparador de remesas EE.UU. — México, GT, SV, HN | Finazo",
+  title: "Comparador remesas EE.UU. — MX, GT, SV, HN",
   description:
     "Compara tasas de remesas en vivo: Wise, Remitly, Western Union, MoneyGram. Envía a México, Guatemala, El Salvador y Honduras al mejor tipo de cambio.",
   alternates: { canonical: "https://finazo.us/herramientas/comparador-remesas" },

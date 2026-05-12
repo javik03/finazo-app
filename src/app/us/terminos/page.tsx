@@ -6,7 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Términos de uso | Finazo",
+  title: "Términos de uso",
   description:
     "Términos de uso de Finazo.us. Reglas de propiedad intelectual, relación con socios afiliados, limitación de responsabilidad.",
   alternates: { canonical: "https://finazo.us/terminos" },

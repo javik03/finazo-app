@@ -6,7 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Credit score tracker — plan de 0 a 700+ con ITIN | Finazo",
+  title: "Credit score tracker — plan 0 a 700+ con ITIN",
   description:
     "Plan de 12 meses para construir credit score desde 0 a 700+ con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans y checklist mes por mes.",
   alternates: { canonical: "https://finazo.us/herramientas/credit-tracker" },
