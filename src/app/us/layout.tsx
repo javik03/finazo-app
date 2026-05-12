@@ -81,9 +81,6 @@ export const metadata: Metadata = {
     "Publicación independiente de finanzas para Hispanos en EE.UU. Guías, comparativos y cotizaciones por WhatsApp.",
   alternates: {
     canonical: "https://finazo.us",
-    languages: {
-      "es-US": "https://finazo.us",
-    },
   },
   openGraph: {
     title: "Finazo — Finanzas en español, para los nuestros",

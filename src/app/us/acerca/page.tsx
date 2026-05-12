@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { getAllUsAuthors } from "@/lib/queries/us-articles";
+import { FINAZO_WA_URL } from "@/lib/wa";
 
 export const dynamic = "force-dynamic";
 
@@ -184,7 +185,7 @@ export default async function AcercaPage(): Promise<React.ReactElement> {
             </li>
             <li>
               <strong>Soporte para Cubierto / Hogares:</strong> WhatsApp{" "}
-              <a href="https://wa.me/13055551234">+1 (305) 555-1234</a>
+              <a href={FINAZO_WA_URL}>+1 (305) 555-1234</a>
             </li>
             <li>
               <strong>Prensa y partnerships:</strong>{" "}

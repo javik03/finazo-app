@@ -53,7 +53,9 @@ const faqSchema = {
   })),
 };
 
-const WA_BASE = "https://wa.me/13055551234";
+import { FINAZO_WA_URL } from "@/lib/wa";
+
+const WA_BASE = FINAZO_WA_URL;
 
 function formatPercent(value: string | null): string {
   if (!value) return "—";

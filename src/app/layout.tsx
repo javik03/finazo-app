@@ -102,6 +102,14 @@ const organizationSchema = {
     "@type": "Country",
     name: "El Salvador",
   },
+  audience: {
+    "@type": "PeopleAudience",
+    name: "Central American consumers",
+    geographicArea: {
+      "@type": "AdministrativeArea",
+      name: "Central America",
+    },
+  },
   contactPoint: {
     "@type": "ContactPoint",
     email: "legal@finazo.lat",

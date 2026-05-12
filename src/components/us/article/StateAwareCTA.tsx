@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { UsState, UsLicenseStatus } from "@/lib/constants/states";
+import { FINAZO_WA_URL } from "@/lib/wa";
 
 /**
  * Per-product CTA variants chosen by license status.
@@ -22,7 +23,7 @@ type Props = {
   product?: Product;
 };
 
-const WHATSAPP_BASE = "https://wa.me/13055551234";
+const WHATSAPP_BASE = FINAZO_WA_URL;
 
 function statusFor(state: UsState, product: Product): UsLicenseStatus {
   return product === "auto" ? state.cubiertoStatus : state.hogaresStatus;
@@ -167,7 +168,7 @@ function UniversalCta(): React.ReactElement {
         <Link href="/herramientas/simulador-hipoteca" className="us-cta-btn us-secondary">
           Simular hipoteca
         </Link>
-        <a href="https://wa.me/13055551234" className="us-cta-btn us-secondary">
+        <a href={FINAZO_WA_URL} className="us-cta-btn us-secondary">
           Pregúntale a Finazo
         </a>
       </div>

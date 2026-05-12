@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FINAZO_WA_URL } from "@/lib/wa";
 
 type FooterColumn = {
   heading: string;
@@ -29,9 +30,9 @@ const COLUMNS: FooterColumn[] = [
     heading: "Servicios",
     links: [
       { href: "/acerca", label: "Sobre Finazo" },
-      { href: "https://wa.me/13055551234?text=Hola%20Carmen%2C%20cotizar%20seguro", label: "Cubierto — Seguros" },
-      { href: "https://wa.me/13055551234?text=Hola%20Sof%C3%ADa%2C%20pre-calificar%20hipoteca", label: "Hogares — Hipotecas" },
-      { href: "https://wa.me/13055551234", label: "WhatsApp directo" },
+      { href: `${FINAZO_WA_URL}?text=Hola%20Carmen%2C%20cotizar%20seguro`, label: "Cubierto — Seguros" },
+      { href: `${FINAZO_WA_URL}?text=Hola%20Sof%C3%ADa%2C%20pre-calificar%20hipoteca`, label: "Hogares — Hipotecas" },
+      { href: FINAZO_WA_URL, label: "WhatsApp directo" },
     ],
   },
   {

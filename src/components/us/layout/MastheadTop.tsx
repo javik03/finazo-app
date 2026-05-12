@@ -1,3 +1,5 @@
+import { FINAZO_WA_URL } from "@/lib/wa";
+
 /**
  * Top masthead strip — date + FX rates + secondary nav.
  * Mirrors NYT/FT publication strip from finazo-us-v2.html.
@@ -35,7 +37,7 @@ export function MastheadTop({
           ))}
         </div>
         <div className="us-mt-right">
-          <a href="https://wa.me/13055551234">WhatsApp</a>
+          <a href={FINAZO_WA_URL}>WhatsApp</a>
         </div>
       </div>
     </div>
