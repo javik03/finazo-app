@@ -4516,7 +4516,7 @@ async function generateEvergreenArticle(topic: ContentTopic): Promise<void> {
     })
     .onConflictDoNothing(); // never overwrite existing articles
 
-  await notifyIndexNow([`https://finazo.lat/articulos/${topic.slug}`]);
+  await notifyIndexNow([`https://finazo.lat/guias/${topic.slug}`]);
 
   logger.info({ slug: topic.slug, wordCount, category: topic.category, keywordsCount: keywords?.length ?? 0, hasImage: !!featuredImageUrl }, "Evergreen article published");
 }

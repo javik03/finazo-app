@@ -1,375 +1,270 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Nav } from "@/components/us/layout/Nav";
+import { UsFooter } from "@/components/us/layout/UsFooter";
+import { FloatingWA } from "@/components/us/layout/FloatingWA";
+import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
+import { CubiertoFeatureCard } from "@/components/us/sub/CubiertoFeatureCard";
+import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
+import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 
 export const metadata: Metadata = {
-  title: "Seguro de Salud para Hispanos en EE.UU. — Guía ACA 2025 | Finazo",
+  title: "Seguro de salud para Hispanos en EE.UU. — ACA, Medicaid y más | Finazo",
   description:
-    "Guía completa del seguro de salud ACA (Obamacare) para hispanos en Estados Unidos. Planes por estado, subsidios, inscripción en español. Actualizado 2025.",
-  alternates: {
-    canonical: "https://finazo.lat/us/seguro-de-salud",
-    languages: {
-      "es-US": "https://finazo.lat/us/seguro-de-salud",
-      "x-default": "https://finazo.lat/us/seguro-de-salud",
-    },
-  },
-  openGraph: {
-    title: "Seguro de Salud para Hispanos en EE.UU. | Finazo",
-    description:
-      "Planes ACA, subsidios según ingreso y guía de inscripción en español. California, Texas, Florida y más estados.",
-    url: "https://finazo.lat/us/seguro-de-salud",
-    locale: "es_US",
-  },
+    "Marketplace ACA, Medicaid expansion, planes para indocumentados, subsidios. Cubierto te ayuda a encontrar el plan correcto en español por WhatsApp.",
+  alternates: { canonical: "https://finazo.us/seguro-de-salud" },
 };
+
+const METAL_TIERS = [
+  { tier: "Bronze", premium: "$280", deductible: "$7,500", coinsurance: "40%", who: "Joven y saludable, no usa mucho doctor" },
+  { tier: "Silver", premium: "$420", deductible: "$4,800", coinsurance: "30%", who: "El más común — califica para CSR si <250% FPL" },
+  { tier: "Gold", premium: "$540", deductible: "$1,800", coinsurance: "20%", who: "Familia con uso frecuente o condiciones crónicas" },
+  { tier: "Platinum", premium: "$680", deductible: "$500", coinsurance: "10%", who: "Embarazo, cirugía planeada, alto uso médico" },
+];
+
+const STATE_MEDICAID = [
+  { state: "California", expansion: "Sí", indoc: "Sí — Medi-Cal cubre adultos indocumentados" },
+  { state: "Nueva York", expansion: "Sí", indoc: "Sí — programas estatales para indocumentados" },
+  { state: "Illinois", expansion: "Sí", indoc: "Sí — adultos 42+ indocumentados" },
+  { state: "Texas", expansion: "No", indoc: "Solo emergencias y embarazo" },
+  { state: "Florida", expansion: "No", indoc: "Solo emergencias y embarazo" },
+  { state: "Washington", expansion: "Sí", indoc: "Cascade Care para algunos casos" },
+];
+
+const FAQS = [
+  {
+    q: "¿Puedo aplicar a ACA si tengo ITIN pero no SSN?",
+    a: "Sí. Los miembros de tu familia con SSN o estatus legal pueden inscribirse y recibir subsidios. Tú declaras household income. HealthCare.gov no rechaza familias mixtas.",
+  },
+  {
+    q: "¿Hay seguro de salud para indocumentados?",
+    a: "Depende del estado. California (Medi-Cal), NY, IL, WA tienen programas estatales para adultos indocumentados. En estados sin expansion, los community health centers (FQHC) cobran según ingreso.",
+  },
+  {
+    q: "¿Qué pasa si no califico para Medicaid pero ACA es muy caro?",
+    a: "Hay opciones — short-term plans, FQHC para visitas, programas de asistencia farmacéutica. Carmen de Cubierto te ayuda a navegar tu situación específica por WhatsApp.",
+  },
+  {
+    q: "¿Cuándo es Open Enrollment 2026?",
+    a: "Del 1 de noviembre 2025 al 15 de enero 2026 en la mayoría de estados. Si tienes evento calificador (matrimonio, hijo, mudanza, pérdida de trabajo) puedes inscribirte fuera de esas fechas vía Special Enrollment Period.",
+  },
+];
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
-    { "@type": "ListItem", position: 2, name: "EE.UU.", item: "https://finazo.lat/us" },
-    { "@type": "ListItem", position: 3, name: "Seguro de salud", item: "https://finazo.lat/us/seguro-de-salud" },
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.us" },
+    { "@type": "ListItem", position: 2, name: "Seguro de salud", item: "https://finazo.us/seguro-de-salud" },
   ],
 };
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "¿Puedo obtener seguro de salud ACA siendo indocumentado o sin estatus legal?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Los inmigrantes sin estatus legal NO califican para el Marketplace ACA federal ni para Medicaid en la mayoría de los estados. Sin embargo, California tiene Medi-Cal para adultos sin importar estatus migratorio. Los niños y mujeres embarazadas tienen cobertura de emergencia en casi todos los estados. Si tienes visa, green card, DACA o TPS, generalmente sí calificas para el Marketplace ACA.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Qué son los subsidios del ACA y cómo sé si califico?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Los subsidios ACA (Premium Tax Credits) reducen tu prima mensual según tu ingreso. Si ganas entre 100% y 400% del nivel federal de pobreza (en 2025: $15,060 a $60,240 para una persona), recibes subsidio. Una familia de 4 con ingreso hasta $124,800 puede recibir ayuda. En 2025, los subsidios mejorados del plan Rescue Act siguen disponibles, y muchas personas de ingresos bajos pagan $0 o muy poco al mes.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Qué diferencia hay entre un plan Bronze, Silver, Gold y Platinum?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Los niveles de metal determinan cómo se divide el costo entre tú y el seguro: Bronce (seguro paga 60%, tú 40%), Plata (70/30), Oro (80/20), Platino (90/10). Los planes Bronze tienen la prima más baja pero el deducible más alto. Los planes Silver son los más recomendados para personas con ingresos bajos a medios porque califican para Cost Sharing Reductions (CSR) que reducen el deducible, copagos y máximo anual.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Cuándo puedo inscribirme al seguro de salud ACA?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "El período de inscripción abierta (Open Enrollment) es generalmente del 1 de noviembre al 15 de enero. Fuera de ese período, solo puedes inscribirte si tienes un evento de vida calificado: perder otro seguro, casarte, tener un bebé, mudarte a otro estado, o cambios de ingreso. Comunidades con NAVIGATORs y agentes certificados ofrecen asistencia gratuita en español.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Cuánto cuesta el seguro de salud para hispanos en California, Texas y Florida?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "En California (Covered California), una persona de 40 años con ingreso de $35,000 paga aproximadamente $0-80/mes con subsidio en un plan Silver. En Texas (HealthCare.gov), la misma persona paga $50-120/mes. En Florida, $60-150/mes. Sin subsidio, las primas son $400-700/mes para adultos de 40 años. Usa el estimador de subsidios en HealthCare.gov para calcular tu costo exacto.",
-      },
-    },
-  ],
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
-const speakableSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  speakable: {
-    "@type": "SpeakableSpecification",
-    cssSelector: ["h1", ".intro-text", ".metal-levels"],
-  },
-  url: "https://finazo.lat/us/seguro-de-salud",
-};
-
-const METAL_LEVELS = [
-  {
-    level: "Bronce",
-    color: "bg-amber-700",
-    textColor: "text-amber-800",
-    bgColor: "bg-amber-50",
-    borderColor: "border-amber-200",
-    insurerPays: "60%",
-    youPay: "40%",
-    premium: "Más baja",
-    deductible: "Más alto (~$7,000+)",
-    bestFor: "Personas sanas sin gastos médicos frecuentes que quieren protección contra catástrofes.",
-  },
-  {
-    level: "Plata",
-    color: "bg-slate-400",
-    textColor: "text-slate-800",
-    bgColor: "bg-slate-50",
-    borderColor: "border-slate-300",
-    insurerPays: "70%",
-    youPay: "30%",
-    premium: "Media",
-    deductible: "Medio (~$3,500)",
-    bestFor: "La mejor opción si tienes ingresos bajos a medios — califica para subsidios adicionales (CSR).",
-    recommended: true,
-  },
-  {
-    level: "Oro",
-    color: "bg-yellow-500",
-    textColor: "text-yellow-800",
-    bgColor: "bg-yellow-50",
-    borderColor: "border-yellow-200",
-    insurerPays: "80%",
-    youPay: "20%",
-    premium: "Alta",
-    deductible: "Bajo (~$1,500)",
-    bestFor: "Si visitas médicos frecuentemente o tomas medicamentos de marca.",
-  },
-  {
-    level: "Platino",
-    color: "bg-slate-600",
-    textColor: "text-slate-900",
-    bgColor: "bg-slate-100",
-    borderColor: "border-slate-400",
-    insurerPays: "90%",
-    youPay: "10%",
-    premium: "Más alta",
-    deductible: "Muy bajo (~$0-500)",
-    bestFor: "Si tienes condiciones crónicas y altos gastos médicos regulares.",
-  },
-];
-
-const STATES_MARKETPLACES = [
-  { state: "California", url: "https://www.coveredca.com", platform: "Covered California", note: "Acepta residentes sin importar estatus migratorio para Medi-Cal" },
-  { state: "Texas", url: "https://www.healthcare.gov", platform: "HealthCare.gov", note: null },
-  { state: "Florida", url: "https://www.healthcare.gov", platform: "HealthCare.gov", note: null },
-  { state: "Nueva York", url: "https://nystateofhealth.ny.gov", platform: "NY State of Health", note: "Opciones para inmigrantes DACA y sin documentos" },
-  { state: "Illinois", url: "https://getcoveredillinois.gov", platform: "GetCoveredIllinois", note: null },
-  { state: "Arizona", url: "https://www.healthcare.gov", platform: "HealthCare.gov", note: null },
-  { state: "Colorado", url: "https://connectforhealthco.com", platform: "Connect for Health CO", note: null },
-  { state: "Nevada", url: "https://www.nevadahealthlink.com", platform: "Nevada Health Link", note: null },
-];
-
-export default function UsSeguroSaludPage() {
+export default function UsSeguroSaludPage(): React.ReactElement {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
-      <Header />
-      <main className="min-h-screen" style={{ background: "#fff" }}>
+      <Nav currentPath="/seguros" />
 
-        {/* Hero */}
-        <section style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
-          <div
-            className="mx-auto px-6 py-10"
-            style={{ maxWidth: "var(--W)" }}
-          >
-            <div className="mb-4 text-sm" style={{ color: "#666" }}>
-              <Link href="/" style={{ color: "var(--green)" }}>
-                Inicio
-              </Link>
-              <span className="mx-2">›</span>
-              <Link href="/us" style={{ color: "var(--green)" }}>
-                EE.UU.
-              </Link>
-              <span className="mx-2">›</span>
-              <span>Seguro de salud</span>
-            </div>
-            <h1 className="text-3xl font-extrabold tracking-tight mb-3" style={{ color: "#111" }}>
-              Seguro de salud para hispanos en Estados Unidos
+      <main>
+        <div className="us-sub-shell">
+          <UsBreadcrumb
+            crumbs={[
+              { label: "Inicio", href: "/" },
+              { label: "Seguros", href: "/seguros" },
+              { label: "Seguro de salud" },
+            ]}
+          />
+
+          <header className="us-sub-hero">
+            <div className="us-hero-kicker">Seguros · Salud</div>
+            <h1 className="us-serif">
+              Seguro de salud en español, <i>sin la frustración del Marketplace</i>.
             </h1>
-            <p className="text-lg max-w-2xl intro-text" style={{ color: "#555" }}>
-              Guía completa del Marketplace ACA (Obamacare) en español: cómo
-              funciona, cuánto cuesta con subsidios y cómo inscribirte en tu
-              estado.
+            <p>
+              ACA, Medicaid, planes estatales para indocumentados, subsidios. La elegibilidad
+              depende de tu ingreso y estado — Cubierto te ayuda a navegarlo por WhatsApp.
             </p>
-          </div>
-        </section>
 
-        {/* Key callout */}
-        <section className="mx-auto px-6 py-8" style={{ maxWidth: "var(--W)" }}>
-          <div
-            className="rounded-2xl p-6 max-w-2xl"
-            style={{ background: "var(--green-bg)", border: "1px solid #d1e8d9" }}
-          >
-            <p className="text-sm" style={{ color: "#555" }}>
-              <strong style={{ color: "#111" }}>Lo esencial:</strong> Con ingreso de $35,000/año, una
-              persona puede pagar $0-80/mes con subsidio en un plan Silver.
-              El período de inscripción abierta es del 1 nov al 15 enero.
-              California acepta residentes sin importar estatus migratorio.
-            </p>
-          </div>
-        </section>
+            <CubiertoFeatureCard variant="salud" />
+          </header>
 
-        {/* Metal levels */}
-        <section className="mx-auto px-6 py-12 metal-levels" style={{ maxWidth: "var(--W)" }}>
-          <h2 className="text-xl font-bold mb-2" style={{ color: "#111" }}>
-            Los 4 niveles de planes ACA: ¿cuál elegir?
-          </h2>
-          <p className="text-sm mb-6" style={{ color: "#666" }}>
-            Todos los planes ACA cubren los 10 servicios esenciales: consultas médicas,
-            emergencias, hospitalización, medicamentos, salud mental, maternidad y más.
-            La diferencia es cómo se divide el costo.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {METAL_LEVELS.map((level) => (
-              <div
-                key={level.level}
-                className="rounded-2xl p-6 relative"
-                style={{
-                  background: "#fff",
-                  border: "1px solid #d1e8d9",
-                }}
-              >
-                {level.recommended && (
-                  <span
-                    className="absolute -top-2 left-4 rounded-full px-2.5 py-0.5 text-xs font-bold text-white"
-                    style={{ background: "var(--green)" }}
-                  >
-                    Recomendado
-                  </span>
-                )}
-                <div
-                  className="inline-block rounded-full px-3 py-1 text-xs font-bold text-white mb-3"
-                  style={{
-                    background:
-                      level.level === "Bronce"
-                        ? "#b45309"
-                        : level.level === "Plata"
-                        ? "#64748b"
-                        : level.level === "Oro"
-                        ? "#eab308"
-                        : "#4b5563",
-                    color:
-                      level.level === "Oro" ? "#111" : "#fff",
-                  }}
-                >
-                  {level.level}
-                </div>
-                <div className="space-y-2 text-xs mb-3">
-                  <div>
-                    <span style={{ color: "#888" }}>El seguro paga:</span>{" "}
-                    <strong style={{ color: "#111" }}>{level.insurerPays}</strong>
-                  </div>
-                  <div>
-                    <span style={{ color: "#888" }}>Tú pagas:</span>{" "}
-                    <strong style={{ color: "#111" }}>{level.youPay}</strong>
-                  </div>
-                  <div>
-                    <span style={{ color: "#888" }}>Prima:</span>{" "}
-                    <strong style={{ color: "#111" }}>{level.premium}</strong>
-                  </div>
-                  <div>
-                    <span style={{ color: "#888" }}>Deducible:</span>{" "}
-                    <strong style={{ color: "#111" }}>{level.deductible}</strong>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed" style={{ color: "#666" }}>
-                  {level.bestFor}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Marketplaces by state */}
-        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
-          <h2 className="text-xl font-bold mb-4" style={{ color: "#111" }}>
-            Dónde inscribirte según tu estado
-          </h2>
-          <div
-            className="rounded-2xl overflow-hidden"
-            style={{ border: "1px solid #d1e8d9" }}
-          >
-            <table className="w-full text-sm">
-              <thead>
-                <tr style={{ background: "var(--green-bg)", borderBottom: "1px solid #d1e8d9" }}>
-                  <th
-                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                    style={{ color: "var(--green)" }}
-                  >
-                    Estado
-                  </th>
-                  <th
-                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                    style={{ color: "var(--green)" }}
-                  >
-                    Plataforma
-                  </th>
-                  <th
-                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                    style={{ color: "var(--green)" }}
-                  >
-                    Notas importantes
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {STATES_MARKETPLACES.map((row, i) => (
-                  <tr
-                    key={i}
-                    className="border-b hover:bg-slate-50 transition-colors"
-                    style={{
-                      borderColor: "#e5e7eb",
-                      background: i % 2 === 0 ? "#fff" : "#fafafa",
-                    }}
-                  >
-                    <td className="px-4 py-3 font-medium" style={{ color: "#111" }}>
-                      {row.state}
-                    </td>
-                    <td className="px-4 py-3">
-                      <a
-                        href={row.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline"
-                        style={{ color: "var(--green)" }}
-                      >
-                        {row.platform}
-                      </a>
-                    </td>
-                    <td className="px-4 py-3 text-xs" style={{ color: "#888" }}>
-                      {row.note ?? "HealthCare.gov estándar"}
-                    </td>
+          {/* Metal tiers table */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                Planes ACA <i>por nivel</i>
+              </h2>
+              <p>
+                Prima mensual aproximada para adulto de 40 años, antes de subsidios. Tu costo
+                real puede ser $0 si calificas para APTC + CSR.
+              </p>
+            </div>
+            <div className="us-data-table-wrap">
+              <table className="us-data-table">
+                <thead>
+                  <tr>
+                    <th>Nivel</th>
+                    <th>Prima mensual</th>
+                    <th>Deducible</th>
+                    <th>Coaseguro</th>
+                    <th>Para quién</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-xs" style={{ color: "#888" }}>
-            Para asistencia gratuita en español llama al{" "}
-            <strong>1-800-318-2596</strong> (TTY: 1-855-889-4325). Disponible 24/7.
-          </p>
-        </section>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="us-strong">Bronze</td>
+                    <td className="us-num">{METAL_TIERS[0].premium}</td>
+                    <td>{METAL_TIERS[0].deductible}</td>
+                    <td>{METAL_TIERS[0].coinsurance}</td>
+                    <td style={{ fontSize: 13 }}>{METAL_TIERS[0].who}</td>
+                  </tr>
+                  <tr className="us-row-highlight">
+                    <td className="us-strong">Silver ★</td>
+                    <td className="us-num">{METAL_TIERS[1].premium}</td>
+                    <td>{METAL_TIERS[1].deductible}</td>
+                    <td>{METAL_TIERS[1].coinsurance}</td>
+                    <td style={{ fontSize: 13 }}>{METAL_TIERS[1].who}</td>
+                  </tr>
+                  <tr>
+                    <td className="us-strong">Gold</td>
+                    <td className="us-num">{METAL_TIERS[2].premium}</td>
+                    <td>{METAL_TIERS[2].deductible}</td>
+                    <td>{METAL_TIERS[2].coinsurance}</td>
+                    <td style={{ fontSize: 13 }}>{METAL_TIERS[2].who}</td>
+                  </tr>
+                  <tr>
+                    <td className="us-strong">Platinum</td>
+                    <td className="us-num">{METAL_TIERS[3].premium}</td>
+                    <td>{METAL_TIERS[3].deductible}</td>
+                    <td>{METAL_TIERS[3].coinsurance}</td>
+                    <td style={{ fontSize: 13 }}>{METAL_TIERS[3].who}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="us-data-source">
+              FUENTE: HEALTHCARE.GOV PROFILES + KFF · ACTUALIZADO 2026
+            </div>
+          </section>
 
-        {/* FAQ */}
-        <section className="mx-auto px-6 py-12" style={{ maxWidth: "var(--W)" }}>
-          <h2 className="text-xl font-bold mb-6" style={{ color: "#111" }}>
-            Preguntas frecuentes sobre seguro de salud
-          </h2>
-          <div className="space-y-4">
-            {faqSchema.mainEntity.map((faq, i) => (
-              <div
-                key={i}
-                className="rounded-2xl p-6"
-                style={{ background: "var(--background)", border: "1px solid #e5e7eb" }}
-              >
-                <h3 className="font-semibold mb-2" style={{ color: "#111" }}>
-                  {faq.name}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>
-                  {faq.acceptedAnswer.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+          {/* Medicaid by state */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                Medicaid <i>por estado</i>
+              </h2>
+              <p>
+                Medicaid expansion + cobertura para indocumentados. Tabla parcial — Cubierto
+                tiene la lista completa de los 50 estados actualizada al día.
+              </p>
+            </div>
+            <div className="us-data-table-wrap">
+              <table className="us-data-table">
+                <thead>
+                  <tr>
+                    <th>Estado</th>
+                    <th>Medicaid expansion</th>
+                    <th>Cobertura indocumentados</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {STATE_MEDICAID.map((row) => (
+                    <tr key={row.state}>
+                      <td className="us-strong">{row.state}</td>
+                      <td className={row.expansion === "Sí" ? "us-num" : ""}>{row.expansion}</td>
+                      <td style={{ fontSize: 13 }}>{row.indoc}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="us-data-source">
+              FUENTE: KFF MEDICAID EXPANSION TRACKER · CMS · ESTADO 2026
+            </div>
+          </section>
+
+          {/* Why Cubierto */}
+          <WhyBetterGrid
+            title={<>Por qué usar <i>Cubierto</i> para salud</>}
+            subtitle="HealthCare.gov es complejo. Carmen lo simplifica en una conversación de WhatsApp."
+            reasons={[
+              {
+                num: "1",
+                title: "Calcula tu subsidio en segundos",
+                body: "Con tu ingreso y tamaño de familia, Carmen te dice tu APTC + CSR en menos de un minuto. Sin formularios infinitos.",
+              },
+              {
+                num: "2",
+                title: "Sabe qué cubre tu estado",
+                body: "Medicaid expansion, programas estatales para indocumentados, FQHC, CHIP — Carmen conoce las reglas específicas de tu estado.",
+              },
+              {
+                num: "3",
+                title: "Compara Bronze, Silver, Gold",
+                body: "Te explica cuándo Silver+CSR conviene más que Gold, cuándo Bronze es la mejor opción, y cuándo no necesitas nada del Marketplace.",
+              },
+              {
+                num: "4",
+                title: "Open Enrollment + SEP",
+                body: "Si te perdiste Open Enrollment, Carmen identifica si tienes un Special Enrollment Period y te ayuda a inscribirte hoy.",
+              },
+            ]}
+          />
+
+          {/* Hard CTA */}
+          <HardCubiertoCTA variant="cubierto-salud" />
+
+          {/* FAQ */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                Preguntas <i>frecuentes</i>
+              </h2>
+            </div>
+            <div className="us-faq-list">
+              {FAQS.map((faq) => (
+                <div key={faq.q} className="us-faq-item">
+                  <h3>{faq.q}</h3>
+                  <p>{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Related guides */}
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">Guías <i>relacionadas</i></h2>
+            </div>
+            <ul className="us-related-list">
+              <li>
+                <Link href="/guias/seguro-salud-sin-social-security-aca-2026" className="us-related-item">
+                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                  <div>
+                    <div className="us-related-item-title">Seguro de salud sin Social Security: opciones reales 2026</div>
+                  </div>
+                </Link>
+              </li>
+            </ul>
+          </section>
+        </div>
       </main>
-      <Footer />
+
+      <UsFooter />
+      <FloatingWA />
     </>
   );
 }

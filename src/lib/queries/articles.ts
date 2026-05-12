@@ -98,13 +98,22 @@ export async function getRelatedArticles(
 }
 
 // Count of published articles per category — used by hub pages
-export async function getArticleCountByCategory(): Promise<
-  Record<string, number>
-> {
+export async function getArticleCountByCategory(options?: {
+  excludeCountry?: string;
+  country?: string;
+}): Promise<Record<string, number>> {
+  const { excludeCountry, country } = options ?? {};
+
+  const clauses = [eq(articles.status, "published")];
+  if (excludeCountry) clauses.push(ne(articles.country, excludeCountry));
+  if (country) clauses.push(eq(articles.country, country));
+
+  const conditions = clauses.length === 1 ? clauses[0] : and(...clauses);
+
   const rows = await db
     .select({ category: articles.category, slug: articles.slug })
     .from(articles)
-    .where(eq(articles.status, "published"))
+    .where(conditions!)
     .orderBy(asc(articles.category));
 
   const counts: Record<string, number> = {};

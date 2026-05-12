@@ -56,7 +56,7 @@ const intro = (
 );
 
 export default async function PrestamosHubPage() {
-  const articles = await getPublishedArticles({ category: "prestamos" }).catch(() => []);
+  const articles = await getPublishedArticles({ category: "prestamos", excludeCountry: "US" }).catch(() => []);
 
   return (
     <>

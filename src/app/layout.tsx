@@ -118,6 +118,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The LATAM gtag self-disables on finazo.us at runtime (client-side host
+  // check) so we keep this layout fully static — calling headers() here
+  // breaks ISR for every revalidate-cached page in the tree.
   return (
     <html
       lang="es"
@@ -126,11 +129,10 @@ export default function RootLayout({
       <head>
         {/* Impact.com site verification */}
         <meta name="impact-site-verification" content="76fde1c7-852b-427f-b3fd-1fef795e1cf4" />
-        {/* Google Analytics 4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0" />
+        {/* Google Analytics 4 — finazo.lat property; self-disables on finazo.us */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');`,
+            __html: `(function(){var h=location.hostname.toLowerCase();if(h==='finazo.us'||h==='www.finazo.us')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');})();`,
           }}
         />
         <script

@@ -100,9 +100,9 @@ export default async function GuiasPage({ searchParams }: Props) {
   const offset = (page - 1) * PAGE_SIZE;
 
   const [articles, total, categoryCounts] = await Promise.all([
-    getPublishedArticles({ limit: PAGE_SIZE, offset }).catch(() => []),
-    getPublishedArticlesCount().catch(() => 0),
-    getArticleCountByCategory().catch(() => ({} as Record<string, number>)),
+    getPublishedArticles({ limit: PAGE_SIZE, offset, excludeCountry: "US" }).catch(() => []),
+    getPublishedArticlesCount({ excludeCountry: "US" }).catch(() => 0),
+    getArticleCountByCategory({ excludeCountry: "US" }).catch(() => ({} as Record<string, number>)),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

@@ -106,12 +106,21 @@ export const articles = pgTable("articles", {
   content: text("content").notNull(), // Markdown
   category: text("category").notNull(), // remesas | prestamos | seguros | educacion
   country: text("country").default("SV"),
+  language: text("language").notNull().default("es"), // "es" | "en"
+  translationOf: uuid("translation_of"), // FK → articles.id (set after creation to allow circular)
   keywords: text("keywords").array(),
   status: text("status").default("draft"), // draft | published | archived
   featuredImageUrl: text("featured_image_url"),
   wordCount: integer("word_count"),
   generatedBy: text("generated_by").default("claude"), // claude | human
   authorName: text("author_name"), // null = "Equipo Finazo" fallback
+  authorSlug: text("author_slug"), // FK-ish → us_authors.slug, joined in app code
+  templateType: text("template_type"), // editorial | pseo_city_product | pseo_carrier_alt | pseo_state_legal | pseo_corridor | pseo_calculator | pseo_qa
+  templateVariables: jsonb("template_variables"), // {"state":"FL","city":"Hialeah",...}
+  dataPayload: jsonb("data_payload"), // cached real data for the page
+  lastDataRefresh: timestamp("last_data_refresh", { withTimezone: true }),
+  humanReviewed: boolean("human_reviewed").default(false),
+  humanReviewedAt: timestamp("human_reviewed_at", { withTimezone: true }),
   publishedAt: timestamp("published_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
@@ -152,8 +161,10 @@ export const usLoanProducts = pgTable("us_loan_products", {
   providerId: uuid("provider_id").references(() => usLoanProviders.id),
   productName: text("product_name").notNull(),
   loanType: text("loan_type").notNull(), // personal | auto | business | credit-builder
-  aprMin: decimal("apr_min", { precision: 6, scale: 4 }),
-  aprMax: decimal("apr_max", { precision: 6, scale: 4 }),
+  // APR stored as percentage value (e.g. 59.99 = 59.99%, 160.00 = 160%).
+  // Widened from decimal(6,4) — OppLoans / payday-tier ITIN loans hit 100%+.
+  aprMin: decimal("apr_min", { precision: 6, scale: 2 }),
+  aprMax: decimal("apr_max", { precision: 6, scale: 2 }),
   amountMin: decimal("amount_min", { precision: 12, scale: 2 }),
   amountMax: decimal("amount_max", { precision: 12, scale: 2 }),
   termMinMonths: integer("term_min_months"),
@@ -218,6 +229,146 @@ export const usLifeInsurance = pgTable("us_life_insurance", {
   healthClass: text("health_class").notNull(), // preferred-plus | preferred | standard
   monthlyPremium: decimal("monthly_premium", { precision: 8, scale: 2 }).notNull(),
   scrapedAt: timestamp("scraped_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Authors (E-E-A-T)
+// ---------------------------------------------------------------------------
+
+export const usAuthors = pgTable("us_authors", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").unique().notNull(),       // "javier-keough" | "sabrina-keough"
+  displayName: text("display_name").notNull(),
+  bioShort: text("bio_short"),                 // 1-2 sentences for byline cards
+  bioLong: text("bio_long"),                   // full bio for /us/autor/[slug]
+  linkedinUrl: text("linkedin_url"),
+  twitterUrl: text("twitter_url"),
+  avatarUrl: text("avatar_url"),
+  expertise: text("expertise").array(),        // ["seguros","hipotecas","remesas"]
+  active: boolean("active").default(true),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Mortgage rates (FRED PMMS, Freddie Mac)
+// ---------------------------------------------------------------------------
+
+export const usMortgageRates = pgTable("us_mortgage_rates", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  product: text("product").notNull(),          // 30yr_conv | 15yr_conv | fha | non_qm | itin
+  rate: decimal("rate", { precision: 6, scale: 4 }).notNull(),
+  source: text("source").notNull(),            // FRED_PMMS | Freddie_Mac
+  observationDate: text("observation_date").notNull(), // YYYY-MM-DD
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Carrier alternativas (for "{carrier}-alternativa" pSEO pages)
+// ---------------------------------------------------------------------------
+
+export const usCarrierAlternatives = pgTable("us_carrier_alternatives", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  carrierSlug: text("carrier_slug").unique().notNull(), // "fred-loya"
+  carrierName: text("carrier_name").notNull(),          // "Fred Loya Insurance"
+  whySearchAlt: text("why_search_alt"),                 // factual context: complaints, pricing
+  cubiertoAlternatives: jsonb("cubierto_alternatives"), // [{carrier, whyBetter}]
+  statesActive: text("states_active").array(),
+  sourceUrls: text("source_urls").array(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Programmatic SEO seed list (master list of pages to publish)
+// ---------------------------------------------------------------------------
+
+export const usPseoPagesSeed = pgTable("us_pseo_pages_seed", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  templateType: text("template_type").notNull(),
+  variables: jsonb("variables").notNull(),    // {"state":"FL","city":"Hialeah",...}
+  language: text("language").notNull().default("es"),
+  priority: integer("priority").default(50),
+  status: text("status").default("pending"),  // pending | generated | failed | live
+  generatedArticleId: uuid("generated_article_id").references(() => articles.id),
+  failureReason: text("failure_reason"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Lead attribution (every WA click / tool conversion)
+// ---------------------------------------------------------------------------
+
+export const usLeadAttribution = pgTable("us_lead_attribution", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  sessionId: text("session_id").notNull(),
+  userAgent: text("user_agent"),
+  referrer: text("referrer"),
+  utmSource: text("utm_source"),
+  utmMedium: text("utm_medium"),
+  utmCampaign: text("utm_campaign"),
+  utmContent: text("utm_content"),
+  utmTerm: text("utm_term"),
+  landingPage: text("landing_page"),
+  pageAtClick: text("page_at_click"),
+  destination: text("destination").notNull(), // cubierto | hogares | bot_general | external_lead
+  state: text("state"),
+  productIntent: text("product_intent"),     // auto | casa | remesa | salud | vida | info
+  ipHash: text("ip_hash"),                   // sha256 of IP — never raw
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Topic proposals (self-update loop for the strategist)
+// ---------------------------------------------------------------------------
+// Sources of proposals:
+//   - "gsc"           — derived from Search Console queries with high
+//                       impressions but no dedicated finazo.us page
+//   - "internal"      — derived from internal analytics / Claude reflection
+//                       on existing successful articles
+//   - "manual"        — added by hand via admin UI or psql
+// Status flow: pending → approved → published (or rejected)
+// The strategist consumes status='approved' rows alongside the calendar.
+
+export const usTopicProposals = pgTable("us_topic_proposals", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  source: text("source").notNull(),               // gsc | internal | manual
+  slug: text("slug").notNull().unique(),
+  category: text("category").notNull(),           // matches articles.category
+  preferredAuthor: text("preferred_author").notNull(), // javier-keough | sabrina-keough
+  imageQuery: text("image_query"),
+  promptText: text("prompt_text").notNull(),
+  rationale: text("rationale"),                   // why proposed; useful for review
+  /** GSC signal that triggered this — query string, impressions, etc. */
+  signalContext: jsonb("signal_context"),
+  status: text("status").notNull().default("pending"), // pending | approved | rejected | published
+  approvedBy: text("approved_by"),
+  approvedAt: timestamp("approved_at", { withTimezone: true }),
+  publishedSlug: text("published_slug"),          // set when strategist generates the article
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// US Market — Search Console performance snapshots
+// ---------------------------------------------------------------------------
+// One row per (date, page, query) — 16-month max retention to match GSC.
+// Used by the topic-proposer to find:
+//  - High-impression queries with no dedicated landing page (new topic)
+//  - Pages with high impressions but low CTR (rewrite title/meta)
+//  - Pages with strong position but no clicks (improve content)
+
+export const usGscSnapshots = pgTable("us_gsc_snapshots", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  snapshotDate: timestamp("snapshot_date", { withTimezone: true }).notNull(),
+  page: text("page").notNull(),                   // canonical URL
+  query: text("query").notNull(),                 // search query
+  impressions: integer("impressions").notNull().default(0),
+  clicks: integer("clicks").notNull().default(0),
+  ctr: decimal("ctr", { precision: 6, scale: 4 }), // 0.0000–1.0000
+  position: decimal("position", { precision: 6, scale: 2 }),
+  country: text("country"),                       // typically "usa"
+  device: text("device"),                         // mobile | desktop | tablet
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });
 
 // ---------------------------------------------------------------------------
