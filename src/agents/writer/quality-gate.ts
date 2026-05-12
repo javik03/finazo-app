@@ -18,6 +18,12 @@ export type QualityGateOptions = {
   allowMissingTable?: boolean;
   /** Allow articles without a callout box (rare — most articles must have one). */
   allowMissingCallout?: boolean;
+  /**
+   * Category of the article — when "seguros", activates insurance-specific
+   * compliance lints (CFPB-as-source ban, sourced/hedged competitor claim
+   * requirement, sourced+state+range pricing requirement).
+   */
+  category?: "seguros" | "prestamos" | "tarjetas" | "educacion" | "remesas" | "ahorro";
 };
 
 export type QualityGateResult = {
@@ -33,6 +39,12 @@ export type QualityGateResult = {
     bannedHeadings: string[];
     bannedOpeners: string[];
     bannedPatterns: string[];
+    /** Insurance-compliance findings (only populated when category="seguros"). */
+    insuranceCompliance?: {
+      cfpbMentions: number;
+      unsourcedPricingClaims: string[];
+      unsourcedCompetitorClaims: string[];
+    };
   };
 };
 
@@ -212,6 +224,189 @@ function findBannedOpeners(content: string): string[] {
   return offenders;
 }
 
+// ─── Insurance-compliance checks (active when category="seguros") ─────────
+
+/**
+ * Carriers we lint flat claims about. Mentions are fine — the issue is flat
+ * factual statements presented without a source or hedge.
+ */
+const NAMED_INSURANCE_CARRIERS = [
+  "Progressive",
+  "GEICO",
+  "State Farm",
+  "Allstate",
+  "Esurance",
+  "Direct General",
+  "Infinity",
+  "Fred Loya",
+  "Estrella Insurance",
+  "Estrella",
+  "Confie",
+  "Acceptance Insurance",
+  "Acceptance",
+  "Bristol West",
+  "Windhaven",
+  "Ocean Harbor",
+  "Liberty Mutual",
+  "Nationwide",
+  "Farmers",
+  "Travelers",
+  "USAA",
+  "A-MAX",
+  "InsureOne",
+];
+
+/**
+ * Hedging phrases that legitimize a flat claim about a competitor (Pattern B
+ * in the compliance spec). If a paragraph or sentence opens with one of these,
+ * the claim is acceptable as opinion/observation.
+ */
+const HEDGE_OPENERS = [
+  /\ben\s+nuestra\s+experiencia\b/i,
+  /\bseg[uú]n\s+reportes\s+de\s+usuarios\b/i,
+  /\banec[dó]ticamente\b/i,
+  /\bcreemos\s+que\b/i,
+  /\bhemos\s+observado\b/i,
+  /\bsuele\s+(?:ser|requerir|cobrar|aceptar|rechazar)\b/i,
+  /\btiende\s+a\b/i,
+  /\bgeneralmente\b/i,
+];
+
+/**
+ * Source-attribution prefix patterns (Pattern A). Sentences led by these are
+ * acceptable factual claims.
+ */
+const SOURCE_PREFIXES = [
+  /\bseg[uú]n\s+(?:el|la|los|las|un|una)?\s*[A-Z][\w]+/i, // "Según el NAIC", "Según ValuePenguin"
+  /\bde\s+acuerdo\s+a\b/i,
+  /\bcita(?:r|do|da)?\s+(?:al|a la|del)\b/i,
+  /\bbasado\s+en\b/i,
+  /\bun\s+reporte\s+de\b/i,
+  /\bel\s+complaint\s+index\b/i,
+  /\bel\s+rate\s+filing\b/i,
+];
+
+const CFPB_INSURANCE_PATTERNS = [
+  /\bCFPB\b/,
+  /\bConsumer\s+Financial\s+Protection\s+Bureau\b/i,
+  /consumerfinance\.gov/i,
+];
+
+/**
+ * Detect flat pricing claims like "$1,980/año", "$165/mes", "$2,490 anuales"
+ * NOT preceded within ~200 chars by a source attribution or hedge.
+ */
+function findUnsourcedPricingClaims(content: string): string[] {
+  const offenders: string[] = [];
+  const text = content;
+  const pricingRegex = /\$\s?\d{2,3}(?:[,.]?\d{3})?\s?\/?\s?(?:año|anuales?|mes|mensuales?|year|month)/gi;
+  let match: RegExpExecArray | null;
+  while ((match = pricingRegex.exec(text)) !== null) {
+    const start = Math.max(0, match.index - 250);
+    const window = text.slice(start, match.index + match[0].length);
+    const hasSource = SOURCE_PREFIXES.some((p) => p.test(window));
+    const hasHedge = HEDGE_OPENERS.some((p) => p.test(window));
+    const hasYear = /\b(20\d{2})\b/.test(window);
+    if (!hasSource && !hasHedge) {
+      // Also skip if it's clearly a label inside a markdown table cell where
+      // the table heading row already cited a source — those edge cases get
+      // a free pass when both source-prefix AND year exist somewhere in
+      // the previous ~500 chars.
+      const widerWindow = text.slice(Math.max(0, match.index - 500), match.index);
+      const widerHasSource = SOURCE_PREFIXES.some((p) => p.test(widerWindow));
+      if (!widerHasSource || !hasYear) {
+        offenders.push(match[0]);
+      }
+    }
+  }
+  return offenders;
+}
+
+/**
+ * Detect flat competitor claims: paragraphs containing a named carrier AND a
+ * factual assertion (verb like "recibe", "requiere", "rechaza", "es más",
+ * "tiene más quejas"), where the paragraph does NOT open with a hedge or
+ * source prefix.
+ */
+function findUnsourcedCompetitorClaims(content: string): string[] {
+  const carrierPattern = new RegExp(
+    `\\b(${NAMED_INSURANCE_CARRIERS.map((c) => c.replace(/\s+/g, "\\s+")).join("|")})\\b`,
+    "i",
+  );
+  const assertionPattern =
+    /\b(recibe|requiere|rechaza|acepta|cobra|es\s+m[aá]s|tiene\s+m[aá]s|tiene\s+menos|hist[oó]ricamente|sus\s+descuentos|sus\s+tarifas)\b/i;
+
+  const paragraphs = content
+    .split(/\n{2,}/)
+    .map((p) => p.trim())
+    .filter(
+      (p) =>
+        p &&
+        !p.startsWith("#") &&
+        !p.startsWith(">") &&
+        !p.startsWith("|") &&
+        !p.startsWith("-") &&
+        !p.startsWith("*"),
+    );
+
+  const offenders: string[] = [];
+  for (const para of paragraphs) {
+    if (!carrierPattern.test(para) || !assertionPattern.test(para)) continue;
+
+    // Skip if the paragraph leads with a source prefix or hedge.
+    const hasSource = SOURCE_PREFIXES.some((p) => p.test(para));
+    const hasHedge = HEDGE_OPENERS.some((p) => p.test(para));
+    if (hasSource || hasHedge) continue;
+
+    offenders.push(para.slice(0, 120) + (para.length > 120 ? "…" : ""));
+  }
+  return offenders;
+}
+
+function evaluateInsuranceCompliance(content: string): {
+  reasons: string[];
+  metrics: NonNullable<QualityGateResult["metrics"]["insuranceCompliance"]>;
+} {
+  const reasons: string[] = [];
+
+  // 1. CFPB used as source for insurance content
+  let cfpbMentions = 0;
+  for (const p of CFPB_INSURANCE_PATTERNS) {
+    const matches = content.match(new RegExp(p.source, p.flags + "g"));
+    if (matches) cfpbMentions += matches.length;
+  }
+  if (cfpbMentions > 0) {
+    reasons.push(
+      `Citado CFPB ${cfpbMentions} vez(es) en artículo de seguros. CFPB no tiene jurisdicción sobre seguros (Dodd-Frank § 1027(f)) — usar NAIC complaint index (content.naic.org/cis_consumer_information.htm) o el state DOI correspondiente.`,
+    );
+  }
+
+  // 2. Flat pricing claims
+  const unsourcedPricingClaims = findUnsourcedPricingClaims(content);
+  if (unsourcedPricingClaims.length > 0) {
+    reasons.push(
+      `${unsourcedPricingClaims.length} cifra(s) de precio sin fuente nombrada o hedge cerca: ${unsourcedPricingClaims.slice(0, 3).join(", ")}. Toda prima debe estar precedida por "Según [fuente con año]" e incluir un rango con calificador estatal — no número plano.`,
+    );
+  }
+
+  // 3. Flat competitor claims
+  const unsourcedCompetitorClaims = findUnsourcedCompetitorClaims(content);
+  if (unsourcedCompetitorClaims.length > 0) {
+    reasons.push(
+      `${unsourcedCompetitorClaims.length} afirmación(es) sobre carrier nombrado sin fuente ni hedge. Toda afirmación específica sobre Progressive/GEICO/etc. debe empezar con "Según [fuente]" o con un hedge ("En nuestra experiencia", "Hemos observado"). Primera muestra: "${unsourcedCompetitorClaims[0]}"`,
+    );
+  }
+
+  return {
+    reasons,
+    metrics: {
+      cfpbMentions,
+      unsourcedPricingClaims,
+      unsourcedCompetitorClaims,
+    },
+  };
+}
+
 // ─── Main gate ─────────────────────────────────────────────────────────────
 
 export function evaluateArticle(
@@ -333,6 +528,18 @@ export function evaluateArticle(
     );
   }
 
+  // ── Insurance-compliance checks (only when category === "seguros") ─────
+  // The bug that exposed Finazo to Lanham Act risk: CFPB was cited as a
+  // source for insurance complaint data even though CFPB has no jurisdiction
+  // over insurance per Dodd-Frank § 1027(f). These rules block the three
+  // patterns documented in finazo-insurance-compliance.md.
+  let insuranceMetrics: QualityGateResult["metrics"]["insuranceCompliance"];
+  if (options.category === "seguros") {
+    const ins = evaluateInsuranceCompliance(content);
+    insuranceMetrics = ins.metrics;
+    reasons.push(...ins.reasons);
+  }
+
   return {
     pass: reasons.length === 0,
     reasons,
@@ -345,6 +552,7 @@ export function evaluateArticle(
       bannedHeadings,
       bannedOpeners,
       bannedPatterns: bannedHits,
+      ...(insuranceMetrics ? { insuranceCompliance: insuranceMetrics } : {}),
     },
   };
 }

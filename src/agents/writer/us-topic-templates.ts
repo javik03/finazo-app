@@ -377,7 +377,7 @@ Estructura:
 function glossaryTopic(term: typeof GLOSSARY_TERMS[number]): UsContentTopic {
   // Glossary pages favor Javier (mechanics) except seguros which Sabrina handles.
   const author: UsAuthorSlug =
-    term.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    term.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: term.slug,
@@ -408,7 +408,7 @@ Estructura:
 function lenderReviewTopic(review: typeof LENDER_REVIEWS[number]): UsContentTopic {
   // Insurance reviews → Sabrina; everything else → Javier.
   const author: UsAuthorSlug =
-    review.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    review.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: review.slug,
@@ -440,32 +440,66 @@ Estructura:
 
 function comparisonTopic(comp: typeof CARRIER_COMPARISONS[number]): UsContentTopic {
   const author: UsAuthorSlug =
-    comp.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    comp.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: comp.slug,
     category: comp.category,
     imageQuery: `${comp.a} vs ${comp.b} comparison choice`,
     preferredAuthor: author,
-    prompt: `Eres un analista financiero hispano. Escribe un comparativo head-to-head en español de 1100-1300 palabras.
+    prompt: `Eres un analista financiero hispano. Escribe un comparativo head-to-head en español de 1100-1300 palabras siguiendo reglas estrictas de compliance editorial.
 
 Keyword principal: "${comp.a} vs ${comp.b}"
 Título H1: "${comp.a} vs ${comp.b}: comparativo honesto para Hispanos (2026)"
 
 Contexto: ${comp.context}.
 
+REGLAS CRÍTICAS DE COMPLIANCE PARA ESTE ARTÍCULO (no negociables):
+
+${comp.category === "seguros" ? `1. **CFPB NO aplica a seguros.** Por la sección 1027(f) de Dodd-Frank, CFPB no tiene jurisdicción sobre seguros. Para datos de quejas de seguros usá NAIC complaint index (https://content.naic.org/cis_consumer_information.htm) o el departamento estatal de seguros (Florida OIR: floir.com, California DOI: insurance.ca.gov). NUNCA citar CFPB como fuente de quejas de aseguradoras — eso es factualmente incorrecto Y expone a Finazo a Lanham Act § 43(a).
+
+2. **Toda afirmación sobre ${comp.a} o ${comp.b}** (sobre precios, aceptación de ITIN/SSN, requisitos de crédito, manejo de reclamos, calidad de servicio) debe seguir UNO de dos patrones:
+   - Patrón A (fuente): "Según [fuente nombrada con año], [afirmación específica]". Ej: "Según el NAIC complaint index para 2024, GEICO tuvo un índice de 0.78 en cobertura de auto."
+   - Patrón B (hedge): empezar con "En nuestra experiencia ayudando a conductores hispanos", "Según reportes de usuarios en [foro/source]", "Anecdóticamente", "Hemos observado que".
+   NUNCA presentar una afirmación específica sobre un competidor nombrado como hecho plano sin fuente.
+
+3. **Cifras de precios** (primas mensuales o anuales) deben incluir SIEMPRE:
+   - Fuente nombrada con año (Bankrate, ValuePenguin, NerdWallet, The Zebra, Insurance Information Institute, state DOI rate filing)
+   - Calificador geográfico (national average vs por estado específico)
+   - Un rango — NUNCA un solo número plano
+   Si no tenés datos sustentables, reemplazá el número específico con una afirmación cualitativa ("GEICO tiende a ser más barata para perfiles con buen crédito").
+
+4. **Divulgación de afiliado al inicio**, no al final. Inmediatamente después de la intro, antes de la primera tabla:
+   > **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que Finazo). Si nos contactás a través de un enlace de esta guía, recibimos comisión pagada por la aseguradora o wholesaler — no por vos. Más detalles en [Metodología](/metodologia).` : `1. Citar fuentes autoritativas con año (CFPB, IRS, state regulators según aplique al tema).
+
+2. Toda afirmación sobre ${comp.a} o ${comp.b} debe estar sourceada o hedged.
+
+3. Cifras de precios siempre con fuente + fecha + rango.`}
+
 Estructura:
 ## Introducción (keyword primeras 100 palabras; quién gana en una oración)
+
+[CALLOUT DE DIVULGACIÓN obligatorio acá, antes de la primera tabla — ver Regla 4 arriba]
+
 ## Resumen rápido — quién gana en qué
-(Tabla: Categoría | ${comp.a} | ${comp.b} | Ganador)
-## Costo real (precios actuales)
-## Aceptan ITIN / sin SSN
-## Servicio al cliente y reputación CFPB
+(Tabla: Categoría | ${comp.a} | ${comp.b} | Ganador — cada celda debe ser una afirmación verificable con fuente o hedge)
+
+## Costo real (con fuente nombrada, año, rango por estado — NUNCA precios planos sin sourcing)
+
+## Aceptan ITIN / sin SSN (las políticas cambian trimestralmente — citar fuente con fecha o usar hedge "En nuestra experiencia")
+
+## ${comp.category === "seguros" ? "Servicio al cliente y quejas registradas (NAIC complaint index)" : "Servicio al cliente y reputación"}
+
 ## App móvil y experiencia digital
+
 ## Cuándo elegir ${comp.a}
+
 ## Cuándo elegir ${comp.b}
+
 ## Mejor alternativa que ambos (CTA suave a Cubierto/Hogares según aplique)
+
 ## Preguntas frecuentes
+
 ## Veredicto final${US_SEO_SUFFIX}`,
   };
 }
@@ -512,7 +546,7 @@ function competitorAlternativeTopic(
     slug: `alternativa-a-${comp.slug}-${state.slug}-2026`,
     category: "seguros",
     imageQuery: `${state.nameEs} family looking at insurance documents`,
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     qualityGate: { minWordCount: 1600 },
     templateVariables: { stateSlug: state.slug, competitor: comp.slug },
     prompt: `Eres un periodista financiero independiente que cubre seguros de auto para la comunidad hispana en EE.UU. Escribe una guía editorial de 1600-2000 palabras sobre alternativas a "${comp.competitor}" en ${state.nameEs}.
@@ -606,7 +640,7 @@ function glossaryYearStampTopic(
   // Year-stamped variant of glossary topic — for terms that have annual
   // updates (IRS thresholds, FPL ranges, ACA OEP dates, ITIN renewal cycle).
   const author: UsAuthorSlug =
-    term.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    term.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: `${term.slug}-${year}`,

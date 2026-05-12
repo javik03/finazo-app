@@ -45,6 +45,76 @@ export type UsContentTopic = {
 
 export const US_SEO_SUFFIX = `
 
+═══════════════════════════════════════════════════════════════════════════
+COMPLIANCE EDITORIAL — APLICA A TODO ARTÍCULO QUE MENCIONE ASEGURADORAS
+(reglas no-negociables; el quality gate rechaza la publicación si fallan)
+═══════════════════════════════════════════════════════════════════════════
+
+Si este artículo discute, compara o menciona aseguradoras de auto/salud/vida/hogar
+(Progressive, GEICO, State Farm, Allstate, Esurance, Direct General, Infinity,
+Fred Loya, Estrella, Confie, Acceptance, Bristol West, Windhaven, Ocean Harbor,
+o cualquier otra), las siguientes 4 reglas son OBLIGATORIAS:
+
+1. **CFPB NO aplica a seguros.** Por Dodd-Frank § 1027(f), el Consumer Financial
+   Protection Bureau NO tiene jurisdicción sobre la industria de seguros. Las
+   quejas de seguros se registran en los Departamentos de Seguros estatales
+   (DOIs) y se agregan vía NAIC (National Association of Insurance
+   Commissioners) en su Consumer Information Source.
+   - URL correcta: https://content.naic.org/cis_consumer_information.htm
+   - Para Florida: https://www.floir.com
+   - Para California: https://www.insurance.ca.gov
+   - NUNCA citar consumerfinance.gov ni "CFPB" como fuente de datos de quejas
+     de aseguradoras. Hacerlo es factualmente incorrecto y expone a Finazo a
+     reclamos Lanham Act § 43(a) y FDUTPA.
+   - Encabezados como "Servicio al cliente y reputación CFPB" → reescribir a
+     "Servicio al cliente y quejas registradas (NAIC complaint index)".
+
+2. **Toda afirmación específica sobre una aseguradora nombrada** (sobre precios,
+   underwriting, aceptación de ITIN/SSN, requisitos de crédito, velocidad de
+   reclamos, calidad de servicio, app, proceso de citas) DEBE seguir uno de
+   estos dos patrones:
+   - **Patrón A (fuente)**: "Según [fuente nombrada con año], [afirmación]".
+     Ej: "Según el NAIC complaint index para 2024, Progressive tuvo un índice de
+     1.23, lo que indica más quejas que el promedio del sector."
+   - **Patrón B (hedge)**: empezar el párrafo con uno de — "En nuestra experiencia
+     ayudando a conductores hispanos...", "Según reportes de usuarios en
+     [forum]...", "Anecdóticamente...", "Hemos observado que...".
+   - NUNCA presentar como hecho plano: "Progressive recibe X quejas", "GEICO es
+     más restrictiva con ITIN", "State Farm rechaza a conductores sin crédito",
+     "Fred Loya cobra de más", etc. Esos patrones son los que crean exposición
+     Lanham Act.
+
+3. **Cifras de precios** (primas anuales o mensuales) deben incluir SIEMPRE las
+   tres cosas:
+   - **Fuente nombrada** con año (Bankrate, ValuePenguin, NerdWallet, The Zebra,
+     Insurance Information Institute iii.org, o state DOI rate filing).
+   - **Calificador geográfico** (national average, o por estado específico).
+   - **Rango**, no un solo número plano.
+   - Ejemplo VÁLIDO: "Según el reporte ValuePenguin 2024, las primas anuales para
+     cobertura completa van desde $1,440 en Carolina del Norte hasta $3,240 en
+     Florida; GEICO tiende a estar en el extremo bajo del rango en la mayoría
+     de los estados."
+   - Ejemplo INVÁLIDO: "GEICO: $1,740/año".
+   - Si no tenés números sustentables al momento de escribir, reemplazá el número
+     específico con una afirmación cualitativa ("GEICO tiende a ser más barata
+     para perfiles con buen crédito; Progressive suele ser más competitiva para
+     conductores nuevos") y eliminá el número.
+
+4. **Divulgación de afiliado en formato callout, al INICIO del artículo**
+   (FTC 16 CFR § 255 exige "clear and conspicuous" cerca de la recomendación,
+   no al pie). Inmediatamente después de la introducción, antes de la primera
+   tabla comparativa:
+   > **Divulgación:** Cubierto y Hogares son parte de Kornugle (mismo grupo que
+   > Finazo). Si nos contactás a través de un enlace de esta guía, recibimos
+   > comisión pagada por la aseguradora o wholesaler — no por vos. Más detalles
+   > en [Metodología](/metodologia).
+   - Mantené una versión breve cerca de cada CTA: "(Comisión pagada por la
+     aseguradora, no por vos.)"
+   - La divulgación general al pie del artículo puede permanecer pero NO
+     reemplaza la del callout superior.
+
+═══════════════════════════════════════════════════════════════════════════
+
 REGLAS GEO / WELTER — DISCIPLINA DE ENCABEZADOS (obligatorio, bloquea publicación si falla):
 Google y los motores de IA (ChatGPT, Perplexity, Claude, Gemini) indexan por chunks. Cada H2 y H3 DEBE cargar contexto semántico completo — no etiquetas perezosas.
 - Cada H2: mínimo 8 palabras, debe incluir tema + geo/estado + cohorte (o año si es temporal).
@@ -129,6 +199,7 @@ REGLAS E-E-A-T (obligatorias):
 - Cita al menos 2 fuentes públicas verificables con enlace markdown — IRS.gov, CFPB.gov, HealthCare.gov, FRED, KFF, Freddie Mac PMMS, state DOI, etc.
 - Incluye un enlace a la metodología de Finazo: "[según nuestra metodología](/metodologia)".
 - Incluye un enlace al perfil del autor (Finazo lo insertará en el byline; tú no escribas el byline).
+- Para artículos de seguros: el autor por default es Javier Keough, quien tiene licencia activa de seguros 2-20 en Florida. NO digas "licencia pendiente" — di "agente licenciado" o cita la licencia directamente. La agencia (Cubierto LLC) tiene la application en curso pero Javier individual tiene su licencia 2-20 activa.
 - Si recomiendas un producto pagado de socio (Cubierto, Hogares), incluye una línea de divulgación: "Cubierto / Hogares es parte de Kornugle. Recibimos comisión cuando te conectas con ellos — no de ti, del proveedor."
 
 ENLACES INTERNOS — usa SOLO rutas canónicas de finazo.us (sin prefijo /us — el middleware reescribe):
@@ -217,7 +288,7 @@ export const US_CONTENT_CALENDAR: UsContentTopic[] = [
     slug: "fred-loya-alternativa-mejores-aseguradoras-hispanos",
     category: "seguros",
     imageQuery: "auto insurance hispanic family car keys",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     homepageSeed: true,
     prompt: `Eres un experto en seguros de auto para la comunidad Hispana en EE.UU. Escribe un artículo comparativo en español optimizado para "Fred Loya alternativa".
 
@@ -228,9 +299,9 @@ Título H1: "Fred Loya: 5 alternativas más baratas para Hispanos en 2026"
 Extensión: 1200-1400 palabras
 
 Estructura requerida:
-## Introducción (keyword en primeras 100 palabras; menciona quejas reales de CFPB si aplica)
-## Por qué buscar alternativa a Fred Loya
-(Tabla: Aseguradora alternativa | Prima mensual estimada | ITIN aceptado | Quejas CFPB | Estados disponibles)
+## Introducción (keyword en primeras 100 palabras; cualquier mención de volumen de quejas DEBE citar NAIC complaint index — NUNCA CFPB, que no tiene jurisdicción sobre seguros per Dodd-Frank § 1027(f))
+## Por qué buscar alternativa a Fred Loya (cualquier afirmación específica sobre Fred Loya debe estar precedida por "Según [fuente nombrada con año]" o por un hedge tipo "En nuestra experiencia ayudando a conductores hispanos...")
+(Tabla: Aseguradora alternativa | Prima mensual estimada con rango por estado y fuente citada | Acepta ITIN según política publicada | NAIC complaint index año más reciente | Estados disponibles)
 ## Alternativa 1: Infinity (foco en mercado Hispano, ITIN-friendly)
 ## Alternativa 2: Direct General (sin licencia OK en algunos estados)
 ## Alternativa 3: Progressive (cobertura amplia, app en español)
@@ -259,8 +330,8 @@ Estructura requerida:
 ## Introducción (menciona la brecha de datos de 16,379 expedientes en 2025; keyword en primeras 100 palabras)
 ## Qué pasó con Estrella en 2025 (cita: comunicado oficial de la empresa o noticia)
 ## Cómo saber si tus datos fueron expuestos
-## 4 alternativas confiables para Hispanos en Florida
-(Tabla: Aseguradora | Prima FL estimada | ITIN | Cobertura PIP | Reputación CFPB)
+## 4 alternativas confiables para Hispanos en Florida (cualquier comparativa específica entre carriers DEBE citarse a una fuente con año, NUNCA presentarse como hecho plano sin fuente)
+(Tabla: Aseguradora | Prima FL con rango y fuente citada | Acepta ITIN según política publicada | Cobertura PIP | NAIC complaint index año más reciente — NUNCA CFPB para datos de seguros)
 ## Alternativa 1: Infinity (líder mercado Hispano)
 ## Alternativa 2: Ocean Harbor (FL específico)
 ## Alternativa 3: Windhaven (cobertura SR-22)
@@ -288,7 +359,7 @@ Estructura:
 ## Precio mensual promedio (datos por estado: TX, FL, CA)
 ## Aceptan ITIN / matrícula consular
 ## Cobertura mínima vs cobertura full
-## Servicio al cliente (CFPB complaint counts)
+## Servicio al cliente y quejas registradas (NAIC complaint index; los datos de quejas de seguros se registran en state DOIs y se agregan vía NAIC — CFPB no tiene jurisdicción sobre seguros per Dodd-Frank § 1027(f))
 ## App móvil y experiencia digital
 ## Cuándo elegir cada uno
 ## Mejor alternativa que ambos
@@ -327,7 +398,7 @@ Estructura:
     slug: "multas-manejar-sin-seguro-florida-2026",
     category: "seguros",
     imageQuery: "florida traffic stop police",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en seguros de auto en Florida. Escribe una guía en español sobre las multas.
 
 Keyword principal: "multas por manejar sin seguro en Florida"
@@ -459,7 +530,7 @@ Estructura:
     slug: "seguro-salud-sin-social-security-aca-2026",
     category: "seguros",
     imageQuery: "doctor consultation hispanic patient",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     homepageSeed: true,
     prompt: `Eres un experto en seguros de salud para Hispanos en EE.UU. Escribe una guía en español.
 
@@ -485,7 +556,7 @@ Incluir: CA, NY, IL, WA — los más permisivos
     slug: "medicaid-hispanos-elegibilidad-por-estado-2026",
     category: "seguros",
     imageQuery: "medicaid healthcare hispanic family",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en programas de salud pública para Hispanos. Escribe una guía en español.
 
 Keyword principal: "Medicaid para Hispanos elegibilidad"
@@ -540,7 +611,7 @@ Estructura:
     slug: "seguro-vida-sin-examen-medico-hispanos-2026",
     category: "seguros",
     imageQuery: "life insurance family protection home",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en seguros de vida para Hispanos. Escribe una guía en español.
 
 Keyword principal: "seguro de vida sin examen médico"

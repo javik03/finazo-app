@@ -87,13 +87,12 @@ export default async function AcercaPage(): Promise<React.ReactElement> {
           <ul>
             <li>
               <strong>Cubierto</strong> — agencia de seguros (parte de
-              Kornugle, licencia FL pendiente). Cuando un lector cotiza con
-              Cubierto, la aseguradora paga comisión a Cubierto.
+              Kornugle). Cuando un lector cotiza con Cubierto, la aseguradora
+              paga comisión a Cubierto.
             </li>
             <li>
-              <strong>Hogares</strong> — broker hipotecario (parte de Kornugle,
-              NMLS pendiente). Cuando cierra un préstamo, el wholesaler paga
-              comisión.
+              <strong>Hogares</strong> — broker hipotecario (parte de Kornugle).
+              Cuando cierra un préstamo, el wholesaler paga comisión.
             </li>
             <li>
               <strong>Wise, Remitly, Western Union</strong> y otros partners de
