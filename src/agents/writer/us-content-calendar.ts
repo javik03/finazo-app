@@ -199,6 +199,7 @@ REGLAS E-E-A-T (obligatorias):
 - Cita al menos 2 fuentes públicas verificables con enlace markdown — IRS.gov, CFPB.gov, HealthCare.gov, FRED, KFF, Freddie Mac PMMS, state DOI, etc.
 - Incluye un enlace a la metodología de Finazo: "[según nuestra metodología](/metodologia)".
 - Incluye un enlace al perfil del autor (Finazo lo insertará en el byline; tú no escribas el byline).
+- Para artículos de seguros: el autor por default es Javier Keough, quien tiene licencia activa de seguros 2-20 en Florida. NO digas "licencia pendiente" — di "agente licenciado" o cita la licencia directamente. La agencia (Cubierto LLC) tiene la application en curso pero Javier individual tiene su licencia 2-20 activa.
 - Si recomiendas un producto pagado de socio (Cubierto, Hogares), incluye una línea de divulgación: "Cubierto / Hogares es parte de Kornugle. Recibimos comisión cuando te conectas con ellos — no de ti, del proveedor."
 
 ENLACES INTERNOS — usa SOLO rutas canónicas de finazo.us (sin prefijo /us — el middleware reescribe):
@@ -287,7 +288,7 @@ export const US_CONTENT_CALENDAR: UsContentTopic[] = [
     slug: "fred-loya-alternativa-mejores-aseguradoras-hispanos",
     category: "seguros",
     imageQuery: "auto insurance hispanic family car keys",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     homepageSeed: true,
     prompt: `Eres un experto en seguros de auto para la comunidad Hispana en EE.UU. Escribe un artículo comparativo en español optimizado para "Fred Loya alternativa".
 
@@ -397,7 +398,7 @@ Estructura:
     slug: "multas-manejar-sin-seguro-florida-2026",
     category: "seguros",
     imageQuery: "florida traffic stop police",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en seguros de auto en Florida. Escribe una guía en español sobre las multas.
 
 Keyword principal: "multas por manejar sin seguro en Florida"
@@ -529,7 +530,7 @@ Estructura:
     slug: "seguro-salud-sin-social-security-aca-2026",
     category: "seguros",
     imageQuery: "doctor consultation hispanic patient",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     homepageSeed: true,
     prompt: `Eres un experto en seguros de salud para Hispanos en EE.UU. Escribe una guía en español.
 
@@ -555,7 +556,7 @@ Incluir: CA, NY, IL, WA — los más permisivos
     slug: "medicaid-hispanos-elegibilidad-por-estado-2026",
     category: "seguros",
     imageQuery: "medicaid healthcare hispanic family",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en programas de salud pública para Hispanos. Escribe una guía en español.
 
 Keyword principal: "Medicaid para Hispanos elegibilidad"
@@ -610,7 +611,7 @@ Estructura:
     slug: "seguro-vida-sin-examen-medico-hispanos-2026",
     category: "seguros",
     imageQuery: "life insurance family protection home",
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     prompt: `Eres un experto en seguros de vida para Hispanos. Escribe una guía en español.
 
 Keyword principal: "seguro de vida sin examen médico"

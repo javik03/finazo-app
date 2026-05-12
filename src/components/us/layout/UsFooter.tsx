@@ -76,10 +76,11 @@ export function UsFooter(): React.ReactElement {
           <span>© {year} KORNUGLE · MAQ UNO DOS TRES S.A. DE C.V.</span>
           <p className="us-disc">
             Finazo es una marca editorial de Kornugle. Recibimos comisión cuando
-            nos conectas con Cubierto (agencia de seguros, licencia FL pendiente)
-            u Hogares (hipotecas), pero no te cobramos a ti. Las cotizaciones
-            mostradas son estimados y no constituyen oferta de contrato. Hogares
-            no es prestamista directo — coordinamos con wholesalers licenciados.
+            nos conectas con Cubierto (agencia de seguros) u Hogares (broker
+            hipotecario), pero no te cobramos a ti — la paga la aseguradora o
+            wholesaler. Las cotizaciones mostradas son estimados y no
+            constituyen oferta de contrato. Hogares no es prestamista directo —
+            coordinamos con wholesalers licenciados.
           </p>
         </div>
       </div>

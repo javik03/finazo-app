@@ -30,7 +30,7 @@ const WA_SVG = (
 
 const CUBIERTO: ProductCardData = {
   brand: "Cubierto",
-  brandSub: "AGENCIA · LICENCIA FL PENDIENTE",
+  brandSub: "AGENCIA DE SEGUROS · FL + TX",
   ribbon: "Mejor para seguro de auto",
   rating: 4.9,
   tagline:

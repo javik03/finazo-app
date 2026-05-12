@@ -377,7 +377,7 @@ Estructura:
 function glossaryTopic(term: typeof GLOSSARY_TERMS[number]): UsContentTopic {
   // Glossary pages favor Javier (mechanics) except seguros which Sabrina handles.
   const author: UsAuthorSlug =
-    term.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    term.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: term.slug,
@@ -408,7 +408,7 @@ Estructura:
 function lenderReviewTopic(review: typeof LENDER_REVIEWS[number]): UsContentTopic {
   // Insurance reviews → Sabrina; everything else → Javier.
   const author: UsAuthorSlug =
-    review.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    review.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: review.slug,
@@ -440,7 +440,7 @@ Estructura:
 
 function comparisonTopic(comp: typeof CARRIER_COMPARISONS[number]): UsContentTopic {
   const author: UsAuthorSlug =
-    comp.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    comp.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: comp.slug,
@@ -546,7 +546,7 @@ function competitorAlternativeTopic(
     slug: `alternativa-a-${comp.slug}-${state.slug}-2026`,
     category: "seguros",
     imageQuery: `${state.nameEs} family looking at insurance documents`,
-    preferredAuthor: "sabrina-keough",
+    preferredAuthor: "javier-keough",
     qualityGate: { minWordCount: 1600 },
     templateVariables: { stateSlug: state.slug, competitor: comp.slug },
     prompt: `Eres un periodista financiero independiente que cubre seguros de auto para la comunidad hispana en EE.UU. Escribe una guía editorial de 1600-2000 palabras sobre alternativas a "${comp.competitor}" en ${state.nameEs}.
@@ -640,7 +640,7 @@ function glossaryYearStampTopic(
   // Year-stamped variant of glossary topic — for terms that have annual
   // updates (IRS thresholds, FPL ranges, ACA OEP dates, ITIN renewal cycle).
   const author: UsAuthorSlug =
-    term.category === "seguros" ? "sabrina-keough" : "javier-keough";
+    term.category === "seguros" ? "javier-keough" : "javier-keough";
 
   return {
     slug: `${term.slug}-${year}`,
