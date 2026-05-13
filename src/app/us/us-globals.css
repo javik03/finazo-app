@@ -154,13 +154,76 @@
   display: flex; gap: 32px; align-items: center;
   font-size: 14px; font-weight: 500;
 }
-.finazo-us .us-nav-links a {
+.finazo-us .us-nav-item { position: relative; }
+.finazo-us .us-nav-item > a {
+  color: var(--us-ink-2); transition: color 0.15s;
+  position: relative; padding: 4px 0;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.finazo-us .us-nav-item > a:hover { color: var(--us-ink); }
+.finazo-us .us-nav-item.is-current > a,
+.finazo-us .us-nav-item > a.is-current { color: var(--us-ink); }
+.finazo-us .us-nav-item.is-current > a::after,
+.finazo-us .us-nav-item > a.is-current::after {
+  content: ""; position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 2px; background: var(--us-green);
+}
+.finazo-us .us-nav-caret {
+  margin-left: 2px; opacity: 0.55;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.finazo-us .us-nav-has-menu:hover .us-nav-caret {
+  opacity: 1; transform: rotate(180deg);
+}
+
+/* Hover-revealed submenu (dropdown). Hovering over the top-level
+ * item OR its sub-menu keeps the menu open via the gap-free padding
+ * trick (top: 100% with no margin = no flicker as the mouse moves
+ * between trigger and panel). */
+.finazo-us .us-nav-menu {
+  display: none;
+  position: absolute; top: 100%; left: -16px;
+  min-width: 280px;
+  padding: 12px;
+  background: white;
+  border: 1px solid var(--us-line);
+  border-radius: var(--us-radius);
+  box-shadow: var(--us-shadow);
+  z-index: 100;
+  flex-direction: column; gap: 2px;
+}
+.finazo-us .us-nav-has-menu:hover .us-nav-menu,
+.finazo-us .us-nav-has-menu:focus-within .us-nav-menu {
+  display: flex;
+}
+.finazo-us .us-nav-menu-item {
+  display: block;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--us-ink-2);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.1s, color 0.1s;
+  white-space: nowrap;
+}
+.finazo-us .us-nav-menu-item:hover {
+  background: var(--us-paper-2);
+  color: var(--us-green);
+}
+.finazo-us .us-nav-menu-item.is-current {
+  background: var(--us-paper-2);
+  color: var(--us-green);
+  font-weight: 600;
+}
+
+/* Legacy a-direct selectors for any remaining usage. */
+.finazo-us .us-nav-links > a {
   color: var(--us-ink-2); transition: color 0.15s;
   position: relative; padding: 4px 0;
 }
-.finazo-us .us-nav-links a:hover { color: var(--us-ink); }
-.finazo-us .us-nav-links a.is-current { color: var(--us-ink); }
-.finazo-us .us-nav-links a.is-current::after {
+.finazo-us .us-nav-links > a:hover { color: var(--us-ink); }
+.finazo-us .us-nav-links > a.is-current { color: var(--us-ink); }
+.finazo-us .us-nav-links > a.is-current::after {
   content: ""; position: absolute; bottom: -2px; left: 0; right: 0;
   height: 2px; background: var(--us-green);
 }
