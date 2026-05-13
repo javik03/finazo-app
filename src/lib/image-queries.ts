@@ -127,7 +127,12 @@ function detectTheme(slug: string, category: string): Theme {
   ) {
     return "health";
   }
-  if (slug.includes("seguro-de-vida") || slug.includes("life-insurance")) {
+  if (
+    slug.includes("seguro-de-vida") ||
+    slug.includes("seguro-vida") ||
+    slug.includes("life-insurance") ||
+    /(^|-)vida(-|$)/.test(slug)
+  ) {
     return "life";
   }
   if (category === "seguros") return "auto";
