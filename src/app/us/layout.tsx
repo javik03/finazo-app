@@ -8,12 +8,26 @@ const GA4_MEASUREMENT_ID = "G-TKWPYCDJVH";
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://finazo.us/#website",
   name: "Finazo",
   url: "https://finazo.us",
   description:
     "Publicación independiente de finanzas para Hispanos en EE.UU. Guías y comparativos sobre seguros, hipotecas, crédito y remesas.",
   inLanguage: ["es-US", "en-US"],
-  publisher: { "@type": "Organization", name: "Finazo", url: "https://finazo.us" },
+  publisher: {
+    "@type": "Organization",
+    "@id": "https://finazo.us/#organization",
+    name: "Finazo",
+    url: "https://finazo.us",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://finazo.us/guias?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const organizationSchema = {
@@ -90,6 +104,12 @@ export const metadata: Metadata = {
     locale: "es_US",
     siteName: "Finazo",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Finazo — Finanzas en español, para los nuestros",
+    description:
+      "Publicación independiente de finanzas para Hispanos en EE.UU. Seguros, hipotecas y remesas explicados sin letra chica.",
   },
 };
 

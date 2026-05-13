@@ -76,20 +76,48 @@ export default async function AutorPage({
       a.authorSlug === author.slug || a.authorName === author.displayName,
   );
 
+  // Florida 2-20 General Lines Insurance Agent license is currently
+  // held only by Javier. When additional licensed contributors join,
+  // promote this map to an author-table column (e.g. `credentialsJson`).
+  const credentialMap: Record<string, { name: string; identifier: string }> = {
+    "javier-keough": {
+      name: "Florida General Lines Insurance Agent License (2-20)",
+      identifier: "G338685",
+    },
+  };
+  const credential = credentialMap[author.slug];
+
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `https://finazo.us/autor/${author.slug}#person`,
     name: author.displayName,
     description: author.bioShort,
     url: `https://finazo.us/autor/${author.slug}`,
     ...(author.linkedinUrl ? { sameAs: [author.linkedinUrl] } : {}),
-    jobTitle: "Editor / Redactor en Finazo",
+    jobTitle: credential ? "Senior Editor & Licensed Insurance Broker" : "Editor en Finazo",
     worksFor: {
       "@type": "Organization",
+      "@id": "https://finazo.us/#organization",
       name: "Finazo",
       url: "https://finazo.us",
     },
     knowsAbout: author.expertise ?? [],
+    ...(credential
+      ? {
+          hasCredential: {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "license",
+            name: credential.name,
+            identifier: credential.identifier,
+            recognizedBy: {
+              "@type": "GovernmentOrganization",
+              name: "Florida Department of Financial Services",
+              url: "https://myfloridacfo.com/division/agents/",
+            },
+          },
+        }
+      : {}),
   };
 
   return (

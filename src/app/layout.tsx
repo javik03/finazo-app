@@ -73,53 +73,10 @@ export const metadata: Metadata = {
   },
 };
 
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Finazo",
-  url: "https://finazo.lat",
-  description:
-    "Comparador financiero para Centroamérica — remesas, préstamos y seguros.",
-  inLanguage: "es",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://finazo.lat/remesas?desde={from}&hacia={to}",
-    },
-    "query-input": "required name=from",
-  },
-};
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Finazo",
-  legalName: "Finazo LLC",
-  url: "https://finazo.lat",
-  logo: "https://finazo.lat/icon.svg",
-  foundingLocation: {
-    "@type": "Country",
-    name: "El Salvador",
-  },
-  audience: {
-    "@type": "PeopleAudience",
-    name: "Central American consumers",
-    geographicArea: {
-      "@type": "AdministrativeArea",
-      name: "Central America",
-    },
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "legal@finazo.lat",
-    contactType: "customer support",
-    availableLanguage: "Spanish",
-  },
-  sameAs: ["https://www.linkedin.com/company/finazo/"],
-  description:
-    "Comparador financiero independiente para Centroamérica. Comparamos remesas, préstamos y seguros en El Salvador, Guatemala, Honduras y México.",
-};
+// LATAM-flavored Organization + WebSite JSON-LD removed from the shared
+// root layout on 2026-05-13 because it was bleeding onto finazo.us pages
+// and competing with the US-specific schemas emitted by src/app/us/layout.tsx.
+// Re-add inside a (lat) route group when the LATAM lane is reactivated.
 
 export default function RootLayout({
   children,
@@ -143,14 +100,12 @@ export default function RootLayout({
             __html: `(function(){var h=location.hostname.toLowerCase();if(h==='finazo.us'||h==='www.finazo.us')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-TYLWGLRMZ0';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYLWGLRMZ0');})();`,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+        {/* Organization + WebSite JSON-LD moved out of the shared root
+            layout to stop bleeding LATAM-flavored entities onto finazo.us
+            pages. US schemas live in src/app/us/layout.tsx. LATAM equivalents
+            should be re-added inside a (lat) route group once that lane is
+            reactivated — for now LATAM publishes without Org/WebSite JSON-LD
+            (lower priority per the 2026-04-17 US strategic pivot). */}
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

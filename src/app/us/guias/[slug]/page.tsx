@@ -154,6 +154,7 @@ export default async function UsGuiaPage({
     author: author
       ? {
           "@type": "Person",
+          "@id": `https://finazo.us/autor/${author.slug}#person`,
           name: author.displayName,
           url: `https://finazo.us/autor/${author.slug}`,
           ...(author.linkedinUrl
@@ -162,6 +163,7 @@ export default async function UsGuiaPage({
         }
       : {
           "@type": "Organization",
+          "@id": "https://finazo.us/#organization",
           name: "Finazo",
           url: "https://finazo.us",
         },
