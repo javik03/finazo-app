@@ -7,6 +7,7 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
