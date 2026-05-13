@@ -70,15 +70,11 @@ export async function computeRelatedPages(
   // Top-30 by cosine similarity, same language only, recently indexed.
   // pgvector's `<=>` operator computes cosine DISTANCE; 1 - distance
   // gives the similarity score we surface.
+  //
+  // The codebase uses drizzle-orm/postgres-js — db.execute() returns
+  // an array of rows directly (not wrapped in {rows: ...}).
   const sourceEmbedding = source.embedding;
-  const rows = await db.execute<{
-    url: string;
-    pillar: string;
-    cluster: string;
-    title: string;
-    description: string;
-    similarity: number;
-  }>(sql`
+  const rows = (await db.execute(sql`
     SELECT
       url, pillar, cluster, title, description,
       1 - (embedding <=> ${JSON.stringify(sourceEmbedding)}::vector) AS similarity
@@ -89,9 +85,16 @@ export async function computeRelatedPages(
       AND embedding IS NOT NULL
     ORDER BY embedding <=> ${JSON.stringify(sourceEmbedding)}::vector
     LIMIT 30
-  `);
+  `)) as unknown as Array<{
+    url: string;
+    pillar: string;
+    cluster: string;
+    title: string;
+    description: string;
+    similarity: number | string;
+  }>;
 
-  const candidates: RelatedPage[] = rows.rows.map((r) => ({
+  const candidates: RelatedPage[] = rows.map((r) => ({
     url: r.url,
     pillar: r.pillar,
     cluster: r.cluster,
