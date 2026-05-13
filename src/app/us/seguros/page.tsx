@@ -7,6 +7,8 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Seguros para Hispanos en EE.UU. — auto, salud, vida",
   description:

@@ -56,6 +56,8 @@ const faqSchema = {
 import { FINAZO_WA_URL } from "@/lib/wa";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 
+export const revalidate = 3600;
+
 const WA_BASE = FINAZO_WA_URL;
 
 function formatPercent(value: string | null): string {

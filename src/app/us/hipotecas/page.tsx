@@ -9,6 +9,8 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Comprar casa sin Social Security — hipotecas 2026",
   description:
