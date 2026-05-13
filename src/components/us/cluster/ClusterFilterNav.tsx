@@ -37,10 +37,13 @@ export function ClusterFilterNav({ active }: Props): React.ReactElement {
         const def = CLUSTERS[key];
         if (!def) return null;
         const isActive = active === key;
+        // Link to the filtered guides archive (/guias/c/<cluster>) rather
+        // than the editorial cluster hub (/<cluster>). The archive shows
+        // only articles; the hub layers product cards + FAQs on top.
         return (
           <Link
             key={key}
-            href={def.path}
+            href={`/guias/c/${key}`}
             className={`us-cluster-pill${isActive ? " is-active" : ""}`}
           >
             {def.label}

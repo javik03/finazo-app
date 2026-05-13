@@ -30,6 +30,7 @@ import { articles } from "@/lib/db/schema";
 import { and, eq, isNotNull, sql } from "drizzle-orm";
 import { config } from "@/lib/config";
 import { notifyIndexNow } from "@/lib/indexnow";
+import { buildVariedImageQuery } from "@/lib/image-queries";
 import pino from "pino";
 
 const logger = pino({ name: "refresh-duplicate-images" });
@@ -43,28 +44,10 @@ interface PexelsResponse {
   photos: PexelsPhoto[];
 }
 
-const CATEGORY_CONTEXT: Record<string, string> = {
-  seguros: "insurance hispanic family",
-  prestamos: "loan hispanic family",
-  remesas: "remittance latino money transfer",
-  tarjetas: "credit card hispanic",
-  educacion: "family finance budgeting",
-};
-
-function buildImageQuery(slug: string, category: string): string {
-  // Strip year + boilerplate suffixes, hyphens to spaces.
-  const base = slug
-    .replace(/-2026$/, "")
-    .replace(/-2025$/, "")
-    .replace(/-2024$/, "")
-    .replace(/-resena$/, "")
-    .replace(/^alternativa-a-/, "")
-    .replace(/-hispanos?$/, "")
-    .replace(/-/g, " ")
-    .trim();
-  const ctx = CATEGORY_CONTEXT[category] ?? "hispanic family";
-  return `${base} ${ctx}`;
-}
+// The "build query" helper now lives in src/lib/image-queries.ts as
+// buildVariedImageQuery — themed conceptual variations rather than
+// generic "hispanic family" tokens which Pexels returns visually
+// similar results for.
 
 function photoIdFromUrl(url: string | null): number | null {
   if (!url) return null;
@@ -135,14 +118,93 @@ async function applyUpdate(
   await notifyIndexNow([`https://finazo.us/guias/${slug}`]).catch(() => {});
 }
 
-type RunOptions = { apply?: boolean };
+type RunOptions = { apply?: boolean; refreshAll?: boolean };
 
 export async function run(options: RunOptions = {}): Promise<void> {
   const apply = options.apply ?? false;
+  const refreshAll = options.refreshAll ?? false;
   const rows = await loadRows();
-  logger.info({ total: rows.length, mode: apply ? "APPLY" : "DRY-RUN" }, "Loaded");
+  logger.info(
+    { total: rows.length, mode: apply ? "APPLY" : "DRY-RUN", refreshAll },
+    "Loaded",
+  );
 
-  // Group by current image URL to find duplicates.
+  // Build the running "used" set seeded with every current ID. Each
+  // successful reassignment adds the new photo to the set so the next
+  // article in the loop doesn't pick the same one.
+  const usedIds = new Set<number>();
+  for (const r of rows) {
+    const id = photoIdFromUrl(r.featuredImageUrl);
+    if (id !== null) usedIds.add(id);
+  }
+
+  let okCount = 0;
+  let skipCount = 0;
+  let failCount = 0;
+
+  if (refreshAll) {
+    // Re-fetch every article's image with the new themed queries.
+    // Useful when the previous backfill used generic queries (e.g.
+    // "insurance hispanic family") that returned visually similar
+    // photos despite unique IDs.
+    const sorted = [...rows].sort((a, b) => a.slug.localeCompare(b.slug));
+    for (const article of sorted) {
+      const currentId = photoIdFromUrl(article.featuredImageUrl);
+      // Drop current photo from the exclusion set so this article can
+      // re-pick the same photo if it's still the best fit. Add it back
+      // after fetching.
+      if (currentId !== null) usedIds.delete(currentId);
+
+      const query = buildVariedImageQuery(article.slug, article.category);
+      const candidate = await fetchCandidates(query, usedIds);
+
+      if (currentId !== null) usedIds.add(currentId);
+
+      if (!candidate) {
+        console.log(`  SKIP   ${article.slug} — no candidate for "${query}"`);
+        skipCount += 1;
+        continue;
+      }
+
+      if (candidate.id === currentId) {
+        // Same photo would be selected. Leave article alone.
+        skipCount += 1;
+        continue;
+      }
+
+      usedIds.add(candidate.id);
+      if (currentId !== null) usedIds.delete(currentId);
+      const newUrl = candidate.src.landscape;
+
+      if (!apply) {
+        console.log(
+          `  [DRY]  ${article.slug} ${currentId}→${candidate.id} (query: "${query}")`,
+        );
+        okCount += 1;
+        continue;
+      }
+
+      try {
+        await applyUpdate(article.slug, newUrl);
+        console.log(
+          `  [OK]   ${article.slug} ${currentId}→${candidate.id}`,
+        );
+        okCount += 1;
+      } catch (err) {
+        console.log(`  [ERR]  ${article.slug} —`, err);
+        failCount += 1;
+      }
+
+      await new Promise((r) => setTimeout(r, 250));
+    }
+
+    console.log(
+      `\nDone (refreshAll): ${okCount} ${apply ? "rewritten" : "would rewrite"}, ${skipCount} unchanged/skip, ${failCount} errored.`,
+    );
+    return;
+  }
+
+  // Default: target only duplicate clusters (cheap, focused).
   const groups = new Map<string, Row[]>();
   for (const r of rows) {
     if (!r.featuredImageUrl) continue;
@@ -157,18 +219,6 @@ export async function run(options: RunOptions = {}): Promise<void> {
     return;
   }
 
-  // Build the running "used" set seeded with every current ID, so when
-  // we reassign we don't pick something already used elsewhere.
-  const usedIds = new Set<number>();
-  for (const r of rows) {
-    const id = photoIdFromUrl(r.featuredImageUrl);
-    if (id !== null) usedIds.add(id);
-  }
-
-  let okCount = 0;
-  let skipCount = 0;
-  let failCount = 0;
-
   for (const [sharedUrl, articlesInGroup] of duplicates) {
     const sortedSlugs = articlesInGroup
       .map((a) => a.slug)
@@ -178,8 +228,6 @@ export async function run(options: RunOptions = {}): Promise<void> {
       `\n[GROUP] ${articlesInGroup.length} articles share ${photoIdFromUrl(sharedUrl)} (${sortedSlugs})`,
     );
 
-    // Keep the first article (alphabetical) on its current image,
-    // reassign the rest.
     const sorted = [...articlesInGroup].sort((a, b) =>
       a.slug.localeCompare(b.slug),
     );
@@ -187,11 +235,11 @@ export async function run(options: RunOptions = {}): Promise<void> {
     console.log(`  KEEP   ${keep.slug} on photo ${photoIdFromUrl(sharedUrl)}`);
 
     for (const article of rest) {
-      const query = buildImageQuery(article.slug, article.category);
+      const query = buildVariedImageQuery(article.slug, article.category);
       const candidate = await fetchCandidates(query, usedIds);
 
       if (!candidate) {
-        console.log(`  SKIP   ${article.slug} — no fresh candidate for query "${query}"`);
+        console.log(`  SKIP   ${article.slug} — no fresh candidate for "${query}"`);
         skipCount += 1;
         continue;
       }
@@ -214,7 +262,6 @@ export async function run(options: RunOptions = {}): Promise<void> {
         failCount += 1;
       }
 
-      // Gentle rate-limit between Pexels calls.
       await new Promise((r) => setTimeout(r, 250));
     }
   }
@@ -228,6 +275,7 @@ function parseArgs(): RunOptions {
   const opts: RunOptions = {};
   for (const arg of process.argv.slice(2)) {
     if (arg === "--apply") opts.apply = true;
+    if (arg === "--refresh-all") opts.refreshAll = true;
   }
   return opts;
 }
