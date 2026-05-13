@@ -66,6 +66,7 @@ function toFeatured(article: RawArticle): FeaturedArticle {
     publishedRelative: formatRelativeDate(
       article.publishedAt as Date | null | undefined,
     ),
+    featuredImageUrl: article.featuredImageUrl,
   };
 }
 

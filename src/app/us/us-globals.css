@@ -547,6 +547,74 @@
 }
 .finazo-us .us-list-art .us-art-meta { font-size: 11px; }
 
+/* ─────────────── REAL IMAGES ON FEATURED CARDS ─────────────── */
+.finazo-us .us-art-img-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+.finazo-us .us-art-col-img {
+  width: 100%; aspect-ratio: 4/3; overflow: hidden;
+  border-radius: var(--us-radius);
+  margin-bottom: 16px;
+  background: var(--us-paper-2);
+}
+.finazo-us .us-art-col-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.finazo-us .us-art-col:hover .us-art-col-img img { transform: scale(1.03); }
+
+/* ─────────────── MAGAZINE THUMBNAIL LIST (NerdWallet-style) ─────────── */
+.finazo-us .us-thumb-list {
+  display: flex; flex-direction: column;
+  padding-bottom: 48px;
+}
+.finazo-us .us-thumb-row {
+  display: grid; grid-template-columns: 220px 1fr; gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--us-line);
+  text-decoration: none; color: inherit;
+  transition: opacity 0.2s;
+}
+.finazo-us .us-thumb-row:first-of-type { padding-top: 0; }
+.finazo-us .us-thumb-row:hover h3 { color: var(--us-green); }
+.finazo-us .us-thumb-img {
+  width: 100%; aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: var(--us-radius);
+  background: var(--us-paper-2);
+}
+.finazo-us .us-thumb-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.finazo-us .us-thumb-row:hover .us-thumb-img img { transform: scale(1.03); }
+.finazo-us .us-thumb-body { display: flex; flex-direction: column; justify-content: center; }
+.finazo-us .us-thumb-body h3 {
+  font-size: 22px; font-weight: 500; line-height: 1.22;
+  letter-spacing: -0.01em; margin: 8px 0 10px;
+  transition: color 0.2s;
+}
+.finazo-us .us-thumb-body p {
+  font-size: 14px; line-height: 1.55;
+  color: var(--us-ink-2); margin-bottom: 12px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.finazo-us .us-thumb-body .us-art-meta { font-size: 11px; }
+
+@media (max-width: 720px) {
+  .finazo-us .us-thumb-row { grid-template-columns: 130px 1fr; gap: 16px; padding: 20px 0; }
+  .finazo-us .us-thumb-body h3 { font-size: 17px; }
+  .finazo-us .us-thumb-body p { font-size: 13px; -webkit-line-clamp: 2; }
+}
+
 /* ─────────────── TOOLS / CALCULATORS ─────────────── */
 .finazo-us .us-tools {
   padding: 72px 0;
