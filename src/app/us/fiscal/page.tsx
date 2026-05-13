@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -134,6 +135,8 @@ export default async function UsFiscalHubPage(): Promise<React.ReactElement> {
               refunds no cobrados — esta sección existe para que el tuyo no.
             </p>
           </header>
+
+          <ClusterFilterNav active="fiscal" />
 
           <section className="us-sub-section">
             <div className="us-sub-section-head">

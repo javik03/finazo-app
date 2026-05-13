@@ -547,6 +547,36 @@
 }
 .finazo-us .us-list-art .us-art-meta { font-size: 11px; }
 
+/* ─────────────── CLUSTER FILTER NAV ─────────────── */
+.finazo-us .us-cluster-nav {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 0 0 40px;
+  border-bottom: 1px solid var(--us-line);
+  margin-bottom: 40px;
+}
+.finazo-us .us-cluster-pill {
+  display: inline-flex; align-items: center;
+  padding: 8px 16px;
+  border: 1px solid var(--us-line);
+  border-radius: 999px;
+  background: white;
+  color: var(--us-ink-2);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.finazo-us .us-cluster-pill:hover {
+  border-color: var(--us-green);
+  color: var(--us-green);
+}
+.finazo-us .us-cluster-pill.is-active {
+  background: var(--us-ink);
+  border-color: var(--us-ink);
+  color: white;
+}
+
 /* ─────────────── REAL IMAGES ON FEATURED CARDS ─────────────── */
 .finazo-us .us-art-img-photo {
   position: absolute; inset: 0;

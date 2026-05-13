@@ -16,7 +16,7 @@ import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { and, eq, inArray, lt, sql } from "drizzle-orm";
 import { notifyIndexNow } from "@/lib/indexnow";
-import { fetchFeaturedImage } from "@/lib/pexels";
+import { fetchFeaturedImage, getCurrentlyUsedImageIds } from "@/lib/pexels";
 import pino from "pino";
 import { config } from "@/lib/config";
 import {
@@ -185,7 +185,10 @@ async function insertArticle(topic: EnContentTopic): Promise<boolean> {
   if (!body) return false;
 
   const { articleContent, metaDescription, keywords, title, wordCount } = body;
-  const featuredImageUrl = await fetchFeaturedImage(topic.imageQuery);
+  const usedImageIds = await getCurrentlyUsedImageIds().catch(() => new Set<number>());
+  const featuredImageUrl = await fetchFeaturedImage(topic.imageQuery, {
+    exclude: usedImageIds,
+  });
 
   await db
     .insert(articles)

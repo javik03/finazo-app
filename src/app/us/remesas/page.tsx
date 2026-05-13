@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -147,6 +148,8 @@ export default async function UsRemesasHubPage(): Promise<React.ReactElement> {
               puede ser de 5–8%. En $300/mes eso son $180–300 al año.
             </p>
           </header>
+
+          <ClusterFilterNav active="remesas" />
 
           <section className="us-sub-section">
             <div className="us-info-grid us-info-grid-3">

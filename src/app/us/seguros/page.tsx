@@ -6,6 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -138,6 +139,8 @@ export default async function UsSegurosHubPage(): Promise<React.ReactElement> {
               la vez.
             </p>
           </header>
+
+          <ClusterFilterNav active="seguros" />
 
           <section className="us-sub-section">
             <div className="us-sub-section-head">

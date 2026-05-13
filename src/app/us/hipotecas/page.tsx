@@ -8,6 +8,7 @@ import { HogaresFeatureCard } from "@/components/us/sub/HogaresFeatureCard";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -143,6 +144,8 @@ export default async function UsHipotecasPage(): Promise<React.ReactElement> {
 
             <HogaresFeatureCard />
           </header>
+
+          <ClusterFilterNav active="hipotecas" />
 
           {/* Programs table */}
           <section className="us-sub-section">

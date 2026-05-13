@@ -12,6 +12,7 @@ import {
   type FeaturedArticle,
 } from "@/components/us/home/FeaturedGrid";
 import { MoreArticles } from "@/components/us/home/MoreArticles";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 import {
   formatRelativeDate,
   readingTime,
@@ -107,6 +108,8 @@ export default async function UsGuiasHubPage({
             reales y fuentes citadas.
           </p>
         </div>
+
+        <ClusterFilterNav active={null} />
 
         {isFirstPage && hero && (
           <FeaturedGrid

@@ -55,6 +55,7 @@ const faqSchema = {
 
 import { FINAZO_WA_URL } from "@/lib/wa";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 
 export const revalidate = 3600;
 
@@ -103,6 +104,8 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
               correcta — porque pedir personal loan para comprar casa cuesta 5× más.
             </p>
           </header>
+
+          <ClusterFilterNav active="prestamos" />
 
           {/* Live products from us-loans-scraper */}
           <section className="us-sub-section">

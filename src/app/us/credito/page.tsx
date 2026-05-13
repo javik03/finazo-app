@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -98,6 +99,8 @@ export default async function UsCreditoPage(): Promise<React.ReactElement> {
               cómo el credit te abre seguros, hipoteca y mejores tasas con Cubierto y Hogares.
             </p>
           </header>
+
+          <ClusterFilterNav active="credito" />
 
           {/* Timeline */}
           <section className="us-sub-section">
