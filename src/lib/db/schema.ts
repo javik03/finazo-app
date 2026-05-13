@@ -5,9 +5,30 @@ import {
   boolean,
   decimal,
   integer,
+  bigint,
+  bigserial,
   timestamp,
   jsonb,
+  index,
+  uniqueIndex,
+  customType,
 } from "drizzle-orm/pg-core";
+
+// pgvector column type — Drizzle doesn't ship a built-in vector type yet,
+// so we register a custom one. Storage format on disk is `vector(N)`; we
+// pass JS number arrays in and out.
+const vector = customType<{ data: number[]; driverData: string; config: { dimensions: number } }>({
+  dataType(config) {
+    return `vector(${config?.dimensions ?? 768})`;
+  },
+  fromDriver(value): number[] {
+    if (Array.isArray(value)) return value as number[];
+    return JSON.parse(value as string) as number[];
+  },
+  toDriver(value: number[]): string {
+    return JSON.stringify(value);
+  },
+});
 
 // ---------------------------------------------------------------------------
 // Remittances
@@ -383,4 +404,80 @@ export const articleComments = pgTable("article_comments", {
   content: text("content").notNull(),
   status: text("status").default("pending"), // pending | approved | spam
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+// ---------------------------------------------------------------------------
+// Internal Linking Automation v2 (spec in ~/Downloads, applied 2026-05-12)
+// Tables created by migrations/2026-05-12_internal_linking.sql.
+// ---------------------------------------------------------------------------
+
+export const linkGraph = pgTable("link_graph", {
+  id:           bigserial("id", { mode: "number" }).primaryKey(),
+  sourceUrl:    text("source_url").notNull(),
+  targetUrl:    text("target_url").notNull(),
+  anchorText:   text("anchor_text").notNull(),
+  contextBlock: text("context_block").notNull(),
+  positionIdx:  integer("position_idx").notNull(),
+  firstSeen:    timestamp("first_seen", { withTimezone: true }).defaultNow(),
+  lastSeen:     timestamp("last_seen", { withTimezone: true }).defaultNow(),
+  isCanonical:  boolean("is_canonical").default(true),
+}, (t) => ({
+  unq: uniqueIndex("link_graph_unq").on(t.sourceUrl, t.targetUrl, t.anchorText, t.contextBlock),
+  bySource:   index("idx_link_source").on(t.sourceUrl),
+  byTarget:   index("idx_link_target").on(t.targetUrl),
+  byLastSeen: index("idx_link_last_seen").on(t.lastSeen),
+  byContext:  index("idx_link_context").on(t.contextBlock),
+}));
+
+export const pageEmbeddings = pgTable("page_embeddings", {
+  url:          text("url").primaryKey(),
+  articleId:    bigint("article_id", { mode: "number" }),
+  pillar:       text("pillar").notNull(),
+  cluster:      text("cluster").notNull(),
+  language:     text("language").notNull(),
+  embedding:    vector("embedding", { dimensions: 768 }),
+  title:        text("title").notNull(),
+  description: text("description").notNull(),
+  isPillar:     boolean("is_pillar").default(false),
+  isLeaf:       boolean("is_leaf").default(true),
+  lastIndexed:  timestamp("last_indexed", { withTimezone: true }).defaultNow(),
+}, (t) => ({
+  byPillar:   index("idx_page_emb_pillar").on(t.pillar),
+  byArticle:  index("idx_page_emb_article").on(t.articleId),
+  byLanguage: index("idx_page_emb_language").on(t.language),
+  // pgvector ivfflat index lives in migrations/2026-05-12_internal_linking.sql.
+}));
+
+export const auditFindings = pgTable("audit_findings", {
+  id:              bigserial("id", { mode: "number" }).primaryKey(),
+  findingType:     text("finding_type").notNull(),
+  severity:        text("severity").notNull(),
+  affectedUrl:     text("affected_url").notNull(),
+  relatedUrl:      text("related_url"),
+  details:         jsonb("details").notNull(),
+  autoFixable:     boolean("auto_fixable").notNull(),
+  autoFixApplied:  boolean("auto_fix_applied").default(false),
+  detectedAt:      timestamp("detected_at", { withTimezone: true }).defaultNow(),
+  resolvedAt:      timestamp("resolved_at", { withTimezone: true }),
+});
+
+export const linkingBridgePatterns = pgTable("linking_bridge_patterns", {
+  id:             bigserial("id", { mode: "number" }).primaryKey(),
+  targetCluster:  text("target_cluster").notNull(),
+  phrase:         text("phrase").notNull(),
+  language:       text("language").notNull(),
+  active:         boolean("active").default(true),
+  addedAt:        timestamp("added_at", { withTimezone: true }).defaultNow(),
+}, (t) => ({
+  unq: uniqueIndex("bridge_patterns_unq").on(t.targetCluster, t.phrase, t.language),
+}));
+
+export const regenerationQueue = pgTable("regeneration_queue", {
+  id:               bigserial("id", { mode: "number" }).primaryKey(),
+  articleId:        bigint("article_id", { mode: "number" }),
+  reason:           text("reason").notNull(),
+  details:          jsonb("details").notNull(),
+  enqueuedAt:       timestamp("enqueued_at", { withTimezone: true }).defaultNow(),
+  processedAt:      timestamp("processed_at", { withTimezone: true }),
+  processingError:  text("processing_error"),
 });

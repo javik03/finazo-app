@@ -14,6 +14,7 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ArticleHeader } from "@/components/us/article/ArticleHeader";
 import { ArticleProse } from "@/components/us/article/ArticleProse";
 import { RelatedArticles } from "@/components/us/article/RelatedArticles";
+import { RelatedPages } from "@/components/RelatedPages";
 import { StateAwareCTA } from "@/components/us/article/StateAwareCTA";
 import { extractFaqEntries, buildFaqSchema } from "@/lib/faq-extractor";
 import { resolveArticleGeo } from "@/lib/article-geo";
@@ -219,6 +220,12 @@ export default async function UsGuiaPage({
           articles={related}
           categoryLabel={categoryLabel}
           categoryHref="/guias"
+        />
+
+        <RelatedPages
+          sourceUrl={`https://finazo.us/guias/${slug}`}
+          language={article.language === "en" ? "en" : "es"}
+          limit={5}
         />
 
         <StateAwareCTA state={geo.state} product={geo.product} />

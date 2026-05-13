@@ -3,6 +3,10 @@ import { z } from "zod";
 const envSchema = z.object({
   DATABASE_URL: z.string().min(1),
   ANTHROPIC_API_KEY: z.string().startsWith("sk-ant-"),
+  // Optional — text-embedding-3-small calls (Internal Linking spec v2,
+  // semantic-similarity related-pages). Embedding step skips
+  // gracefully when missing.
+  OPENAI_API_KEY: z.string().startsWith("sk-").optional(),
   ARTICLE_WEBHOOK_SECRET: z.string().min(16).optional(),
   ADMIN_SECRET: z.string().min(8).optional(),
   PEXELS_API_KEY: z.string().optional(),
