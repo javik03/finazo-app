@@ -6,6 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { CohortLinksSection } from "@/components/us/cluster/CohortLinksSection";
 import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
@@ -230,6 +231,23 @@ export default async function UsCreditoPage(): Promise<React.ReactElement> {
               ))}
             </div>
           </section>
+
+          <CohortLinksSection
+            heading="Por tu situación"
+            intro="Construir crédito en EE.UU. sin un Social Security number requiere una ruta diferente. Estas guías son para esos casos."
+            links={[
+              {
+                href: "/credito-sin-social-security",
+                title: "Construir crédito sin Social Security",
+                blurb: "Plan paso a paso con ITIN: tarjetas aseguradas que aceptan, credit-builder loans, y cómo subir el score rápido.",
+              },
+              {
+                href: "/banco-sin-ssn",
+                title: "Abrir cuenta bancaria sin SSN",
+                blurb: "Bancos y neobancos que aceptan ITIN, pasaporte o consular ID. Comparativa de cuotas y requisitos reales.",
+              },
+            ]}
+          />
 
           <ClusterArticlesSection clusterKey="credito" />
         </div>

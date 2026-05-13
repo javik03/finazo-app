@@ -8,6 +8,7 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { buildOpenGraph } from "@/lib/og-defaults";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { CohortLinksSection } from "@/components/us/cluster/CohortLinksSection";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -177,6 +178,43 @@ export default async function UsSegurosHubPage(): Promise<React.ReactElement> {
               ))}
             </div>
           </section>
+
+          <CohortLinksSection
+            heading="Por tu situación"
+            intro="Páginas dedicadas para situaciones específicas de la comunidad Hispana. Sin SSN, con licencia extranjera, familia de estatus mixto, recién llegado al país."
+            links={[
+              {
+                href: "/seguro-auto-sin-social-security",
+                title: "Seguro de auto sin Social Security",
+                blurb: "Qué aseguradoras aceptan ITIN o pasaporte. Tarifas reales, requisitos por estado, errores comunes.",
+              },
+              {
+                href: "/seguro-auto-licencia-extranjera",
+                title: "Seguro de auto con licencia extranjera",
+                blurb: "Cobertura con licencia mexicana, salvadoreña, guatemalteca u otra. AB-60, IDP, y reglas por estado.",
+              },
+              {
+                href: "/aca-elegibilidad-inmigrantes",
+                title: "ACA: elegibilidad para inmigrantes",
+                blurb: "Quién califica al Marketplace según estatus migratorio. ITIN, DACA, TPS, asilados, residentes.",
+              },
+              {
+                href: "/aca-subsidios",
+                title: "ACA: cómo funcionan los subsidios",
+                blurb: "Premium Tax Credit y Cost Sharing Reductions explicados. Calculá tu ahorro mensual real.",
+              },
+              {
+                href: "/aca-familias-mixtas",
+                title: "ACA para familias de estatus mixto",
+                blurb: "Cuando un cónyuge tiene SSN y el otro no, qué pasa con los niños ciudadanos, y cómo declarar.",
+              },
+              {
+                href: "/aca-sin-aseguranza-fqhc",
+                title: "Sin seguro: clínicas FQHC y caridad",
+                blurb: "Atención médica gratuita o de bajo costo cuando no calificás para Marketplace ni Medicaid.",
+              },
+            ]}
+          />
 
           <HardCubiertoCTA variant="cubierto-auto" />
 

@@ -6,6 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { CohortLinksSection } from "@/components/us/cluster/CohortLinksSection";
 import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
@@ -176,6 +177,18 @@ export default async function UsFiscalHubPage(): Promise<React.ReactElement> {
               ))}
             </div>
           </section>
+
+          <CohortLinksSection
+            heading="Por tu situación"
+            intro="Declarar impuestos en EE.UU. con ITIN requiere atención a deducciones, créditos y reglas que la mayoría de Hispanos no conoce."
+            links={[
+              {
+                href: "/impuestos-sin-social-security",
+                title: "Declarar impuestos sin Social Security",
+                blurb: "Cómo sacar ITIN con Form W-7, qué deducir, créditos que aplican, y los errores que cuestan dinero cada año.",
+              },
+            ]}
+          />
 
           <ClusterArticlesSection clusterKey="fiscal" />
         </div>

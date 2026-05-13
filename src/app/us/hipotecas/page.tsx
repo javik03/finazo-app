@@ -9,6 +9,7 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { CohortLinksSection } from "@/components/us/cluster/CohortLinksSection";
 import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
@@ -239,6 +240,18 @@ export default async function UsHipotecasPage(): Promise<React.ReactElement> {
                 num: "4",
                 title: "Comisión la paga el wholesaler",
                 body: "Tú no pagas a Hogares. La comisión se incluye en el closing como cualquier broker — pero Sofía te ayuda a negociar mejores costos de cierre.",
+              },
+            ]}
+          />
+
+          <CohortLinksSection
+            heading="Por tu situación"
+            intro="Guías especializadas para situaciones que el banco tradicional no entiende bien."
+            links={[
+              {
+                href: "/comprar-casa-sin-social-security",
+                title: "Comprar casa sin Social Security",
+                blurb: "Paso a paso para ITIN holders: cómo preparar declaraciones, qué wholesalers aceptan, qué down payment necesitás.",
               },
             ]}
           />
