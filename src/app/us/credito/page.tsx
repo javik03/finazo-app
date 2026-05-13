@@ -6,6 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -15,6 +16,12 @@ export const metadata: Metadata = {
   description:
     "Cómo construir tu credit score desde cero, con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans, y cómo subir el score rápido.",
   alternates: { canonical: "https://finazo.us/credito" },
+  openGraph: buildOpenGraph({
+    title: "Construir credit score sin Social Security 2026",
+    description:
+      "Cómo construir tu credit score desde cero, con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans, y cómo subir el score rápido.",
+    url: "https://finazo.us/credito",
+  }),
 };
 
 const SECURED_CARDS = [

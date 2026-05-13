@@ -9,6 +9,7 @@ import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -18,6 +19,12 @@ export const metadata: Metadata = {
   description:
     "Comprar casa sin Social Security en EE.UU. Hipotecas non-QM, FHA, conventional. Hogares te conecta con 4+ wholesalers que prestan a Hispanos sin SSN y self-employed. Pre-calificación en 24h.",
   alternates: { canonical: "https://finazo.us/hipotecas" },
+  openGraph: buildOpenGraph({
+    title: "Comprar casa sin Social Security — hipotecas 2026",
+    description:
+      "Hipotecas non-QM, FHA, conventional. Hogares te conecta con 4+ wholesalers que prestan a Hispanos sin SSN y self-employed. Pre-calificación en 24h.",
+    url: "https://finazo.us/hipotecas",
+  }),
 };
 
 const PROGRAMS = [

@@ -6,6 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -15,14 +16,12 @@ export const metadata: Metadata = {
   description:
     "Guía editorial sobre impuestos en EE.UU. para la comunidad Hispana sin Social Security: cómo sacar ITIN con Form W-7, declarar con SSN o sin él, créditos para padres, errores que cuestan dinero.",
   alternates: { canonical: "https://finazo.us/fiscal" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Impuestos en EE.UU. para Hispanos",
     description:
       "ITIN, W-7, deducciones y créditos. Sin jerga del IRS, en español.",
     url: "https://finazo.us/fiscal",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const TOPICS = [

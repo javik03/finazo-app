@@ -4,21 +4,19 @@ import { Nav } from "@/components/us/layout/Nav";
 import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
-  title:
-    "Herramientas financieras gratis en español — Hispanos en EE.UU. | Finazo",
+  title: "Herramientas financieras gratis en español",
   description:
     "Calculadoras y comparadores en español para seguros, hipotecas, remesas y credit score. Sin registro, sin venta de datos.",
   alternates: { canonical: "https://finazo.us/herramientas" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Herramientas financieras gratis en español",
     description:
       "Cotizador de seguros, simulador de hipoteca, comparador de remesas, tracker de credit score.",
     url: "https://finazo.us/herramientas",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const TOOLS = [

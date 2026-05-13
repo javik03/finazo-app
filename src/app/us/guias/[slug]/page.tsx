@@ -207,6 +207,7 @@ export default async function UsGuiaPage({
             authorSlug={authorSlug}
             authorInitial={authorInitial}
             publishedAt={article.publishedAt}
+            updatedAt={article.updatedAt}
             wordCount={article.wordCount}
             featuredImageUrl={article.featuredImageUrl}
           />

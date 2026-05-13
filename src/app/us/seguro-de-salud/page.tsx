@@ -7,12 +7,19 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { CubiertoFeatureCard } from "@/components/us/sub/CubiertoFeatureCard";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
   title: "Seguro de salud para Hispanos — ACA y Medicaid",
   description:
     "Marketplace ACA, Medicaid expansion, planes para indocumentados, subsidios. Cubierto te ayuda a encontrar el plan correcto en español por WhatsApp.",
   alternates: { canonical: "https://finazo.us/seguro-de-salud" },
+  openGraph: buildOpenGraph({
+    title: "Seguro de salud para Hispanos — ACA y Medicaid",
+    description:
+      "Marketplace ACA, Medicaid expansion, planes para indocumentados, subsidios. Cubierto te ayuda a encontrar el plan correcto en español por WhatsApp.",
+    url: "https://finazo.us/seguro-de-salud",
+  }),
 };
 
 const METAL_TIERS = [

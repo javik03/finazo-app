@@ -13,6 +13,7 @@ import {
 } from "@/components/us/home/FeaturedGrid";
 import { MoreArticles } from "@/components/us/home/MoreArticles";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { buildOpenGraph } from "@/lib/og-defaults";
 import {
   formatRelativeDate,
   readingTime,
@@ -27,13 +28,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://finazo.us/guias",
   },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Guías financieras para Hispanos en EE.UU.",
     description:
       "Guías en español sobre seguros, hipotecas, remesas y crédito.",
     url: "https://finazo.us/guias",
-    locale: "es_US",
-  },
+  }),
 };
 
 const PAGE_SIZE = 18;

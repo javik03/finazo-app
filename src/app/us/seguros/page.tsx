@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
+import { buildOpenGraph } from "@/lib/og-defaults";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
 
@@ -16,14 +17,12 @@ export const metadata: Metadata = {
   description:
     "Guía editorial sobre seguro de auto, salud y vida para la comunidad Hispana en EE.UU. Tarifas reales por estado, opciones con ITIN, cotización por WhatsApp con Cubierto.",
   alternates: { canonical: "https://finazo.us/seguros" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Seguros en español para Hispanos en EE.UU.",
     description:
       "Guía editorial sobre seguro de auto, salud y vida. Tarifas reales, opciones con ITIN, cotización por WhatsApp con Cubierto.",
     url: "https://finazo.us/seguros",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 type ProductLink = {

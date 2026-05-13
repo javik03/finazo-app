@@ -4,20 +4,19 @@ import { Nav } from "@/components/us/layout/Nav";
 import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
   title: "Comparador remesas EE.UU. — MX, GT, SV, HN",
   description:
     "Compara tasas de remesas en vivo: Wise, Remitly, Western Union, MoneyGram. Envía a México, Guatemala, El Salvador y Honduras al mejor tipo de cambio.",
   alternates: { canonical: "https://finazo.us/herramientas/comparador-remesas" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Comparador de remesas EE.UU. → LATAM",
     description:
       "Tasas reales de Wise, Remitly, WU y MoneyGram. México, GT, SV, HN.",
     url: "https://finazo.us/herramientas/comparador-remesas",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const CORRIDORS = [

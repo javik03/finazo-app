@@ -6,6 +6,7 @@ import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
 import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -15,14 +16,12 @@ export const metadata: Metadata = {
   description:
     "Guía editorial sobre remesas de EE.UU. a México, Guatemala, El Salvador, Honduras y más. Compara Wise, Remitly, WU y MoneyGram al mejor tipo de cambio.",
   alternates: { canonical: "https://finazo.us/remesas" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Remesas EE.UU. → LATAM",
     description:
       "Compara servicios para enviar dinero a tu familia sin pagar de más.",
     url: "https://finazo.us/remesas",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const FACTS = [

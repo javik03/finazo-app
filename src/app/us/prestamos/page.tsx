@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { getUsLoanProducts } from "@/lib/queries/us-loans";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +14,12 @@ export const metadata: Metadata = {
   description:
     "Préstamos personales para Hispanos en EE.UU. APR desde 7%, opciones con ITIN, sin historial crediticio previo. Para grandes montos (hipoteca), funnel a Hogares.",
   alternates: { canonical: "https://finazo.us/prestamos" },
+  openGraph: buildOpenGraph({
+    title: "Préstamos personales sin Social Security 2026",
+    description:
+      "Préstamos personales para Hispanos en EE.UU. APR desde 7%, opciones con ITIN, sin historial crediticio previo.",
+    url: "https://finazo.us/prestamos",
+  }),
 };
 
 const FAQS = [
