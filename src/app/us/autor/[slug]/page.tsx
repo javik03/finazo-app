@@ -175,7 +175,7 @@ export default async function AutorPage({
             {authorArticles.map((article) => (
               <li key={article.slug}>
                 <Link
-                  href={`/us/guias/${article.slug}`}
+                  href={`/guias/${article.slug}`}
                   className="us-related-item"
                   style={{ alignItems: "flex-start" }}
                 >
