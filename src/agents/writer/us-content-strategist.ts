@@ -23,7 +23,8 @@ import { db } from "@/lib/db";
 import { articles, usTopicProposals } from "@/lib/db/schema";
 import { and, eq, inArray, lt, sql } from "drizzle-orm";
 import { notifyIndexNow } from "@/lib/indexnow";
-import { fetchFeaturedImage } from "@/lib/pexels";
+import { fetchFeaturedImage, getCurrentlyUsedImageIds } from "@/lib/pexels";
+import { buildVariedImageQuery } from "@/lib/image-queries";
 import pino from "pino";
 import { config } from "@/lib/config";
 import {
@@ -175,7 +176,18 @@ async function generateUsArticle(topic: UsContentTopic): Promise<boolean> {
   if (!body) return false;
 
   const { articleContent, metaDescription, keywords, title, wordCount } = body;
-  const featuredImageUrl = await fetchFeaturedImage(topic.imageQuery);
+  const usedImageIds = await getCurrentlyUsedImageIds().catch(() => new Set<number>());
+  // Use the themed query builder (src/lib/image-queries.ts) instead of
+  // the per-template imageQuery. Topic templates carry hardcoded generic
+  // queries ("hispanic family insurance") that Pexels returns visually
+  // similar — or worse, irrelevant — photos for. The themed builder maps
+  // slug+category to a specific visual theme (auto/home/health/credit/
+  // remit/tax/life) and picks one of 10 conceptual variations
+  // deterministically per slug.
+  const themedQuery = buildVariedImageQuery(topic.slug, topic.category);
+  const featuredImageUrl = await fetchFeaturedImage(themedQuery, {
+    exclude: usedImageIds,
+  });
 
   await db
     .insert(articles)

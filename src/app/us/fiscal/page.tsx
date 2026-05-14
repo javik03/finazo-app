@@ -4,20 +4,25 @@ import { Nav } from "@/components/us/layout/Nav";
 import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { CohortLinksSection } from "@/components/us/cluster/CohortLinksSection";
+import { buildOpenGraph } from "@/lib/og-defaults";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Declarar impuestos sin Social Security 2026",
   description:
     "Guía editorial sobre impuestos en EE.UU. para la comunidad Hispana sin Social Security: cómo sacar ITIN con Form W-7, declarar con SSN o sin él, créditos para padres, errores que cuestan dinero.",
   alternates: { canonical: "https://finazo.us/fiscal" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Impuestos en EE.UU. para Hispanos",
     description:
       "ITIN, W-7, deducciones y créditos. Sin jerga del IRS, en español.",
     url: "https://finazo.us/fiscal",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const TOPICS = [
@@ -100,7 +105,7 @@ const faqSchema = {
   })),
 };
 
-export default function UsFiscalHubPage(): React.ReactElement {
+export default async function UsFiscalHubPage(): Promise<React.ReactElement> {
   return (
     <>
       <script
@@ -130,6 +135,8 @@ export default function UsFiscalHubPage(): React.ReactElement {
               refunds no cobrados — esta sección existe para que el tuyo no.
             </p>
           </header>
+
+          <ClusterFilterNav active="fiscal" />
 
           <section className="us-sub-section">
             <div className="us-sub-section-head">
@@ -171,75 +178,19 @@ export default function UsFiscalHubPage(): React.ReactElement {
             </div>
           </section>
 
-          <section className="us-sub-section">
-            <div className="us-sub-section-head">
-              <h2 className="us-serif">
-                Guías <i>relacionadas</i>
-              </h2>
-            </div>
-            <ul className="us-related-list">
-              <li>
-                <Link href="/credito" className="us-related-item">
-                  <svg
-                    className="us-arrow"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Construir credit score con ITIN
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/hipotecas" className="us-related-item">
-                  <svg
-                    className="us-arrow"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Hipoteca con ITIN: cómo prepararse fiscalmente
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/guias" className="us-related-item">
-                  <svg
-                    className="us-arrow"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">
-                      Archivo completo de guías
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-          </section>
+          <CohortLinksSection
+            heading="Por tu situación"
+            intro="Declarar impuestos en EE.UU. con ITIN requiere atención a deducciones, créditos y reglas que la mayoría de Hispanos no conoce."
+            links={[
+              {
+                href: "/impuestos-sin-social-security",
+                title: "Declarar impuestos sin Social Security",
+                blurb: "Cómo sacar ITIN con Form W-7, qué deducir, créditos que aplican, y los errores que cuestan dinero cada año.",
+              },
+            ]}
+          />
+
+          <ClusterArticlesSection clusterKey="fiscal" />
         </div>
       </main>
 

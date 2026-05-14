@@ -96,6 +96,13 @@ export function UsFooter(): React.ReactElement {
             {" · "}
             <Link href="/estandares-editoriales">Estándares editoriales</Link>
           </p>
+          <p className="us-disc" style={{ fontSize: 12, opacity: 0.7 }}>
+            ¿Vives en El Salvador, Guatemala, Honduras, México o República
+            Dominicana?{" "}
+            <a href="https://finazo.lat" rel="noopener">
+              Visita Finazo LATAM →
+            </a>
+          </p>
         </div>
       </div>
     </footer>

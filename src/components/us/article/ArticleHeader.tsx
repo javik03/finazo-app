@@ -9,6 +9,10 @@ type ArticleHeaderProps = {
   authorSlug: string | null;
   authorInitial: string;
   publishedAt: Date | null;
+  /** Last refresh / regeneration timestamp. Drives the visible
+   *  "Última actualización" line that AI engines and Google use as
+   *  a freshness signal. Falls back to publishedAt when missing. */
+  updatedAt?: Date | null;
   wordCount: number | null;
   featuredImageUrl: string | null;
 };
@@ -39,10 +43,13 @@ export function ArticleHeader({
   authorSlug,
   authorInitial,
   publishedAt,
+  updatedAt,
   wordCount,
   featuredImageUrl,
 }: ArticleHeaderProps): React.ReactElement {
   const readingMins = wordCount ? Math.max(1, Math.round(wordCount / 220)) : 5;
+  // Freshness signal: prefer updatedAt, fall back to publishedAt.
+  const refreshDate = updatedAt ?? publishedAt;
 
   return (
     <header className="us-article-head">
@@ -69,10 +76,10 @@ export function ArticleHeader({
           )}
           <span className="us-byline-sep">·</span>
           <span>{readingMins} min de lectura</span>
-          {publishedAt && (
+          {refreshDate && (
             <>
               <span className="us-byline-sep">·</span>
-              <span>Actualizado {formatDate(publishedAt)}</span>
+              <span>Última actualización: {formatDate(refreshDate)}</span>
             </>
           )}
         </div>

@@ -5,6 +5,7 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { getUsLoanProducts } from "@/lib/queries/us-loans";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +14,12 @@ export const metadata: Metadata = {
   description:
     "Préstamos personales para Hispanos en EE.UU. APR desde 7%, opciones con ITIN, sin historial crediticio previo. Para grandes montos (hipoteca), funnel a Hogares.",
   alternates: { canonical: "https://finazo.us/prestamos" },
+  openGraph: buildOpenGraph({
+    title: "Préstamos personales sin Social Security 2026",
+    description:
+      "Préstamos personales para Hispanos en EE.UU. APR desde 7%, opciones con ITIN, sin historial crediticio previo.",
+    url: "https://finazo.us/prestamos",
+  }),
 };
 
 const FAQS = [
@@ -54,6 +61,10 @@ const faqSchema = {
 };
 
 import { FINAZO_WA_URL } from "@/lib/wa";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+
+export const revalidate = 3600;
 
 const WA_BASE = FINAZO_WA_URL;
 
@@ -100,6 +111,8 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
               correcta — porque pedir personal loan para comprar casa cuesta 5× más.
             </p>
           </header>
+
+          <ClusterFilterNav active="prestamos" />
 
           {/* Live products from us-loans-scraper */}
           <section className="us-sub-section">
@@ -247,6 +260,8 @@ export default async function UsPrestamosPage(): Promise<React.ReactElement> {
               ))}
             </div>
           </section>
+
+          <ClusterArticlesSection clusterKey="prestamos" />
         </div>
       </main>
 

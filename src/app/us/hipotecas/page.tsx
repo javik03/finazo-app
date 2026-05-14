@@ -7,12 +7,25 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HogaresFeatureCard } from "@/components/us/sub/HogaresFeatureCard";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { CohortLinksSection } from "@/components/us/cluster/CohortLinksSection";
+import { buildOpenGraph } from "@/lib/og-defaults";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Comprar casa sin Social Security — hipotecas 2026",
   description:
     "Comprar casa sin Social Security en EE.UU. Hipotecas non-QM, FHA, conventional. Hogares te conecta con 4+ wholesalers que prestan a Hispanos sin SSN y self-employed. Pre-calificación en 24h.",
   alternates: { canonical: "https://finazo.us/hipotecas" },
+  openGraph: buildOpenGraph({
+    title: "Comprar casa sin Social Security — hipotecas 2026",
+    description:
+      "Hipotecas non-QM, FHA, conventional. Hogares te conecta con 4+ wholesalers que prestan a Hispanos sin SSN y self-employed. Pre-calificación en 24h.",
+    url: "https://finazo.us/hipotecas",
+  }),
 };
 
 const PROGRAMS = [
@@ -110,7 +123,7 @@ const faqSchema = {
   })),
 };
 
-export default function UsHipotecasPage(): React.ReactElement {
+export default async function UsHipotecasPage(): Promise<React.ReactElement> {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -139,6 +152,8 @@ export default function UsHipotecasPage(): React.ReactElement {
 
             <HogaresFeatureCard />
           </header>
+
+          <ClusterFilterNav active="hipotecas" />
 
           {/* Programs table */}
           <section className="us-sub-section">
@@ -229,6 +244,18 @@ export default function UsHipotecasPage(): React.ReactElement {
             ]}
           />
 
+          <CohortLinksSection
+            heading="Por tu situación"
+            intro="Guías especializadas para situaciones que el banco tradicional no entiende bien."
+            links={[
+              {
+                href: "/comprar-casa-sin-social-security",
+                title: "Comprar casa sin Social Security",
+                blurb: "Paso a paso para ITIN holders: cómo preparar declaraciones, qué wholesalers aceptan, qué down payment necesitás.",
+              },
+            ]}
+          />
+
           {/* Hard CTA */}
           <HardCubiertoCTA variant="hogares" />
 
@@ -249,24 +276,7 @@ export default function UsHipotecasPage(): React.ReactElement {
             </div>
           </section>
 
-          {/* Related guides */}
-          <section className="us-sub-section">
-            <div className="us-sub-section-head">
-              <h2 className="us-serif">Guías <i>relacionadas</i></h2>
-            </div>
-            <ul className="us-related-list">
-              <li>
-                <Link href="/guias/hipoteca-sin-social-security-itin-2026" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">Hipoteca sin Social Security en 2026: cómo comprar casa con ITIN</div>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-          </section>
+          <ClusterArticlesSection clusterKey="hipotecas" />
         </div>
       </main>
 

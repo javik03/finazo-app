@@ -7,12 +7,19 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { CubiertoFeatureCard } from "@/components/us/sub/CubiertoFeatureCard";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
   title: "Seguro de auto para Hispanos en EE.UU.",
   description:
     "Tarifas promedio por estado, requisitos legales, factores que afectan tu prima. Cotiza con 8+ aseguradoras por WhatsApp en 90 segundos con Cubierto. ITIN OK.",
   alternates: { canonical: "https://finazo.us/seguro-de-auto" },
+  openGraph: buildOpenGraph({
+    title: "Seguro de auto para Hispanos en EE.UU.",
+    description:
+      "Tarifas promedio por estado, requisitos legales, factores que afectan tu prima. Cotiza con 8+ aseguradoras por WhatsApp en 90 segundos con Cubierto. ITIN OK.",
+    url: "https://finazo.us/seguro-de-auto",
+  }),
 };
 
 const STATE_RATES = [

@@ -1,5 +1,7 @@
 /**
- * Featured articles — 1 hero + 4 column. Hero gets a stylized gradient label.
+ * Featured articles — 1 hero + 2-column. Renders real featured images
+ * when featuredImageUrl is provided; falls back to the stylized green-
+ * gradient label otherwise.
  */
 
 import Link from "next/link";
@@ -12,7 +14,12 @@ export type FeaturedArticle = {
   authorName: string | null;
   readingTime: string;
   publishedRelative: string;
-  imageLabel?: string; // overrides featured image with stylized text label
+  /** Real featured-image URL (Pexels etc.). When present, replaces the
+   *  green-gradient placeholder with an actual photo. */
+  featuredImageUrl?: string | null;
+  /** Optional override for the green-gradient placeholder — used only
+   *  when no real image is available. */
+  imageLabel?: string;
 };
 
 type FeaturedGridProps = {
@@ -40,18 +47,25 @@ function HeroArticle({
 }): React.ReactElement {
   return (
     <Link
-      href={`/us/guias/${article.slug}`}
+      href={`/guias/${article.slug}`}
       className="us-art us-art-feat"
     >
       <div className="us-art-img">
-        {article.imageLabel && (
+        {article.featuredImageUrl ? (
+          <img
+            src={article.featuredImageUrl}
+            alt={article.title}
+            loading="eager"
+            className="us-art-img-photo"
+          />
+        ) : article.imageLabel ? (
           <div
             className="us-art-img-label"
             dangerouslySetInnerHTML={{
               __html: article.imageLabel.replace(/\n/g, "<br>"),
             }}
           />
-        )}
+        ) : null}
       </div>
       <span className="us-art-cat">{article.category}</span>
       <h3 className="us-serif">{article.title}</h3>
@@ -68,9 +82,18 @@ function ColumnArticle({
 }): React.ReactElement {
   return (
     <Link
-      href={`/us/guias/${article.slug}`}
+      href={`/guias/${article.slug}`}
       className="us-art us-art-col"
     >
+      {article.featuredImageUrl && (
+        <div className="us-art-col-img">
+          <img
+            src={article.featuredImageUrl}
+            alt={article.title}
+            loading="lazy"
+          />
+        </div>
+      )}
       <span className="us-art-cat">{article.category}</span>
       <h3 className="us-serif">{article.title}</h3>
       <p>{article.excerpt}</p>

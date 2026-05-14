@@ -14,6 +14,7 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { ArticleHeader } from "@/components/us/article/ArticleHeader";
 import { ArticleProse } from "@/components/us/article/ArticleProse";
 import { RelatedArticles } from "@/components/us/article/RelatedArticles";
+import { RelatedPages } from "@/components/RelatedPages";
 import { StateAwareCTA } from "@/components/us/article/StateAwareCTA";
 import { extractFaqEntries, buildFaqSchema } from "@/lib/faq-extractor";
 import { resolveArticleGeo } from "@/lib/article-geo";
@@ -153,6 +154,7 @@ export default async function UsGuiaPage({
     author: author
       ? {
           "@type": "Person",
+          "@id": `https://finazo.us/autor/${author.slug}#person`,
           name: author.displayName,
           url: `https://finazo.us/autor/${author.slug}`,
           ...(author.linkedinUrl
@@ -161,6 +163,7 @@ export default async function UsGuiaPage({
         }
       : {
           "@type": "Organization",
+          "@id": "https://finazo.us/#organization",
           name: "Finazo",
           url: "https://finazo.us",
         },
@@ -207,6 +210,7 @@ export default async function UsGuiaPage({
             authorSlug={authorSlug}
             authorInitial={authorInitial}
             publishedAt={article.publishedAt}
+            updatedAt={article.updatedAt}
             wordCount={article.wordCount}
             featuredImageUrl={article.featuredImageUrl}
           />
@@ -218,6 +222,12 @@ export default async function UsGuiaPage({
           articles={related}
           categoryLabel={categoryLabel}
           categoryHref="/guias"
+        />
+
+        <RelatedPages
+          sourceUrl={`https://finazo.us/guias/${slug}`}
+          language={article.language === "en" ? "en" : "es"}
+          limit={5}
         />
 
         <StateAwareCTA state={geo.state} product={geo.product} />

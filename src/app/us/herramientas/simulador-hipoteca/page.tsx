@@ -5,20 +5,19 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
   title: "Simulador de hipoteca — cuota mensual, ITIN OK",
   description:
     "Calcula tu cuota mensual, down payment, closing costs y DTI. Pre-calificación non-QM con ITIN o self-employed con Hogares por WhatsApp.",
   alternates: { canonical: "https://finazo.us/herramientas/simulador-hipoteca" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Simulador de hipoteca en español — ITIN OK",
     description:
       "Cuota mensual, down payment, closing costs. Pre-calificación con 4 wholesalers non-QM.",
     url: "https://finazo.us/herramientas/simulador-hipoteca",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const COSTS = [

@@ -4,20 +4,19 @@ import { Nav } from "@/components/us/layout/Nav";
 import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
   title: "Credit score tracker — plan 0 a 700+ con ITIN",
   description:
     "Plan de 12 meses para construir credit score desde 0 a 700+ con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans y checklist mes por mes.",
   alternates: { canonical: "https://finazo.us/herramientas/credit-tracker" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Credit score tracker en español",
     description:
       "Plan mes por mes para subir de 0 a 700+ FICO con ITIN.",
     url: "https://finazo.us/herramientas/credit-tracker",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const TIMELINE = [

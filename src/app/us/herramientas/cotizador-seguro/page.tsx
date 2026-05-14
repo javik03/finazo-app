@@ -5,20 +5,19 @@ import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
   title: "Cotizador de seguro — 8+ aseguradoras por WhatsApp",
   description:
     "Cotiza seguro de auto, salud o vida con 8+ aseguradoras en una sola conversación de WhatsApp. ITIN OK. Gratis para ti. Carmen, agente virtual de Cubierto.",
   alternates: { canonical: "https://finazo.us/herramientas/cotizador-seguro" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Cotizador de seguro en español por WhatsApp",
     description:
       "8+ aseguradoras, una conversación, 90 segundos. ITIN OK.",
     url: "https://finazo.us/herramientas/cotizador-seguro",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const STEPS = [

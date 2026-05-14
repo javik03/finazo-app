@@ -1,6 +1,10 @@
 /**
- * Sticky nav with logo, section links, search, WhatsApp CTA.
- * The CTA funnels into the Finazo personal-finance AI bot (placeholder for V1).
+ * Sticky nav with logo, section links (with hover-dropdown submenus
+ * for cohort pillars), search, WhatsApp CTA.
+ *
+ * Cohort-pillar children surface every "sin Social Security",
+ * "ITIN", and "licencia extranjera" landing page so they aren't
+ * orphans dependent on internal-body links to be discovered.
  */
 
 import Link from "next/link";
@@ -11,12 +15,52 @@ type NavProps = {
   waUrl?: string;
 };
 
-const NAV_LINKS: Array<{ href: string; label: string }> = [
+type NavChild = { href: string; label: string };
+type NavLink = { href: string; label: string; children?: NavChild[] };
+
+const NAV_LINKS: NavLink[] = [
   { href: "/", label: "Portada" },
-  { href: "/seguros", label: "Seguros" },
-  { href: "/hipotecas", label: "Hipotecas" },
+  {
+    href: "/seguros",
+    label: "Seguros",
+    children: [
+      { href: "/seguro-de-auto", label: "Seguro de auto" },
+      { href: "/seguro-auto-sin-social-security", label: "Auto sin Social Security" },
+      { href: "/seguro-auto-licencia-extranjera", label: "Auto con licencia extranjera" },
+      { href: "/seguro-de-salud", label: "Seguro de salud (ACA)" },
+      { href: "/aca-elegibilidad-inmigrantes", label: "ACA: elegibilidad inmigrantes" },
+      { href: "/aca-subsidios", label: "ACA: subsidios" },
+      { href: "/aca-familias-mixtas", label: "ACA: familias mixtas" },
+      { href: "/aca-sin-aseguranza-fqhc", label: "Sin seguro: FQHC" },
+      { href: "/seguro-de-vida", label: "Seguro de vida" },
+    ],
+  },
+  {
+    href: "/hipotecas",
+    label: "Hipotecas",
+    children: [
+      { href: "/hipotecas", label: "Hipotecas (general)" },
+      { href: "/comprar-casa-sin-social-security", label: "Comprar casa sin Social Security" },
+    ],
+  },
   { href: "/remesas", label: "Remesas" },
-  { href: "/credito", label: "Crédito" },
+  {
+    href: "/credito",
+    label: "Crédito",
+    children: [
+      { href: "/credito", label: "Crédito (general)" },
+      { href: "/credito-sin-social-security", label: "Crédito sin Social Security" },
+      { href: "/banco-sin-ssn", label: "Cuenta bancaria sin SSN" },
+    ],
+  },
+  {
+    href: "/fiscal",
+    label: "Fiscal",
+    children: [
+      { href: "/fiscal", label: "Fiscal (general)" },
+      { href: "/impuestos-sin-social-security", label: "Impuestos sin Social Security" },
+    ],
+  },
   { href: "/guias", label: "Guías" },
   { href: "/herramientas", label: "Calculadoras" },
 ];
@@ -27,6 +71,12 @@ function normalize(path: string): string {
   if (path === "/us") return "/";
   if (path.startsWith("/us/")) return path.slice(3);
   return path;
+}
+
+function isLinkActive(link: NavLink, current: string): boolean {
+  if (current === link.href) return true;
+  if (link.children?.some((c) => c.href === current)) return true;
+  return false;
 }
 
 export function Nav({
@@ -43,15 +93,56 @@ export function Nav({
         </Link>
 
         <div className="us-nav-links">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={current === link.href ? "is-current" : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const active = isLinkActive(link, current);
+            const hasChildren = !!link.children?.length;
+            return (
+              <div
+                key={link.href}
+                className={
+                  hasChildren
+                    ? `us-nav-item us-nav-has-menu${active ? " is-current" : ""}`
+                    : `us-nav-item${active ? " is-current" : ""}`
+                }
+              >
+                <Link
+                  href={link.href}
+                  className={active ? "is-current" : undefined}
+                >
+                  {link.label}
+                  {hasChildren && (
+                    <svg
+                      className="us-nav-caret"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                    </svg>
+                  )}
+                </Link>
+                {hasChildren && (
+                  <div className="us-nav-menu" role="menu">
+                    {link.children!.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={
+                          current === child.href
+                            ? "us-nav-menu-item is-current"
+                            : "us-nav-menu-item"
+                        }
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <div className="us-nav-right">

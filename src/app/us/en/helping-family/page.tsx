@@ -122,6 +122,105 @@ export default async function HelpingFamilyPillar(): Promise<React.ReactElement>
             </div>
           </section>
 
+          <section className="us-sub-section">
+            <div className="us-sub-section-head">
+              <h2 className="us-serif">
+                Spanish-language resources for <i>your family</i>
+              </h2>
+              <p>
+                If your parent or relative reads English mostly through
+                translation, these Spanish pages walk through the same
+                steps in plain Spanish — share the link directly.
+              </p>
+            </div>
+            <div className="us-info-grid us-info-grid-3">
+              <Link
+                href="/credito-sin-social-security"
+                className="us-info-card"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <h3 className="us-serif">Construir crédito sin Social Security</h3>
+                <p>
+                  Step-by-step plan in Spanish for ITIN holders. Which secured
+                  cards to apply for, credit-builder loans, score targets.
+                </p>
+                <div className="us-tool-link" style={{ marginTop: 16 }}>
+                  Read in Spanish →
+                </div>
+              </Link>
+              <Link
+                href="/comprar-casa-sin-social-security"
+                className="us-info-card"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <h3 className="us-serif">Buying a house sin Social Security</h3>
+                <p>
+                  Mortgage pathways for ITIN borrowers, non-QM lenders,
+                  down-payment ranges, and timing in Spanish.
+                </p>
+                <div className="us-tool-link" style={{ marginTop: 16 }}>
+                  Read in Spanish →
+                </div>
+              </Link>
+              <Link
+                href="/aca-elegibilidad-inmigrantes"
+                className="us-info-card"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <h3 className="us-serif">ACA Marketplace eligibility for immigrants</h3>
+                <p>
+                  Who qualifies for Marketplace coverage by immigration
+                  status. DACA, TPS, asylum, residents — written in Spanish.
+                </p>
+                <div className="us-tool-link" style={{ marginTop: 16 }}>
+                  Read in Spanish →
+                </div>
+              </Link>
+              <Link
+                href="/seguro-auto-sin-social-security"
+                className="us-info-card"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <h3 className="us-serif">Auto insurance sin Social Security</h3>
+                <p>
+                  Which carriers accept ITIN, foreign license rules per
+                  state, what to bring to a quote appointment.
+                </p>
+                <div className="us-tool-link" style={{ marginTop: 16 }}>
+                  Read in Spanish →
+                </div>
+              </Link>
+              <Link
+                href="/impuestos-sin-social-security"
+                className="us-info-card"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <h3 className="us-serif">Filing taxes sin Social Security</h3>
+                <p>
+                  How to file with ITIN, Form W-7, credits and deductions
+                  most Hispanic filers miss. Spanish step-by-step.
+                </p>
+                <div className="us-tool-link" style={{ marginTop: 16 }}>
+                  Read in Spanish →
+                </div>
+              </Link>
+              <Link
+                href="/banco-sin-ssn"
+                className="us-info-card"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <h3 className="us-serif">Opening a bank account sin SSN</h3>
+                <p>
+                  Banks and neobanks that accept ITIN, passport, or
+                  consular ID — fees, requirements, comparison in Spanish.
+                </p>
+                <div className="us-tool-link" style={{ marginTop: 16 }}>
+                  Read in Spanish →
+                </div>
+              </Link>
+            </div>
+          </section>
+
           {articles.length > 0 ? (
             <section className="us-sub-section">
               <div className="us-sub-section-head">

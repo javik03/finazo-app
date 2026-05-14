@@ -18,7 +18,7 @@ services:
         condition: service_healthy
 
   postgres:
-    image: postgres:16-alpine
+    image: pgvector/pgvector:pg16
     restart: unless-stopped
     environment:
       POSTGRES_DB: finazo
@@ -122,6 +122,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - PEXELS_API_KEY=${PEXELS_API_KEY}
+      - INDEXNOW_KEY=${INDEXNOW_KEY}
     command: sh -c "while true; do npx tsx src/agents/writer/content-strategist.ts; sleep 86400; done"
     depends_on:
       postgres:
@@ -137,6 +138,8 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - PEXELS_API_KEY=${PEXELS_API_KEY}
+      - INDEXNOW_KEY=${INDEXNOW_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     command: sh -c "while true; do npx tsx src/agents/writer/us-content-strategist.ts; sleep 86400; done"
     depends_on:
       postgres:

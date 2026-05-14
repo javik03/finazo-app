@@ -157,15 +157,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `Compara préstamos personales en ${data.name} para hispanos. APRs desde 7.49%, opciones con ITIN sin SSN. Información en español para la comunidad hispana de ${data.name}.`,
     alternates: {
       canonical: `https://finazo.us/prestamos/${estado}`,
-      languages: {
-        "es-US": `https://finazo.lat/us/prestamos/${estado}`,
-        "x-default": `https://finazo.lat/us/prestamos/${estado}`,
-      },
     },
     openGraph: {
-      title: `Préstamos para Hispanos en ${data.name} | Finazo`,
+      title: `Préstamos para Hispanos en ${data.name}`,
       description: `Las mejores opciones de préstamo personal para la comunidad hispana en ${data.name}. Con ITIN o SSN.`,
-      url: `https://finazo.lat/us/prestamos/${estado}`,
+      url: `https://finazo.us/prestamos/${estado}`,
       locale: "es_US",
     },
   };
@@ -245,10 +241,9 @@ export default async function UsPrestamoEstadoPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.lat" },
-      { "@type": "ListItem", position: 2, name: "EE.UU.", item: "https://finazo.lat/us" },
-      { "@type": "ListItem", position: 3, name: "Préstamos", item: "https://finazo.lat/us/prestamos" },
-      { "@type": "ListItem", position: 4, name: stateData.name, item: `https://finazo.lat/us/prestamos/${estado}` },
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://finazo.us" },
+      { "@type": "ListItem", position: 2, name: "Préstamos", item: "https://finazo.us/prestamos" },
+      { "@type": "ListItem", position: 3, name: stateData.name, item: `https://finazo.us/prestamos/${estado}` },
     ],
   };
 

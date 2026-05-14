@@ -7,12 +7,19 @@ import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
 import { CubiertoFeatureCard } from "@/components/us/sub/CubiertoFeatureCard";
 import { HardCubiertoCTA } from "@/components/us/sub/HardCubiertoCTA";
 import { WhyBetterGrid } from "@/components/us/sub/WhyBetterGrid";
+import { buildOpenGraph } from "@/lib/og-defaults";
 
 export const metadata: Metadata = {
   title: "Seguro de vida para Hispanos — desde $10/mes",
   description:
     "Term life, whole life, sin examen médico. Para inmigrantes, ITIN, beneficiarios en otro país. Cubierto compara opciones por WhatsApp en español.",
   alternates: { canonical: "https://finazo.us/seguro-de-vida" },
+  openGraph: buildOpenGraph({
+    title: "Seguro de vida para Hispanos — desde $10/mes",
+    description:
+      "Term life, whole life, sin examen médico. Para inmigrantes, ITIN, beneficiarios en otro país. Cubierto compara opciones por WhatsApp en español.",
+    url: "https://finazo.us/seguro-de-vida",
+  }),
 };
 
 const PRODUCT_TYPES = [

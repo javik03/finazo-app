@@ -4,20 +4,24 @@ import { Nav } from "@/components/us/layout/Nav";
 import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { buildOpenGraph } from "@/lib/og-defaults";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Remesas EE.UU. a LATAM — comparar y ahorrar",
   description:
     "Guía editorial sobre remesas de EE.UU. a México, Guatemala, El Salvador, Honduras y más. Compara Wise, Remitly, WU y MoneyGram al mejor tipo de cambio.",
   alternates: { canonical: "https://finazo.us/remesas" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "Remesas EE.UU. → LATAM",
     description:
       "Compara servicios para enviar dinero a tu familia sin pagar de más.",
     url: "https://finazo.us/remesas",
-    locale: "es_US",
-    type: "website",
-  },
+  }),
 };
 
 const FACTS = [
@@ -112,7 +116,7 @@ const faqSchema = {
   })),
 };
 
-export default function UsRemesasHubPage(): React.ReactElement {
+export default async function UsRemesasHubPage(): Promise<React.ReactElement> {
   return (
     <>
       <script
@@ -143,6 +147,8 @@ export default function UsRemesasHubPage(): React.ReactElement {
               puede ser de 5–8%. En $300/mes eso son $180–300 al año.
             </p>
           </header>
+
+          <ClusterFilterNav active="remesas" />
 
           <section className="us-sub-section">
             <div className="us-info-grid us-info-grid-3">
@@ -190,33 +196,7 @@ export default function UsRemesasHubPage(): React.ReactElement {
             </div>
           </section>
 
-          <section className="us-sub-section">
-            <div className="us-sub-section-head">
-              <h2 className="us-serif">
-                Herramientas y <i>guías</i>
-              </h2>
-            </div>
-            <ul className="us-related-list">
-              <li>
-                <Link href="/herramientas/comparador-remesas" className="us-related-item">
-                  <div>
-                    <div className="us-related-item-title">
-                      Comparador de remesas (tasas en vivo)
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/guias" className="us-related-item">
-                  <div>
-                    <div className="us-related-item-title">
-                      Archivo completo de guías
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-          </section>
+          <ClusterArticlesSection clusterKey="remesas" />
         </div>
       </main>
 

@@ -4,12 +4,25 @@ import { Nav } from "@/components/us/layout/Nav";
 import { UsFooter } from "@/components/us/layout/UsFooter";
 import { FloatingWA } from "@/components/us/layout/FloatingWA";
 import { UsBreadcrumb } from "@/components/us/article/Breadcrumb";
+import { ClusterArticlesSection } from "@/components/us/cluster/ClusterArticlesSection";
+import { ClusterFilterNav } from "@/components/us/cluster/ClusterFilterNav";
+import { CohortLinksSection } from "@/components/us/cluster/CohortLinksSection";
+import { buildOpenGraph } from "@/lib/og-defaults";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Construir credit score sin Social Security 2026",
   description:
     "Cómo construir tu credit score desde cero, con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans, y cómo subir el score rápido.",
   alternates: { canonical: "https://finazo.us/credito" },
+  openGraph: buildOpenGraph({
+    title: "Construir credit score sin Social Security 2026",
+    description:
+      "Cómo construir tu credit score desde cero, con ITIN o sin SSN. Tarjetas aseguradas, credit-builder loans, y cómo subir el score rápido.",
+    url: "https://finazo.us/credito",
+  }),
 };
 
 const SECURED_CARDS = [
@@ -67,7 +80,7 @@ const faqSchema = {
   })),
 };
 
-export default function UsCreditoPage(): React.ReactElement {
+export default async function UsCreditoPage(): Promise<React.ReactElement> {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -94,6 +107,8 @@ export default function UsCreditoPage(): React.ReactElement {
               cómo el credit te abre seguros, hipoteca y mejores tasas con Cubierto y Hogares.
             </p>
           </header>
+
+          <ClusterFilterNav active="credito" />
 
           {/* Timeline */}
           <section className="us-sub-section">
@@ -217,34 +232,24 @@ export default function UsCreditoPage(): React.ReactElement {
             </div>
           </section>
 
-          {/* Related guides */}
-          <section className="us-sub-section">
-            <div className="us-sub-section-head">
-              <h2 className="us-serif">Guías <i>relacionadas</i></h2>
-            </div>
-            <ul className="us-related-list">
-              <li>
-                <Link href="/guias/construir-credit-score-sin-social-security-itin" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">Cómo construir credit score sin Social Security: guía 2026</div>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/guias/abrir-cuenta-bancaria-sin-social-security-2026" className="us-related-item">
-                  <svg className="us-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                  <div>
-                    <div className="us-related-item-title">Cómo abrir cuenta bancaria sin Social Security en EE.UU.</div>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-          </section>
+          <CohortLinksSection
+            heading="Por tu situación"
+            intro="Construir crédito en EE.UU. sin un Social Security number requiere una ruta diferente. Estas guías son para esos casos."
+            links={[
+              {
+                href: "/credito-sin-social-security",
+                title: "Construir crédito sin Social Security",
+                blurb: "Plan paso a paso con ITIN: tarjetas aseguradas que aceptan, credit-builder loans, y cómo subir el score rápido.",
+              },
+              {
+                href: "/banco-sin-ssn",
+                title: "Abrir cuenta bancaria sin SSN",
+                blurb: "Bancos y neobancos que aceptan ITIN, pasaporte o consular ID. Comparativa de cuotas y requisitos reales.",
+              },
+            ]}
+          />
+
+          <ClusterArticlesSection clusterKey="credito" />
         </div>
       </main>
 

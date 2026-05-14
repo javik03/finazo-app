@@ -52,7 +52,7 @@ export function RelatedArticles({
         {articles.map((article) => (
           <li key={article.slug}>
             <Link
-              href={`/us/guias/${article.slug}`}
+              href={`/guias/${article.slug}`}
               className="us-related-item"
             >
               {ARROW}
