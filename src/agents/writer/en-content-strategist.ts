@@ -17,6 +17,7 @@ import { articles } from "@/lib/db/schema";
 import { and, eq, inArray, lt, sql } from "drizzle-orm";
 import { notifyIndexNow } from "@/lib/indexnow";
 import { fetchFeaturedImage, getCurrentlyUsedImageIds } from "@/lib/pexels";
+import { buildVariedImageQuery } from "@/lib/image-queries";
 import pino from "pino";
 import { config } from "@/lib/config";
 import {
@@ -186,7 +187,9 @@ async function insertArticle(topic: EnContentTopic): Promise<boolean> {
 
   const { articleContent, metaDescription, keywords, title, wordCount } = body;
   const usedImageIds = await getCurrentlyUsedImageIds().catch(() => new Set<number>());
-  const featuredImageUrl = await fetchFeaturedImage(topic.imageQuery, {
+  // Themed query — see us-content-strategist.ts for rationale.
+  const themedQuery = buildVariedImageQuery(topic.slug, topic.category);
+  const featuredImageUrl = await fetchFeaturedImage(themedQuery, {
     exclude: usedImageIds,
   });
 
