@@ -99,6 +99,16 @@ export function Footer() {
               nuestras comparaciones ni rankings.
             </p>
           </div>
+          <p className="mt-3" style={{ color: "#666" }}>
+            ¿Vives en Estados Unidos?{" "}
+            <a
+              href="https://finazo.us"
+              rel="noopener"
+              style={{ color: "#999", textDecoration: "underline" }}
+            >
+              Visita Finazo US →
+            </a>
+          </p>
         </div>
       </div>
     </footer>
